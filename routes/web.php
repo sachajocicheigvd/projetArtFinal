@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome', ['x' => 8]);
 });
+
+Route::resource('users', App\Http\Controllers\UserController::class);
