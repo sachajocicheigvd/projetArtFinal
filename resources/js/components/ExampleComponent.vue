@@ -12,12 +12,12 @@
             </div>
         </div>
     </div>
+    {{ test.x }}
+    {{ test.y }}
 </template>
 
-<script>
-    export default {
-        mounted() {
-            console.log('Component mounted.')
-        }
-    }
+<script setup>
+
+     const test =  defineProps(['x','y']);
+  console.log(test);
 </script>
