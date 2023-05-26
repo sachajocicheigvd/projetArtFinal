@@ -16,6 +16,12 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
+
+        // if not logged in, redirect to login page
+        if (!$request->user()) {
+            return new RedirectResponse(url('/login'));
+        }
+
         // if user's role is admin, let him pass
         if ($request->user()->role->short_description === 'admin') {
             return $next($request);
