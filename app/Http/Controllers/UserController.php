@@ -14,7 +14,7 @@ class UserController extends Controller
     {
         $users=User::paginate(4);   // permet de voir quatre utilisateurs à la fois
 
-        return view('view_index', compact('users'));
+        return view('moncompte', compact('users'));
     }
 
     /**

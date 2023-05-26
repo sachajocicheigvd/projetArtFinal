@@ -18,7 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource("users", UserController::class);
+Route::get('/chat', function () {
+    return view('chat');
+});
+Route::get('/sondage', function () {
+    return view('sondage');
+});
+
+Route::resource("mon-compte", UserController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
