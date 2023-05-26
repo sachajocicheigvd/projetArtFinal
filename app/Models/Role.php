@@ -14,6 +14,6 @@ class Role extends Model
     ];
     public function users()
     { // dans la classe modèle Article
-        return $this->hasMany(App\Models\User::class);
+        return $this->hasMany(User::class);
     }
 }
