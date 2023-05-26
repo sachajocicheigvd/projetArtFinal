@@ -10,9 +10,14 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function __construct()
+    {
+        // $this->middleware('auth', ['except'=>'index']);
+        $this->middleware('admin', ['only' => 'index']);
+    }
     public function index()
     {
-        $users=User::paginate(4);   // permet de voir quatre utilisateurs à la fois
+        $users = User::paginate(4);   // permet de voir quatre utilisateurs à la fois
 
         return view('moncompte', compact('users'));
     }
