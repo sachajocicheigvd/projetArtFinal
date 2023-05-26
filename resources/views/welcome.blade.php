@@ -16,6 +16,6 @@
         </style>
     </head>
     <body id="app">
-  <example-component :x="{{$z=6}}" :y="{{$y=$x}}"></example-component>
+
     </body>
 </html>
