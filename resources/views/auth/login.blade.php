@@ -44,4 +44,15 @@
             </x-primary-button>
         </div>
     </form>
+<br>
+    <hr />
+    <br>
+
+    <div class="flex items-center justify-begin">
+    <p>Pas de compte ?</p>
+    
+    <a href="{{ route('register') }}"><x-secondary-button class="ml-3">
+                S'enregistrer
+            </x-secondary-button></a></p>
+    </div>
 </x-guest-layout>

@@ -25,8 +25,7 @@
                         <li role="presentation"><a href="{{ url('/') }}">Accueil</a></li>
                         <li role="presentation"><a href="{{ url('/chat') }}">Chat</a></li>
                         <li role="presentation"><a href="{{ url('/sondage') }}">Sondage</a></li>
-                        <li role="presentation"><a href="{{ url('/mon-compte') }}">Mon Compte</a></li>
-                        <li role="presentation"><a href="{{ route('dashboard') }}">Connexion</a></li>
+                        <li role="presentation"><a href="{{ url('/mon-compte') }}">Connexion/Mon Compte</a></li>
                     </ul>
                 </nav>
                 @yield('header')
