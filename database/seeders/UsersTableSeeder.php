@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
     public function run(): void
     {
         DB::table('users')->delete();
-        
+
         DB::table('users')->insert([
             'last_name' => 'Marques',
             'first_name' => 'Patrick',
@@ -33,7 +33,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'oliviergraber@couleur3.ch',
             'username' => 'Olive',
             'password' => Hash::make('Olive'),
-            'role_id' => 0,
+            'role_id' => 2,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
