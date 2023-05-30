@@ -37,5 +37,27 @@ class UsersTableSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+        DB::table('users')->insert([
+            'last_name' => 'Dorasamy',
+            'first_name' => 'Ryan',
+            'email' => 'ryandorasamy@couleur3.ch',
+            'username' => 'Tupidix',
+            'password' => Hash::make('Tupidix'),
+            'role_id' => 2,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('users')->insert([
+            'last_name' => 'Jocic',
+            'first_name' => 'Sacha',
+            'email' => 'sachajocic@couleur3.ch',
+            'username' => 'Sacha',
+            'password' => Hash::make('Sacha'),
+            'role_id' => 2,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }

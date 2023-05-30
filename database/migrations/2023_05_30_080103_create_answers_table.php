@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('answers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('short_description')->unique();
-            // add long_description[0..1]
-            $table->string('long_description')->nullable();
+            $table->integer('survey_id')->unsigned();
+            $table->foreign('survey_id')->references('id')->on('surveys')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
+            $table->text('answer');
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('answers');
     }
 };

@@ -20,8 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamps();
             $table->integer('role_id')->unsigned();
             $table->foreign('role_id')->references('id')->on('roles')
                 ->onDelete('restrict')

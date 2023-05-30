@@ -30,6 +30,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        // Validation des données du formulaire
         $request->validate([
             'last_name' => ['required', 'string', 'max:255'],
             'first_name' => ['required', 'string', 'max:255'],
@@ -38,6 +39,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        // Pour le moment, nous attribuons les rôles automatiquement avec la valeur 1
         $user = User::create([
             'last_name' => $request->last_name,
             'first_name' => $request->first_name,
