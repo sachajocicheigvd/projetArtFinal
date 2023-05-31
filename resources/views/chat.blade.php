@@ -1,13 +1,16 @@
-@extends('template')
-
-@section('title')
-<title>Chat</title>
-@endsection
-
-@section('header')
-<h1 class="page-header"><a href="">Chat</a></h1>
-@endsection
-
-@section('contenu')
-        <p>Vous êtes sur la page du chat</p>
-@endsection
+ <!-- resources/views/chat.blade.php -->
+ @extends('template')
+ @section('content')
+ <div class="container">
+     <div class="card">
+         <div class="card-header">Chats</div>
+         <div class="card-body">
+             <chat-messages :messages="messages"></chat-messages>
+         </div>
+         <div class="card-footer">
+             <chat-form v-on:messagesent="addMessage" :user="{{ Auth::user() }}"></chat-form>
+         </div>
+     </div>
+ </div>
+ @endsection
+ 

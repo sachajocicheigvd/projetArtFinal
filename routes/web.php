@@ -21,6 +21,9 @@ Route::get('/', function () {
 Route::get('/chat', function () {
     return view('chat');
 });
+Route::get('/messages', [App\Http\Controllers\ChatsController::class, 'fetchMessages']);
+Route::post('/messages', [App\Http\Controllers\ChatsController::class, 'sendMessage']);
+Route::get('/chat', [App\Http\Controllers\ChatsController::class, 'index']);
 Route::get('/sondage', function () {
     return view('sondage');
 });
