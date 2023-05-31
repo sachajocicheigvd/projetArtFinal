@@ -1,3 +1,5 @@
+
+
 @extends('template')
 
 @section('title')
@@ -11,3 +13,4 @@
 @section('contenu')
         <p>Vous êtes à l'accueil du site</p>
 @endsection
+ 

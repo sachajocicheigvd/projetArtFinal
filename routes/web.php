@@ -1,4 +1,7 @@
 <?php
+use App\Events\Message;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Http\Request;
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -13,12 +16,17 @@ use App\Http\Controllers\UserController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::post('send-message',function (Request $request){
+    event(new Message($request->username, $request->message));
+    return ['success' => true];
+});
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/chat', function () {
+    $users = User::paginate(4);  
     return view('chat');
 });
 Route::get('/sondage', function () {
