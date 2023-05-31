@@ -3,6 +3,11 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Models\Genre;
+use App\Models\User;
+use App\Http\Controllers\GenreUserController;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,10 +23,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/chat', function () {
+Route::get('chat', function () {
     return view('chat');
 });
-Route::get('/sondage', function () {
+Route::get('sondage', function () {
     return view('sondage');
 });
 
@@ -30,6 +35,12 @@ Route::resource("mon-compte", UserController::class);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('registerbis', function () {
+    return view('registerbis')->with('genres', Genre::all())->with('user', Auth::user());
+})->name('registerbis');
+
+Route::post('registerbis', [GenreUserController::class, 'saveGenre']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

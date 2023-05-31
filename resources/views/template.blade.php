@@ -25,7 +25,16 @@
                         <li role="presentation"><a href="{{ url('/') }}">Accueil</a></li>
                         <li role="presentation"><a href="{{ url('/chat') }}">Chat</a></li>
                         <li role="presentation"><a href="{{ url('/sondage') }}">Sondage</a></li>
-                        <li role="presentation"><a href="{{ url('/mon-compte') }}">Connexion/Mon Compte</a></li>
+                        @if (!Auth::check())
+                        <li role="presentation"><a href="{{ url('/login') }}">Connexion</a></li>
+                        @endif
+                        @if (Auth::check())
+                        <li role="presentation"><a href="{{ url('/mon-compte') }}">Mon Compte</a></li>
+                        <form method="post" action="{{ url('/logout') }}">
+                            @csrf
+                        <li role="presentation"><input type="Submit" value="Déconnexion"></li>
+                        </form>
+                    @endif
                     </ul>
                 </nav>
                 @yield('header')

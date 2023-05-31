@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -13,11 +14,16 @@ class UserController extends Controller
     public function __construct()
     {
         // $this->middleware('auth', ['except'=>'index']);
-        $this->middleware('admin', ['only' => 'index']);
+
+        // Seul les admins peuvent voir la liste des utilisateurs
+        // $this->middleware('admin', ['only' => 'index']);
+
+        // Seul les utilisateurs authentifiés peuvent voir la liste des utilisateurs
+        $this->middleware('auth', ['only' => 'index']);
     }
     public function index()
     {
-        $users = User::paginate(4);   // permet de voir quatre utilisateurs à la fois
+        $users = Auth::user();   // permet de voir quatre utilisateurs à la fois
 
         return view('moncompte', compact('users'));
     }

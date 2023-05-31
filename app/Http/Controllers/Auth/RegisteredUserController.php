@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Genre;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -28,7 +29,7 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request) 
     {
         // Validation des données du formulaire
         $request->validate([
@@ -53,6 +54,11 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        // envoi du tableau de genre à la vue
+        $genres = Genre::all();
+
+        // return redirect(RouteServiceProvider::HOME);
+
+        return view('registerbis')->with('user', $user)->with('genres', $genres);
     }
 }
