@@ -24,15 +24,28 @@
         @else
         <div class="row">
     
-            <div class="col-sm-6 offset-sm-3 my-2 d-none">
+            <div class="col-sm-10 offset-sm-3 my-4 d-none">
                 <input type="text" class="form-control" name="username" id="username" value="{{ Auth::user()->first_name }}">
             </div>
     
             <div class="col-sm-6 offset-sm-3">
                 <div class="box box-primary direct-chat direct-chat-primary">
+            
     
                     <div class="box-body">
-                        <div class="direct-chat-messages" id="messages"></div>
+                        <div class="direct-chat-messages" id="messages">
+                            @foreach($messages as $message)
+                            <p class="{{ $message->user->id === Auth::user()->id ? 'moi' : '' }}">
+                                <strong>{{$message->user->first_name}}</strong>: {{ $message->content }}
+                                <span class="text-muted">
+                                    {{ \Carbon\Carbon::parse($message->created_at)->format('H:i') }}
+                                </span>
+                            </p>
+                        @endforeach
+                        
+                            
+                            
+                        </div>
                     </div>
     
                     <div class="box-footer">
@@ -60,6 +73,21 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+
+
+        jQuery(document).ready(function() {
+        // Scroll to the bottom of the direct chat messages container
+        jQuery('#messages').scrollTop(jQuery('#messages')[0].scrollHeight);
+
+        // Attach event handler to the messages container
+        jQuery('#messages').on('DOMNodeInserted', function() {
+            jQuery('#messages').scrollTop(jQuery('#messages')[0].scrollHeight);
+
+            // Your code here
+            // This code will be executed when a new element is inserted into the messages container
+            // You can add your logic or function calls here
+        });
+    });
     </script>
     @endsection
 @endguest

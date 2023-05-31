@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ChatsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,20 +18,22 @@ use App\Http\Controllers\UserController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::post('send-message',function (Request $request){
-    event(new Message($request->username, $request->message));
-    //renvoi sur un controlleur qui va ajouter le message dans la base de donnée
-    return ['success' => true];
-});
+
+Route::get('/chat', [App\Http\Controllers\ChatsController::class, 'afficheMessage']);
+//Route::get('/messages', [App\Http\Controllers\ChatsController::class, 'fetchMessages']);
+Route::post('/send-message', [App\Http\Controllers\ChatsController::class, 'enregistrement']);
+
+
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/chat', function () {
-    $users = User::paginate(4);  
+/* Route::get('/chat', function () {
+
     return view('chat');
-});
+}); */
 Route::get('/sondage', function () {
     return view('sondage');
 });

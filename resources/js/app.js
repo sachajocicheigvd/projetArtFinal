@@ -9,7 +9,7 @@ $(document).ready(function(){
         let message = $('#message').val();
 
         if(username == '' || message == ''){
-            alert('Please enter both username and message')
+            alert('Merci de ne pas envoyé de message vide')
             return false;
         }
 
@@ -25,8 +25,17 @@ $(document).ready(function(){
     });
 });
 
+
+function getCurrentTime() {
+    var now = new Date();
+    var hours = now.getHours().toString().padStart(2, '0'); // Obtenir les heures et les formater
+    var minutes = now.getMinutes().toString().padStart(2, '0'); // Obtenir les minutes et les formater
+  
+    return hours + ':' + minutes; // Retourner l'heure au format "hh:mm"
+  }
+
 window.Echo.channel('chat')
     .listen('.message',(e)=>{
-        $('#messages').append('<p><strong>'+e.username+'</strong>'+ ': ' + e.message+'</p>');
+        $('#messages').append('<p class="moi"><strong>'+e.username+'</strong>'+ ': ' + e.message+'</p>' + '<p class="text-muted">'+getCurrentTime()+'</p>');
         $('#message').val('');
     });

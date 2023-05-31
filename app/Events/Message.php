@@ -9,6 +9,11 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use App\Models\Message as test;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+
+
 
 class Message implements ShouldBroadcast
 {
@@ -21,6 +26,8 @@ class Message implements ShouldBroadcast
     {
         $this->username = $username;
         $this->message = $message;
+
+
     }
 
     public function broadcastOn()
@@ -31,5 +38,6 @@ class Message implements ShouldBroadcast
     public function broadcastAs()
     {
         return 'message';
+        
     }
 }

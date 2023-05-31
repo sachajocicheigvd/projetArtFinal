@@ -35,7 +35,13 @@ body{
 }
 .direct-chat-messages {
     padding: 10px;
-    height: 150px;
+    height: 450px;
     overflow: auto;
+    
+}
+
+.moi {
+    background-color: rgb(174, 214, 174); /* Définissez la couleur de fond souhaitée */
+    color: black; /* Définissez la couleur du texte pour une meilleure lisibilité */
 }
 
