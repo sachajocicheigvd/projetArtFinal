@@ -10,4 +10,7 @@
 
 @section('contenu')
         <p>Vous êtes sur la page du chat</p>
+        <div>
+                <app></app>
+        </div>
 @endsection
