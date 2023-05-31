@@ -18,6 +18,7 @@ use App\Http\Controllers\UserController;
 */
 Route::post('send-message',function (Request $request){
     event(new Message($request->username, $request->message));
+    //renvoi sur un controlleur qui va ajouter le message dans la base de donnée
     return ['success' => true];
 });
 
