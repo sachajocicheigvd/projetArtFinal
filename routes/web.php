@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Models\Genre;
 use App\Models\User;
 use App\Http\Controllers\GenreUserController;
+use App\Http\Controllers\AnswerUserController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -41,6 +42,12 @@ Route::get('registerbis', function () {
 })->name('registerbis');
 
 Route::post('registerbis', [GenreUserController::class, 'saveGenre']);
+
+Route::get('creationsondage', function () {
+    return view('creationsondage')->with('user', Auth::user());
+})->name('creationsondage');
+
+Route::post('creationsondage', [AnswerUserController::class, 'saveAnswer'])->name('creationsondage');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

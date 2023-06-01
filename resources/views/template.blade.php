@@ -25,6 +25,7 @@
                         <li role="presentation"><a href="{{ url('/') }}">Accueil</a></li>
                         <li role="presentation"><a href="{{ url('/chat') }}">Chat</a></li>
                         <li role="presentation"><a href="{{ url('/sondage') }}">Sondage</a></li>
+                        <li role="presentation"><a href="{{ url('/creationsondage') }}">Création Sondage</a></li>
                         @if (!Auth::check())
                         <li role="presentation"><a href="{{ url('/login') }}">Connexion</a></li>
                         @endif

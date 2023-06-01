@@ -21,7 +21,7 @@ class SurveysTableSeeder extends Seeder
         DB::table('surveys')->insert([
             'user_id' => 1,
             'title' => 'Aimez-vous les chatons ?',
-            'duration' => 600,
+            'duration' => 10,
             'type' => 'text',
             'picture' => 'http://placekitten.com/200/300',
 
@@ -32,7 +32,7 @@ class SurveysTableSeeder extends Seeder
         DB::table('surveys')->insert([
             'user_id' => 2,
             'title' => 'Aimez-vous Couleur 3 ?',
-            'duration' => 600,
+            'duration' => 10,
             'type' => 'text',
             'picture' => 'https://emphase.ch/wp/wp-content/uploads/2016/09/05-COULEUR3.jpg',
             'created_at' => now(),
