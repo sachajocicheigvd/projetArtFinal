@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Answer;
 use Illuminate\Support\Facades\DB;
+use DateTime;
+use DateInterval;
 
 class SurveyController extends Controller
 {
@@ -36,11 +38,18 @@ class SurveyController extends Controller
 
         $picture = '';
 
+/* vieille méthode ChatGPT, Laravel propose une fonction addMinutes() qui fait la même chose
+$delai = new DateTime(); // Obtenir la date et l'heure actuelles
+$delai->add(new DateInterval('PT' . $duration . 'M')); // Ajouter la durée spécifiée en minutes
+$delai->format('Y-m-d H:i:s'); // Afficher la date modifiée
+*/
+
+
         Survey::create([
             'user_id' => $user->id,
             'title' => $title,
             'type' => $type,
-            'duration' => $duration,
+            'duration' => now()->addMinutes($duration),
             'picture' => $picture,
             'created_at' => now(),
             'updated_at' => now(),

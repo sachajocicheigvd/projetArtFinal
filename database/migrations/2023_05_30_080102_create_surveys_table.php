@@ -19,8 +19,7 @@ return new class extends Migration
                 ->onUpdate('restrict');
             $table->string('title');
             $table->string('type');
-            $table->integer('duration');
-            $table->string('picture')->nullable();
+            $table->timestamp('duration');
             $table->timestamps();
         });
     }

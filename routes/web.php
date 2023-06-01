@@ -50,6 +50,9 @@ Route::resource("mon-compte", UserController::class);
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get("vote", [AnswerUserController::class, 'showForm'])->name('vote');
+Route::post("vote", [AnswerUserController::class, 'saveAnswer'])->name('vote');
+
 Route::get('/dashboard', function () {
     return redirect()->route('accueil');
 });

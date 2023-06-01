@@ -14,7 +14,6 @@ class Survey extends Model
         'title',
         'type',
         'duration',
-        'picture',
         'created_at',
         'updated_at',
     ];

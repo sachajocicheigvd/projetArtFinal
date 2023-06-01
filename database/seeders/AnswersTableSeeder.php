@@ -20,6 +20,7 @@ class AnswersTableSeeder extends Seeder
         DB::table('answers')->insert([
             'answer' => 'Oui',
             'survey_id' => 1,
+            'picture' => 'https://emphase.ch/wp/wp-content/uploads/2016/09/05-COULEUR3.jpg',
             'created_at' => now(),
                 'updated_at' => now(),
         ]);
@@ -27,13 +28,23 @@ class AnswersTableSeeder extends Seeder
         DB::table('answers')->insert([
             'answer' => 'Non',
             'survey_id' => 1,
+            'picture' => 'http://placekitten.com/400/400',
             'created_at' => now(),
                 'updated_at' => now(),
         ]);
 
         DB::table('answers')->insert([
-            'answer' => 'Non',
+            'answer' => 'Bof',
             'survey_id' => 2,
+            'picture' => 'http://placekitten.com/300/300',
+            'created_at' => now(),
+                'updated_at' => now(),
+        ]);
+
+        DB::table('answers')->insert([
+            'answer' => 'Moui',
+            'survey_id' => 2,
+            'picture' => 'http://placekitten.com/300/300',
             'created_at' => now(),
                 'updated_at' => now(),
         ]);
