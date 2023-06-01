@@ -25,17 +25,17 @@
 <br>
 <!-- Type de sondage, bouton radio -->
 <label for="type">Type de sondage</label>
-<input type="radio" name="type" id="type" value="1" checked>Texte
-<input type="radio" name="type" id="type" value="2">Musique
+<input type="radio" name="type" id="type" value="text" checked>Texte
+<input type="radio" name="type" id="type" value="music">Musique
 <br>
 <label for="question">Votre question</label>
-<input type="text" name="question" id="question" value="" placeholder="Votre question">
+<input type="text" name="title" id="title" value="" placeholder="Votre question">
 <br>
 <label for="answer1">Réponse 1</label>
-<input type="text" name="answer1" id="answer1" value="" placeholder="Réponse 1">
+<input type="text" name="answers[]" id="answer1" value="" placeholder="Réponse 1">
 <br>
 <label for="answer2">Réponse 2</label>
-<input type="text" name="answer2" id="answer2" value="" placeholder="Réponse 2">
+<input type="text" name="answers[]" id="answer2" value="" placeholder="Réponse 2">
 <br>
 
 <div id="dynamicFields">

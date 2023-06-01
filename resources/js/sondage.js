@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     addAnswerButton.addEventListener("click", function () {
         let newAnswerInput = document.createElement("input");
         newAnswerInput.setAttribute("type", "text");
-        newAnswerInput.setAttribute("name", "answer" + answerCounter);
+        newAnswerInput.setAttribute("name", "answers[]");
         newAnswerInput.setAttribute("placeholder", "Réponse " + answerCounter);
         newAnswerInput.setAttribute("id", "answer" + answerCounter);
         let newAnswerLabel = document.createElement("label");
