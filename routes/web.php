@@ -1,10 +1,15 @@
 <?php
+use App\Events\Message;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Http\Request;
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ChatsController;
+
 use App\Models\Genre;
-use App\Models\User;
+//use App\Models\User;
 use App\Http\Controllers\GenreUserController;
 use App\Http\Controllers\AnswerUserController;
 use Illuminate\Support\Facades\Auth;
@@ -21,13 +26,20 @@ use App\Http\Controllers\SurveyController;
 |
 */
 
+Route::get('/chat', [App\Http\Controllers\ChatsController::class, 'afficheMessage']);
+//Route::get('/messages', [App\Http\Controllers\ChatsController::class, 'fetchMessages']);
+Route::post('/send-message', [App\Http\Controllers\ChatsController::class, 'enregistrement']);
+
+
+
+
 Route::get('/', function () {
     return view('welcome');
 })->name('accueil');
 
-Route::get('chat', function () {
+/* Route::get('/chat', function () {
     return view('chat');
-});
+});  */
 Route::get('sondage', function () {
     return view('sondage');
 });
