@@ -9,7 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChatsController;
 
 use App\Models\Genre;
-use App\Models\User;
+//use App\Models\User;
 use App\Http\Controllers\GenreUserController;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,9 +35,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/chat', function () {
+/* Route::get('/chat', function () {
     return view('chat');
-}); */
+});  */
 Route::get('sondage', function () {
     return view('sondage');
 });
