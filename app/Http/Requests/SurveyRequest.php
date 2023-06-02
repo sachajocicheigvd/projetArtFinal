@@ -25,7 +25,6 @@ class SurveyRequest extends FormRequest
             // le champ duration doit être de minimum 1 minute
             'duration' => ['required', 'integer', 'min:1'],
             'title' => ['required', 'string', 'max:255'],
-            'type' => ['required', 'string', 'max:255'],
             'answers' => ['required', 'array'],
             'answers.*' => ['required', 'string', 'max:255'],
         ];

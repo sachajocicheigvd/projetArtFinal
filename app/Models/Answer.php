@@ -11,6 +11,7 @@ class Answer extends Model
     protected $fillable=[
         'survey_id',
         'answer',
+        'artist',
         'picture',
         'created_at',
         'updated_at',

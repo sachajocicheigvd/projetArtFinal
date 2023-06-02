@@ -20,9 +20,9 @@ class SurveysTableSeeder extends Seeder
         // duration en secondes
         DB::table('surveys')->insert([
             'user_id' => 1,
-            'title' => 'Aimez-vous les chatons ?',
+            'title' => 'Quelle musique voulez-vous écouter ensuite ?',
             'duration' => now()->addMinutes(2000),
-            'type' => 'text',
+            'type' => 'music',
             'created_at' => now(),
                 'updated_at' => now(),
         ]);

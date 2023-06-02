@@ -10,6 +10,7 @@ use App\Models\Answer;
 use Illuminate\Support\Facades\DB;
 use DateTime;
 use DateInterval;
+use Illuminate\Support\Facades\Storage;
 
 class SurveyController extends Controller
 {
@@ -27,17 +28,24 @@ class SurveyController extends Controller
 
         $duration = $request->input('duration');
 
-        $type = $request->input('type') ?: 'text' ;
+        $type = $request->input('type');
 
         $title = $request->input('title');
 
         $answers = $request->input('answers');
 
+        $artists = $request->input('artists');
+
         // $answers->validate([
         //     'title' => ['required', 'text', 'max:255'],
         // ]);
 
-        $picture = '';
+        $pictures = $request->input('files');
+
+        // Enregistre la photo comme un lien dans la BD
+
+        $pictures = $request->file('files')->store('public/images');
+
 
 /* vieille méthode ChatGPT, Laravel propose une fonction addMinutes() qui fait la même chose
 $delai = new DateTime(); // Obtenir la date et l'heure actuelles
@@ -51,7 +59,6 @@ $delai->format('Y-m-d H:i:s'); // Afficher la date modifiée
             'title' => $title,
             'type' => $type,
             'duration' => now()->addMinutes($duration),
-            'picture' => $picture,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -60,34 +67,30 @@ $delai->format('Y-m-d H:i:s'); // Afficher la date modifiée
         $result = DB::table('surveys')->orderBy('id', 'desc')->first();
         $lastId = $result->id;
 
-        foreach ($answers as $answer) {
+        for($i = 1; $i <= count($answers); $i++) {
             Answer::create([
                 'survey_id' => $lastId,
-                'answer' => $answer,
+                'answer' => $answers[$i-1],
+                'artist' => $artists[$i-1],
+                'picture' => $pictures,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
         }
 
-        // $user = $request->user();
-        // $genres = $request->input('genres');
-
-        // // efface toute les lignes avant de les recréer
-        // $user->genres()->detach();
-
-        // if ($genres == null) {
-        //     return "Vous n'avez pas choisi de genre, on prend note de votre choix";
-        // }
-
-        // foreach ($genres as $genreId) {
-        //     $user->genres()->attach($genreId, [
+        // foreach ($answers as $answer) {
+        //     Answer::create([
+        //         'survey_id' => $lastId,
+        //         'answer' => $answer,
+        //         'artist' => $artist,
+        //         'picture' => $picture,
         //         'created_at' => now(),
         //         'updated_at' => now(),
         //     ]);
         // }
-        // return 'Test si cela a bien fonctionné $request->genre_id : ' . $genreId . ' $user->id : ' . $user->id;
 
         // Return des variable actuelles
-        return "$duration <br> $type <br> $title";
+        // return "$duration <br> $type <br> $title";
+        return $pictures;
     }   
 }
