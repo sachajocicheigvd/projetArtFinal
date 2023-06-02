@@ -70,8 +70,6 @@ class AnswerUserController extends Controller
 
         $answers = $request->input('answers');
 
-        // efface toute les lignes avant de les recréer
-        $user->answers()->detach();
 
         if ($answers == null) {
             return "Vous n'avez pas choisi de genre, on prend note de votre choix";
