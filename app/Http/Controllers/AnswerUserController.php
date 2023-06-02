@@ -25,8 +25,34 @@ class AnswerUserController extends Controller
             $reponseTab[] = $reponse;
         }
 
+        $delai = $dernierSondage->duration;
+
+
+        /*
+        BONUS - Vérification du délai du sondage pour ne pas l'afficher
+        si jamais il est dépassé par rapport à l'heure actuelle
+        au moment du chargement de la page et que l'utilisateur
+        a désactivé JavaScript.
+        */
+
+
+        // Convertir la date actuelle en timestamp
+        $nowTimestamp = now()->timestamp;
+
+        // Convertir le délai en timestamp
+        $delaiTimestamp = strtotime($delai);
+
+        // Vérifier si la date actuelle est supérieure au délai
+        if ($nowTimestamp > $delaiTimestamp) {
+            $delai = 0;
+        }
+
+        //
+        // FIN BONUS
+        //
+
         // affiches toute les questions
-        return view('vote')->with('question', $dernierSondage->title)->with('duree', $dernierSondage->duration)
+        return view('vote')->with('question', $dernierSondage->title)->with('duree', $delai)
             ->with('reponses', $reponseTab);
     }
     
@@ -45,7 +71,7 @@ class AnswerUserController extends Controller
         $answers = $request->input('answers');
 
         // efface toute les lignes avant de les recréer
-        // $user->answers()->detach();
+        $user->answers()->detach();
 
         if ($answers == null) {
             return "Vous n'avez pas choisi de genre, on prend note de votre choix";

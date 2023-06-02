@@ -13,6 +13,9 @@
 
 @section('contenu')
 
+<!-- Vérification côté serveur si jamais la personne a desactivé JavaScript -->
+@if ($duree > 0)
+
 <form method="post" action="{{route('vote')}}" accept-charset="UTF-8">
         @csrf
 <!-- Réalisation de 3 champs de formulaires écrit -->
@@ -34,6 +37,10 @@
 <input type="submit" value="Valider">
 </form>
 </div>
+
+@else
+<p>Pas de sondage disponible</p>
+@endif
 <script>
         let chrono = document.querySelector("#duree").innerHTML;
         let sondageElement = document.querySelector(".sondage");
@@ -59,22 +66,6 @@ if (minutes<0) {
         alert.style.display = "block";
 }
 }, 1000);
-
-
-
-        // // On fait un décompte de la durée du sondage et on fait disparaître le sondage à son expiration
-        // setInterval(function() {
-        //     if (chrono > 0) {
-        //         chrono--;
-        //         document.querySelector("#duree").innerHTML = chrono;
-        //         if (chrono==0) {
-        //                 sondageElement.style.display = "none";
-        //                 alert.style.display = "block";
-                        
-        //         }
-        //     }
-        // }, 1000);
-
 
 </script>
 @endsection
