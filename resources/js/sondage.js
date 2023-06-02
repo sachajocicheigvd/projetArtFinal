@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
         newAnswerInput.setAttribute("name", "answers[]");
         newAnswerInput.setAttribute("placeholder", "Réponse " + answerCounter);
         newAnswerInput.setAttribute("id", "answer" + answerCounter);
+        // put required attribute on the newAnswerInput
+        newAnswerInput.setAttribute("required", "required");
+
         let newAnswerLabel = document.createElement("label");
         newAnswerLabel.innerHTML = "Réponse " + answerCounter;
         newAnswerLabel.setAttribute("for", "answer" + answerCounter);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SurveyRequest;
 use App\Models\Survey;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +13,7 @@ use DateInterval;
 
 class SurveyController extends Controller
 {
-    public function saveSurvey(Request $request)
+    public function saveSurvey(SurveyRequest $request)
     {
 
         /*

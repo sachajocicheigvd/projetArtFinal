@@ -47,6 +47,14 @@ class AnswerUserController extends Controller
             $delai = 0;
         }
 
+        // Si l'utilisateur a déjà répondu au dernier sondage, la variable délai sera a 0
+        // et le sondage ne s'affichera plus
+        $user = Auth::user();
+        $userAnswers = $user->answers()->where('survey_id', $sondageId)->get();
+        if($userAnswers->count() > 0) {
+            $delai = 0;
+        }
+
         //
         // FIN BONUS
         //
@@ -71,10 +79,6 @@ class AnswerUserController extends Controller
         $answers = $request->input('answers');
 
 
-        if ($answers == null) {
-            return "Vous n'avez pas choisi de genre, on prend note de votre choix";
-        }
-
         $var = 0;
         // intvval sert à convertir en int
         foreach ($answers as $answerId) {
@@ -84,5 +88,5 @@ class AnswerUserController extends Controller
             ]);
         }
         return "Votre vote a bien été pris en compte";
-    }   
+    }  
 }
