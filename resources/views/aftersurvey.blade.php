@@ -1,6 +1,6 @@
 @extends('template')
 <head>
-        @vite('resources/js/app.js')
+@vite('resources/js/app.js')
 
 </head>
 @section('title')
@@ -13,6 +13,6 @@
 @endsection
 
 @section('contenu')
-        <p>Vous êtes sur la page des sondages</p>
+        <p>Vous êtes sur la page de l'after Survey</p>
         <div id="app"></div>
 @endsection

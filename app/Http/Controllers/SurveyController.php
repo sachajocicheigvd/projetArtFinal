@@ -20,11 +20,11 @@ class SurveyController extends Controller
          * Enregistrer dans la table survey
          * */
 
-         $user = Auth::user();
+        $user = Auth::user();
 
         $duration = $request->input('duration');
 
-        $type = $request->input('type') ?: 'text' ;
+        $type = $request->input('type') ?: 'text';
 
         $title = $request->input('title');
 
@@ -78,6 +78,23 @@ class SurveyController extends Controller
         // return 'Test si cela a bien fonctionné $request->genre_id : ' . $genreId . ' $user->id : ' . $user->id;
 
         // Return des variable actuelles
-        return "$duration <br> $type <br> $title";
-    }   
+
+        //
+        // return "$duration <br> $type <br> $title";
+        $surveyData = [
+            'duration' => $duration,
+            'type' => $type,
+            'title' => $title,
+            'answers' => $answers,
+        ];
+        // return  in the view aftersurvey
+
+        return response()->json($surveyData);
+    }
+    // create function to return the last survey
+    public function lastSurvey()
+    {
+        $lastSurvey = DB::table('surveys')->orderBy('id', 'desc')->first();
+        return response()->json($lastSurvey);
+    }
 }

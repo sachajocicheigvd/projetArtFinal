@@ -1,5 +1,7 @@
 @extends('template')
-
+<head>
+  <meta name="csrf-token" content="{{ csrf_token() }}"> 
+</head>
 
 @section('title')
 <title>Création sondage</title>
