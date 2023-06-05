@@ -12,6 +12,7 @@ use App\Models\Genre;
 //use App\Models\User;
 use App\Http\Controllers\GenreUserController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\sondageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,9 +39,15 @@ Route::get('/', function () {
 /* Route::get('/chat', function () {
     return view('chat');
 });  */
-Route::get('sondage', function () {
+
+
+
+Route::get('/sondage', [App\Http\Controllers\sondageController::class, 'afficheSondage']);
+
+
+/* Route::get('sondage', function () {
     return view('sondage');
-});
+}); */
 
 Route::resource("mon-compte", UserController::class);
 
