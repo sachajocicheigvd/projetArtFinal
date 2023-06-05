@@ -19,8 +19,8 @@ class AnswerUserTableSeeder extends Seeder
         // 3 insertions aléatoires
         for ($i = 0; $i < 3; $i++) {
             DB::table('answer_user')->insert([
-                'answer_id' => rand(1, 3),
-                'user_id' => rand(1, 3),
+                'answer_id' => $i+1,
+                'user_id' => $i+1,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

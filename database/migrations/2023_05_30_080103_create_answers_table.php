@@ -18,6 +18,8 @@ return new class extends Migration
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
             $table->text('answer');
+            $table->string('artist')->nullable();
+            $table->string('picture')->nullable();
             $table->timestamps();
         });
     }

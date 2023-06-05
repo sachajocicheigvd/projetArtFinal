@@ -2,11 +2,11 @@
 
 
 @section('title')
-<title>Suite</title>
+<title>Mon compte</title>
 @endsection
 
 @section('header')
-<h1 class="page-header"><a href="">Suite</a></h1>
+<h1 class="page-header"><a href="">Mon compte</a></h1>
 @endsection
 
 @section('contenu')

@@ -17,7 +17,7 @@ class GenreUserController extends Controller
         $user->genres()->detach();
 
         if ($genres == null) {
-            return "Vous n'avez pas choisi de genre, on prend note de votre choix";
+            return "Compte créé avec succès sans genres";
         }
 
         foreach ($genres as $genreId) {
@@ -26,6 +26,6 @@ class GenreUserController extends Controller
                 'updated_at' => now(),
             ]);
         }
-        return 'Test si cela a bien fonctionné $request->genre_id : ' . $genreId . ' $user->id : ' . $user->id;
+        return 'Compte créé avec succès et vos genres ont été enregistrés';
     }   
 }
