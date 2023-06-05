@@ -40,11 +40,17 @@ class SurveyController extends Controller
         //     'title' => ['required', 'text', 'max:255'],
         // ]);
 
-        $pictures = $request->input('files');
-
         // Enregistre la photo comme un lien dans la BD
 
-        $pictures = $request->file('files')->store('public/images');
+        // If there is an input type file in the form
+        if ($request->hasFile('files')) {
+            $pictures = [];
+        
+            foreach ($request->file('files') as $file) {
+                $path = $file->storePublicly('public/images');
+                $pictures[] = Storage::url($path);
+            }
+        }
 
 
 /* vieille méthode ChatGPT, Laravel propose une fonction addMinutes() qui fait la même chose
@@ -67,30 +73,32 @@ $delai->format('Y-m-d H:i:s'); // Afficher la date modifiée
         $result = DB::table('surveys')->orderBy('id', 'desc')->first();
         $lastId = $result->id;
 
-        for($i = 1; $i <= count($answers); $i++) {
+        if($type == "music"){
+        for($i = 0; $i < count($answers); $i++) {
             Answer::create([
                 'survey_id' => $lastId,
-                'answer' => $answers[$i-1],
-                'artist' => $artists[$i-1],
-                'picture' => $pictures,
+                'answer' => $answers[$i],
+                'artist' => $artists[$i],
+                'picture' => $pictures[$i],
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
         }
+    }
 
-        // foreach ($answers as $answer) {
-        //     Answer::create([
-        //         'survey_id' => $lastId,
-        //         'answer' => $answer,
-        //         'artist' => $artist,
-        //         'picture' => $picture,
-        //         'created_at' => now(),
-        //         'updated_at' => now(),
-        //     ]);
-        // }
+        if($type == "text"){
+            foreach ($answers as $answer) {
+                Answer::create([
+                    'survey_id' => $lastId,
+                    'answer' => $answer,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
+        }
 
         // Return des variable actuelles
         // return "$duration <br> $type <br> $title";
-        return $pictures;
+        return "All is G00d";
     }   
 }

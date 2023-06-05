@@ -4,7 +4,8 @@
 @section('title')
 <title>Vote</title>
 
-@vite('resources/js/sondage.js')
+@vite('resources/js/vote.js')
+
 @endsection
 
 @section('header')
@@ -23,13 +24,14 @@
 <p id="alert" style="display:none;">Pas de sondage disponible</p>
 <div class="sondage">
 <p>Durée du sondage</p>
-<p id="duree">{{$duree}}</p>
+<p id="duree" style="display:none;">{{$duree}}</p>
 
 <p>{{$question}}</p>
 
 @foreach($reponses as $reponse)
-<label>{{$reponse->answer}}
+<label>{{$reponse->answer}} @if($reponse->artist)- {{$reponse->artist}} @endif
 <input type="radio" name="answers[]" value="{{$reponse->id}}">
+<img src="{{$reponse->picture}}" alt="{{$reponse->artist}}" width="200px">
 </label>
 <br>
 @endforeach
@@ -41,32 +43,5 @@
 @else
 <p>Pas de sondage disponible</p>
 @endif
-<script>
-        let chrono = document.querySelector("#duree").innerHTML;
-        let sondageElement = document.querySelector(".sondage");
-        let alert = document.querySelector("#alert");
-
-        var futureDate = new Date(chrono);
-// Mettre à jour l'affichage toutes les secondes
-setInterval(function(){ // Remplacez par la date future souhaitée
-var now = new Date();
-var timeDiff = futureDate.getTime() - now.getTime();
-  var secondsLeft = Math.floor(timeDiff / 1000);
-  
-  var minutes = Math.floor(secondsLeft / 60);
-  var seconds = secondsLeft % 60;
-
-  seconds >= 10 ? seconds : seconds = "0" + seconds;
-  
-  document.querySelector("#duree").innerHTML = `${minutes}:${seconds}`;
-
-
-if (minutes<0) {
-        sondageElement.style.display = "none";
-        alert.style.display = "block";
-}
-}, 1000);
-
-</script>
 @endsection
 

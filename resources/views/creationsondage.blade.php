@@ -55,12 +55,12 @@
     @enderror
     <br>
     
-    <!-- <div id="dynamicFields"> -->
+    <div id="dynamicFieldsText">
         <!-- Les champs de réponse ajoutés dynamiquement seront insérés ici -->
-    <!-- </div> -->
+    </div>
     
-    <!-- <button type="button" id="addAnswer">Ajouter une réponse</button> -->
-    <!-- <br> -->
+    <button type="button" id="addAnswerText">Ajouter une réponse</button>
+    <br>
 
     <input type="submit" value="Valider">
 
@@ -95,13 +95,13 @@
     @error('artists.0')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
-    <input type="file" name="files" multiple>
+    <input type="file" name="files[]" required>
     @error('files.0')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
     <br>
     
-    <!-- <label for="answer2">Réponse 2</label>
+    <label for="answer2">Réponse 2</label>
     <input type="text" name="answers[]" id="answer2" value="{{ old('answers.1') }}" placeholder="Réponse 2">
     @error('answers.1')
         <div class="alert alert-danger">{{ $message }}</div>
@@ -109,18 +109,19 @@
     <input type="text" name="artists[]" id="artist2" value="{{ old('artists.1') }}" placeholder="Artiste 2">
     @error('artists.1')
         <div class="alert alert-danger">{{ $message }}</div>
-    @enderror -->
-    <!-- <input type="file" name="files[]" id="file2">
+    @enderror
+
+    <input type="file" name="files[]" id="file2">
     @error('files.1')
         <div class="alert alert-danger">{{ $message }}</div>
-    @enderror -->
+    @enderror
     <br>
 
-    <div id="dynamicFields">
+    <div id="dynamicFieldsMusic">
         <!-- Les champs de réponse ajoutés dynamiquement seront insérés ici -->
     </div>
     
-    <button type="button" id="addAnswer">Ajouter une réponse</button>
+    <button type="button" id="addAnswerMusic">Ajouter une réponse</button>
     <br>
 
 
