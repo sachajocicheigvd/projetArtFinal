@@ -15,6 +15,7 @@ use App\Http\Controllers\GenreUserController;
 use App\Http\Controllers\AnswerUserController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SurveyController;
+use App\Http\Controllers\sondageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,15 +42,24 @@ Route::get('/', function () {
 /* Route::get('/chat', function () {
     return view('chat');
 });  */
-Route::get('sondage', function () {
+
+
+
+Route::get('/sondage', [App\Http\Controllers\sondageController::class, 'afficheSondage']);
+
+
+/* Route::get('sondage', function () {
     return view('sondage');
-});
+}); */
 
 Route::resource("mon-compte", UserController::class);
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get("vote", [AnswerUserController::class, 'showForm'])->name('vote');
+Route::post("vote", [AnswerUserController::class, 'saveAnswer'])->name('vote');
 
 Route::get('/dashboard', function () {
     return redirect()->route('accueil');

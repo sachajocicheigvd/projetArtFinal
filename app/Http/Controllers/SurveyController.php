@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SurveyRequest;
 use App\Models\Survey;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Answer;
 use Illuminate\Support\Facades\DB;
+use DateTime;
+use DateInterval;
+use Illuminate\Support\Facades\Storage;
 
 class SurveyController extends Controller
 {
@@ -44,24 +48,43 @@ class SurveyController extends Controller
 
         $duration = $request->input('duration');
 
-        $type = $request->input('type') ?: 'text';
+        $type = $request->input('type');
 
         $title = $request->input('title');
 
         $answers = $request->input('answers');
 
+        $artists = $request->input('artists');
+
         // $answers->validate([
         //     'title' => ['required', 'text', 'max:255'],
         // ]);
 
-        $picture = '';
+        // Enregistre la photo comme un lien dans la BD
+
+        // If there is an input type file in the form
+        if ($request->hasFile('files')) {
+            $pictures = [];
+
+            foreach ($request->file('files') as $file) {
+                $path = $file->storePublicly('public/images');
+                $pictures[] = Storage::url($path);
+            }
+        }
+
+
+        /* vieille méthode ChatGPT, Laravel propose une fonction addMinutes() qui fait la même chose
+$delai = new DateTime(); // Obtenir la date et l'heure actuelles
+$delai->add(new DateInterval('PT' . $duration . 'M')); // Ajouter la durée spécifiée en minutes
+$delai->format('Y-m-d H:i:s'); // Afficher la date modifiée
+*/
+
 
         Survey::create([
             'user_id' => $user->id,
             'title' => $title,
             'type' => $type,
-            'duration' => $duration,
-            'picture' => $picture,
+            'duration' => now()->addMinutes($duration),
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -70,37 +93,34 @@ class SurveyController extends Controller
         $result = DB::table('surveys')->orderBy('id', 'desc')->first();
         $lastId = $result->id;
 
-        foreach ($answers as $answer) {
-            Answer::create([
-                'survey_id' => $lastId,
-                'answer' => $answer,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
+        if ($type == "music") {
+            for ($i = 0; $i < count($answers); $i++) {
+                Answer::create([
+                    'survey_id' => $lastId,
+                    'answer' => $answers[$i],
+                    'artist' => $artists[$i],
+                    'picture' => $pictures[$i],
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
         }
 
-        // $user = $request->user();
-        // $genres = $request->input('genres');
-
-        // // efface toute les lignes avant de les recréer
-        // $user->genres()->detach();
-
-        // if ($genres == null) {
-        //     return "Vous n'avez pas choisi de genre, on prend note de votre choix";
-        // }
-
-        // foreach ($genres as $genreId) {
-        //     $user->genres()->attach($genreId, [
-        //         'created_at' => now(),
-        //         'updated_at' => now(),
-        //     ]);
-        // }
-        // return 'Test si cela a bien fonctionné $request->genre_id : ' . $genreId . ' $user->id : ' . $user->id;
+        if ($type == "text") {
+            foreach ($answers as $answer) {
+                Answer::create([
+                    'survey_id' => $lastId,
+                    'answer' => $answer,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
+        }
 
         // Return des variable actuelles
 
         //
-        // return "$duration <br> $type <br> $title";
+        // // return "$duration <br> $type <br> $title";
         $surveyData = [
             'duration' => $duration,
             'type' => $type,
@@ -122,6 +142,6 @@ class SurveyController extends Controller
         $lastSurveyAnswers = DB::table('answers')->where('survey_id', $lastSurveyId)->get();
         // add lastSurveyAnswers to lastSurvey
         $lastSurvey->answers = $lastSurveyAnswers;
-        return response()->json($lastSurvey,);
+        return response()->json($lastSurvey);
     }
 }

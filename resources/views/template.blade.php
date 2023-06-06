@@ -26,7 +26,7 @@
                         <li role="presentation"><a href="{{ url('/') }}">Accueil</a></li>
                         <li role="presentation"><a href="{{ url('/chat') }}">Chat</a></li>
                         <li role="presentation"><a href="{{ url('/sondage') }}">Sondage</a></li>
-                        
+                        <li role="presentation"><a href="{{ route('vote') }}">Répondre Sondage</a></li>
                         @if (Auth::check() && Auth::user()->role_id == 2)
                         <li role="presentation"><a href="{{ url('/creationsondage') }}">Création Sondage</a></li>
                         @endif
