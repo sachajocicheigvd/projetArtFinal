@@ -12,5 +12,6 @@
 
 @section('contenu')
         <p>Vous êtes à l'accueil du site</p>
+        <button type="button" class="btn btnjorane">Primary</button>
 @endsection
  

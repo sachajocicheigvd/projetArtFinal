@@ -39,9 +39,9 @@
 <input type="submit" value="Valider">
 </form>
 </div>
+</div>
 
 @else
 <p>Pas de sondage disponible</p>
 @endif
 @endsection
-
