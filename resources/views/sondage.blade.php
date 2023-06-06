@@ -52,10 +52,12 @@
 $createdTimestamp = $surveys[count($surveys)-1]->created_at;
 ////$durre = $surveys[count($surveys)-1]->duration;
 
+$mnt = strtotime(now());
+
 $difference = strtotime($createdTimestamp);
 $duree = strtotime($surveys[count($surveys)-1]->duration);
 
-$duree2 = ($duree) - ($difference);
+$duree2 = ($duree) - ($difference) - ($mnt-$difference);
 
 $durations = $duree2;
 //echo "Durée en timestamp : " . $createdTimestamp;
@@ -125,4 +127,4 @@ console.log('Durée en timestamp :  <?php echo $durations; ?>');
     #countdown .text-muted {
         color: #666;
     }
-</style>
+</style> 
