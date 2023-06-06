@@ -27,6 +27,8 @@
                     <ul class="nav nav-pills">
                         <li role="presentation"><a href="{{ url('/') }}">Emissions</a></li>
                         <li role="presentation"><a href="{{ url('/sondage') }}">Vote musique</a></li>
+                        <li role="presentation"><a href="{{ url('/sondagesacha') }}">sondage sacha</a></li>
+
                         <li role="presentation"><a href="{{ url('/chat') }}">Chat</a></li>
                         <li role="presentation"><a href="{{ route('vote') }}">Répondre Sondage</a></li>
                         @if (Auth::check() && Auth::user()->role_id == 2)
