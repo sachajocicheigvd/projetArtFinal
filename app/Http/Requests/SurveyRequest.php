@@ -27,6 +27,10 @@ class SurveyRequest extends FormRequest
             'title' => ['required', 'string', 'max:255'],
             'answers' => ['required', 'array'],
             'answers.*' => ['required', 'string', 'max:255'],
+            'artists' => ['array'],
+            'artists.*' => ['string', 'max:255'],
+            'files' => ['array'],
+            'files.*' => ['image', 'max:20480'],
         ];
     }
 }

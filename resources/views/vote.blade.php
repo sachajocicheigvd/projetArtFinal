@@ -15,6 +15,11 @@
 @section('contenu')
 
 <!-- Vérification côté serveur si jamais la personne a desactivé JavaScript -->
+<div class="app">
+        @guest
+        <p>Vous devez être connecté.</p>
+
+@else
 @if ($duree > 0)
 
 <form method="post" action="{{route('vote')}}" accept-charset="UTF-8">
@@ -39,9 +44,11 @@
 <input type="submit" value="Valider">
 </form>
 </div>
+</div>
 
 @else
 <p>Pas de sondage disponible</p>
 @endif
 @endsection
+@endguest
 
