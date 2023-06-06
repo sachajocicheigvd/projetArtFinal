@@ -71,29 +71,52 @@ export default {
                 this.lastSurvey = data;
                 console.log(this.lastSurvey);
                 console.log(this.lastSurvey.answers[0]);
-                this.startCountdown();
+                // this.startCountdown();
+                this.startCount();
             } catch (error) {
                 console.error(error);
                 // Gérer l'erreur de récupération du dernier sondage ici
             }
         },
-        startCountdown() {
-            if (this.countdownInterval) {
-                clearInterval(this.countdownInterval);
-            }
-            const durationInSeconds = this.lastSurvey.duration * 60;
-            this.lastSurvey.duration = durationInSeconds;
-            this.countdownInterval = setInterval(() => {
-                if (this.lastSurvey.duration > 0) {
-                    this.lastSurvey.duration--;
-                    const minutes = Math.floor(this.lastSurvey.duration / 60);
-                    const seconds = this.lastSurvey.duration % 60;
-                    this.lastSurvey.formattedDuration = `${minutes}:${seconds
-                        .toString()
-                        .padStart(2, "0")}`;
-                } else {
-                    clearInterval(this.countdownInterval);
+        // startCountdown() {
+        //     if (this.countdownInterval) {
+        //         clearInterval(this.countdownInterval);
+        //     }
+        //     const durationInSeconds = this.lastSurvey.duration * 60;
+        //     this.lastSurvey.duration = durationInSeconds;
+        //     this.countdownInterval = setInterval(() => {
+        //         if (this.lastSurvey.duration > 0) {
+        //             this.lastSurvey.duration--;
+        //             const minutes = Math.floor(this.lastSurvey.duration / 60);
+        //             const seconds = this.lastSurvey.duration % 60;
+        //             this.lastSurvey.formattedDuration = `${minutes}:${seconds
+        //                 .toString()
+        //                 .padStart(2, "0")}`;
+        //         } else {
+        //             clearInterval(this.countdownInterval);
+        //         }
+        //     }, 1000);
+        // },
+        startCount() {
+            setInterval(function () {
+                // Remplacez par la date future souhaitée
+                let now = new Date();
+                let timeDiff =
+                    this.lastSurvey.duration.getTime() - now.getTime();
+                let secondsLeft = Math.floor(timeDiff / 1000);
+
+                let minutes = Math.floor(secondsLeft / 60);
+                let seconds = secondsLeft % 60;
+
+                seconds >= 10 ? seconds : (seconds = "0" + seconds);
+
+                this.lastSurvey.formattedDuration = `${minutes}:${seconds}`;
+
+                if (minutes < 0) {
+                    this.lastSurvey.formattedDuration = `0:00`;
                 }
+
+                document.querySelector("#duree").style.display = "block";
             }, 1000);
         },
     },
