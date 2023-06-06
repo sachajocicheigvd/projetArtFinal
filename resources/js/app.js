@@ -1,8 +1,4 @@
 import "./bootstrap";
-import { createApp } from "vue";
-import Popup from "./components/Popup.vue";
-
-createApp(Popup).mount("#app");
 
 $(document).ready(function () {
     $(document).on("click", "#send_message", function (e) {

@@ -69,6 +69,8 @@ Route::middleware('admin')->group(function () {
     Route::post('creationsondage', [SurveyController::class, 'saveSurvey'])->name('creationsondage');
 });
 Route::get('lastsondage', [SurveyController::class, 'lastSurvey'])->name('lastsondage');
+Route::post('vote',  [SurveyController::class, 'storevote'])->name('storevote');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

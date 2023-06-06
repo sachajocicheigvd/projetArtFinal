@@ -10,6 +10,26 @@ use Illuminate\Support\Facades\DB;
 
 class SurveyController extends Controller
 {
+    public function storevote(Request $request)
+    {
+        // Récupérez les données du vote à partir de la requête
+        $answerid = $request->input('answer');
+
+        $user = Auth::user();
+
+        //store answerid and user id to answer_user table
+        DB::table('answer_user')->insert([
+            'answer_id' => $answerid,
+            'user_id' => $user->id,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+
+        // Répondez avec la confirmation du vote ou toute autre donnée nécessaire
+        return response()->json(['message' => 'Vote enregistré avec succès']);
+    }
+
     public function saveSurvey(Request $request)
     {
 
@@ -94,7 +114,14 @@ class SurveyController extends Controller
     // create function to return the last survey
     public function lastSurvey()
     {
+
         $lastSurvey = DB::table('surveys')->orderBy('id', 'desc')->first();
-        return response()->json($lastSurvey);
+        // get the last survey id
+        $lastSurveyId = $lastSurvey->id;
+        //get the last survey answers
+        $lastSurveyAnswers = DB::table('answers')->where('survey_id', $lastSurveyId)->get();
+        // add lastSurveyAnswers to lastSurvey
+        $lastSurvey->answers = $lastSurveyAnswers;
+        return response()->json($lastSurvey,);
     }
 }

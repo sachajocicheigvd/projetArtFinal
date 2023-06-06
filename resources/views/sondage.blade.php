@@ -1,6 +1,6 @@
 @extends('template')
 <head>
-        @vite('resources/js/app.js')
+        @vite('resources/js/popup.js')
 
 </head>
 @section('title')
