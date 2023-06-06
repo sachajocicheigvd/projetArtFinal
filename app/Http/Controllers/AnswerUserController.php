@@ -16,8 +16,8 @@ class AnswerUserController extends Controller
         // Récupère le dernier id de la table survey pour l'insérer dans la table answer pour survey_id
         if(Auth::check()==false){
             // return view('vote');
-            $textchat = "Vous devez être connecté pour accéder au vote";
-            return redirect()->route('login')->with('textchat', $textchat);
+            $lienExterne = "Vous devez être connecté pour accéder au vote";
+            return redirect()->route('login')->with('lienExterne', $lienExterne);
         }
         else{
         $dernierSondage = DB::table('surveys')->orderBy('id', 'desc')->first();

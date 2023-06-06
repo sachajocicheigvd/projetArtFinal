@@ -7,8 +7,8 @@
         <div>
 
         <!-- Si la variable textChat est initialisée, fait quelque chose -->
-        @if (session('textchat'))
-            <p>{{session('textchat')}}</p>
+        @if (session('lienExterne'))
+            <p>{{session('lienExterne')}}</p>
             @endif
             
 
