@@ -47,6 +47,8 @@ use App\Models\Answer;
         <span class="text-muted">secondes</span>
     </div>
 
+    <div id="contentContainer">
+
  @foreach($answers as $answer)
  @if($answer->survey_id == $surveys[count($surveys)-1]->id)
      <strong><p>{{$answer->answer}}</p></strong><span class="pull-right pourcentage">30%</span>
@@ -128,10 +130,12 @@ use App\Models\Answer;
 $createdTimestamp = $surveys[count($surveys)-1]->created_at;
 ////$durre = $surveys[count($surveys)-1]->duration;
 
+$mnt = strtotime(now());
+
 $difference = strtotime($createdTimestamp);
 $duree = strtotime($surveys[count($surveys)-1]->duration);
 
-$duree2 = ($duree) - ($difference);
+$duree2 = ($duree) - ($difference) - ($mnt-$difference);
 
 $durations = $duree2;
 //echo "Durée en timestamp : " . $createdTimestamp;
@@ -201,4 +205,4 @@ console.log('Durée en timestamp :  <?php echo $durations; ?>');
     #countdown .text-muted {
         color: #666;
     }
-</style>
+</style> 
