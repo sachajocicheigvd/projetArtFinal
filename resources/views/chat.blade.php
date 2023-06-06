@@ -5,7 +5,7 @@
     @extends('template')
 
     @section('title')
-    <title>Live Chat</title>
+    <title>Chat</title>
     @endsection
 
     @section('header')
@@ -33,12 +33,14 @@
                     <div class="box-body">
                         <div class="direct-chat-messages" id="messages">
                             @foreach($messages as $message)
-                            <p class="{{ $message->user->id === Auth::user()->id ? 'moi' : '' }}">
-                                <strong>{{$message->user->first_name}}</strong>: {{ $message->content }}
+                            <div class = "encadree">
+                            <p class="message" class="{{ $message->user->id === Auth::user()->id ? 'moi' : '' }}">
+                                <strong class=user>{{$message->user->first_name}}</strong> {{ $message->content }}
                                 <span class="text-muted">
                                     {{ \Carbon\Carbon::parse($message->created_at)->format('H:i') }}
                                 </span>
                             </p>
+                            </div>
                         @endforeach
                         
                             
@@ -49,7 +51,7 @@
                     <div class="box-footer">
                         <form action="#" method="post" id="message_form">
                             <div class="input-group">
-                                <input type="text" name="message" id="message" placeholder="Type Message ..." class="form-control">
+                                <input class="ecritMessage" type="text" name="message" id="message" placeholder="Type Message ..." class="form-control">
                                 <span class="input-group-btn">
                                     <button type="submit" id="send_message" class="btn btn-primary btn-flat">Send</button>
                                 </span>

@@ -1,0 +1,29 @@
+.message {
+    margin-top : 10px;
+        white-space: normal;
+        position: absolute;
+        width: 348px;
+        height: 37.33px;
+        padding-left: 10px;
+        line-height: 17px;
+        color: #FFFFFF;
+}
+.user{
+    display: block;
+    white-space: normal;
+    color: var(--accent-color);
+}
+
+
+.encadree {
+    padding-left: 10px;
+    margin-bottom: 15px;
+    width: 357px;
+    height: 56px;
+    background: #2A2A2F;
+    border-radius: 20px;
+}
+
+.ecritMessage {
+    color : green;
+}
