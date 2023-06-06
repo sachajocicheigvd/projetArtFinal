@@ -47,6 +47,8 @@ Route::get('/', function () {
 
 Route::get('/sondage', [App\Http\Controllers\sondageController::class, 'afficheSondage']);
 
+Route::get('/sondagesacha', [App\Http\Controllers\sondageSachaController::class, 'afficheSondage']);
+
 
 /* Route::get('sondage', function () {
     return view('sondage');
