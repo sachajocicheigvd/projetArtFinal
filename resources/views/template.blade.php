@@ -12,7 +12,7 @@
         
         <style> textarea {resize:none} </style>
 
-        @vite('resources/js/app.js')
+     
 
         @yield('title')
 
@@ -45,7 +45,7 @@
                 @yield('header')
             </div>
         </header>
-        <div class="container" id="app">
+        <div class="container" id="app" >
             @yield('contenu')
         </div>
     </body>

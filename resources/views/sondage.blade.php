@@ -1,15 +1,23 @@
 @extends('template')
+<head>
+        @vite('resources/js/popup.js')
 
+</head>
 @section('title')
 <title>Sondage</title>
 @endsection
 
 @section('header')
+
 <h1 class="page-header"><a href="">Sondage</a></h1>
 
 @endsection
 
 @section('contenu')
+<<<<<<< HEAD
+        <p>Vous êtes sur la page des sondages</p>
+        <div id="app"></div>
+=======
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -92,6 +100,7 @@ use App\Models\Answer;
 @endforeach
 
 
+>>>>>>> 6910550ff4ed19d249c8fa56d9fb62fabc93cf46
 @endsection
 <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
 <script>

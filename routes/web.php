@@ -1,4 +1,5 @@
 <?php
+
 use App\Events\Message;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
@@ -74,10 +75,12 @@ Route::middleware('admin')->group(function () {
     Route::get('creationsondage', function () {
         return view('creationsondage')->with('user', Auth::user());
     })->name('creationsondage');
-    
+
     Route::post('creationsondage', [SurveyController::class, 'saveSurvey'])->name('creationsondage');
-    });
-    
+});
+Route::get('lastsondage', [SurveyController::class, 'lastSurvey'])->name('lastsondage');
+Route::post('vote',  [SurveyController::class, 'storevote'])->name('storevote');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

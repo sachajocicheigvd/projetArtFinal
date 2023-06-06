@@ -1,41 +1,47 @@
-import './bootstrap';
+import "./bootstrap";
 
-$(document).ready(function(){
-
-    $(document).on('click','#send_message',function (e){
+$(document).ready(function () {
+    $(document).on("click", "#send_message", function (e) {
         e.preventDefault();
 
-        let username = $('#username').val();
-        let message = $('#message').val();
+        let username = $("#username").val();
+        let message = $("#message").val();
 
-        if(username == '' || message == ''){
-            alert('Merci de ne pas envoyé de message vide')
+        if (username == "" || message == "") {
+            alert("Merci de ne pas envoyé de message vide");
             return false;
         }
 
         $.ajax({
-            method:'post',
-            url:'/send-message',
-            data:{username:username, message:message},
-            success:function(res){
+            method: "post",
+            url: "/send-message",
+            data: { username: username, message: message },
+            success: function (res) {
                 //
-            }
+            },
         });
-
     });
 });
 
-
 function getCurrentTime() {
     var now = new Date();
-    var hours = now.getHours().toString().padStart(2, '0'); // Obtenir les heures et les formater
-    var minutes = now.getMinutes().toString().padStart(2, '0'); // Obtenir les minutes et les formater
-  
-    return hours + ':' + minutes; // Retourner l'heure au format "hh:mm"
-  }
+    var hours = now.getHours().toString().padStart(2, "0"); // Obtenir les heures et les formater
+    var minutes = now.getMinutes().toString().padStart(2, "0"); // Obtenir les minutes et les formater
 
-window.Echo.channel('chat')
-    .listen('.message',(e)=>{
-        $('#messages').append('<p class="moi"><strong>'+e.username+'</strong>'+ ': ' + e.message+'</p>' + '<p class="text-muted">'+getCurrentTime()+'</p>');
-        $('#message').val('');
-    });
+    return hours + ":" + minutes; // Retourner l'heure au format "hh:mm"
+}
+
+window.Echo.channel("chat").listen(".message", (e) => {
+    $("#messages").append(
+        '<p class="moi"><strong>' +
+            e.username +
+            "</strong>" +
+            ": " +
+            e.message +
+            "</p>" +
+            '<p class="text-muted">' +
+            getCurrentTime() +
+            "</p>"
+    );
+    $("#message").val("");
+});
