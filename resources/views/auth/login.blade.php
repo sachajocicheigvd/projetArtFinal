@@ -4,6 +4,13 @@
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
+        <div>
+
+        <!-- Si la variable textChat est initialisée, fait quelque chose -->
+        @if (session('textchat'))
+            <p>{{session('textchat')}}</p>
+            @endif
+            
 
         <!-- Username -->
         <div>
@@ -60,4 +67,5 @@
                 S'enregistrer
             </x-secondary-button></a></p>
     </div>
+</div>
 </x-guest-layout>

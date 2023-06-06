@@ -14,6 +14,12 @@ class AnswerUserController extends Controller
     {
 
         // Récupère le dernier id de la table survey pour l'insérer dans la table answer pour survey_id
+        if(Auth::check()==false){
+            // return view('vote');
+            $textchat = "Vous devez être connecté pour accéder au vote";
+            return redirect()->route('login')->with('textchat', $textchat);
+        }
+        else{
         $dernierSondage = DB::table('surveys')->orderBy('id', 'desc')->first();
         $sondageId = $dernierSondage->id;
 
@@ -62,6 +68,7 @@ class AnswerUserController extends Controller
         // affiches toute les questions
         return view('vote')->with('question', $dernierSondage->title)->with('duree', $delai)
             ->with('reponses', $reponseTab);
+        }
     }
     
     public function saveAnswer(Request $request)
