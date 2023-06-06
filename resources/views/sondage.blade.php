@@ -78,8 +78,14 @@ use App\Models\Answer;
         @endphp
 <script>
        
-        document.getElementsByClassName("pourcentage")[i].innerHTML = "{{($responseCount/$totalResponses)*100 }}%" ;
-        document.getElementsByClassName("bar")[i].style.width = "{{($responseCount/$totalResponses)*100 }}%" ;
+       @if($totalResponses > 0)
+    document.getElementsByClassName("pourcentage")[i].innerHTML = "{{($responseCount/$totalResponses)*100 }}%" ;
+    document.getElementsByClassName("bar")[i].style.width = "{{($responseCount/$totalResponses)*100 }}%" ;
+@else
+    document.getElementsByClassName("pourcentage")[i].innerHTML = "0%" ;
+    document.getElementsByClassName("bar")[i].style.width = "0%" ;
+@endif
+
         i++;
        </script>
     </ul>
@@ -113,6 +119,34 @@ use App\Models\Answer;
 
 <script>
         // Fonction pour démarrer le chronomètre
+       // const duration = ((($surveys[count($surveys)-1]->duration) - ($surveys[count($surveys)-1]->created_at)) / 1000);
+
+<?php
+
+
+
+$createdTimestamp = $surveys[count($surveys)-1]->created_at;
+////$durre = $surveys[count($surveys)-1]->duration;
+
+$difference = strtotime($createdTimestamp);
+$duree = strtotime($surveys[count($surveys)-1]->duration);
+
+$duree2 = ($duree) - ($difference);
+
+$durations = $duree2;
+//echo "Durée en timestamp : " . $createdTimestamp;
+
+
+?>
+
+console.log('Durée en timestamp :  <?php echo $difference; ?>');
+console.log('Durée en timestamp :  <?php echo $duree; ?>');
+
+console.log('Durée en timestamp :  <?php echo $durations; ?>');
+
+
+
+
         function startTimer(duration, display) {
             var timer = duration, days, hours, minutes, seconds;
             var interval = setInterval(function () {
@@ -141,11 +175,12 @@ use App\Models\Answer;
         // Démarrer le chronomètre au chargement de la page
         window.onload = function () {
             var createdTimestamp = <?php echo strtotime($surveys[count($surveys)-1]->created_at); ?>;
-            var tenDaysTimestamp = createdTimestamp + <?php echo ($surveys[count($surveys)-1]->duration); ?>; // Timestamp de 10 jours après la création du sondage (en secondes
+            //var tenDaysTimestamp = createdTimestamp + <?php echo ($surveys[count($surveys)-1]->duration); ?>; // Timestamp de 10 jours après la création du sondage (en secondes
             var currentTime = Math.floor(Date.now() / 1000); // Timestamp actuel en secondes
-            var duration = tenDaysTimestamp - currentTime;
+            //var duration = tenDaysTimestamp - currentTime;
             var display = document.querySelector('#countdown');
     
+            const duration = <?php echo $durations; ?>;
             startTimer(duration, display);
         };
     </script>
