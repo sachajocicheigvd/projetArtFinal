@@ -1,6 +1,6 @@
 @extends('template')
 <head>
-        @vite('resources/js/popup.js')
+        {{-- @vite('resources/js/popup.js') --}}
 
 </head>
 @section('title')
@@ -15,7 +15,7 @@
 
 @section('contenu')
         <p>Vous êtes sur la page des sondages</p>
-        <div id="app"></div>
+        {{-- <div id="app"></div> --}}
 @endsection
 <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
 <script>
