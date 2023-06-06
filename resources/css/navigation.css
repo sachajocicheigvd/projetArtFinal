@@ -1,0 +1,27 @@
+footer {
+    flex-shrink: 0; /* pas le droit de se réduire */
+  
+    height: 100px;
+    background: var(--primary-color);
+    border-top: 1px solid;
+  }
+  
+
+  footer nav {
+    /* nav est de nouvau un container flex */
+    height: 100%;
+    display: flex;
+  }
+  
+  footer nav a {
+    /* chaque lien prend 1 part de l'espace restant, ils font donc tous la même taille */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+
+    text-align: center;
+    text-decoration: none;
+}
