@@ -1,0 +1,57 @@
+@import 'variables.css';
+@import 'typographie.css';
+@import 'buttons.css';
+
+.input-box{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    width: 174px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    border-radius: 20px;
+    font-size: 16px;
+    line-height: 19px;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+*{
+    background-color: var(--fond-color) ;
+}
+
+.button-connexion{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    width: 174px;
+    height: 40px;
+    background: var(--accent-color);
+    border-radius: 20px;
+    border: var(--accent-color);
+    font-size: 16px;
+    line-height: 19px;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+}
+
+.input-box::placeholder {
+    text-align: left;
+    padding-left: 10px;
+  }
+  
+
+.conteneur-photo {
+    position: relative;
+  }
+  
+  .logoCouleur3{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  

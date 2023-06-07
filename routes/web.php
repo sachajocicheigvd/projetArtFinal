@@ -28,6 +28,12 @@ use App\Http\Controllers\sondageController;
 |
 */
 
+
+/* creéate route for loginChoice view */
+Route::get('/loginchoice', function () {
+    return view('loginChoice');
+})->name('loginChoice');
+
 Route::get('/chat', [App\Http\Controllers\ChatsController::class, 'afficheMessage']);
 //Route::get('/messages', [App\Http\Controllers\ChatsController::class, 'fetchMessages']);
 Route::post('/send-message', [App\Http\Controllers\ChatsController::class, 'enregistrement']);

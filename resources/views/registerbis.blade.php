@@ -3,29 +3,35 @@
 
 @section('title')
 <title>Mon Compte</title>
+@vite('resources/css/buttons.css')
 @endsection
 
 @section('header')
-<h1 class="page-header"><a href="">Mon compte</a></h1>
+<h1 class="page-header">Choisissez vos genres</h1>
 @endsection
 
 @section('contenu')
 
-
-<p>Continuons votre création de compte, {{$user->username}}</p>
-
+<p>Continuons la création de votre compte {{$user->username}}</p>
+<div class="containerForm">
 <form method="post" action="{{route('registerbis')}}" accept-charset="UTF-8">
         @csrf
+<div class="containerGenre">
 @foreach ($genres as $genre)
-        <label for="{{$genre->name}}">{{$genre->name}} id: {{ $genre->id }} </label>
-            <input type="checkbox" name="genres[]" id="{{$genre->name}}" value="{{ $genre->id }}" <?php 
+<div class="musique {{$genre->name}}">
+        <label>
+            <input type="checkbox" name="genres[]" value="{{ $genre->id }}" <?php 
             if (in_array($genre->id, $user->genres->pluck('id')->toArray())) {
                 echo 'checked';
             }
             ?>>
-            <br>
+            <span>{{ $genre->name }}</span>
+        </label>
+</div>
 @endforeach
-        <input type="submit" value="Valider">
+</div>
+        <input class="primaire validButton" type="submit" value="Créer le compte">
+</div>
 </form>
 @endsection
 

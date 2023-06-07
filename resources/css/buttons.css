@@ -1,4 +1,4 @@
-button.primaire {
+.primaire {
     display: flex;
     justify-content: center;
     margin-top: 20px;
@@ -14,7 +14,7 @@ button.primaire {
     color: #000000;
 }
 
-button.secondaire {
+.secondaire {
     display: flex;
     justify-content: center;
     margin-top: 20px;
@@ -30,7 +30,9 @@ button.secondaire {
     color: #000000;
 }
 
-button.validation {
+
+
+.validation {
     display: flex;
     justify-content: center;
     margin-top: 20px;
@@ -44,4 +46,301 @@ button.validation {
     align-items: center;
     text-align: center;
     color: #000000;
+}
+
+
+/* lien cliquable */
+.lien{
+    color: var(--secondaire-color);
+    text-decoration: underline;
+    font-size: 14px; 
+    padding-left: 10px;
+}
+/* genre */
+div label input {
+    margin-right: 10px;
+}
+
+.musique {
+    background-color: #18181b;
+    margin: 4px;
+    border-radius: 20px;
+    border: solid 1px #ffffff;
+    overflow: hidden;
+    float: left;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    border-radius: 20px;
+    padding: 0px;
+}
+
+.musique label {
+    float: left;
+    line-height: 42px;
+    width: 92px;
+    height: 42px;
+}
+
+.musique label span {
+    text-align: center;
+    display: block;
+}
+
+.musique label input {
+    position: absolute;
+    display: none;
+    color: #ffffff;
+}
+
+.Afro input:checked + span {
+    background-color: #51abff40;
+}
+
+.Afro:hover {
+    background-color: #51abff40;
+    border: 2px solid #51abff;
+}
+
+.Afro {
+    border: 2px solid #51abff;
+}
+
+.Afro span {
+    color: #51abff;
+}
+
+.Reggaeton input:checked + span {
+    background-color: #51abff40;
+}
+
+.Reggaeton:hover {
+    background-color: #00e0ff40;
+    border: 2px solid #00e0ff;
+}
+
+.Reggaeton {
+    border: 2px solid #00e0ff;
+}
+
+.Reggaeton span {
+    color: #00e0ff;
+}
+
+.Jazz input:checked + span {
+    background-color: #1e34ff40;
+}
+
+.Jazz:hover {
+    background-color: #1e34ff40;
+    border: 2px solid #1e34ff;
+}
+
+.Jazz {
+    border: 2px solid #1e34ff;
+}
+
+.Jazz span {
+    color: #1e34ff;
+}
+
+.Electro input:checked + span {
+    background-color: #27eba440;
+}
+
+.Electro:hover {
+    background-color: #27eba440;
+    border: 2px solid #27eba4;
+}
+
+.Electro {
+    border: 2px solid #27eba4;
+}
+
+.Electro span {
+    color: #27eba4;
+}
+
+.Country input:checked + span {
+    background-color: #fff59840;
+}
+
+.Country:hover {
+    background-color: #fff59840;
+    border: 2px solid #fff598;
+}
+
+.Country {
+    border: 2px solid #fff598;
+}
+
+.Country span {
+    color: #fff598;
+}
+
+.Metal input:checked + span {
+    background-color: #6627eb40;
+}
+
+.Metal:hover {
+    background-color: #6627eb40;
+    border: 2px solid #6627eb;
+}
+
+.Metal {
+    border: 2px solid #6627eb;
+}
+
+.Metal span {
+    color: #6627eb;
+}
+
+.Hip-hop input:checked + span {
+    background-color: #faff0040;
+}
+
+.Hip-hop:hover {
+    background-color: #faff0040;
+    border: 2px solid #faff00;
+}
+
+.Hip-hop {
+    border: 2px solid #faff00;
+}
+
+.Hip-hop span {
+    color: #faff00;
+}
+
+.Punk input:checked + span {
+    background-color: #eb6e2740;
+}
+
+.Punk:hover {
+    background-color: #eb6e2740;
+    border: 2px solid #eb6e27;
+}
+
+.Punk {
+    border: 2px solid #eb6e27;
+}
+
+.Punk span {
+    color: #eb6e27;
+}
+
+.Rock input:checked + span {
+    background-color: #ff000040;
+}
+
+.Rock:hover {
+    background-color: #ff000040;
+    border: 2px solid #ff0000;
+}
+
+.Rock {
+    border: 2px solid #ff0000;
+}
+
+.Rock span {
+    color: #ff0000;
+}
+
+.Variété input:checked + span {
+    background-color: #eb276e40;
+}
+
+.Variété:hover {
+    background-color: #eb276e40;
+    border: 2px solid #eb276e;
+}
+
+.Variété {
+    border: 2px solid #eb276e;
+}
+
+.Variété span {
+    color: #eb276e;
+}
+
+.Variété label {
+    float: left;
+    line-height: 21px;
+}
+
+.Pop input:checked + span {
+    background-color: #8b0bc740;
+}
+
+.Pop:hover {
+    background-color: #8b0bc740;
+    border: 2px solid #8b0bc7;
+}
+
+.Pop {
+    border: 2px solid #8b0bc7;
+}
+
+.Pop span {
+    color: #8b0bc7;
+}
+
+.Rap input:checked + span {
+    background-color: #ff00c740;
+}
+
+.Rap:hover {
+    background-color: #ff00c740;
+    border: 2px solid #ff00c7;
+}
+
+.Rap {
+    border: 2px solid #ff00c7;
+}
+
+.Rap span {
+    color: #ff00c7;
+}
+
+.containerGenre {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 250px;
+}
+
+.containerForm {
+    display: flex;
+    justify-content: center;
+}
+
+.validButton {
+    margin-left: 40px;
+}
+
+.collapsible {
+    background-color: #18181b;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 18px;
+    width: 210px;
+    border: 2px solid #27eb42;
+    border-radius: 25px;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.active,
+.collapsible:hover {
+    background-color: #1e1e22;
+}
+
+.content {
+    padding: 0 18px;
+    background-color: #18181b;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    margin-bottom: 100px;
 }
