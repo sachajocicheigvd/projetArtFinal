@@ -1,71 +1,61 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <x-guest-layout>
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
-        <div>
+        <!-- Session Status -->
+        <x-auth-session-status class="mb-4" :status="session('status')" />
 
-        <!-- Si la variable textChat est initialisée, fait quelque chose -->
-        @if (session('lienExterne'))
-            <p>{{session('lienExterne')}}</p>
-            @endif
-            
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+            <div>
 
-        <!-- Username -->
-        <div>
-            <x-input-label for="username" :value="__('Username')" />
-            <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('username')" class="mt-2" />
-        <!-- Email Address -->
-        <!-- <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div> -->
+                <!-- Si la variable textChat est initialisée, fait quelque chose -->
+                @if (session('lienExterne'))
+                <p>{{session('lienExterne')}}</p>
+                @endif
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+                <!--icon retour-->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                <path fill-rule="evenodd" d="M20.25 12a.75.75 0 01-.75.75H6.31l5.47 5.47a.75.75 0 11-1.06 1.06l-6.75-6.75a.75.75 0 010-1.06l6.75-6.75a.75.75 0 111.06 1.06l-5.47 5.47H19.5a.75.75 0 01.75.75z" clip-rule="evenodd" />
+                </svg>
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+                <!--logo-->
+                <div class="conteneur">
+                    <img src="{{ asset('storage/images/logoCouleur3.svg') }}" style="width: 95px; 
+    height: 147px" alt="logoCouleur3" class="logoCouleur3">
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+                    <!-- pseudo -->
+                    <div>
+                        <x-text-input id="username" class="block mt-1 w-full input-box" type="text" name="username" :value="old('username')" required autofocus autocomplete="username" placeholder="Pseudo" />
+                        <x-input-error :messages="$errors->get('username')" class="mt-2" />
+                    </div>
+                    <!-- Password -->
+                    <div class="mt-4">
 
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-<br>
-    <hr />
-    <br>
+                        <x-text-input id="password" class="block mt-1 w-full input-box" type="password" name="password" required autocomplete="current-password" placeholder="Mot de passe" />
 
-    <div class="flex items-center justify-begin">
-    <p>Pas de compte ??</p>
-    <p>adieu</p>
-    <a href="{{ route('register') }}"><x-secondary-button class="ml-3">
-                S'enregistrer
-            </x-secondary-button></a></p>
-    </div>
-</div>
-</x-guest-layout>
+                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                    </div>
+
+                    <!-- Mot de passe oublié -->
+
+                    <div class="flex items-center justify-end mt-4">
+                        @if (Route::has('password.request'))
+                        <a class="lien" href="{{ route('password.request') }}">
+                            {{ __('Forgot your password?') }}
+                        </a>
+                        @endif
+                        <br>
+                        <br>
+
+                        <x-primary-button class="button-connexion">
+                            {{ __('Log in') }}
+                        </x-primary-button>
+                    </div>
+        </form>
+        <br>
+
+        <br>
+                </div>   
+             </div>
+    </x-guest-layout>
