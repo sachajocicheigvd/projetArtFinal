@@ -12,7 +12,6 @@
 
 @section('contenu')
 
-
 <p>Continuons la création de votre compte {{$user->username}}</p>
 <div class="containerForm">
 <form method="post" action="{{route('registerbis')}}" accept-charset="UTF-8">
