@@ -305,3 +305,31 @@ div label input {
 .validButton {
     margin-left: 40px;
 }
+
+.collapsible {
+    background-color: #18181b;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 18px;
+    width: 210px;
+    border: 2px solid #27eb42;
+    border-radius: 25px;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.active,
+.collapsible:hover {
+    background-color: #1e1e22;
+}
+
+.content {
+    padding: 0 18px;
+    background-color: #18181b;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    margin-bottom: 100px;
+}

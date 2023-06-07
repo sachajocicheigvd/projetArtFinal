@@ -22,7 +22,7 @@
 </head>
 <body>
     <header class="jumbotron">
-        <div class="container">
+        <div class="container-nav">
             <nav>
                 <ul class="nav nav-pills">
                   <li role="presentation"><a href="{{ url('/') }}" class="{{ Request::is('/') ? 'active' : '' }}">Emissions</a></li>
