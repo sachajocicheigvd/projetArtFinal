@@ -84,7 +84,7 @@ Route::middleware('admin')->group(function () {
         return view('creationsondage')->with('user', Auth::user());
     })->name('creationsondage');
 
-    Route::post('creationsondage', [SurveyController::class, 'saveSurvey'])->name('creationsondage');
+    Route::post('creationsondage', [SurveyController::class, 'saveSurvey']);
 });
 Route::get('lastsondage', [SurveyController::class, 'lastSurvey'])->name('lastsondage');
 Route::post('vote',  [SurveyController::class, 'storevote'])->name('storevote');

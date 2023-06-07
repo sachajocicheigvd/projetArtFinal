@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\FormSubmitted;
 use App\Http\Requests\SurveyRequest;
 use App\Models\Survey;
 use Illuminate\Http\Request;
@@ -129,6 +130,8 @@ $delai->format('Y-m-d H:i:s'); // Afficher la date modifiée
         ];
         // return  in the view aftersurvey
 
+        event(new FormSubmitted("good job"));
+        
         return response()->json($surveyData);
     }
     // create function to return the last survey
