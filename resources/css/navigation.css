@@ -2,8 +2,7 @@ footer {
     flex-shrink: 0; /* pas le droit de se réduire */
   
     height: 100px;
-    background: var(--primary-color);
-    border-top: 1px solid;
+    background: var(--fond-color);
   }
   
 
@@ -25,3 +24,29 @@ footer {
     text-align: center;
     text-decoration: none;
 }
+
+svg path {
+    fill: var(--secondaire-color);
+}
+
+svg:hover path {
+  fill: var(--accent-color);
+}
+
+.textNav {
+    color: var(--secondaire-color);
+    font-size: 10px;
+}
+.textVote {
+  color: var(--secondaire-color);
+  font-size: 10px;
+}
+
+.textChat{
+  color: var(--secondaire-color);
+  font-size: 10px;
+}
+
+
+
+

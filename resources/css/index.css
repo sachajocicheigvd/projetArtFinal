@@ -1,4 +1,9 @@
 
 /* Projet */
 @import 'variables.css';
-@import 'navigation.css'
+@import 'navigation.css';
+@import 'typographie.css';
+
+body {
+    background-color: var(--fond-color);
+}
