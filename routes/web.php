@@ -16,6 +16,14 @@ use App\Http\Controllers\AnswerUserController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\sondageController;
+use App\Http\Controllers\sondageSachaController;
+use App\Http\Controllers\VoteController;
+use App\Models\Survey;
+use App\Models\Answer;
+use App\Models\AnswerUser;
+use App\Models\GenreUser;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,13 +38,13 @@ use App\Http\Controllers\sondageController;
 
 
 /* creéate route for loginChoice view */
-Route::get('/loginchoice', function () {
-    return view('loginChoice');
-})->name('loginChoice');
+
 
 Route::get('/chat', [App\Http\Controllers\ChatsController::class, 'afficheMessage']);
 //Route::get('/messages', [App\Http\Controllers\ChatsController::class, 'fetchMessages']);
 Route::post('/send-message', [App\Http\Controllers\ChatsController::class, 'enregistrement']);
+
+
 
 
 
@@ -84,7 +92,7 @@ Route::middleware('admin')->group(function () {
         return view('creationsondage')->with('user', Auth::user());
     })->name('creationsondage');
 
-    Route::post('creationsondage', [SurveyController::class, 'saveSurvey'])->name('creationsondage');
+    Route::post('creationsondage', [SurveyController::class, 'saveSurvey']);
 });
 Route::get('lastsondage', [SurveyController::class, 'lastSurvey'])->name('lastsondage');
 Route::post('vote',  [SurveyController::class, 'storevote'])->name('storevote');

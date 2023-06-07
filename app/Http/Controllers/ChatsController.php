@@ -44,3 +44,5 @@ class ChatsController extends Controller
 
     
 }
+
+
