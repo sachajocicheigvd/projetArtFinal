@@ -1,7 +1,6 @@
 footer {
     flex-shrink: 0; /* pas le droit de se réduire */
   
-    height: 100px;
     background: var(--fond-color);
   }
   
@@ -56,4 +55,29 @@ footer nav a:hover *{
 
 
 
+.iconenav {
+  width: 40px; /* Divise la taille par 2 */
+  height: 40px; /* Divise la taille par 2 */
+  padding-left:  40px;
+  padding-right:  40px;
+  padding-top:  20px;
 
+
+}
+footer {
+  /* nav est de nouveau un container flex */
+  height: 100px;
+  background: var(--fond-color);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+footer nav {
+  /* nav est de nouveau un container flex */
+  height: 100%;
+  display: flex;
+}
