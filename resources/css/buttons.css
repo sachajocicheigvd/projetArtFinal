@@ -1,3 +1,4 @@
+/* boutons */
 button.primaire {
     display: flex;
     justify-content: center;
@@ -30,6 +31,8 @@ button.secondaire {
     color: #000000;
 }
 
+
+
 button.validation {
     display: flex;
     justify-content: center;
@@ -47,6 +50,14 @@ button.validation {
 }
 
 
+/* lien cliquable */
+.lien{
+    color: var(--secondaire-color);
+    text-decoration: underline;
+    font-size: 14px; 
+    padding-left: 10px;
+}
+/* genre */
 div label input {
     margin-right: 10px;
 }

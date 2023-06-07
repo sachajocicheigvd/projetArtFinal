@@ -1,9 +1,20 @@
 
-/* Projet */
+/* Projet import */
 @import 'variables.css';
 @import 'navigation.css';
 @import 'typographie.css';
+@import 'buttons.css';
+@import 'app.css';
 
 body {
     background-color: var(--fond-color);
 }
+
+/* Liens */
+a[href]{
+    text-decoration: none;
+}
+a:link, a:visited {
+    color: var(--accent-color);
+}
+

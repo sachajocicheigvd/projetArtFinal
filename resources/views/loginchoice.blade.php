@@ -1,5 +1,3 @@
-
-
 @extends('template')
 <head>
   <meta name="csrf-token" content="{{ csrf_token() }}"> 
@@ -11,16 +9,26 @@
 @endsection
 
 @section('header')
-<h1 class="page-header"><a href="">Création sondage</a></h1>
+
 @endsection
 
 @section('contenu')
+<!--logo--> 
+<p> 
+  <img src="{{ asset('storage/images/logoCouleur3.svg') }}" style="width: 95px; 
+    height: 147px" alt="logoCouleur3" class="logoCouleur3">
+</p>
+<!--boutons--> 
+<button class="secondaire">
+    <a href="{{ url('login') }}">
+        Se connecter 
+    </a>
+</button>
 
-<a href="{{ url('login') }}"><x-secondary-button class="ml-3">
-    Se connecter 
-    </x-secondary-button></a><br>
-    <a href="{{ route('register') }}"><x-secondary-button class="ml-3">
-        Créer un compte
-    </x-secondary-button></a>
+<button class="secondaire">
+    <a href="{{ route('register') }}">
+    Créer un compte 
+    </a>
+</button>
     
 @endsection
