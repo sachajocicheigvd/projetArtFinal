@@ -45,3 +45,222 @@ button.validation {
     text-align: center;
     color: #000000;
 }
+
+
+div label input {
+    margin-right: 10px;
+}
+
+.musique {
+background-color: #18181B;
+margin: 4px;
+border-radius: 20px;
+border: solid 1px #ffffff;
+overflow: hidden;
+float: left;
+cursor: pointer;
+transition-duration: 0.4s;
+border-radius: 20px;
+padding: 0px;
+}
+
+.musique label {
+float: left;
+line-height: 42px;
+width: 92px;
+height: 42px;
+}
+
+.musique label span{
+    text-align: center; 
+    display: block;
+}
+
+.musique label input {
+    position: absolute;
+    display: none;
+    color: #ffffff;
+}
+
+.afro input:checked +span {
+background-color: #51ABFF40;
+}
+
+.afro:hover {
+    background-color:#51abff40 ;
+    border: 2px solid #51ABFF
+    }
+    
+
+.afro {
+
+border: 2px solid #51ABFF;
+color: #51ABFF;
+}
+
+.reggaeton input:checked +span {
+    background-color: #51ABFF40;
+}
+    
+.reggaeton:hover {
+    background-color:#00E0FF40 ;
+     border: 2px solid #00E0FF
+     }
+        
+    
+.reggaeton {
+    
+    border: 2px solid #00E0FF;
+    color: #00E0FF;
+    }
+
+.jazz input:checked +span {
+background-color: #1E34FF40;
+}
+
+.jazz:hover {
+    background-color:#1E34FF40 ;
+    border: 2px solid #1E34FF
+    }
+    
+
+.jazz {
+
+border: 2px solid #1E34FF;
+color: #1E34FF;
+}
+
+.electro input:checked +span {
+background-color: #27EBA440;
+}
+    
+.electro:hover {
+background-color:#27EBA440 ;
+border: 2px solid #27EBA4
+}
+        
+.electro {
+    
+border: 2px solid #27EBA4;
+color: #27EBA4;
+}
+    
+.country input:checked +span {
+    background-color: #FFF59840;
+    }
+        
+.country:hover {
+background-color:#FFF59840 ;
+border: 2px solid #FFF598
+}
+            
+.country {
+        
+border: 2px solid #FFF598;
+color: #FFF598;
+}
+
+.metal input:checked +span {
+    background-color: #6627EB40;
+    }
+        
+.metal:hover {
+background-color:#6627EB40 ;
+border: 2px solid #6627EB
+}
+            
+.metal {
+        
+border: 2px solid #6627EB;
+color: #6627EB;
+}
+
+.hiphop input:checked +span {
+    background-color: #FAFF0040;
+    }
+        
+.hiphop:hover {
+background-color:#FAFF0040 ;
+border: 2px solid #FAFF00
+}
+            
+.hiphop {
+        
+border: 2px solid #FAFF00;
+color: #FAFF00;
+}
+
+.punk input:checked +span {
+    background-color: #EB6E2740;
+    }
+        
+.punk:hover {
+background-color:#EB6E2740 ;
+border: 2px solid #EB6E27
+}
+            
+.punk {
+        
+border: 2px solid #EB6E27;
+color: #EB6E27;
+}
+
+.rock input:checked +span {
+    background-color: #FF000040;
+    }
+        
+.rock:hover {
+background-color:#FF000040 ;
+border: 2px solid #FF0000
+}
+            
+.rock {
+        
+border: 2px solid #FF0000;
+color: #FF0000;
+}
+
+.variete input:checked +span {
+    background-color: #EB276E40;
+    }
+        
+.variete:hover {
+background-color:#EB276E40 ;
+border: 2px solid #EB276E
+}
+            
+.variete {
+        
+border: 2px solid #EB276E;
+color: #EB276E;
+}
+
+.pop input:checked +span {
+    background-color: #8B0BC740;
+    }
+        
+.pop:hover {
+background-color:#8B0BC740 ;
+border: 2px solid #8B0BC7
+}
+            
+.pop {
+        
+border: 2px solid #8B0BC7;
+color: #8B0BC7;
+}
+
+.rap input:checked +span {
+    background-color: #FF00C740;
+    }
+        
+.rap:hover {
+background-color:#FF00C740 ;
+border: 2px solid #FF00C7
+}
+            
+.rap {
+        
+border: 2px solid #FF00C7;
+color: #FF00C7;
+}

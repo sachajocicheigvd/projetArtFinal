@@ -61,8 +61,8 @@
     <br>
 
     <div class="flex items-center justify-begin">
-    <p>Pas de compte ?</p>
-    
+    <p>Pas de compte ??</p>
+    <p>adieu</p>
     <a href="{{ route('register') }}"><x-secondary-button class="ml-3">
                 S'enregistrer
             </x-secondary-button></a></p>

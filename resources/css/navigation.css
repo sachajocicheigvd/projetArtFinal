@@ -29,14 +29,21 @@ svg path {
     fill: var(--secondaire-color);
 }
 
-svg:hover path {
+footer nav a.active *{
   fill: var(--accent-color);
+  color: var(--accent-color);
+}
+
+footer nav a:hover *{
+  fill: var(--accent-color);
+  color: var(--accent-color);
 }
 
 .textNav {
     color: var(--secondaire-color);
     font-size: 10px;
 }
+
 .textVote {
   color: var(--secondaire-color);
   font-size: 10px;
