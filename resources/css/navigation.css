@@ -81,3 +81,7 @@ footer nav {
   height: 100%;
   display: flex;
 }
+
+.container{
+  margin-bottom: 100px; /* Réglez la valeur en fonction de la hauteur de votre pied de page */
+}
