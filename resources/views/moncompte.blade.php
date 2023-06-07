@@ -7,14 +7,13 @@
 
 @section('header')
 <h1 class="page-header">Profil</h1>
-@vite('resources/css/buttons.css')
 @endsection
 
 @section('contenu')
         <h2>{{ $users->username }}</h2>
         <p>{{ $users->first_name }} {{ $users->last_name }}</p>
         <p>{{ $users->email }}</p>
-        <button type="button" class="collapsible">Genres Musicaux</button>
+        <button type="button" id="derouleur" class="collapsible">Genres Musicaux</button>
         <div class="content">
                 <div class="containerForm">
                         <div class="containerGenre">

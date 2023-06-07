@@ -30,8 +30,6 @@
     color: #000000;
 }
 
-
-
 .validation {
     display: flex;
     justify-content: center;
@@ -48,12 +46,11 @@
     color: #000000;
 }
 
-
 /* lien cliquable */
-.lien{
+.lien {
     color: var(--secondaire-color);
     text-decoration: underline;
-    font-size: 14px; 
+    font-size: 14px;
     padding-left: 10px;
 }
 /* genre */
@@ -331,7 +328,7 @@ div label input {
     margin-bottom: 10px;
 }
 
-.active,
+#derouleur .active,
 .collapsible:hover {
     background-color: #1e1e22;
 }
@@ -343,4 +340,15 @@ div label input {
     overflow: hidden;
     transition: max-height 0.2s ease-out;
     margin-bottom: 100px;
+}
+
+.collapsible:after {
+    content: "\02795"; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    float: right;
+    margin-left: 5px;
+}
+
+#derouleur .active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
