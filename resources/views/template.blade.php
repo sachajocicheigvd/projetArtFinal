@@ -35,7 +35,7 @@
                         <li role="presentation"><a href="{{ url('/creationsondage') }}">Création Sondage</a></li>
                         @endif
                         @if (!Auth::check())
-                        <li role="presentation"><a href="{{ url('/login') }}">Connexion</a></li>
+                        <li role="presentation"><a href="{{ url('/loginchoice') }}">Connexion</a></li>
                         @endif
                         @if (Auth::check())
                         <li role="presentation"><a href="{{ url('/mon-compte') }}">Mon Compte</a></li>
