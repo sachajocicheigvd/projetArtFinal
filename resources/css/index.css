@@ -3,9 +3,14 @@
 @import 'variables.css';
 @import 'navigation.css';
 @import 'typographie.css';
+<<<<<<< HEAD
+@import 'chat.css';
+@import 'player.css';
+=======
 @import 'buttons.css';
 @import 'app.css';
 
+>>>>>>> 919415e5a79ec1b04536810bf6f6b6a8615cc2c4
 body {
     background-color: var(--fond-color);
 }
