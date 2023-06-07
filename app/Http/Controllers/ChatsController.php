@@ -35,9 +35,11 @@ class ChatsController extends Controller
             $lienExterne = "Vous devez être connecté pour accéder au chat";
             return redirect()->route('login')->with('lienExterne', $lienExterne);
         }
-        else{   
+        else{ 
+        $user = Auth::user();
+        $genres = $user->genres()->get();  
         $messages = MessageModel::with('user')->get();
-        return view('chat', compact('messages'));
+        return view('chat', compact('messages','genres'));
         }
     }
 

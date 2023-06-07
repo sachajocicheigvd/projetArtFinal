@@ -1,19 +1,18 @@
 .message {
-    margin-top : 10px;
-        white-space: normal;
-        position: absolute;
-        width: 348px;
-        height: 37.33px;
-        padding-left: 10px;
-        line-height: 17px;
-        color: #FFFFFF;
+    margin-top : 12px;
+    white-space: normal;
+    position: absolute;
+    width: 348px;
+    height: 37.33px;
+    padding-left: 10px;
+    line-height: 17px;
+    color: #FFFFFF;
 }
 .user{
     display: block;
     white-space: normal;
     color: var(--accent-color);
 }
-
 
 .encadree {
     padding-left: 10px;
@@ -24,6 +23,84 @@
     border-radius: 20px;
 }
 
+input:focus {
+    outline: none;
+}
+
+input[type="text"]::placeholder {
+    color: black;
+}
+
 .ecritMessage {
-    color : green;
+    
+    padding-left: 10px;
+    color: black;
+    margin-top: 40px;
+    background: #767676;
+    border: 1px solid #767676;
+    border-radius: 20px;
+    width: 299px;
+    height: 31px;
+   
+}
+
+
+
+#boutonEnvoi {
+        background-color: transparent;
+        display: center;
+        width: 45px;
+        height: 42px;
+        padding-right: 15px;
+}
+
+.sectionChat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+
+.encadreeBoutonEnvoie {
+    background-color: transparent !important;
+    display: center;
+        width: 45px;
+        height: 42px;
+        padding-right: 15px; 
+}
+
+#send_message {
+    background-color: transparent;
+    /* Pour rendre le fond du bouton transparent */
+    border: none;
+    /* Pour supprimer la bordure du bouton */
+    padding: 0;
+    /* Pour supprimer le padding du bouton */
+    cursor: pointer;
+    /* Pour afficher le curseur en tant que pointeur */
+}
+
+#send_message svg {
+    width: 60px;
+    height: 60px;
+
+  
+}
+
+#messageAEnvoyer {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.boutonPourEnvoyer {
+    margin-top: 40px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    align-items: right;
 }
