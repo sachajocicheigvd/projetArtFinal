@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Genre;
 
 class UserController extends Controller
 {
@@ -25,7 +26,7 @@ class UserController extends Controller
     {
         $users = Auth::user();   // permet de voir quatre utilisateurs à la fois
 
-        return view('moncompte', compact('users'));
+        return view('moncompte', compact('users'))->with('genres', Genre::all())->with('user', Auth::user());;
     }
 
     /**
