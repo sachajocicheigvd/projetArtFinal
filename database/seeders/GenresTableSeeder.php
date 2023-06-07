@@ -21,11 +21,18 @@ class GenresTableSeeder extends Seeder
         // tableau de genres de musique
 
         $genres = [
+            'Afro',
+            'Reggaeton',
+            'Jazz',
+            'Electro',
+            'Country',
+            'Metal',
+            'Hip-hop',
+            'Punk',
             'Rock',
+            'Variété française',
             'Pop',
             'Rap',
-            'Jazz',
-            'Techno',
         ];
 
         foreach ($genres as $genre) {
