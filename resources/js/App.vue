@@ -1,7 +1,7 @@
 <template>
     <main>
-        <h1>Vue popups</h1>
-        <button @click="togglePopup('buttonTrigger')">Open Popup</button>
+        <!-- <h1>Vue popups</h1>
+        <button @click="togglePopup('buttonTrigger')">Open Popup</button> -->
         <Popup
             v-if="popupTriggers.buttonTrigger"
             :togglePopup="() => togglePopup('buttonTrigger')"
@@ -16,8 +16,8 @@ import Popup from "./components/Popup.vue";
 export default {
     setup() {
         const popupTriggers = ref({
-            buttonTrigger: false,
-            timerTrigger: false,
+            buttonTrigger: true,
+            // timerTrigger: false,
         });
         const togglePopup = (trigger) => {
             popupTriggers.value[trigger] = !popupTriggers.value[trigger];

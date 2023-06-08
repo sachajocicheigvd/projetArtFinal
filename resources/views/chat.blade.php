@@ -33,6 +33,7 @@
             
     
                     <div class="box-body">
+                  
                         <div class="direct-chat-messages" id="messages">
                             @foreach($messages as $message)
                             <p class="{{ $message->user->id === Auth::user()->id ? 'moi' : '' }}">

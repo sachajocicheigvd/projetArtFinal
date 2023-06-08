@@ -19,34 +19,26 @@
 
 <script>
 import axios from "axios";
+
 export default {
     props: ["togglePopup"],
     data() {
         return {
             lastSurvey: null,
             countdownInterval: null,
+            formattedDuration: "",
+            showPopup: false,
         };
     },
     async created() {
         await this.fetchLastSurvey();
-    },
-    computed: {
-        formattedDuration() {
-            if (this.lastSurvey && this.lastSurvey.duration) {
-                const duration = this.lastSurvey.duration;
-                const minutes = Math.floor(duration / 60);
-                const seconds = duration % 60;
-                return `${minutes}:${seconds.toString().padStart(2, "0")}`;
-            }
-            return "";
-        },
     },
     methods: {
         vote(answer) {
             console.log(answer);
             // Logique pour enregistrer le vote dans la base de données
             axios
-                .post("/vote", { answer: answer })
+                .post("/storevote", { answer: answer })
                 .then((response) => {
                     // Réponse de succès, vous pouvez effectuer des actions supplémentaires si nécessaire
                     console.log(response.data);
@@ -69,61 +61,42 @@ export default {
                 }
                 const data = await response.json();
                 this.lastSurvey = data;
-                console.log(this.lastSurvey);
-                console.log(this.lastSurvey.answers[0]);
-                // this.startCountdown();
-                this.startCount();
+
+                // Comparer la date de fin du sondage avec la date actuelle
+                const now = new Date();
+                const endTime = new Date(this.lastSurvey.duration);
+
+                if (endTime > now) {
+                    const duration = Math.floor((endTime - now) / 1000); // Durée restante en secondes
+                    this.startCountdown(duration); // Appel de la méthode startCountdown avec la durée restante
+                } else {
+                    // Le sondage est terminé
+                    this.formattedDuration = "Sondage terminé";
+                }
             } catch (error) {
                 console.error(error);
                 // Gérer l'erreur de récupération du dernier sondage ici
             }
         },
-        // startCountdown() {
-        //     if (this.countdownInterval) {
-        //         clearInterval(this.countdownInterval);
-        //     }
-        //     const durationInSeconds = this.lastSurvey.duration * 60;
-        //     this.lastSurvey.duration = durationInSeconds;
-        //     this.countdownInterval = setInterval(() => {
-        //         if (this.lastSurvey.duration > 0) {
-        //             this.lastSurvey.duration--;
-        //             const minutes = Math.floor(this.lastSurvey.duration / 60);
-        //             const seconds = this.lastSurvey.duration % 60;
-        //             this.lastSurvey.formattedDuration = `${minutes}:${seconds
-        //                 .toString()
-        //                 .padStart(2, "0")}`;
-        //         } else {
-        //             clearInterval(this.countdownInterval);
-        //         }
-        //     }, 1000);
-        // },
-        startCount() {
-            setInterval(function () {
-                // Remplacez par la date future souhaitée
-                let now = new Date();
-                let timeDiff =
-                    this.lastSurvey.duration.getTime() - now.getTime();
-                let secondsLeft = Math.floor(timeDiff / 1000);
+        startCountdown(duration) {
+            if (this.countdownInterval) {
+                clearInterval(this.countdownInterval);
+            }
 
-                let minutes = Math.floor(secondsLeft / 60);
-                let seconds = secondsLeft % 60;
-
-                seconds >= 10 ? seconds : (seconds = "0" + seconds);
-
-                this.lastSurvey.formattedDuration = `${minutes}:${seconds}`;
-
-                if (minutes < 0) {
-                    this.lastSurvey.formattedDuration = `0:00`;
+            this.countdownInterval = setInterval(() => {
+                if (duration > 0) {
+                    const minutes = Math.floor(duration / 60);
+                    const seconds = duration % 60;
+                    this.formattedDuration = `${minutes}:${seconds
+                        .toString()
+                        .padStart(2, "0")}`;
+                    duration--;
+                } else {
+                    clearInterval(this.countdownInterval);
+                    this.formattedDuration = "Sondage terminé";
                 }
-
-                document.querySelector("#duree").style.display = "block";
             }, 1000);
         },
-    },
-    beforeUnmount() {
-        if (this.countdownInterval) {
-            clearInterval(this.countdownInterval);
-        }
     },
 };
 </script>
@@ -136,7 +109,7 @@ export default {
     right: 0;
     bottom: 0;
     z-index: 99;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(12, 189, 92, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;

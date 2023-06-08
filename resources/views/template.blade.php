@@ -8,16 +8,16 @@
     <link media="all" type="text/css" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 -->
 <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    @vite('resources/css/index.css')
+        <link rel="preconnect" href="https://fonts.bunny.net">
+        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+        @vite('resources/css/index.css')
+        
+        <style> textarea {resize:none} </style>
 
-    <style> textarea {resize:none} </style>
+        @vite('resources/js/popup.js')
 
- 
-
-    @yield('title')
-
+        @yield('title')
+  
 
 </head>
 <body>
@@ -50,9 +50,13 @@
             @yield('header')
         </div>
     </header>
-    <div class="container" id="app" >
+    <div class="container"  >
+
         @yield('contenu')
     </div>
+        @if (Auth::check())
+        <div id="app"></div>
+        @endif
     <footer>
         <nav>
             <a href="{{ url('/') }}" class="{{ Request::is('/') ? 'active' : '' }}" >
