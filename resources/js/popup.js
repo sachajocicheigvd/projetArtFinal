@@ -2,9 +2,14 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import "./bootstrap";
 
-const app = createApp(App);
+let app = null;
 
-// Écoutez les événements sur le canal "popup-channel"
+// Écoutez les événements sur la chaîne "popup-channel"
 window.Echo.channel("popup-channel").listen("PopupEvent", (data) => {
+    if (app) {
+        app.unmount("#app"); // Démonter l'application si elle est déjà montée
+    }
+
+    app = createApp(App);
     app.mount("#app"); // Monter l'application
 });
