@@ -13,17 +13,7 @@ use DateInterval;
 use Illuminate\Support\Facades\Storage;
 use App\Events\PopupEvent;
 
-class SurveyController extends Controller
-{
-
-    // Middleware qui autorise uniquement les 'admin' à accéder à showForm() et saveSurvey() et lastSurvey()
-    // Middleware qui autorise uniquement les personnes connectées à accéder à lastSurvey()
-
-    public function __construct()
-    {
-        $this->middleware('admin', ['only' => ['showForm', 'saveSurvey']]);
-        $this->middleware('auth', ['only' => ['lastSurvey']]);
-    }
+class SurveyController extends Controller{
 
     public function showForm()
     {
