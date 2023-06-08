@@ -28,13 +28,17 @@
 
 <p>{{$question}}</p>
 
+<div class="mkt-3dSlider py-6">
+<section id="slider">
 @foreach($reponses as $reponse)
-<label>{{$reponse->answer}} @if($reponse->artist)- {{$reponse->artist}} @endif
-<input type="radio" name="answers[]" value="{{$reponse->id}}">
+<label class="card-slider">{{$reponse->answer}} @if($reponse->artist)- {{$reponse->artist}} @endif
+<input class="card-slider" type="radio" name="answers[]" value="{{$reponse->id}}">
 <img src="{{$reponse->picture}}" alt="{{$reponse->artist}}" width="200px">
 </label>
 <br>
 @endforeach
+</section>
+</div>
 
 <input type="submit" value="Valider">
 </form>
