@@ -4,9 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Genre;
+use Illuminate\Support\Facades\Auth;
 
 class GenreUserController extends Controller
 {
+
+    public function showForm()
+    {
+        return view('registerbis')->with('genres', Genre::all())->with('user', Auth::user());
+    }
+
  public function saveGenre(Request $request)
     {
 
@@ -26,6 +34,6 @@ class GenreUserController extends Controller
                 'updated_at' => now(),
             ]);
         }
-        return 'Compte créé avec succès et vos genres ont été enregistrés';
+        return redirect()->route('accueil');
     }   
 }

@@ -70,6 +70,26 @@ class AnswerUserController extends Controller
             ->with('reponses', $reponseTab);
         }
     }
+
+    public function storevote(Request $request)
+    {
+        // Récupérez les données du vote à partir de la requête
+        $answerid = $request->input('answer');
+
+        $user = Auth::user();
+
+        //store answerid and user id to answer_user table
+        DB::table('answer_user')->insert([
+            'answer_id' => $answerid,
+            'user_id' => $user->id,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+
+        // Répondez avec la confirmation du vote ou toute autre donnée nécessaire
+        return response()->json(['message' => 'Vote enregistré avec succès']);
+    }
     
     public function saveAnswer(Request $request)
     {

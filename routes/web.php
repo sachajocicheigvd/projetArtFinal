@@ -36,75 +36,49 @@ use App\Models\GenreUser;
 |
 */
 
-
-/* creéate route for loginChoice view */
-
-
-Route::get('/chat', [App\Http\Controllers\ChatsController::class, 'afficheMessage']);
-//Route::get('/messages', [App\Http\Controllers\ChatsController::class, 'fetchMessages']);
-Route::post('/send-message', [App\Http\Controllers\ChatsController::class, 'enregistrement']);
-
-
-
-
-
-
+// Route principale
 Route::get('/', function () {
     return view('welcome');
 })->name('accueil');
 
-/* Route::get('/chat', function () {
-    return view('chat');
-});  */
+// Chat
+Route::get('/chat', [App\Http\Controllers\ChatsController::class, 'afficheMessage']);
+Route::post('/send-message', [App\Http\Controllers\ChatsController::class, 'enregistrement']);
 
+// Toute la partie sondage
 
+Route::middleware('admin')->group(function () {
+    Route::get('creationsondage', [SurveyController::class, 'showForm'])->name('creationsondage');
+    Route::post('creationsondage', [SurveyController::class, 'saveSurvey']);
+});
 
 Route::get('/sondage', [App\Http\Controllers\sondageController::class, 'afficheSondage']);
-
 Route::get('/sondagesacha', [App\Http\Controllers\sondageSachaController::class, 'afficheSondage']);
-
-
-/* Route::get('sondage', function () {
-    return view('sondage');
-}); */
-
-Route::resource("mon-compte", UserController::class);
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get("vote", [AnswerUserController::class, 'showForm'])->name('vote');
 Route::post("vote", [AnswerUserController::class, 'saveAnswer']);
 
-Route::get('/dashboard', function () {
-    return redirect()->route('accueil');
-});
-
-Route::get('registerbis', function () {
-    return view('registerbis')->with('genres', Genre::all())->with('user', Auth::user());
-})->name('registerbis');
-
-Route::post('registerbis', [GenreUserController::class, 'saveGenre']);
-
-Route::middleware('admin')->group(function () {
-    Route::get('creationsondage', function () {
-        return view('creationsondage')->with('user', Auth::user());
-    })->name('creationsondage');
-
-    Route::post('creationsondage', [SurveyController::class, 'saveSurvey']);
-});
 Route::get('lastsondage', [SurveyController::class, 'lastSurvey'])->name('lastsondage');
-Route::post('storevote',  [SurveyController::class, 'storevote'])->name('storevote');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+Route::post('storevote',  [AnswerUserController::class, 'storevote'])->name('storevote');
 
 Route::get('/refreshhondage', [App\Http\Controllers\sondageController::class, 'refreshSondage']);
 
 
+/*
+* GESTION DU COMPTE
+*/
+
+// Accès à la page de gestion du compte
+Route::resource("mon-compte", UserController::class);
+
+// Genre
+Route::get('registerbis', [GenreUserController::class, 'showForm'])->name('registerbis');
+Route::post('registerbis', [GenreUserController::class, 'saveGenre']);
+
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 require __DIR__ . '/auth.php';
