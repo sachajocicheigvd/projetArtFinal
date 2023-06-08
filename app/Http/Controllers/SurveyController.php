@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use DateTime;
 use DateInterval;
 use Illuminate\Support\Facades\Storage;
+use App\Events\PopupEvent;
 
 class SurveyController extends Controller
 {
@@ -128,8 +129,8 @@ $delai->format('Y-m-d H:i:s'); // Afficher la date modifiée
             'answers' => $answers,
         ];
         // return  in the view aftersurvey
-
-        return response()->json($surveyData);
+        event(new PopupEvent("nouveau sondage"));
+        return view('aftersurvey');
     }
     // create function to return the last survey
     public function lastSurvey()
