@@ -49,14 +49,11 @@ use App\Models\Answer;
         <span class="text-muted">secondes</span>
     </div>
 
-    <div id="contentContainer">
+    <div id="contentContainer" id="dataSondage">
 
  @foreach($answers as $answer)
  @if($answer->survey_id == $surveys[count($surveys)-1]->id)
-     <strong><p>{{$answer->answer}}</p></strong><span class="pull-right pourcentage">30%</span>
-     <div class="progress progress active labar">
-         <div class="bar" style="width: 30%;"></div>
-     </div>
+    
  @endif
  @endforeach
  
@@ -72,7 +69,11 @@ use App\Models\Answer;
         @endphp
 
     </ul>
-@endforeach
+
+    @endforeach
+
+    <div class="afficheSondage"></div>
+
 <script> let i = 0;</script>
 @foreach ($answers as $answer)
     <ul>
@@ -83,11 +84,9 @@ use App\Models\Answer;
 <script>
        
        @if($totalResponses > 0)
-    document.getElementsByClassName("pourcentage")[i].innerHTML = "{{($responseCount/$totalResponses)*100 }}%" ;
-    document.getElementsByClassName("bar")[i].style.width = "{{($responseCount/$totalResponses)*100 }}%" ;
+  
 @else
-    document.getElementsByClassName("pourcentage")[i].innerHTML = "0%" ;
-    document.getElementsByClassName("bar")[i].style.width = "0%" ;
+ 
 @endif
 
         i++;
@@ -189,7 +188,68 @@ console.log('Durée en timestamp :  <?php echo $durations; ?>');
             const duration = <?php echo $durations; ?>;
             startTimer(duration, display);
         };
+
+
+        setInterval(function () {
+            fetchSurveyResults();
+        }, 1000);
+
+        function fetchSurveyResults() {
+    // Effectuer une requête AJAX pour récupérer les résultats du sondage
+    // Vous devrez peut-être ajouter du code ici pour mettre à jour les éléments HTML appropriés avec les nouvelles données
+
+    // Exemple de requête AJAX avec jQuery
+    $.ajax({
+        url: '/api/survey-results', // Remplacez l'URL par l'endpoint approprié pour récupérer les résultats du sondage
+        method: 'GET',
+        success: function(response) {
+
+
+            var arr = Object.values(response);
+
+
+            document.querySelector(".afficheSondage").innerHTML="";
+
+            //calcul le total du nombre de answer
+            var total = 0;
+            arr.forEach(a => {
+                total += a.totalVotes;
+            });
+            
+            arr.forEach(a => {
+
+                //document.querySelector("body > div > div.span6 > ul:nth-child(17)").innerHTML=a.answer+" : "+a.totalVotes;
+                //document.querySelector("body > div > div.span6 > ul:nth-child(17)").insertAdjacentHTML("beforeend",`${a.answer} : ${a.totalVotes}`);
+                document.querySelector(".afficheSondage").insertAdjacentHTML("beforeend",`     <strong><p>${a.answer}</p></strong><span class="pull-right pourcentage">${a.totalVotes/total*100}%</span>
+     <div class="progress progress active labar">
+         <div class="bar" style="width: ${a.totalVotes/total*100}%;"></div>
+     </div>`);
+                
+
+                
+            });
+
+            
+
+
+
+
+            //console.log(response);
+            // Mettez à jour les résultats du sondage avec les nouvelles données reçues
+            updateSurveyResults(response);
+        },
+        error: function(error) {
+            console.error('Une erreur s\'est produite lors de la récupération des résultats du sondage:', error);
+        }
+    });
+
+
+
+}
     </script>
+
+
+
     
 
     <style>

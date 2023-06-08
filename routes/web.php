@@ -22,6 +22,8 @@ use App\Models\Survey;
 use App\Models\Answer;
 use App\Models\AnswerUser;
 use App\Models\GenreUser;
+use App\Models\SurveyControllerSacha;
+
 
 
 
@@ -35,6 +37,9 @@ use App\Models\GenreUser;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
+Route::get('/api/survey-results', [App\Http\Controllers\SurveyControllerSacha::class, 'getSurveyResults']);
 
 // Route principale
 Route::get('/', function () {
