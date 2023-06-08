@@ -364,7 +364,6 @@ div label input {
 }
 
 #porte {
-    float: right;
     transform: translateY(-50px);
 }
 
@@ -382,4 +381,31 @@ div label input {
 
 .enregistrer {
     margin-bottom: 100px;
+}
+
+.svgSubmit {
+    float: right;
+    padding: 0;
+    width: 35px; /* Ajustez la taille du bouton */
+    height: 35px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    background-image: url("../../public/storage/images/porte.svg"); /* Chemin vers votre fichier SVG */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    transform: translate(0, -48px);
+}
+
+.svgSubmit::-moz-focus-inner,
+.svgSubmit::-webkit-search-cancel-button,
+.svgSubmit::-webkit-search-decoration,
+.svgSubmit::-webkit-search-results-button,
+.svgSubmit::-webkit-search-results-decoration {
+    display: none;
+}
+
+.svgSubmit:hover {
+    fill: #27eb42;
 }
