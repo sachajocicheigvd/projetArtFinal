@@ -3,6 +3,7 @@
     width: 100%;
     border : none;
     object-fit: cover;
+   
 
 }
 
@@ -42,12 +43,12 @@
 
 
 .flex-container {
+    background-color: var(--box-color);
     position: fixed;
-    bottom: 0;
+    bottom: 100;
     left: 0;
     width: 100%;
     align-items: center;
-    background-color: var(--box-color);
     display: flex;
     height: 70px;
 }
@@ -72,5 +73,5 @@ audio::-webkit-media-controls {
 }
 
 #boutonenvoie {
-    background-color: transparent;
+    background-color: var(--box-color);
 }

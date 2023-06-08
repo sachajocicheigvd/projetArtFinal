@@ -1,13 +1,5 @@
-.message {
-    margin-top : 12px;
-    white-space: normal;
-    position: absolute;
-    width: 348px;
-    height: 37.33px;
-    padding-left: 10px;
-    line-height: 17px;
-    color: #FFFFFF;
-}
+
+
 .user{
     display: block;
     white-space: normal;
@@ -15,12 +7,18 @@
 }
 
 .encadree {
+    background-color: var(--box-color);
+    color : var(--accent-color);
+    display: flex;
     padding-left: 10px;
     margin-bottom: 15px;
     width: 357px;
-    height: 56px;
     background: #2A2A2F;
     border-radius: 20px;
+    margin-top: 12px;
+    padding-left: 10px;
+    line-height: 17px;
+    color: #FFFFFF;
 }
 
 input:focus {
@@ -65,9 +63,9 @@ input[type="text"]::placeholder {
 .encadreeBoutonEnvoie {
     background-color: transparent !important;
     display: center;
-        width: 45px;
-        height: 42px;
-        padding-right: 15px; 
+    width: 45px;
+    height: 42px;
+    padding-right: 15px; 
 }
 
 #send_message {
@@ -84,8 +82,6 @@ input[type="text"]::placeholder {
 #send_message svg {
     width: 60px;
     height: 60px;
-
-  
 }
 
 #messageAEnvoyer {
@@ -103,4 +99,9 @@ input[type="text"]::placeholder {
     justify-content: right;
     align-items: center;
     align-items: right;
+}
+
+#messages {
+    display: inline-block;
+    background-color: transparent;
 }
