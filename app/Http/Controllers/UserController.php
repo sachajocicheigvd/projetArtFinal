@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Genre;
 
+
 class UserController extends Controller
 {
     /**
@@ -64,9 +65,40 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $user = User::find(Auth::user()->id);
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $genres = $request->input('genres');
+
+        if($email != null){
+            if($email == Auth::user()->email) {
+                return "l'email est identique";
+            } else {
+                $user = User::find(Auth::user()->id);
+                $user->email = $email;
+                $user->save();
+            }
+        }
+        
+        if($password != null){
+            $user = User::find(Auth::user()->id);
+            $user->password = $password;
+            $user->save();
+            return "password modifié";
+        }
+
+        $user->genres()->detach();
+
+        foreach ($genres as $genreId) {
+            $user->genres()->attach($genreId, [
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
+
+        return "modifications effectuées";
     }
 
     /**

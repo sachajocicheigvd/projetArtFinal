@@ -61,6 +61,7 @@ Route::get('/sondagesacha', [App\Http\Controllers\sondageSachaController::class,
 }); */
 
 Route::resource("mon-compte", UserController::class);
+Route::post("mon-compte", [UserController::class, 'update']);
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

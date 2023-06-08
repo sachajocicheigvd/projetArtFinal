@@ -11,6 +11,7 @@
     align-items: center;
     text-align: center;
     color: #000000;
+    cursor: pointer;
 }
 
 .secondaire {
@@ -42,6 +43,7 @@
     align-items: center;
     text-align: center;
     color: #000000;
+    cursor: pointer;
 }
 
 /* lien cliquable */
@@ -74,6 +76,7 @@ div label input {
     line-height: 42px;
     width: 92px;
     height: 42px;
+    cursor: pointer;
 }
 
 .musique label span {
