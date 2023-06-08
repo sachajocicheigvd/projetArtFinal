@@ -75,7 +75,7 @@ Route::resource("mon-compte", UserController::class);
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get("vote", [AnswerUserController::class, 'showForm'])->name('vote');
-Route::post("vote", [AnswerUserController::class, 'saveAnswer'])->name('vote');
+Route::post("vote", [AnswerUserController::class, 'saveAnswer']);
 
 Route::get('/dashboard', function () {
     return redirect()->route('accueil');
@@ -95,7 +95,7 @@ Route::middleware('admin')->group(function () {
     Route::post('creationsondage', [SurveyController::class, 'saveSurvey']);
 });
 Route::get('lastsondage', [SurveyController::class, 'lastSurvey'])->name('lastsondage');
-Route::post('vote',  [SurveyController::class, 'storevote'])->name('storevote');
+Route::post('storevote',  [SurveyController::class, 'storevote'])->name('storevote');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
