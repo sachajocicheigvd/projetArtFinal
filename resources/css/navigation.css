@@ -23,7 +23,7 @@ footer nav a {
     text-decoration: none;
 }
 
-svg path {
+.iconenav {
     fill: var(--secondaire-color);
 }
 
