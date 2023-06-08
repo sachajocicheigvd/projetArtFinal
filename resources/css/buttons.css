@@ -1,5 +1,4 @@
 .primaire {
-    display: flex;
     justify-content: center;
     margin-top: 20px;
     width: 174px;
@@ -26,7 +25,7 @@
     line-height: 19px;
     align-items: center;
     text-align: center;
-    color: #000000;
+    color: #ffffff;
 }
 
 .validation {
@@ -314,18 +313,15 @@ div label input {
 }
 
 .collapsible {
-    background-color: #18181b;
-    color: #ffffff;
     cursor: pointer;
     padding: 18px;
     width: 210px;
-    height: 58.5px;
-    border: 1px solid #27eb42;
-    border-radius: 25px;
     text-align: left;
     outline: none;
     font-size: 15px;
     margin: 20px 0 10px;
+    line-height: 2px;
+    border-radius: 17px;
 }
 
 #derouleur.active,
@@ -340,7 +336,6 @@ div label input {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
-    margin-bottom: 100px;
 }
 
 #derouleur svg {
@@ -349,7 +344,7 @@ div label input {
 }
 
 #boutonPlus {
-    transform: translateY(-3px);
+    transform: translateY(-10px);
     background: none;
 }
 
@@ -357,7 +352,6 @@ div label input {
     text-align: left;
     width: 150px;
     color: white;
-    translate: translate(16px);
     padding-left: 16px;
     background-image: url("../../public/storage/images/pencil.svg");
     background-repeat: no-repeat;
@@ -384,4 +378,8 @@ div label input {
     background-position: right 7% center;
     padding-right: 40px;
     text-align: left;
+}
+
+.enregistrer {
+    margin-bottom: 100px;
 }

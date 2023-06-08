@@ -13,11 +13,12 @@
 @endsection
 
 @section('contenu')
+        <br/>
         <h2>{{ $users->username }}</h2>
         <p>{{ $users->first_name }} {{ $users->last_name }}</p>
         <input type="email" id="email" class="secondaire mailInput" name="email" placeholder="{{ $users->email }}"><br/>
         <input type="password" id="password" class="secondaire passwordInput" name="email" placeholder="●●●●●●●●"><br/>
-        <button type="button" id="derouleur" class="collapsible">Genres Musicaux<svg id="boutonPlus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="#767676" class="w-6 h-6" width="24">
+        <button type="button" id="derouleur" class="secondaire collapsible">Genres Musicaux<svg id="boutonPlus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="#767676" class="w-6 h-6" width="24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
         </button>
         <div class="content">
@@ -38,6 +39,7 @@
                         </div>
                 </div>
         </div>
+        <input class="primaire enregistrer" type="submit" value="Enregistrer">
         <script>
 
 var coll = document.getElementsByClassName("collapsible");
