@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AnswerUserController extends Controller
+
 {
     public function showForm()
     {
