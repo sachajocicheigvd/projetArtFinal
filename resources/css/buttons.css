@@ -354,6 +354,7 @@ div label input {
 }
 
 .mailInput {
+    text-align: left;
     width: 150px;
     color: white;
     translate: translate(16px);
@@ -371,4 +372,16 @@ div label input {
 #porte {
     float: right;
     transform: translateY(-50px);
+}
+
+.passwordInput {
+    width: 150px;
+    color: white;
+    translate: translate(16px);
+    padding-left: 16px;
+    background-image: url("../../public/storage/images/pencil.svg");
+    background-repeat: no-repeat;
+    background-position: right 7% center;
+    padding-right: 40px;
+    text-align: left;
 }
