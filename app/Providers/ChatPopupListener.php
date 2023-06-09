@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Listeners;
+namespace App\Providers;
 
+use App\Events\ChatPopup;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class PopupEventListener
+class ChatPopupListener
 {
     /**
      * Create the event listener.
@@ -18,7 +19,7 @@ class PopupEventListener
     /**
      * Handle the event.
      */
-    public function handle(object $event): void
+    public function handle(ChatPopup $event): void
     {
         //
     }
