@@ -8,6 +8,7 @@ use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\sondageController;
 use App\Http\Controllers\sondageSachaController;
 use App\Http\Controllers\VoteController;
+use App\Http\Controllers\CreateAdminController;
 use App\Models\Survey;
 use App\Models\Answer;
 use App\Models\AnswerUser;
@@ -32,7 +33,13 @@ use App\Models\SurveyControllerSacha;
 Route::get('/api/survey-results', [App\Http\Controllers\SurveyControllerSacha::class, 'getSurveyResults']);
 
 // Route principale
-Route::get('/', function () { return view('welcome'); })->name('accueil');
+Route::get('/', function () { return view('welcome')->with('messageValidation', ''); })->name('accueil');
+
+Route::get('createadmin', function() {
+    return view('createadmin');
+})->name('createadmin');
+
+Route::post('createadmin', [CreateAdminController::class, 'store']);
 
 // Chat
 Route::middleware('auth')->group(function () {
