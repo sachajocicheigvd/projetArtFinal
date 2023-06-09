@@ -130,7 +130,8 @@ class SurveyController extends Controller
         // return  in the view aftersurvey
         event(new PopupEvent("nouveau sondage"));
         event(new ChatPopup("CHATPOPUP"));
-        return view('aftersurvey');
+
+        return redirect()->route('stats');
     }
     // create function to return the last survey
     public function lastSurvey()

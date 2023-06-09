@@ -43,13 +43,13 @@ use App\Models\Answer;
   <!-- Chronomètre -->
   <div id="countdown" class="text-center">
         <span id="days" class="display-4"></span>
-        <span class="text-muted">jours</span>
+        <span id="days-label" class="text-muted">jours</span>
         <span id="hours" class="display-4"></span>
-        <span class="text-muted">heures</span>
+        <span id="hours-label" class="text-muted">heures</span>
         <span id="minutes" class="display-4"></span>
-        <span class="text-muted">minutes</span>
+        <span id="minutes-label" class="text-muted">minutes</span>
         <span id="seconds" class="display-4"></span>
-        <span class="text-muted">secondes</span>
+        <span id="seconds-label" class="text-muted">secondes</span>
     </div>
 
     <div id="contentContainer" id="dataSondage">
@@ -125,9 +125,7 @@ $durations = $duree2;
 
 ?>
 
-
-
-
+let estTermine = false;
 
         function startTimer(duration, display) {
             var timer = duration, days, hours, minutes, seconds;
@@ -146,10 +144,16 @@ $durations = $duree2;
                 display.querySelector('#hours').textContent = hours;
                 display.querySelector('#minutes').textContent = minutes;
                 display.querySelector('#seconds').textContent = seconds;
+
+                display.querySelector('#days-label').textContent = days > 1 ? "jours" : "jour";
+                display.querySelector('#hours-label').textContent = hours > 1 ? "heures" : "heure";
+                display.querySelector('#minutes-label').textContent = minutes > 1 ? "minutes" : "minute";
+                display.querySelector('#seconds-label').textContent = seconds > 1 ? "secondes" : "seconde";
     
                 if (--timer < 0) {
                     clearInterval(interval);
                     display.innerHTML = '<span style="color: red;">Résultat final du sondage</span>';
+                    estTermine = true;
                 }
             }, 1000);
         }
@@ -184,6 +188,16 @@ $durations = $duree2;
 
             var arr = Object.values(response);
 
+            // Tri de l'array par ordre du nombre de votes
+            arr.sort(function(a, b) {
+                return b.totalVotes - a.totalVotes;
+            });
+
+            // Raccourci le tableau au 3 premiers résultats si status = true seulement si le sondage est de type music (donc contient un artiste)
+            if (estTermine == true && arr[0].artist != null) {
+                arr = arr.slice(0, 3);
+            }
+
 
             document.querySelector(".afficheSondage").innerHTML="";
 
@@ -215,11 +229,6 @@ $durations = $duree2;
         }                
     }
 );
-
-            
-
-
-
 
         },
         error: function(error) {
