@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Genre;
+use App\Http\Requests\UpdateProfile;
 
 
 class UserController extends Controller
@@ -27,7 +28,7 @@ class UserController extends Controller
     {
         $users = Auth::user();   // permet de voir quatre utilisateurs à la fois
 
-        return view('moncompte', compact('users'))->with('genres', Genre::all())->with('user', Auth::user());;
+        return view('moncompte', compact('users'))->with('genres', Genre::all())->with('user', Auth::user())->with('messageModification', null);
     }
 
     /**
@@ -65,7 +66,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(UpdateProfile $request)
     {
         $user = User::find(Auth::user()->id);
         $email = $request->input('email');
@@ -74,7 +75,7 @@ class UserController extends Controller
 
         if($email != null){
             if($email == Auth::user()->email) {
-                return "l'email est identique";
+                return "email inchangé";
             } else {
                 $user = User::find(Auth::user()->id);
                 $user->email = $email;
@@ -86,7 +87,6 @@ class UserController extends Controller
             $user = User::find(Auth::user()->id);
             $user->password = $password;
             $user->save();
-            return "password modifié";
         }
 
         $user->genres()->detach();
@@ -98,7 +98,9 @@ class UserController extends Controller
             ]);
         }
 
-        return "modifications effectuées";
+        $messageModification = "Vos modifications ont bien été prises en compte.";
+
+        return view('moncompte')->with('messageModification', $messageModification)->with('users', Auth::user())->with('genres', Genre::all())->with('user', Auth::user());
     }
 
     /**

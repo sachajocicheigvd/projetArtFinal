@@ -412,3 +412,12 @@ div label input {
 .svgSubmit:hover {
     fill: #27eb42;
 }
+
+.error {
+    font-size: 10px;
+}
+
+.alert-modification {
+    color: #27eb42;
+    font-size: 15px;
+}
