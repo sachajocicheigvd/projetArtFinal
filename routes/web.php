@@ -29,8 +29,9 @@ Route::middleware('auth')->group(function () {
 
     Route::resource("mon-compte", UserController::class);
 
-    Route::get('/sondage', [App\Http\Controllers\sondageController::class, 'afficheSondage']);
-    Route::get('/sondagesacha', [App\Http\Controllers\sondageSachaController::class, 'afficheSondage']);
+    // Route::get('/sondage', [App\Http\Controllers\sondageController::class, 'afficheSondage']);
+    Route::get('/sondagesacha', [App\Http\Controllers\sondageSachaController::class, 'afficheSondage'])->name('stats');
+    Route::get('/api/survey-results', [App\Http\Controllers\SurveyControllerSacha::class, 'getSurveyResults']);
 
     Route::get("vote", [AnswerUserController::class, 'showForm'])->name('vote');
     Route::post("vote", [AnswerUserController::class, 'saveAnswer']);
@@ -38,7 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::get('lastsondage', [SurveyController::class, 'lastSurvey'])->name('lastsondage');
     Route::post('storevote',  [AnswerUserController::class, 'storevote'])->name('storevote');
 
-    Route::get('/refreshhondage', [App\Http\Controllers\sondageController::class, 'refreshSondage']);
+    // Route::get('/refreshhondage', [App\Http\Controllers\sondageController::class, 'refreshSondage']);
 
     Route::get('/chat', [App\Http\Controllers\ChatsController::class, 'afficheMessage']);
     Route::post('/send-message', [App\Http\Controllers\ChatsController::class, 'enregistrement']);

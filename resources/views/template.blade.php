@@ -26,10 +26,9 @@
             <nav>
                 <ul class="nav nav-pills">
                   <li role="presentation"><a href="{{ url('/') }}" class="{{ Request::is('/') ? 'active' : '' }}">Emissions</a></li>
-                  <li role="presentation"><a href="{{ url('/sondage') }}" class="{{ Request::is('sondage') ? 'active' : '' }}">Vote musique</a></li>
+                  <li role="presentation"><a href="{{ route('vote') }}" class="{{ Request::is('vote') ? 'active' : '' }}">Vote musique</a></li>
                   <li role="presentation"><a href="{{ url('/sondagesacha') }}" class="{{ Request::is('sondagesacha') ? 'active' : '' }}">sondage sacha</a></li>
                   <li role="presentation"><a href="{{ url('/chat') }}" class="{{ Request::is('chat') ? 'active' : '' }}">Chat</a></li>
-                  <li role="presentation"><a href="{{ route('vote') }}" class="{{ Request::is('vote') ? 'active' : '' }}">Répondre Sondage</a></li>
                   @if (Auth::check() && Auth::user()->role_id == 2)
                     <li role="presentation"><a href="{{ url('/creationsondage') }}" class="{{ Request::is('creationsondage') ? 'active' : '' }}">Création Sondage</a></li>
                   @endif
@@ -65,7 +64,7 @@
                 </svg>
                 <span class="textNav">Emissions</span>
             </a>
-            <a href="{{ url('/sondage') }}" class="{{ Request::is('sondage') ? 'active' : '' }}">
+            <a href="{{ route('vote') }}" class="{{ Request::is('vote') ? 'active' : '' }}">
                 <svg class="iconenav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-17 h-17">
                     <path fill-rule="evenodd" d="M19.952 1.651a.75.75 0 01.298.599V16.303a3 3 0 01-2.176 2.884l-1.32.377a2.553 2.553 0 11-1.403-4.909l2.311-.66a1.5 1.5 0 001.088-1.442V6.994l-9 2.572v9.737a3 3 0 01-2.176 2.884l-1.32.377a2.553 2.553 0 11-1.402-4.909l2.31-.66a1.5 1.5 0 001.088-1.442V9.017 5.25a.75.75 0 01.544-.721l10.5-3a.75.75 0 01.658.122z" clip-rule="evenodd" />
                 </svg>

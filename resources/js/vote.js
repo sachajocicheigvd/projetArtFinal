@@ -18,8 +18,10 @@ setInterval(function () {
     document.querySelector("#duree").innerHTML = `${minutes}:${seconds}`;
 
     if (minutes < 0) {
-        sondageElement.style.display = "none";
-        alert.style.display = "block";
+        // Changement de lien et va sur sondagesacha
+        window.location.replace("/sondagesacha");
+        // sondageElement.style.display = "none";
+        // alert.style.display = "block";
     }
 
     document.querySelector("#duree").style.display = "block";
