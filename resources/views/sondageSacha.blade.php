@@ -27,6 +27,9 @@ use App\Models\Answer;
     $totalVotes = $answers->sum('users_count');
     $nbVote = 0;
     $totalResponses = 0;
+    // récupère les images des réponses
+    $images = [];
+
 
 ?>
 
@@ -196,16 +199,26 @@ console.log('Durée en timestamp :  <?php echo $durations; ?>');
             
             arr.forEach(a => {
 
+                if (a.artist != null){
                 document.querySelector(".afficheSondage").insertAdjacentHTML("beforeend", `
+    <strong><p>${a.answer}</p></strong>
+    <strong><p>${a.artist}</p></strong>
+    <img src="${a.image}" alt="image" width="100px" height="100px">
+    <span class="pull-right pourcentage">${isNaN(Math.round(a.totalVotes / total * 100)) ? 0 : Math.round(a.totalVotes / total * 100)}%</span>
+    <div class="progress progress active labar">
+        <div class="bar" style="width: ${isNaN(Math.round(a.totalVotes / total * 100)) ? 0 : Math.round(a.totalVotes / total * 100)}%;"></div>
+    </div>`)
+                }
+                else {
+                    document.querySelector(".afficheSondage").insertAdjacentHTML("beforeend", `
     <strong><p>${a.answer}</p></strong>
     <span class="pull-right pourcentage">${isNaN(Math.round(a.totalVotes / total * 100)) ? 0 : Math.round(a.totalVotes / total * 100)}%</span>
     <div class="progress progress active labar">
         <div class="bar" style="width: ${isNaN(Math.round(a.totalVotes / total * 100)) ? 0 : Math.round(a.totalVotes / total * 100)}%;"></div>
-    </div>`);
-
-
-                
-            });
+    </div>`)
+        }                
+    }
+);
 
             
 
