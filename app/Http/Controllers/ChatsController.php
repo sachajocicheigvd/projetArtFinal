@@ -32,13 +32,13 @@ class ChatsController extends Controller
     public function afficheMessage()
     {
 
-        // $messages = MessageModel::with('user')->get();
-        // return view('chat', compact('messages'));
-        if (Auth::check() == false) {
-            // return view('vote');
-            $lienExterne = "Vous devez être connecté pour accéder au chat";
-            return redirect()->route('login')->with('lienExterne', $lienExterne);
-        } else {
+        // // $messages = MessageModel::with('user')->get();
+        // // return view('chat', compact('messages'));
+        // if (Auth::check() == false) {
+        //     // return view('vote');
+        //     $lienExterne = "Vous devez être connecté pour accéder au chat";
+        //     return redirect()->route('login')->with('lienExterne', $lienExterne);
+        // } else {
             // avec les genres lié à l'utilisateur
 
 
@@ -48,4 +48,4 @@ class ChatsController extends Controller
             return view('chat', compact('messages'));
         }
     }
-}
+// }
