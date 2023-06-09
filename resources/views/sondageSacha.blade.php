@@ -122,10 +122,6 @@ $durations = $duree2;
 
 ?>
 
-console.log('Durée en timestamp :  <?php echo $difference; ?>');
-console.log('Durée en timestamp :  <?php echo $duree; ?>');
-
-console.log('Durée en timestamp :  <?php echo $durations; ?>');
 
 
 
@@ -212,9 +208,6 @@ console.log('Durée en timestamp :  <?php echo $durations; ?>');
 
 
 
-            //console.log(response);
-            // Mettez à jour les résultats du sondage avec les nouvelles données reçues
-            updateSurveyResults(response);
         },
         error: function(error) {
             console.error('Une erreur s\'est produite lors de la récupération des résultats du sondage:', error);

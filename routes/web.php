@@ -29,7 +29,7 @@ use App\Models\SurveyControllerSacha;
 */
 
 
-Route::get('/api/survey-results', [App\Http\Controllers\SurveyControllerSacha::class, 'getSurveyResults']);
+//Route::get('/api/survey-results', [App\Http\Controllers\SurveyControllerSacha::class, 'getSurveyResults']);
 
 // Route principale
 Route::get('/', function () { return view('welcome'); })->name('accueil');
