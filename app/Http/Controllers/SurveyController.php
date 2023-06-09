@@ -42,7 +42,7 @@ class SurveyController extends Controller
         // Répondez avec la confirmation du vote ou toute autre donnée nécessaire
         return response()->json(['message' => 'Vote enregistré avec succès']);
     }
-    public function saveSurvey(Request $request)
+    public function saveSurvey(SurveyRequest $request)
     {
 
         /*
