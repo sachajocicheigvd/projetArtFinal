@@ -196,13 +196,13 @@ console.log('Durée en timestamp :  <?php echo $durations; ?>');
             
             arr.forEach(a => {
 
-                //document.querySelector("body > div > div.span6 > ul:nth-child(17)").innerHTML=a.answer+" : "+a.totalVotes;
-                //document.querySelector("body > div > div.span6 > ul:nth-child(17)").insertAdjacentHTML("beforeend",`${a.answer} : ${a.totalVotes}`);
-                document.querySelector(".afficheSondage").insertAdjacentHTML("beforeend",`     <strong><p>${a.answer}</p></strong><span class="pull-right pourcentage">${a.totalVotes/total*100}%</span>
-     <div class="progress progress active labar">
-         <div class="bar" style="width: ${a.totalVotes/total*100}%;"></div>
-     </div>`);
-                
+                document.querySelector(".afficheSondage").insertAdjacentHTML("beforeend", `
+    <strong><p>${a.answer}</p></strong>
+    <span class="pull-right pourcentage">${isNaN(Math.round(a.totalVotes / total * 100)) ? 0 : Math.round(a.totalVotes / total * 100)}%</span>
+    <div class="progress progress active labar">
+        <div class="bar" style="width: ${isNaN(Math.round(a.totalVotes / total * 100)) ? 0 : Math.round(a.totalVotes / total * 100)}%;"></div>
+    </div>`);
+
 
                 
             });
