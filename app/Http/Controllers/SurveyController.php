@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ChatPopup;
 use App\Http\Requests\SurveyRequest;
 use App\Models\Survey;
 use Illuminate\Http\Request;
@@ -12,6 +13,7 @@ use DateTime;
 use DateInterval;
 use Illuminate\Support\Facades\Storage;
 use App\Events\PopupEvent;
+
 
 class SurveyController extends Controller
 {
@@ -73,14 +75,6 @@ class SurveyController extends Controller
             }
         }
 
-
-        /* vieille méthode ChatGPT, Laravel propose une fonction addMinutes() qui fait la même chose
-$delai = new DateTime(); // Obtenir la date et l'heure actuelles
-$delai->add(new DateInterval('PT' . $duration . 'M')); // Ajouter la durée spécifiée en minutes
-$delai->format('Y-m-d H:i:s'); // Afficher la date modifiée
-*/
-
-
         Survey::create([
             'user_id' => $user->id,
             'title' => $title,
@@ -129,7 +123,8 @@ $delai->format('Y-m-d H:i:s'); // Afficher la date modifiée
             'answers' => $answers,
         ];
         // return  in the view aftersurvey
-        event(new PopupEvent("nouveau sondage"));
+        // event(new PopupEvent("nouveau sondage"));
+        event(new ChatPopup("CHATPOPUP"));
         return view('aftersurvey');
     }
     // create function to return the last survey

@@ -1,7 +1,9 @@
 <template>
     <div class="popup">
         <div class="infos" v-if="lastSurvey && showSurveyInfo">
+            <h1>ChatPopup</h1>
             <h2>{{ lastSurvey.title }}</h2>
+
             <p>{{ formattedDuration }}</p>
             <ul>
                 <li v-for="(answer, index) in lastSurvey.answers" :key="index">

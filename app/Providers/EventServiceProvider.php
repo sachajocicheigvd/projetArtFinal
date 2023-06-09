@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Events\ChatPopup;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -17,6 +18,9 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         PopupEvent::class => [
             PopupEventListener::class,
+        ],
+        ChatPopup::class => [
+            ChatPopupListener::class,
         ],
     ];
 

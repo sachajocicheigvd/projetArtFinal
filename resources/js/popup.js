@@ -5,7 +5,7 @@ import "./bootstrap";
 let app = null;
 
 // Écoutez les événements sur la chaîne "popup-channel"
-window.Echo.channel("popup-channel").listen("PopupEvent", (data) => {
+window.Echo.channel("popup-channel").listen("PopupEvent", () => {
     if (app) {
         app.unmount("#app"); // Démonter l'application si elle est déjà montée
     }
