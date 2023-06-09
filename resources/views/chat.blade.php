@@ -1,6 +1,8 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    @vite(['resources/css/app.css' , 'resources/js/app.js', 'resources/js/chatpopup.js'])
 
     @extends('template')
 
@@ -9,10 +11,13 @@
     @endsection
 
     @section('header')
-    <h1 class="page-header"><a href="">Chat</a></h1>
+    <h1 class="page-header"><a href="">Accueil</a></h1>
     @endsection
 
     @section('contenu')
+    @if (Auth::check())
+    <div id="chatpopup"></div>
+    @endif
    
     <div class="app">
 
@@ -31,6 +36,7 @@
             
     
                     <div class="box-body">
+                  
                         <div class="direct-chat-messages" id="messages">
                             @foreach($messages as $message)
                             <p class="{{ $message->user->id === Auth::user()->id ? 'moi' : '' }}">
@@ -88,4 +94,5 @@
     });
     </script>
     @endsection
+ 
 @endguest

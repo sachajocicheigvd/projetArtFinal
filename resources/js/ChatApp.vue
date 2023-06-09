@@ -12,7 +12,7 @@
 
 <script>
 import { ref } from "vue";
-import Popup from "./components/Popup.vue";
+import Popup from "./components/ChatPopup.vue";
 export default {
     setup() {
         const popupTriggers = ref({

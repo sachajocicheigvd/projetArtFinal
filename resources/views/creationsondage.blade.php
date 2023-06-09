@@ -75,7 +75,7 @@
     <!-- Réalisation de 3 champs de formulaires écrit -->
     <!-- Question sur une durée type number -->
     <label for="duration">Durée du sondage</label>
-    <input type="number" name="duration" id="duration" value="{{ old('duration') }}" placeholder="(en min)">
+    <input type="number" name="duration" id="duration" value="{{ old('duration') }}" placeholder="(en min)" required>
     @error('duration')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
@@ -83,18 +83,18 @@
 
     
     <label for="question">Votre question</label>
-    <input type="text" name="title" id="title" value="{{ old('title') }}" placeholder="Votre question">
+    <input type="text" name="title" id="title" value="{{ old('title') }}" placeholder="Votre question" required>
     @error('title')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
     <br>
 
     <label for="answer1">Réponse 1</label>
-    <input type="text" name="answers[]" id="answer1" value="{{ old('answers.0') }}" placeholder="Réponse 1">
+    <input type="text" name="answers[]" id="answer1" value="{{ old('answers.0') }}" placeholder="Réponse 1" required>
     @error('answers.0')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
-    <input type="text" name="artists[]" id="artist1" value="{{ old('artists.0') }}" placeholder="Artiste 1">
+    <input type="text" name="artists[]" id="artist1" value="{{ old('artists.0') }}" placeholder="Artiste 1" required>
     @error('artists.0')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
@@ -105,16 +105,16 @@
     <br>
     
     <label for="answer2">Réponse 2</label>
-    <input type="text" name="answers[]" id="answer2" value="{{ old('answers.1') }}" placeholder="Réponse 2">
+    <input type="text" name="answers[]" id="answer2" value="{{ old('answers.1') }}" placeholder="Réponse 2" required>
     @error('answers.1')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
-    <input type="text" name="artists[]" id="artist2" value="{{ old('artists.1') }}" placeholder="Artiste 2">
+    <input type="text" name="artists[]" id="artist2" value="{{ old('artists.1') }}" placeholder="Artiste 2" required>
     @error('artists.1')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
 
-    <input type="file" name="files[]" id="file2">
+    <input type="file" name="files[]" id="file2" required>
     @error('files.1')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror

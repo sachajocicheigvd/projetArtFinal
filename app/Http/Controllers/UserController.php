@@ -14,16 +14,16 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function __construct()
-    {
-        // $this->middleware('auth', ['except'=>'index']);
+    // public function __construct()
+    // {
+    //     // $this->middleware('auth', ['except'=>'index']);
 
-        // Seul les admins peuvent voir la liste des utilisateurs
-        // $this->middleware('admin', ['only' => 'index']);
+    //     // Seul les admins peuvent voir la liste des utilisateurs
+    //     // $this->middleware('admin', ['only' => 'index']);
 
-        // Seul les utilisateurs authentifiés peuvent voir la liste des utilisateurs
-        $this->middleware('auth', ['only' => 'index']);
-    }
+    //     // Seul les utilisateurs authentifiés peuvent voir la liste des utilisateurs
+    //     $this->middleware('auth', ['only' => 'index']);
+    // }
     public function index()
     {
         $users = Auth::user();   // permet de voir quatre utilisateurs à la fois

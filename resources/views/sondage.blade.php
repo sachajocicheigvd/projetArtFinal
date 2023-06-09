@@ -17,29 +17,7 @@
         <p>Vous êtes sur la page des sondages</p>
         {{-- <div id="app"></div> --}}
 @endsection
-<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-<script>
-    // Configurez Pusher avec vos clés d'API
-    const pusher = new Pusher('38ba9aff72729cc46b0a', {
-        cluster: 'eu',
-        encrypted: true
-    });
 
-    // Souscrivez à un canal Pusher
-    const channel = pusher.subscribe('survey-channel');
-
-    // Écoutez les événements du canal
-    channel.bind('survey-vote', function(data) {
-        // Mettez à jour les résultats du sondage en utilisant les données reçues
-        updateSurveyResults(data);
-    });
-
-    // Fonction pour mettre à jour les résultats du sondage
-    function updateSurveyResults(data) {
-        // Mettez à jour les résultats du sondage en utilisant les données reçues
-        // Vous devrez peut-être ajouter du code ici pour mettre à jour les éléments HTML appropriés avec les nouvelles données
-    }
-</script>
 
 <script>
         // Fonction pour démarrer le chronomètre

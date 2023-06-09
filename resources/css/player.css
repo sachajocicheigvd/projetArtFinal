@@ -1,0 +1,77 @@
+
+#audioPlayer {
+    width: 100%;
+    border : none;
+    object-fit: cover;
+   
+
+}
+
+#titreEmission {
+    margin-right: 12px;
+    margin-left: 12px;
+    white-space: nowrap;
+}
+
+#imgCover {
+    margin-left: 12px;
+    width: 80px;
+    height: 52px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#audioPlayer::-webkit-media-controls-panel {
+    background-color: var(--box-color);
+   
+}
+#audioPlayer::-webkit-media-controls-timeline {
+    display: none;
+    /* Masquer la barre de progression */
+}
+
+#audioPlayer::-webkit-media-controls-time-remaining-display {
+    display: none;
+    /* Masquer l'affichage du temps restant */
+}
+
+.audio-info {
+    display: flex;
+    align-items: center;
+}
+
+
+.flex-container {
+    background-color: var(--box-color);
+    position: fixed;
+    bottom: 100;
+    left: 0;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    height: 70px;
+}
+
+audio:focus {
+    outline: none;
+}
+
+/* Masquer les contrôles par défaut */
+audio::-webkit-media-controls {
+    display: none !important;
+}
+
+#playPauseButton {
+    background-color: transparent;
+    display : center;
+    width: 45px;
+    height: 42px;
+    padding-right: 15px;
+   
+    
+}
+
+#boutonenvoie {
+    background-color: var(--box-color);
+}
