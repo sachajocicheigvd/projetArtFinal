@@ -20,7 +20,7 @@ class SurveyController extends Controller{
         return view('creationsondage')->with('user', Auth::user());
     }
 
-    public function saveSurvey(Request $request)
+    public function saveSurvey(SurveyRequest $request)
     {
 
         /*

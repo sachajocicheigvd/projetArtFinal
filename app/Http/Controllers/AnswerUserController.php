@@ -57,7 +57,7 @@ class AnswerUserController extends Controller
             $dejaRepondu = true;
         }
 
-        if($delai <= 0 || $dejaRepondu){
+        if($delai <= 0 || $dejaRepondu || $dernierSondage->type == "text"){
             return redirect()->route('stats');
         }
 
@@ -110,6 +110,6 @@ class AnswerUserController extends Controller
                 'updated_at' => now(),
             ]);
         }
-        return "Votre vote a bien été pris en compte";
+        return redirect()->route('stats');
     }  
 }
