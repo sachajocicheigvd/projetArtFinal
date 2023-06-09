@@ -3,7 +3,6 @@
         <div class="infos" v-if="lastSurvey && showSurveyInfo">
             <h1>ChatPopup</h1>
             <h2>{{ lastSurvey.title }}</h2>
-
             <p>{{ formattedDuration }}</p>
             <ul>
                 <li v-for="(answer, index) in lastSurvey.answers" :key="index">
@@ -117,16 +116,15 @@ export default {
         -50%
     ); /* Déplacer le popup de moitié de sa largeur et de sa hauteur vers le haut et la gauche */
     z-index: 99;
-    background-color: rgba(12, 189, 92, 0.2);
+    background-color: rgba(12, 189, 92, 1);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 500px; /* Ajustez la largeur selon vos besoins */
-    height: 500px;
-
-    .popup {
-        background-color: #fff;
-        padding: 32px;
-    }
+    width: 300px; /* Ajustez la largeur selon vos besoins */
+    height: 300px;
 }
+
+// .popup * {
+//     background-color: pink;
+// }
 </style>
