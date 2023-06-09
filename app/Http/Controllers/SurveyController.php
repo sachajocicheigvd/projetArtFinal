@@ -128,7 +128,7 @@ class SurveyController extends Controller
             'answers' => $answers,
         ];
         // return  in the view aftersurvey
-        // event(new PopupEvent("nouveau sondage"));
+        event(new PopupEvent("nouveau sondage"));
         event(new ChatPopup("CHATPOPUP"));
         return view('aftersurvey');
     }
