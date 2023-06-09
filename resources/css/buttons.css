@@ -238,7 +238,8 @@ div label input {
 }
 
 .Rock {
-    border: 2px solid #ff0000;
+    border: 0.7px solid #FF0000;
+    border-radius: 20px;
 }
 
 .Rock span {

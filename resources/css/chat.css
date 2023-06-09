@@ -1,23 +1,43 @@
+.encadree2 {
+    display: flex;
+}
 
+
+p.message {
+    background-color: transparent;
+    margin-top : 0px;
+
+}
+
+p.genres {
+    margin-top:0px;
+    background-color: transparent;
+}
 
 .user{
+    background-color: transparent;
     display: block;
     white-space: normal;
     color: var(--accent-color);
 }
 
+.text-muted {
+    background-color: transparent;
+}
+
 .encadree {
+    display : flex;
+    flex-direction: column;
     background-color: var(--box-color);
     color : var(--accent-color);
-    display: flex;
     padding-left: 10px;
     margin-bottom: 15px;
     width: 357px;
-    background: #2A2A2F;
     border-radius: 20px;
-    margin-top: 12px;
+    text-align: left;
+    margin-top: 5px;
     padding-left: 10px;
-    line-height: 17px;
+    
     color: #FFFFFF;
 }
 
@@ -43,7 +63,6 @@ input[type="text"]::placeholder {
 }
 
 
-
 #boutonEnvoi {
         background-color: transparent;
         display: center;
@@ -55,7 +74,7 @@ input[type="text"]::placeholder {
 .sectionChat {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: right;
     height: 100vh;
 
 }
@@ -80,8 +99,8 @@ input[type="text"]::placeholder {
 }
 
 #send_message svg {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
 }
 
 #messageAEnvoyer {
@@ -99,9 +118,39 @@ input[type="text"]::placeholder {
     justify-content: right;
     align-items: center;
     align-items: right;
+    margin-bottom: 200px;
 }
 
-#messages {
-    display: inline-block;
-    background-color: transparent;
+.presentation {
+    display: flex;
+    text-align: left;
+    align-items: flex-start;
+    margin : 0px;
+}
+
+.presentation img {
+    width: 80px;
+    height: 52px;
+    margin-bottom: 28px;
+    
+}
+
+.presentationTexte {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-top: 0px;
+}
+
+.textePres {
+    margin : 0px;
+}
+
+.genreMusiqueMessage {
+    float: right;
+}
+
+span.musique.Rock.genreMusiqueMessage {
+    float: right;
+    margin-right: 50px;
 }

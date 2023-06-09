@@ -3,20 +3,26 @@
     width: 100%;
     border : none;
     object-fit: cover;
+    background-color: transparent;
    
 
+}
+
+div.audio-info {
+    background-color: transparent;
 }
 
 #titreEmission {
     margin-right: 12px;
     margin-left: 12px;
     white-space: nowrap;
+    background-color: transparent;
 }
 
 #imgCover {
     margin-left: 12px;
     width: 80px;
-    height: 52px;
+    height: 40px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -63,15 +69,43 @@ audio::-webkit-media-controls {
 }
 
 #playPauseButton {
+    display: flex;
+    justify-content: space-evenly;
+    position: fixed;
+    right: 0;
+    width : 100%;
     background-color: transparent;
     display : center;
     width: 45px;
     height: 42px;
-    padding-right: 15px;
+    padding-right: 20px;
    
     
 }
 
 #boutonenvoie {
     background-color: var(--box-color);
+}
+
+.espace {
+    background-color: transparent;
+    margin-right : 1px;
+}
+
+#boutonPlayPause {
+    /* Réinitialisation des styles par défaut */
+        background: transparent;
+        border: none;
+        padding: 0;
+        margin: 0;
+        width: auto;
+        height: auto;
+        cursor: pointer;
+        align-self: right;
+
+}
+
+button svg {
+    background-color: transparent;
+   
 }
