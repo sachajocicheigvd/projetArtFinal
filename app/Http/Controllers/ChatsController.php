@@ -32,20 +32,17 @@ class ChatsController extends Controller
     public function afficheMessage()
     {
 
-        // // $messages = MessageModel::with('user')->get();
-        // // return view('chat', compact('messages'));
-        // if (Auth::check() == false) {
-        //     // return view('vote');
-        //     $lienExterne = "Vous devez être connecté pour accéder au chat";
-        //     return redirect()->route('login')->with('lienExterne', $lienExterne);
-        // } else {
-            // avec les genres lié à l'utilisateur
 
+    if (Auth::check() == false) {
+        $lienExterne = "Vous devez être connecté pour accéder au chat";
+        return redirect()->route('login')->with('lienExterne', $lienExterne);
+    } else {
+        $messages = MessageModel::with('user')->get();
+        $genres = Auth::user()->genres;
+        return view('chat', compact('messages', 'genres'));
+    
+}
 
-            $messages = MessageModel::with('user')->get();
-
-
-            return view('chat', compact('messages'));
         }
     }
 // }

@@ -1,24 +1,27 @@
+.message {
+    margin-top: 12px;
+    white-space: normal;
+    position: absolute;
+    width: 348px;
+    height: 37.33px;
+    padding-left: 10px;
+    line-height: 17px;
+    color: #FFFFFF;
+}
 
-
-.user{
+.user {
     display: block;
     white-space: normal;
     color: var(--accent-color);
 }
 
 .encadree {
-    background-color: var(--box-color);
-    color : var(--accent-color);
-    display: flex;
     padding-left: 10px;
     margin-bottom: 15px;
     width: 357px;
+    height: 56px;
     background: #2A2A2F;
     border-radius: 20px;
-    margin-top: 12px;
-    padding-left: 10px;
-    line-height: 17px;
-    color: #FFFFFF;
 }
 
 input:focus {
@@ -30,7 +33,7 @@ input[type="text"]::placeholder {
 }
 
 .ecritMessage {
-    
+
     padding-left: 10px;
     color: black;
     margin-top: 40px;
@@ -39,24 +42,24 @@ input[type="text"]::placeholder {
     border-radius: 20px;
     width: 299px;
     height: 31px;
-   
+
 }
 
 
 
 #boutonEnvoi {
-        background-color: transparent;
-        display: center;
-        width: 45px;
-        height: 42px;
-        padding-right: 15px;
+    background-color: transparent;
+    display: center;
+    width: 45px;
+    height: 42px;
+    padding-right: 15px;
 }
 
 .sectionChat {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+  
 
 }
 
@@ -65,7 +68,7 @@ input[type="text"]::placeholder {
     display: center;
     width: 45px;
     height: 42px;
-    padding-right: 15px; 
+    padding-right: 15px;
 }
 
 #send_message {
@@ -82,6 +85,8 @@ input[type="text"]::placeholder {
 #send_message svg {
     width: 60px;
     height: 60px;
+
+
 }
 
 #messageAEnvoyer {
@@ -99,9 +104,4 @@ input[type="text"]::placeholder {
     justify-content: right;
     align-items: center;
     align-items: right;
-}
-
-#messages {
-    display: inline-block;
-    background-color: transparent;
 }
