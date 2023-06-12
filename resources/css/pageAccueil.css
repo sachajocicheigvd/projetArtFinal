@@ -1,6 +1,7 @@
 /* box emission en cours */
 
 .rectangleEmission {
+    
     width: 291px;
     height: 204px;
     background: var(--box-color);
@@ -33,6 +34,7 @@
 /* box emissions  */
 
 .rectangleEmissionPetit {
+    gap: 20px;
     position: absolute;
     width: 209px;
     background: var(--box-color);
@@ -123,11 +125,13 @@
     position: absolute;
     justify-content: center;
     border-radius: 40px;
-    margin-top: 990px;
+    margin-top: 300px;
+    margin-bottom : 300px;
     display: flex;
-    perspective: 1000px;
+    perspective: 7000px;
     transform-style: preserve-3d;
-    margin-right: 175px;
+    margin-left : 90px;
+    margin-right: 100px;
 }
 
 
@@ -192,6 +196,7 @@
     padding-top: 20px;
     background-color: transparent;
     border:none;
+    
 
 
 }
@@ -201,7 +206,7 @@ display:flex;
 align-items: center;
 background: transparent;
 border: none;
-  
+
         margin: 0;
         width: auto;
         height: auto;
@@ -213,3 +218,43 @@ border: none;
     background-color: transparent;
     border: none;
 }
+
+
+#barreProgression {
+    display: flex;
+    align-items: center;
+   
+}
+
+#tempsEcoulé,
+#barre,
+#tempsTotal {
+    margin: 0 10px;
+}
+
+#barre {
+    flex-grow: 1;
+    background-color: var(--secondaire-color);
+    height: 5px;
+    width: 150px;
+    position: relative;
+    border-radius: 10px;
+}
+
+#progression {
+    background-color: var(--accent-color);
+    height:100%;
+    width: 0px;
+    position: absolute;
+    border-radius: 10px;
+}
+
+#debutProgression {
+  position: absolute;
+  height: 100%;
+  width: 0;
+  background-color: green;
+  z-index: 1;
+  border-radius: 10px;
+}
+

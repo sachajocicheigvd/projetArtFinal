@@ -80,9 +80,7 @@
   </svg>
     </button>
    <script>
-
-
-
+    
       function toggleAudio() {
         console.log("toggleAudio")
         let audio = document.querySelector("#audioPlayer");
