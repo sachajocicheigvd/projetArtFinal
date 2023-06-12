@@ -43,21 +43,14 @@ class ChatsController extends Controller
         // avec les genres lié à l'utilisateur
 
 
-<<<<<<< HEAD
-            $messages = MessageModel::with('user')->get();
- 
-            $genres = User::find(Auth::user()->id)->genres()->pluck('name')->toArray();
-
-
-
-            return view('chat', compact('messages', 'genres'));
-        }
-=======
         $messages = MessageModel::with('user')->get();
 
+        $genres = User::find(Auth::user()->id)->genres()->pluck('name')->toArray();
 
-        return view('chat', compact('messages'));
->>>>>>> d2346febb5329390a5fd91c940c39ca8800441ee
+
+
+        return view('chat', compact('messages', 'genres'));
     }
 }
+
 // }
