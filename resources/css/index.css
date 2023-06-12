@@ -6,7 +6,7 @@
 @import "player.css";
 @import "buttons.css";
 @import "app.css";
-
+@import "pageAccueil.css";
 body {
     background-color: var(--fond-color);
 }
