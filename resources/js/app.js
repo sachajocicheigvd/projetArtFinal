@@ -30,6 +30,7 @@ function getCurrentTime() {
 
     return hours + ":" + minutes; // Retourner l'heure au format "hh:mm"
 }
+const lastMessage = document.querySelector(".message:last-child");
 
 window.Echo.channel("chat").listen(".message", (e) => {
     $("#messages").append(

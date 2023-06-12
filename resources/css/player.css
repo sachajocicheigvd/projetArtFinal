@@ -11,6 +11,7 @@
     margin-right: 12px;
     margin-left: 12px;
     white-space: nowrap;
+    background-color: transparent;
 }
 
 #imgCover {
@@ -20,6 +21,7 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    background-color: transparent;
 }
 
 #audioPlayer::-webkit-media-controls-panel {
@@ -38,7 +40,8 @@
 
 .audio-info {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
+    background-color: transparent;
 }
 
 
@@ -74,4 +77,27 @@ audio::-webkit-media-controls {
 
 #boutonenvoie {
     background-color: var(--box-color);
+}
+
+.espace {
+    background-color: transparent;
+    margin-right: 1px;
+}
+
+#boutonPlayPause {
+    /* Réinitialisation des styles par défaut */
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    width: auto;
+    height: auto;
+    cursor: pointer;
+    align-self: right;
+
+}
+
+button svg {
+    background-color: transparent;
+
 }
