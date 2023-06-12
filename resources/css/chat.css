@@ -1,36 +1,44 @@
+.message {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 12px;
+    white-space: normal;
+    position: absolute;
+    width: 348px;
+    height: 37.33px;
+    padding-left: 10px;
+    line-height: 17px;
+    color: #FFFFFF;
+    background-color: transparent;
+}
 
-
-.user{
+.user {
     display: block;
     white-space: normal;
+    background-color: transparent;
     color: var(--accent-color);
 }
 
 .encadree {
-    background-color: var(--box-color);
-    color : var(--accent-color);
-    display: flex;
     padding-left: 10px;
     margin-bottom: 15px;
-    width: 357px;
+    height: 56px;
     background: #2A2A2F;
     border-radius: 20px;
-    margin-top: 12px;
-    padding-left: 10px;
-    line-height: 17px;
-    color: #FFFFFF;
 }
 
-input:focus {
+input:focus.ecritMessage {
     outline: none;
 }
 
-input[type="text"]::placeholder {
+.ecritMessage::placeholder {
     color: black;
 }
 
+
 .ecritMessage {
-    
+
     padding-left: 10px;
     color: black;
     margin-top: 40px;
@@ -39,17 +47,15 @@ input[type="text"]::placeholder {
     border-radius: 20px;
     width: 299px;
     height: 31px;
-   
+
 }
 
 
 
 #boutonEnvoi {
-        background-color: transparent;
-        display: center;
-        width: 45px;
-        height: 42px;
-        padding-right: 15px;
+    background-color: transparent;
+    display: center;
+
 }
 
 .sectionChat {
@@ -65,7 +71,7 @@ input[type="text"]::placeholder {
     display: center;
     width: 45px;
     height: 42px;
-    padding-right: 15px; 
+    padding-right: 15px;
 }
 
 #send_message {
@@ -80,8 +86,10 @@ input[type="text"]::placeholder {
 }
 
 #send_message svg {
-    width: 60px;
-    height: 60px;
+    height: 70px;
+    width: 70px;
+
+
 }
 
 #messageAEnvoyer {
@@ -102,6 +110,51 @@ input[type="text"]::placeholder {
 }
 
 #messages {
-    display: inline-block;
-    background-color: transparent;
+    padding-bottom: 120px;
+}
+
+#encadreeMessage {
+    padding-bottom: 50px;
+}
+
+
+input#message {
+    border-radius: 20px;
+}
+
+.presentation{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.presentation {
+    display: flex;
+    text-align: left;
+    align-items: flex-start;
+    margin: 0px;
+}
+
+.presentation img {
+    width: 80px;
+    height: 52px;
+    margin-bottom: 28px;
+    border-radius: 10px;
+
+}
+
+.presentationTexte {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-top: 0px;
+}
+
+.textePres {
+    margin: 0px;
+}
+
+.genreMusiqueMessage {
+    float: right;
 }
