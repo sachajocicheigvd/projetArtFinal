@@ -50,25 +50,30 @@
             
     
                     <div class="box-body">
-                  
+                  <div id="zonemess">
                         <div class="direct-chat-messages" id="messages" >
                        
                             @foreach($messages as $message)
                             <div class = "encadree">
                            
                             <p class="message {{ $message->user->id === Auth::user()->id ? 'moi' : '' }}">
+                              {{ \Carbon\Carbon::parse($message->created_at)->format('H:i') }}
+
                                 <strong class= "user">{{$message->user->first_name}}</strong> {{ $message->content }}
-                             @foreach($genres as $index => $genre)
+{{--                              @foreach($genres as $index => $genre)
+                             <span class="text-muted">
+                                </span>
                             @if($index < 3)
-                              <p class = "genres">{{$genre}}</p>
+                              <p class = "genreMusiqueMessage">{{$genre}}</p>
                             
                              @endif
-                             @endforeach 
+                             @endforeach  --}}
                             </p>
                             </div>
 
                         @endforeach
-
+                        </div>
+                        </div>
 
                                <form action="#" method="post" id="message_form">
                             <div class="input-group" id="messageAEnvoyer">
@@ -84,6 +89,8 @@
                             </div>
                         </form>
 </div>
+
+
                             
                             
                         </div>

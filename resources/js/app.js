@@ -32,17 +32,27 @@ function getCurrentTime() {
 }
 const lastMessage = document.querySelector(".message:last-child");
 
+
 window.Echo.channel("chat").listen(".message", (e) => {
-    $("#messages").append(
-        '<p class="moi"><strong>' +
-            e.username +
-            "</strong>" +
-            ": " +
-            e.message +
-            "</p>" +
-            '<p class="text-muted">' +
-            getCurrentTime() +
-            "</p>"
-    );
+    let username = $("#username").val();
+    let currentTime = getCurrentTime();
+    let lastChild = document.querySelector("#zonemess > div:last-child");
+
+    let message = e.message;
+    let formattedMessage = '';
+    for (let i = 0; i < message.length; i += 23) {
+        formattedMessage += message.substring(i, i + 20) + "<br>";
+    }
+
+    let messageHTML =
+        '<div class="encadree">' +
+        '<p class="message ' + (e.username === username ? 'moi' : '') + '">' +
+        currentTime + '<strong class="user">' + e.username + '</strong> ' + formattedMessage +
+        '</p>' +
+        '<p class="text-muted">' + '</p>' +
+        '</div>';
+
+    $("#zonemess > div:last-child").append(messageHTML);
     $("#message").val("");
+    $("html, body").animate({ scrollTop: $(document).height() }, "slow");
 });

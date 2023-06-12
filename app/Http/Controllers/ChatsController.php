@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Events\ChatPopup;
+use App\Models\Genre;
 
 
 class ChatsController extends Controller
@@ -43,14 +44,13 @@ class ChatsController extends Controller
         // avec les genres lié à l'utilisateur
 
 
+        $users = Auth::user();
         $messages = MessageModel::with('user')->get();
 
-        $genres = User::find(Auth::user()->id)->genres()->pluck('name')->toArray();
 
-
-
-        return view('chat', compact('messages', 'genres'));
+        return view('chat', compact('messages'),compact('users'))->with('genres', Genre::all())->with('user', Auth::user());
     }
-}
+    }
+
 
 // }
