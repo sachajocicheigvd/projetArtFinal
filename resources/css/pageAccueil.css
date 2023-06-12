@@ -1,7 +1,6 @@
 /* box emission en cours */
 
 .rectangleEmission {
-    position: absolute;
     width: 291px;
     height: 204px;
     background: var(--box-color);
@@ -184,4 +183,33 @@
 #s5:checked~#slide2 {
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .37);
     transform: translate3d(30%, 0, -200px);
+}
+
+
+
+#lecteurAudioPageAccueil {
+    display: flex;
+    padding-top: 20px;
+    background-color: transparent;
+    border:none;
+
+
+}
+
+#boutonPlayPausePageAccueil {
+display:flex;
+align-items: center;
+background: transparent;
+border: none;
+  
+        margin: 0;
+        width: auto;
+        height: auto;
+        cursor: pointer;
+        align-self: right;
+}
+
+#lecteurAudioFinal {
+    background-color: transparent;
+    border: none;
 }

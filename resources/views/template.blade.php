@@ -55,17 +55,21 @@
 
 <div id="player" class="PlayerFlex-container">
   <div class="audio-info">
-    <img id = "imgCover" src="{{ asset('storage/images/saucisse9Audio.mp3') }}"alt="Cover Image">
+    <img id= "imgCover" src="{{ asset('storage/images/saucisse9.png') }}" >
     <p id = "titreEmission" >Saucisse 9</p>
   </div>
 
+
+   <!--  <img src="{{ asset('storage/images/logoCouleur3.svg') }}" style="width: 95px; 
+        height: 147px" alt="logoCouleur3" class="logoCouleur3"> -->
  
-      <audio id="audioPlayer" src="{{ Storage::url('storage\app\public\images\saucisse9Audio.mp3') }}"></audio>
+      <audio id="audioPlayer" src="{{ asset('storage/images/saucisse9Audio.mp3')}} "></audio>
    
     <script>
       function playAudio() {
         let audio = document.querySelector("#audioPlayer");
         audio.play();
+        
       }
     </script>
  <!-- <audio id="audioPlayer" src="resources\views\saucisse9.mp3"></audio> -->
@@ -75,14 +79,19 @@
     <path fill-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clip-rule="evenodd" />
   </svg>
     </button>
-   <script>ra
+   <script>
+
+
+
       function toggleAudio() {
         console.log("toggleAudio")
         let audio = document.querySelector("#audioPlayer");
         if (audio.paused) {
           audio.play();
+           localStorage.setItem("audioState", "playing");
         } else {
           audio.pause();
+          localStorage.setItem("audioState", "paused");
         }
       }
     </script>
