@@ -53,18 +53,18 @@
 
         @yield('contenu')
 
-<div id="player" class="flex-container">
+<div id="player" class="PlayerFlex-container">
   <div class="audio-info">
     <img id = "imgCover" src="{{ asset('storage/images/saucisse9Audio.mp3') }}"alt="Cover Image">
     <p id = "titreEmission" >Saucisse 9</p>
   </div>
 
  
-      <audio id="audioPlayer" src="{{ Storage::url('storage\app\public\images\saucisse9.png') }}"></audio>
+      <audio id="audioPlayer" src="{{ Storage::url('storage\app\public\images\saucisse9Audio.mp3') }}"></audio>
    
     <script>
       function playAudio() {
-        var audio = document.getElementById("audioPlayer");
+        let audio = document.querySelector("#audioPlayer");
         audio.play();
       }
     </script>
@@ -77,7 +77,8 @@
     </button>
    <script>ra
       function toggleAudio() {
-        let audio = document.getElementById("audioPlayer");
+        console.log("toggleAudio")
+        let audio = document.querySelector("#audioPlayer");
         if (audio.paused) {
           audio.play();
         } else {

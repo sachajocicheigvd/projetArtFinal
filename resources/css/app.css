@@ -143,3 +143,8 @@ img.logoCouleur3 {
   flex-direction: column;
   justify-content: center;
 }
+
+#boutonCreationCompte {
+  display: flex;
+  justify-content: center;
+  }

@@ -79,8 +79,8 @@
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
-        <div class="pageMilieu">
-        <x-primary-button class="button-action" id="creationCompte">
+        <div class="pageMilieu" id="boutonCreationCompte">
+        <x-primary-button class="button-action" >
                             {{ __('Suivant') }}
                         </x-primary-button>
         </div>
