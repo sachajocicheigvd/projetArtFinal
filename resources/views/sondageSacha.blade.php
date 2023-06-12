@@ -27,6 +27,9 @@ use App\Models\Answer;
     $totalVotes = $answers->sum('users_count');
     $nbVote = 0;
     $totalResponses = 0;
+    // récupère les images des réponses
+    $images = [];
+
 
 ?>
 
@@ -40,13 +43,13 @@ use App\Models\Answer;
   <!-- Chronomètre -->
   <div id="countdown" class="text-center">
         <span id="days" class="display-4"></span>
-        <span class="text-muted">jours</span>
+        <span id="days-label" class="text-muted">jours</span>
         <span id="hours" class="display-4"></span>
-        <span class="text-muted">heures</span>
+        <span id="hours-label" class="text-muted">heures</span>
         <span id="minutes" class="display-4"></span>
-        <span class="text-muted">minutes</span>
+        <span id="minutes-label" class="text-muted">minutes</span>
         <span id="seconds" class="display-4"></span>
-        <span class="text-muted">secondes</span>
+        <span id="seconds-label" class="text-muted">secondes</span>
     </div>
 
     <div id="contentContainer" id="dataSondage">
@@ -122,13 +125,7 @@ $durations = $duree2;
 
 ?>
 
-console.log('Durée en timestamp :  <?php echo $difference; ?>');
-console.log('Durée en timestamp :  <?php echo $duree; ?>');
-
-console.log('Durée en timestamp :  <?php echo $durations; ?>');
-
-
-
+let estTermine = false;
 
         function startTimer(duration, display) {
             var timer = duration, days, hours, minutes, seconds;
@@ -147,10 +144,16 @@ console.log('Durée en timestamp :  <?php echo $durations; ?>');
                 display.querySelector('#hours').textContent = hours;
                 display.querySelector('#minutes').textContent = minutes;
                 display.querySelector('#seconds').textContent = seconds;
+
+                display.querySelector('#days-label').textContent = days > 1 ? "jours" : "jour";
+                display.querySelector('#hours-label').textContent = hours > 1 ? "heures" : "heure";
+                display.querySelector('#minutes-label').textContent = minutes > 1 ? "minutes" : "minute";
+                display.querySelector('#seconds-label').textContent = seconds > 1 ? "secondes" : "seconde";
     
                 if (--timer < 0) {
                     clearInterval(interval);
                     display.innerHTML = '<span style="color: red;">Résultat final du sondage</span>';
+                    estTermine = true;
                 }
             }, 1000);
         }
@@ -185,6 +188,16 @@ console.log('Durée en timestamp :  <?php echo $durations; ?>');
 
             var arr = Object.values(response);
 
+            // Tri de l'array par ordre du nombre de votes
+            arr.sort(function(a, b) {
+                return b.totalVotes - a.totalVotes;
+            });
+
+            // Raccourci le tableau au 3 premiers résultats si status = true seulement si le sondage est de type music (donc contient un artiste)
+            if (estTermine == true && arr[0].artist != null) {
+                arr = arr.slice(0, 3);
+            }
+
 
             document.querySelector(".afficheSondage").innerHTML="";
 
@@ -196,25 +209,27 @@ console.log('Durée en timestamp :  <?php echo $durations; ?>');
             
             arr.forEach(a => {
 
-                //document.querySelector("body > div > div.span6 > ul:nth-child(17)").innerHTML=a.answer+" : "+a.totalVotes;
-                //document.querySelector("body > div > div.span6 > ul:nth-child(17)").insertAdjacentHTML("beforeend",`${a.answer} : ${a.totalVotes}`);
-                document.querySelector(".afficheSondage").insertAdjacentHTML("beforeend",`     <strong><p>${a.answer}</p></strong><span class="pull-right pourcentage">${a.totalVotes/total*100}%</span>
-     <div class="progress progress active labar">
-         <div class="bar" style="width: ${a.totalVotes/total*100}%;"></div>
-     </div>`);
-                
+                if (a.artist != null){
+                document.querySelector(".afficheSondage").insertAdjacentHTML("beforeend", `
+    <strong><p>${a.answer}</p></strong>
+    <strong><p>${a.artist}</p></strong>
+    <img src="${a.image}" alt="image" width="100px" height="100px">
+    <span class="pull-right pourcentage">${isNaN(Math.round(a.totalVotes / total * 100)) ? 0 : Math.round(a.totalVotes / total * 100)}%</span>
+    <div class="progress progress active labar">
+        <div class="bar" style="width: ${isNaN(Math.round(a.totalVotes / total * 100)) ? 0 : Math.round(a.totalVotes / total * 100)}%;"></div>
+    </div>`)
+                }
+                else {
+                    document.querySelector(".afficheSondage").insertAdjacentHTML("beforeend", `
+    <strong><p>${a.answer}</p></strong>
+    <span class="pull-right pourcentage">${isNaN(Math.round(a.totalVotes / total * 100)) ? 0 : Math.round(a.totalVotes / total * 100)}%</span>
+    <div class="progress progress active labar">
+        <div class="bar" style="width: ${isNaN(Math.round(a.totalVotes / total * 100)) ? 0 : Math.round(a.totalVotes / total * 100)}%;"></div>
+    </div>`)
+        }                
+    }
+);
 
-                
-            });
-
-            
-
-
-
-
-            //console.log(response);
-            // Mettez à jour les résultats du sondage avec les nouvelles données reçues
-            updateSurveyResults(response);
         },
         error: function(error) {
             console.error('Une erreur s\'est produite lors de la récupération des résultats du sondage:', error);

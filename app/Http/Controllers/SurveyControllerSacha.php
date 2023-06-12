@@ -20,7 +20,9 @@ class SurveyControllerSacha extends Controller
         foreach ($surveyResults as $result) {
             $responseData[] = [
                 'answer' => $result->answer,
+                'artist' => $result->artist,
                 'totalVotes' => $result->users_count,
+                'image' => $result->picture,
             ];
         }
 
