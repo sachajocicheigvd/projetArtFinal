@@ -95,9 +95,11 @@ export default {
                         .toString()
                         .padStart(2, "0")}`;
                     duration--;
+                    this.$emit("condition-notsatisfied");
                 } else {
                     clearInterval(this.countdownInterval);
                     this.formattedDuration = "Sondage terminé";
+                    this.$emit("condition-satisfied");
                 }
             }, 1000);
         },

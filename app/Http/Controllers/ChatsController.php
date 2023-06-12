@@ -8,6 +8,7 @@ use App\Models\Message as MessageModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Events\ChatPopup;
 
 
 class ChatsController extends Controller
@@ -39,9 +40,10 @@ class ChatsController extends Controller
         //     $lienExterne = "Vous devez être connecté pour accéder au chat";
         //     return redirect()->route('login')->with('lienExterne', $lienExterne);
         // } else {
-            // avec les genres lié à l'utilisateur
+        // avec les genres lié à l'utilisateur
 
 
+<<<<<<< HEAD
             $messages = MessageModel::with('user')->get();
  
             $genres = User::find(Auth::user()->id)->genres()->pluck('name')->toArray();
@@ -50,5 +52,12 @@ class ChatsController extends Controller
 
             return view('chat', compact('messages', 'genres'));
         }
+=======
+        $messages = MessageModel::with('user')->get();
+
+
+        return view('chat', compact('messages'));
+>>>>>>> d2346febb5329390a5fd91c940c39ca8800441ee
     }
+}
 // }

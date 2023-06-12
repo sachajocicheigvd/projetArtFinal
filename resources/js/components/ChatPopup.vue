@@ -1,21 +1,26 @@
 <template>
     <div class="popup">
-        <div class="infos" v-if="lastSurvey && showSurveyInfo">
-            <h1>ChatPopup</h1>
-            <h2>{{ lastSurvey.title }}</h2>
-            <p>{{ formattedDuration }}</p>
-            <ul>
-                <li v-for="(answer, index) in lastSurvey.answers" :key="index">
-                    <p>{{ answer.answer }}</p>
-                    <button @click="vote(answer.id)">Vote</button>
-                </li>
-            </ul>
-        </div>
+        <ul>
+            <li v-for="item in lastSurvey" :key="item.answer">
+                <strong
+                    ><p>{{ item.answer }}</p></strong
+                >
+                <span class="pull-right pourcentage"
+                    >{{
+                        isNaN(Math.round((item.totalVotes / total) * 100))
+                            ? 0
+                            : Math.round((item.totalVotes / total) * 100)
+                    }}%</span
+                >
+                <div class="progress progress active labar">
+                    <div
+                        class="bar"
+                        style="width: {{ isNaN(Math.round(item.totalVotes / total * 100)) ? 0 : Math.round(item.totalVotes / total * 100) }}%;"
+                    ></div>
+                </div>
+            </li>
+        </ul>
         <div class="popup-inner">
-            <p v-show="showPopupMessage">
-                Merci pour votre vote, retrouvez les résultats du sondage dans
-                le chat!
-            </p>
             <button class="popup-close" @click="togglePopup()">Fermer</button>
         </div>
     </div>
@@ -29,36 +34,21 @@ export default {
     data() {
         return {
             lastSurvey: null,
-            countdownInterval: null,
-            formattedDuration: "",
+            total: 0, // Ajoutez la variable total ici
             showPopupMessage: false,
             showSurveyInfo: true,
         };
     },
     async created() {
-        await this.fetchLastSurvey();
+        await this.fetchLastAnswer();
+    },
+    mounted() {
+        setInterval(this.fetchLastAnswer, 1000); // Actualisation toutes les secondes
     },
     methods: {
-        vote(answer) {
-            console.log(answer);
-            // Logique pour enregistrer le vote dans la base de données
-            axios
-                .post("/storevote", { answer: answer })
-                .then((response) => {
-                    // Réponse de succès, vous pouvez effectuer des actions supplémentaires si nécessaire
-                    console.log(response.data);
-                    this.showPopupMessage = true; // Afficher le message "Hola" dans le popup
-                    this.showSurveyInfo = false; // Cacher la section "infos"
-                })
-                .catch((error) => {
-                    // Gestion des erreurs en cas de problème lors de l'enregistrement du vote
-                    console.error(error);
-                });
-        },
-
-        async fetchLastSurvey() {
+        async fetchLastAnswer() {
             try {
-                const response = await fetch("/lastsondage");
+                const response = await fetch("/api/survey-results");
                 if (!response.ok) {
                     throw new Error(
                         "Erreur lors de la récupération du dernier sondage"
@@ -66,41 +56,15 @@ export default {
                 }
                 const data = await response.json();
                 this.lastSurvey = data;
-
-                // Comparer la date de fin du sondage avec la date actuelle
-                const now = new Date();
-                const endTime = new Date(this.lastSurvey.duration);
-
-                if (endTime > now) {
-                    const duration = Math.floor((endTime - now) / 1000); // Durée restante en secondes
-                    this.startCountdown(duration); // Appel de la méthode startCountdown avec la durée restante
-                } else {
-                    // Le sondage est terminé
-                    this.formattedDuration = "Sondage terminé";
-                }
+                // Calculer la valeur de total
+                this.total = this.lastSurvey.reduce(
+                    (sum, item) => sum + item.totalVotes,
+                    0
+                );
             } catch (error) {
                 console.error(error);
                 // Gérer l'erreur de récupération du dernier sondage ici
             }
-        },
-        startCountdown(duration) {
-            if (this.countdownInterval) {
-                clearInterval(this.countdownInterval);
-            }
-
-            this.countdownInterval = setInterval(() => {
-                if (duration > 0) {
-                    const minutes = Math.floor(duration / 60);
-                    const seconds = duration % 60;
-                    this.formattedDuration = `${minutes}:${seconds
-                        .toString()
-                        .padStart(2, "0")}`;
-                    duration--;
-                } else {
-                    clearInterval(this.countdownInterval);
-                    this.formattedDuration = "Sondage terminé";
-                }
-            }, 1000);
         },
     },
 };
