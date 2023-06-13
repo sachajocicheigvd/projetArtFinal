@@ -5,17 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\GenreUserController;
 use App\Http\Controllers\AnswerUserController;
 use App\Http\Controllers\SurveyController;
-use App\Http\Controllers\sondageController;
-use App\Http\Controllers\sondageSachaController;
-use App\Http\Controllers\VoteController;
 use App\Http\Controllers\CreateAdminController;
-use App\Models\Survey;
-use App\Models\Answer;
-use App\Models\AnswerUser;
-use App\Models\GenreUser;
-use App\Models\SurveyControllerSacha;
-
-
 
 
 /*

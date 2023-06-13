@@ -21,7 +21,6 @@
         "vue": "^3.2.37"
     },
     "dependencies": {
-        "echo": "^0.1.9",
         "laravel": "^0.0.1",
         "laravel-echo": "^1.15.1",
         "lodash": "^4.17.21",
