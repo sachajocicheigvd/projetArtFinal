@@ -1,0 +1,66 @@
+.splide__slide {
+    width: 200px;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background-color: grey;
+    overflow: hidden;
+    position: relative;
+
+}
+
+.splide__slide div {
+    color: white;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.327);
+}
+
+.is-next {
+    background-color: black !important;
+    border: 4px solid greenyellow;
+    border-radius: 10px;
+    /* Ajustez la valeur pour définir le degré d'arrondi souhaité */
+    margin: 3px;
+
+
+}
+
+.zoneradio {
+    display: none;
+}
+
+
+.splide__slide:not(.is-next) {
+
+    height: 120px !important;
+    margin: auto;
+    border-radius: 10px;
+
+
+}
+
+.splide__slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.is-next .txtimage {
+    color: white;
+    transform: translateY(145px);
+    background-color: black;
+}
+
+.splide__pagination {
+    counter-reset: pagination-num;
+    transform: translateY(25px);
+
+}
+
+.splide_pagination_page {
+    display: none;
+
+}
