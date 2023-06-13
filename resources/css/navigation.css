@@ -1,5 +1,6 @@
 footer {
-    flex-shrink: 0; /* pas le droit de se réduire */
+    flex-shrink: 0;
+    /* pas le droit de se réduire */
 
     background: var(--fond-color);
 }
@@ -23,7 +24,7 @@ footer nav a {
     text-decoration: none;
 }
 
-.iconenav {
+svg path {
     fill: var(--secondaire-color);
 }
 
@@ -32,10 +33,10 @@ footer nav a.active * {
     color: var(--accent-color);
 }
 
-footer nav a:hover * {
+/* footer nav a:hover * {
     fill: var(--accent-color);
     color: var(--accent-color);
-}
+} */
 
 .textNav {
     color: var(--secondaire-color);
@@ -53,12 +54,15 @@ footer nav a:hover * {
 }
 
 .iconenav {
-    width: 40px; /* Divise la taille par 2 */
-    height: 40px; /* Divise la taille par 2 */
+    width: 40px;
+    /* Divise la taille par 2 */
+    height: 40px;
+    /* Divise la taille par 2 */
     padding-left: 40px;
     padding-right: 40px;
     padding-top: 20px;
 }
+
 footer {
     /* nav est de nouveau un container flex */
     height: 100px;
@@ -78,7 +82,27 @@ footer nav {
 }
 
 .container {
-    margin-bottom: 20px; /* Réglez la valeur en fonction de la hauteur de votre pied de page */
+    margin-bottom: 20px;
+    /* Réglez la valeur en fonction de la hauteur de votre pied de page */
     text-align: center;
     justify-content: center;
+}
+
+
+/* icon compte utilisateur */
+
+.iconUser {
+    width: 40px;
+    /* Divise la taille par 2 */
+    height: 40px;
+    /* Divise la taille par 2 */
+    display: block;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+    margin-bottom: 100px;
+    position: absolute;
+    right: 0;
+    top: 0;
+
 }

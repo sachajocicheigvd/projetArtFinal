@@ -6,8 +6,12 @@
 @import "player.css";
 @import "buttons.css";
 @import "app.css";
+<<<<<<< HEAD
 @import "sondage.css";
 
+=======
+@import "pageAccueil.css";
+>>>>>>> cssKenza
 body {
     background-color: var(--fond-color);
 }

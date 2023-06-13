@@ -2,56 +2,149 @@
 @import 'typographie.css';
 @import 'buttons.css';
 
-.input-box{
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    width: 174px;
-    height: 40px;
-    background: transparent;
-    border: 1px solid var(--accent-color);
-    border-radius: 20px;
-    font-size: 16px;
-    line-height: 19px;
-    align-items: center;
-    text-align: center;
-    color: white;
+/* pour les pages Login*/
+
+.input-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 174px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid var(--accent-color);
+  border-radius: 20px;
+  font-size: 16px;
+  line-height: 19px;
+  align-items: center;
+  text-align: center;
+  color: white;
 }
 
-*{
-    background-color: var(--fond-color) ;
+.input-box-lucie {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 350px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid var(--accent-color);
+  border-radius: 20px;
+  font-size: 16px;
+  line-height: 19px;
+  align-items: center;
+  text-align: center;
+  color: white
 }
 
-.button-connexion{
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    width: 174px;
-    height: 40px;
-    background: var(--accent-color);
-    border-radius: 20px;
-    border: var(--accent-color);
-    font-size: 16px;
-    line-height: 19px;
-    align-items: center;
-    text-align: center;
-    color: #000000;
+* {
+  background-color: var(--fond-color);
+}
+
+.button-action {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 174px;
+  height: 40px;
+  background: var(--accent-color);
+  border-radius: 20px;
+  border: var(--accent-color);
+  font-size: 16px;
+  line-height: 19px;
+  align-items: center;
+  text-align: center;
+  color: #000000;
 }
 
 .input-box::placeholder {
-    text-align: left;
-    padding-left: 10px;
-  }
-  
+  text-align: left;
+  padding-left: 10px;
+}
+
+.input-box-lucie::placeholder {
+  text-align: left;
+  padding-left: 10px;
+}
+
+.container {
+  margin-bottom: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+}
+
+
+.containerCreerConnecter {
+  margin-bottom: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+
+}
+
+#pageMilieu {
+  margin-bottom: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.iconRetour {
+  fill: var(--secondaire-color);
+  display: block;
+  width: 50px;
+  height: 50px;
+
+}
 
 .conteneur-photo {
-    position: relative;
+  position: relative;
+}
+
+.name-input {
+  display: inline-block;
+  margin-right: 10px;
+  /* Ajoute un espace entre les champs si nécessaire */
+
+}
+
+.w-87 {
+  width: 165px;
+}
+
+
+.btnsuivant {
+
+
+  width: 30%;
+  margin: auto !important;
+  margin-top: 19px !important;
+  scale: 1;
+
+
+}
+
+img.logoCouleur3 {
+  margin-top: 150px;
+}
+
+
+#creationCompte {
+  display : flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#boutonCreationCompte {
+  display: flex;
+  justify-content: center;
   }
-  
-  .logoCouleur3{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  

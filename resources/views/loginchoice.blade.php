@@ -4,7 +4,6 @@
 </head>
 
 @section('title')
-<title>Création sondage</title>
 @vite('resources/js/sondage.js')
 @endsection
 
@@ -14,10 +13,11 @@
 
 @section('contenu')
 <!--logo--> 
-<p> 
+<div class="containerCreerConnecter">
+ 
   <img src="{{ asset('storage/images/logoCouleur3.svg') }}" style="width: 95px; 
     height: 147px" alt="logoCouleur3" class="logoCouleur3">
-</p>
+
 <!--boutons--> 
 <button class="secondaire">
     <a href="{{ url('login') }}">
@@ -30,5 +30,6 @@
     Créer un compte 
     </a>
 </button>
+</div>
     
 @endsection
