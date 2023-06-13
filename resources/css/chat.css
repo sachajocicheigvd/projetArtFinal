@@ -23,7 +23,7 @@ input:focus {
     outline: none;
 }
 
-.ecritmessage::placeholder {
+.ecritMessage::placeholder {
     color: black;
 }
 
