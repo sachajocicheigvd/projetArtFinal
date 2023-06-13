@@ -2,6 +2,7 @@
 
 @section('title')
 <title>Sondage</title>
+@vite('resources/css/sondagesacha.css')
 @endsection
 
 @section('header')
@@ -33,9 +34,26 @@ use App\Models\Answer;
 
 ?>
 
-<div class="span6">
 
-    <br><br><br><br><br><br><br><br><br>
+  
+<div class="span6">
+    <p>Vous avez voté pouur la musique ci-dessous</p>
+    @foreach($answers as $answer)
+    @if($answer->survey_id == $surveys[count($surveys)-1]->id)
+    @foreach($answer->users as $user)
+    @if($user->id == Auth::user()->id)
+    <p>{{$answer->artist}}</p>
+    <p>{{$answer->answer}}</p>
+    <img src="{{$answer->picture}}" alt="{{$answer->artist}}" width="200px">
+    @endif
+    @endforeach
+    @endif
+    @endforeach
+</div>
+
+    
+
+    <br><br>
 
  <h5>{{$surveys[count($surveys)-1]->title}}</h5>
 
@@ -193,6 +211,8 @@ let estTermine = false;
                 return b.totalVotes - a.totalVotes;
             });
 
+            var estTermine = true; // Mettez la valeur correcte ici
+
             // Raccourci le tableau au 3 premiers résultats si status = true seulement si le sondage est de type music (donc contient un artiste)
             if (estTermine == true && arr[0].artist != null) {
                 arr = arr.slice(0, 3);
@@ -203,6 +223,7 @@ let estTermine = false;
 
             //calcul le total du nombre de answer
             var total = 0;
+            let i = 0;
             arr.forEach(a => {
                 total += a.totalVotes;
             });
@@ -210,14 +231,21 @@ let estTermine = false;
             arr.forEach(a => {
 
                 if (a.artist != null){
+                
                 document.querySelector(".afficheSondage").insertAdjacentHTML("beforeend", `
+   <div class='uneElement' data-position=${i}>             
     <strong><p>${a.answer}</p></strong>
     <strong><p>${a.artist}</p></strong>
     <img src="${a.image}" alt="image" width="100px" height="100px">
     <span class="pull-right pourcentage">${isNaN(Math.round(a.totalVotes / total * 100)) ? 0 : Math.round(a.totalVotes / total * 100)}%</span>
-    <div class="progress progress active labar">
+
+    </div>
+    `)
+    i++
+
+/*     <div class="progress progress active labar">
         <div class="bar" style="width: ${isNaN(Math.round(a.totalVotes / total * 100)) ? 0 : Math.round(a.totalVotes / total * 100)}%;"></div>
-    </div>`)
+    </div> */
                 }
                 else {
                     document.querySelector(".afficheSondage").insertAdjacentHTML("beforeend", `
@@ -240,25 +268,3 @@ let estTermine = false;
 
 }
     </script>
-
-
-
-    
-
-    <style>
-    #countdown {
-        background-color: #f2f2f2;
-        padding: 10px;
-        border-radius: 4px;
-    }
-
-    #countdown .display-4 {
-        color: #333;
-        font-weight: bold;
-    }
-
-    #countdown .text-muted {
-        color: #666;
-    }
-</style> 
-
