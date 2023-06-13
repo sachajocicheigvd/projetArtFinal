@@ -34,15 +34,13 @@
 </div>
     </button>
 
-   <div id="barreProgression">
-          <div id="debutProgression"></div>
+       <div id="barreProgression">
         <div id="tempsEcoulé"></div>
         <div id="barre">
             <div id="progression"></div>
         </div>
         <div id="tempsTotal">--:--</div>
     </div>
- 
 </div>
     <script>
         let audio = document.querySelector("#lecteurAudioFinal");
@@ -56,9 +54,9 @@
         });
 
         // Mettre à jour le temps écoulé pendant la lecture
-       audio.addEventListener("timeupdate", function() {
-  let currentTime = formatTime(audio.currentTime);
-  tempsEcoulé.textContent = currentTime;
+        audio.addEventListener("timeupdate", function() {
+        let currentTime = formatTime(audio.currentTime);
+         tempsEcoulé.textContent = currentTime;
  
 });
 
@@ -86,14 +84,6 @@
             }
         }
 // Mettre à jour le temps écoulé pendant la lecture
-audio.addEventListener("timeupdate", function() {
-    let currentTime = formatTime(audio.currentTime);
-    tempsEcoulé.textContent = currentTime;
-    let pourcentageProgresse = (audio.currentTime / audio.duration) * 100;
-    progression.style.width = pourcentageProgresse.toFixed(2) + "%";
-
-});
-
         
     </script>
 </div>
@@ -138,11 +128,17 @@ audio.addEventListener("timeupdate", function() {
         </label>
        
 </section>  
+
+<div id="ajoutEspace"> </div>
 <!-- 
 
   <div class="rectangleEmissionPetit">
         <img class="imageEmissionPetit" src="{{ asset('storage/images/logoBrasCasse.svg') }}">
         <span class="dateEmi<ssionPetit">14 mai 2023</span> -->
+
+
+   
+
 
 
 

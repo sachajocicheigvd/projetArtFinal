@@ -6,7 +6,7 @@
     height: 204px;
     background: var(--box-color);
     border-radius: 40px;
-    margin-top: 100px;
+    margin-top: 130px;
 }
 
 .nomEmission {
@@ -125,13 +125,13 @@
     position: absolute;
     justify-content: center;
     border-radius: 40px;
-    margin-top: 300px;
+    margin-top: 340px;
     margin-bottom : 300px;
     display: flex;
     perspective: 7000px;
     transform-style: preserve-3d;
-    margin-left : 90px;
-    margin-right: 100px;
+    margin-left:93px;
+    
 }
 
 
@@ -150,7 +150,7 @@
 #s4:checked~#slide2,
 #s5:checked~#slide3 {
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .37);
-    transform: translate3d(-30%, 0, -200px);
+    transform: translate3d(-50%, 0, -200px);
 }
 
 #s1:checked~#slide5,
@@ -159,7 +159,7 @@
 #s4:checked~#slide3,
 #s5:checked~#slide4 {
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .3), 0 2px 2px 0 rgba(0, 0, 0, .2);
-    transform: translate3d(-15%, 0, -100px);
+    transform: translate3d(40%, 0, -100px);
 }
 
 #s1:checked~#slide1,
@@ -177,7 +177,7 @@
 #s4:checked~#slide5,
 #s5:checked~#slide1 {
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .3), 0 2px 2px 0 rgba(0, 0, 0, .2);
-    transform: translate3d(15%, 0, -100px);
+    transform: translate3d(40%, 0, -100px);
 }
 
 #s1:checked~#slide3,
