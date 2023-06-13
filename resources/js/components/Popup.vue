@@ -1,21 +1,35 @@
 <template>
     <div class="popup">
         <div class="infos" v-if="lastSurvey && showSurveyInfo">
-            <h2>{{ lastSurvey.title }}</h2>
-            <p>{{ formattedDuration }}</p>
-            <ul>
-                <li v-for="(answer, index) in lastSurvey.answers" :key="index">
-                    <p>{{ answer.answer }}</p>
-                    <button @click="vote(answer.id)">Vote</button>
-                </li>
-            </ul>
+            <div class="text">
+                <h2>{{ lastSurvey.title }}</h2>
+                <p>{{ formattedDuration }}</p>
+            </div>
+            <div v-for="(answer, index) in lastSurvey.answers" :key="index">
+                <div class="answer">
+                    <button
+                        :class="{
+                            secondaire: selectedAnswer !== answer.id,
+                            primaire: selectedAnswer === answer.id,
+                        }"
+                        @click="toggleAnswer(answer.id)"
+                    >
+                        {{ answer.answer }}
+                    </button>
+                </div>
+            </div>
+            <div class="vote-button" v-if="selectedAnswer !== null">
+                <button class="primaire" @click="vote(selectedAnswer)">
+                    Vote
+                </button>
+            </div>
         </div>
         <div class="popup-inner">
             <p v-show="showPopupMessage">
                 Merci pour votre vote, retrouvez les résultats du sondage dans
                 le chat!
             </p>
-            <button class="popup-close" @click="togglePopup()">Fermer</button>
+            <button class="popup-close" @click="togglePopup()"></button>
         </div>
     </div>
 </template>
@@ -32,21 +46,28 @@ export default {
             formattedDuration: "",
             showPopupMessage: false,
             showSurveyInfo: true,
+            selectedAnswer: null,
         };
     },
     async created() {
         await this.fetchLastSurvey();
     },
     methods: {
+        toggleAnswer(answerId) {
+            if (this.selectedAnswer === answerId) {
+                this.selectedAnswer = null;
+            } else {
+                this.selectedAnswer = answerId;
+            }
+        },
         vote(answer) {
-            console.log(answer);
             // Logique pour enregistrer le vote dans la base de données
             axios
                 .post("/storevote", { answer: answer })
                 .then((response) => {
                     // Réponse de succès, vous pouvez effectuer des actions supplémentaires si nécessaire
                     console.log(response.data);
-                    this.showPopupMessage = true; // Afficher le message "Hola" dans le popup
+                    this.showPopupMessage = true; //
                     this.showSurveyInfo = false; // Cacher la section "infos"
                 })
                 .catch((error) => {
@@ -76,6 +97,7 @@ export default {
                 } else {
                     // Le sondage est terminé
                     this.formattedDuration = "Sondage terminé";
+                    this.showSurveyInfo = false;
                 }
             } catch (error) {
                 console.error(error);
@@ -95,11 +117,10 @@ export default {
                         .toString()
                         .padStart(2, "0")}`;
                     duration--;
-                    this.$emit("condition-notsatisfied");
                 } else {
                     clearInterval(this.countdownInterval);
                     this.formattedDuration = "Sondage terminé";
-                    this.$emit("condition-satisfied");
+                    this.showSurveyInfo = false;
                 }
             }, 1000);
         },
@@ -107,7 +128,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .popup {
     position: fixed;
     top: 50%; /* Aligner le haut du popup au milieu de la fenêtre */
@@ -117,16 +138,46 @@ export default {
         -50%
     ); /* Déplacer le popup de moitié de sa largeur et de sa hauteur vers le haut et la gauche */
     z-index: 99;
-    background-color: rgba(12, 189, 92, 0.2);
+    background-color: rgb(42, 42, 47);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 500px; /* Ajustez la largeur selon vos besoins */
-    height: 500px;
+    width: 307px;
+    height: 471px;
+    border-radius: 40px;
+}
+.popup *:not(.primaire) {
+    background-color: rgb(42, 42, 47);
+}
 
-    .popup {
-        background-color: #fff;
-        padding: 32px;
-    }
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.popup-close::before,
+.popup-close::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 2px;
+    background-color: #fff; /* Remplacez #fff par la couleur blanche souhaitée */
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+/* center text */
+.text {
+    text-align: center;
+    margin-top: 10;
+}
+.popup-close::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
 }
 </style>

@@ -33,9 +33,11 @@ use App\Models\SurveyControllerSacha;
 //Route::get('/api/survey-results', [App\Http\Controllers\SurveyControllerSacha::class, 'getSurveyResults']);
 
 // Route principale
-Route::get('/', function () { return view('welcome')->with('messageValidation', ''); })->name('accueil');
+Route::get('/', function () {
+    return view('welcome')->with('messageValidation', '');
+})->name('accueil');
 
-Route::get('createadmin', function() {
+Route::get('createadmin', function () {
     return view('createadmin');
 })->name('createadmin');
 
@@ -65,11 +67,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/chat', [App\Http\Controllers\ChatsController::class, 'afficheMessage']);
     Route::post('/send-message', [App\Http\Controllers\ChatsController::class, 'enregistrement']);
 
-Route::middleware('admin')->group(function () {
-    Route::get('creationsondage', [SurveyController::class, 'showForm'])->name('creationsondage');
-    Route::post('creationsondage', [SurveyController::class, 'saveSurvey']);
-});
-
+    Route::middleware('admin')->group(function () {
+        Route::get('creationsondage', [SurveyController::class, 'showForm'])->name('creationsondage');
+        Route::post('creationsondage', [SurveyController::class, 'saveSurvey']);
+    });
 });
 
 // Route::middleware('auth')->group(function () {
