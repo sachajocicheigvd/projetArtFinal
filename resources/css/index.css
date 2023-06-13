@@ -6,6 +6,7 @@
 @import "player.css";
 @import "buttons.css";
 @import "app.css";
+@import "sondage.css";
 
 body {
     background-color: var(--fond-color);
