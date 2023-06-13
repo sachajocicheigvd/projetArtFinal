@@ -5,7 +5,7 @@
 
 @section('title')
 
-<script src="{{ asset('resources/js/sondage.js') }}" defer></script>
+<script src="{{ asset('public/js/sondage.js') }}"></script>
 @endsection
 
 @section('header')

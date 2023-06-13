@@ -3,8 +3,8 @@
 
 @section('title')
 <title>Mon compte</title>
-<link rel="stylesheet" href="{{ asset('resources/css/monProfil.css') }}">
-<script src="{{ asset('resources/js/monProfil.js') }}" defer></script>
+<link rel="stylesheet" href="{{ asset('public/css/monProfil.css') }}">
+<script src="{{ asset('public/js/monProfil.js') }}"></script>
 @endsection
 
 @section('header')

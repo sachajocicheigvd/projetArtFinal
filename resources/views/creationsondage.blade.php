@@ -5,8 +5,8 @@
 
 @section('title')
 <title>Création sondage</title>
-<script src="{{ asset('resources/js/sondage.js') }}" defer></script>
-<link rel="stylesheet" href="{{ asset('resources/css/sondage.css') }}">
+<script src="{{ asset('public/js/sondage.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('public/css/sondage.css') }}">
 @endsection
 
 @section('header')
