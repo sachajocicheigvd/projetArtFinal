@@ -93,7 +93,6 @@ input:focus.ecritMessage {
 }
 
 .boutonPourEnvoyer {
-    margin-top: 40px;
     margin-left: 20px;
     display: flex;
     justify-content: right;

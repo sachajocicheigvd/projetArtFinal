@@ -6,7 +6,18 @@
     height: 204px;
     background: var(--box-color);
     border-radius: 40px;
-    margin-top: 130px;
+   
+}
+
+
+#pageAccueilAffichageEnLive {
+
+    margin-bottom: 20px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
 }
 
 .nomEmission {
@@ -70,10 +81,9 @@
 
 
 #rediffusions {
-    position: absolute;
+ 
     left: 7.12%;
-    top: 45.95%;
-    bottom: 50.67%;
+
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
@@ -84,10 +94,9 @@
 
 
 #nomEmissionAccueil {
-    position: absolute;
+  
     left: 7.12%;
-    top: 51.25%;
-    bottom: 45.09%;
+
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -109,8 +118,10 @@
     color: var(--secondaire-color);
 }
 
-.txt {
-    margin-top: 10;
+.descriptionRediffusionEtEmission {
+  
+    padding-top : 10px;
+    padding-left: 30px;
 }
 
 
@@ -125,12 +136,13 @@
     position: absolute;
     justify-content: center;
     border-radius: 40px;
-    margin-top: 340px;
-    margin-bottom : 300px;
+    margin-top: 30px;
+    
     display: flex;
     perspective: 7000px;
     transform-style: preserve-3d;
     margin-left:93px;
+    padding-bottom : 100px;
     
 }
 

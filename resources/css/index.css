@@ -8,7 +8,7 @@
 @import "app.css";
 @import "sondage.css";
 
-@import "pageAccueil.css";
+
 body {
     background-color: var(--fond-color);
 }
