@@ -30,7 +30,7 @@
 }
 
 .marge-fictive {
-    margin-bottom: 130px;
+    margin-bottom: 170px;
 }
 
 .upload {
@@ -59,6 +59,7 @@
     font-size: 22px;
     font-weight: 600;
     color: #767676;
+    display: inline-flex;
 }
 
 .radioButton {
