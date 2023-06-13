@@ -3,7 +3,7 @@
 
 @section('title')
 <title>Mon Compte</title>
-@vite('resources/css/buttons.css')
+<link rel="stylesheet" href="{{ asset('resources/css/buttons.css') }}">
 @endsection
 
 @section('header')

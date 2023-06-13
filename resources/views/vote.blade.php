@@ -4,8 +4,8 @@
 @section('title')
 <title>Vote</title>
 
-@vite('resources/js/vote.js')
-@vite('resources/css/vote.css')
+<script src="{{ asset('resources/js/vote.js') }}" defer></script>
+<link rel="stylesheet" href="{{ asset('resources/css/vote.css') }}">
 
 @endsection
 

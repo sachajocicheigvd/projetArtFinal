@@ -3,8 +3,8 @@
 
 @section('title')
 <title>Mon compte</title>
-@vite('resources/css/monProfil.css')
-@vite('resources/js/monProfil.js')
+<link rel="stylesheet" href="{{ asset('resources/css/monProfil.css') }}">
+<script src="{{ asset('resources/js/monProfil.js') }}" defer></script>
 @endsection
 
 @section('header')
