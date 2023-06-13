@@ -17,12 +17,12 @@
 <!-- Création d'un formulaire texte-->
 
 <!-- Type de sondage, bouton radio -->
-    <label for="type">Type de sondage</label>
-    <input type="radio" name="type" id="type-text" value="text" {{ old('type') == 'text' ? 'checked' : '' }}>Texte
-    <input type="radio" name="type" id="type-music" value="music" {{ old('type') == 'music' ? 'checked' : '' }}>Musique
-    @error('type')
-        <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
+    <input type="radio" name="type" id="type-text" class="radioButton" value="text" {{ old('type') == 'text' ? 'checked' : '' }}/><label for="type-text" class="choixType typeText">Texte</label>
+    <input type="radio" name="type" id="type-music" class="radioButton" value="music" {{ old('type') == 'music' ? 'checked' : '' }}/><label for="type-music" class="choixType">Musique</label><br/>
+    <svg width="400" height="25">
+    <rect width="120" height="3" fill="#767676" id="barreTexte" x="90"/>
+    <rect width="120" height="3" fill="#767676" id="barreMusique" x="210"/>
+    </svg>
 
 <form id="formulaire-texte" style="display:none;" method="post" action="{{ route('creationsondage') }}" accept-charset="UTF-8">
 
@@ -30,29 +30,25 @@
     @csrf
     <!-- Réalisation de 3 champs de formulaires écrit -->
     <!-- Question sur une durée type number -->
-    <label for="duration">Durée du sondage</label>
-    <input type="number" name="duration" id="duration" value="{{ old('duration') }}" placeholder="(en min)">
+    <input type="text" name="title" id="title" class="secondaire reponseTexte" value="{{ old('title') }}" placeholder="Votre question">
+    @error('title')
+        <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+    <br>
+
+    <input type="number" name="duration" id="duration" class="secondaire nombre" value="{{ old('duration') }}" placeholder="(en min)">
     @error('duration')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
     <br>
     
-    <label for="question">Votre question</label>
-    <input type="text" name="title" id="title" value="{{ old('title') }}" placeholder="Votre question">
-    @error('title')
-        <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
-    <br>
-    
-    <label for="answer1">Réponse 1</label>
-    <input type="text" name="answers[]" id="answer1" value="{{ old('answers.0') }}" placeholder="Réponse 1">
+    <input type="text" name="answers[]" id="answer1" class="secondaire reponseTexte" value="{{ old('answers.0') }}" placeholder="Réponse 1">
     @error('answers.0')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
     <br>
     
-    <label for="answer2">Réponse 2</label>
-    <input type="text" name="answers[]" id="answer2" value="{{ old('answers.1') }}" placeholder="Réponse 2">
+    <input type="text" name="answers[]" id="answer2" class="secondaire reponseTexte" value="{{ old('answers.1') }}" placeholder="Réponse 2">
     @error('answers.1')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
@@ -62,10 +58,11 @@
         <!-- Les champs de réponse ajoutés dynamiquement seront insérés ici -->
     </div>
     
-    <button type="button" id="addAnswerText">Ajouter une réponse</button>
+    <button type="button" id="addAnswerText" class="secondaire add"><svg id="ajoute" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="#767676" class="w-6 h-6" width="24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg></button>
     <br>
 
-    <input type="submit" value="Valider">
+    <input type="submit" value="Envoyer" class="primaire marge-fictive">
 
 </form>
 
@@ -74,47 +71,49 @@
     @csrf
     <!-- Réalisation de 3 champs de formulaires écrit -->
     <!-- Question sur une durée type number -->
-    <label for="duration">Durée du sondage</label>
-    <input type="number" name="duration" id="duration" value="{{ old('duration') }}" placeholder="(en min)" required>
-    @error('duration')
-        <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
-    <br>
-
-    
-    <label for="question">Votre question</label>
-    <input type="text" name="title" id="title" value="{{ old('title') }}" placeholder="Votre question" required>
+    <input type="text" name="title" id="title" class="secondaire reponseTexte" value="{{ old('title') }}" placeholder="Votre question" required>
     @error('title')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
     <br>
 
-    <label for="answer1">Réponse 1</label>
-    <input type="text" name="answers[]" id="answer1" value="{{ old('answers.0') }}" placeholder="Réponse 1" required>
+    <input type="number" name="duration" id="duration" class="secondaire nombre" value="{{ old('duration') }}" placeholder="(en min)" required>
+    @error('duration')
+        <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+    <br>
+
+    <input type="text" name="answers[]" id="answer1" class="secondaire reponseMusique" value="{{ old('answers.0') }}" placeholder="Titre 1" required>
     @error('answers.0')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
-    <input type="text" name="artists[]" id="artist1" value="{{ old('artists.0') }}" placeholder="Artiste 1" required>
+    <input type="text" name="artists[]" id="artist1" class="secondaire reponseMusique" value="{{ old('artists.0') }}" placeholder="Artiste 1" required>
     @error('artists.0')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
-    <input type="file" name="files[]" required>
+    <br/>
+    <label for="files1" class="custom-file secondaire">
+    Cover 1
+    </label>
+    <input type="file" name="files[]" id="files1" class="upload" required>
     @error('files.0')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
     <br>
     
-    <label for="answer2">Réponse 2</label>
-    <input type="text" name="answers[]" id="answer2" value="{{ old('answers.1') }}" placeholder="Réponse 2" required>
+    <input type="text" name="answers[]" id="answer2" class="secondaire reponseMusique" value="{{ old('answers.1') }}" placeholder="Titre 2" required>
     @error('answers.1')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
-    <input type="text" name="artists[]" id="artist2" value="{{ old('artists.1') }}" placeholder="Artiste 2" required>
+    <input type="text" name="artists[]" id="artist2" class="secondaire reponseMusique" value="{{ old('artists.1') }}" placeholder="Artiste 2" required>
     @error('artists.1')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
-
-    <input type="file" name="files[]" id="file2" required>
+    <br/>
+    <label for="files2" class="custom-file secondaire">
+    Cover 2
+    </label>
+    <input type="file" name="files[]" id="files2" class="upload" required>
     @error('files.1')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
@@ -124,11 +123,12 @@
         <!-- Les champs de réponse ajoutés dynamiquement seront insérés ici -->
     </div>
     
-    <button type="button" id="addAnswerMusic">Ajouter une réponse</button>
+    <button type="button" id="addAnswerMusic" class="secondaire add"><svg id="ajoute" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="#767676" class="w-6 h-6" width="24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg></button>
     <br>
 
 
-    <input type="submit" value="Valider">
+    <input type="submit" value="Envoyer" class="primaire marge-fictive">
 
 </form>
 @endsection

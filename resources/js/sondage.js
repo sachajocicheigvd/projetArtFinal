@@ -12,13 +12,10 @@ addAnswerButtonText.addEventListener("click", function () {
     newAnswerInput.setAttribute("name", "answers[]");
     newAnswerInput.setAttribute("placeholder", "Réponse " + answerCounterText);
     newAnswerInput.setAttribute("id", "answer" + answerCounterText);
+    newAnswerInput.setAttribute("class", "secondaire reponseTexte");
     // put required attribute on the newAnswerInput
     newAnswerInput.setAttribute("required", "required");
 
-    let newAnswerLabel = document.createElement("label");
-    newAnswerLabel.innerHTML = "Réponse " + answerCounterText;
-    newAnswerLabel.setAttribute("for", "answer" + answerCounterText);
-    dynamicFieldsTextContainer.appendChild(newAnswerLabel);
     dynamicFieldsTextContainer.appendChild(newAnswerInput);
     dynamicFieldsTextContainer.appendChild(document.createElement("br"));
     answerCounterText++;
@@ -34,8 +31,9 @@ addAnswerButtonMusic.addEventListener("click", function () {
     let newAnswerInput = document.createElement("input");
     newAnswerInput.setAttribute("type", "text");
     newAnswerInput.setAttribute("name", "answers[]");
-    newAnswerInput.setAttribute("placeholder", "Réponse " + answerCounterMusic);
+    newAnswerInput.setAttribute("placeholder", "Titre " + answerCounterMusic);
     newAnswerInput.setAttribute("id", "answer" + answerCounterMusic);
+    newAnswerInput.setAttribute("class", "secondaire reponseMusique titreAdd");
     newAnswerInput.setAttribute("required", "required");
 
     let newArtistInput = document.createElement("input");
@@ -43,23 +41,29 @@ addAnswerButtonMusic.addEventListener("click", function () {
     newArtistInput.setAttribute("name", "artists[]");
     newArtistInput.setAttribute("placeholder", "Artiste " + answerCounterMusic);
     newArtistInput.setAttribute("id", "artist" + answerCounterMusic);
+    newArtistInput.setAttribute("class", "secondaire reponseMusique");
     newArtistInput.setAttribute("required", "required");
+
+    let newFileLabel = document.createElement("label");
+    newFileLabel.setAttribute("for", "files" + answerCounterMusic);
+    newFileLabel.setAttribute("class", "custom-file secondaire");
+    newFileLabel.innerHTML = "Cover" + answerCounterMusic;
 
     let newFileInput = document.createElement("input");
     newFileInput.setAttribute("type", "file");
     newFileInput.setAttribute("name", "files[]");
-    newFileInput.setAttribute("id", "file" + answerCounterMusic);
+    newFileInput.setAttribute("id", "files" + answerCounterMusic);
     newFileInput.setAttribute("required", "required");
+    newFileInput.setAttribute("class", "upload");
 
-    let newAnswerLabel = document.createElement("label");
-    newAnswerLabel.innerHTML = "Réponse " + answerCounterMusic;
-    newAnswerLabel.setAttribute("for", "answer" + answerCounterMusic);
-    dynamicFieldsMusicContainer.appendChild(newAnswerLabel);
     dynamicFieldsMusicContainer.appendChild(newAnswerInput);
     dynamicFieldsMusicContainer.appendChild(newArtistInput);
+    dynamicFieldsMusicContainer.appendChild(document.createElement("br"));
+    dynamicFieldsMusicContainer.appendChild(newFileLabel);
     dynamicFieldsMusicContainer.appendChild(newFileInput);
     dynamicFieldsMusicContainer.appendChild(document.createElement("br"));
-    answerCounterText++;
+    answerCounterMusic++;
+    refreshSelection();
 });
 
 // Affichage formulaire texte ou musique
@@ -78,5 +82,58 @@ typeText.forEach(function (element) {
             document.querySelector("#formulaire-music").style.display = "block";
             formulaireTexte.style.display = "none";
         }
+    });
+});
+
+const inputs = document.querySelectorAll(".upload");
+const inputsLabel = document.querySelectorAll(".custom-file");
+
+for (let i = 0; i < inputs.length; i++) {
+    inputs[i].addEventListener("change", function (e) {
+        inputsLabel[i].innerHTML = inputs[i].files[0].name;
+        inputsLabel[i].style.color = "#FFFFFF";
+    });
+}
+
+const refreshSelection = () => {
+    const inputs = document.querySelectorAll(".upload");
+    const inputsLabel = document.querySelectorAll(".custom-file");
+
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].addEventListener("change", function (e) {
+            inputsLabel[i].innerHTML = inputs[i].files[0].name;
+            inputsLabel[i].style.color = "#FFFFFF";
+        });
+    }
+};
+
+const boutonsRadio = document.querySelectorAll('input[type="radio"]');
+const barreTexte = document.getElementById("barreTexte");
+const barreMusique = document.getElementById("barreMusique");
+
+// Ajoutez un écouteur d'événements "click" à chaque bouton radio
+boutonsRadio.forEach((bouton) => {
+    bouton.addEventListener("click", () => {
+        if (bouton.id == "type-text") {
+            document.querySelector(`[for="type-text"]`).style.color = "#27eb42";
+            document.querySelector(`[for="type-music"]`).style.color =
+                "#767676";
+            barreTexte.style.fill = "#27eb42";
+            barreMusique.style.fill = "#767676";
+        } else if (bouton.id == "type-music") {
+            document.querySelector(`[for="type-text"]`).style.color = "#767676";
+            document.querySelector(`[for="type-music"]`).style.color =
+                "#27eb42";
+            barreTexte.style.fill = "#767676";
+            barreMusique.style.fill = "#27eb42";
+        }
+
+        //const idBoutonCliqué = bouton.id;
+
+        // // Utilisez l'ID de l'élément pour effectuer les opérations nécessaires
+        //console.log("Bouton radio cliqué:", idBoutonCliqué);
+        // // const labelRadio = document.querySelector(`[for="${idBoutonCliqué}"]`);
+
+        // labelRadio.style.color = "#27eb42";
     });
 });

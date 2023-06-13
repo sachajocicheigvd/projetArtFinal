@@ -9,7 +9,7 @@
     height: 37.33px;
     padding-left: 10px;
     line-height: 17px;
-    color: #FFFFFF;
+    color: #ffffff;
     background-color: transparent;
     text-align: left;
 }
@@ -25,7 +25,7 @@
     padding-left: 10px;
     margin-bottom: 15px;
     height: 5rem;
-    background: #2A2A2F;
+    background: #2a2a2f;
     border-radius: 20px;
 }
 
@@ -37,9 +37,7 @@ input:focus.ecritMessage {
     color: black;
 }
 
-
 .ecritMessage {
-
     padding-left: 10px;
     color: black;
     margin-top: -100px;
@@ -48,15 +46,11 @@ input:focus.ecritMessage {
     border-radius: 20px;
     width: 299px;
     height: 31px;
-
 }
-
-
 
 #boutonEnvoi {
     background-color: transparent;
     display: center;
-
 }
 
 .sectionChat {
@@ -64,7 +58,6 @@ input:focus.ecritMessage {
     justify-content: center;
     align-items: center;
     height: 100vh;
-
 }
 
 .encadreeBoutonEnvoie {
@@ -89,8 +82,6 @@ input:focus.ecritMessage {
 #send_message svg {
     height: 70px;
     width: 70px;
-
-
 }
 
 #messageAEnvoyer {
@@ -118,12 +109,11 @@ input:focus.ecritMessage {
     padding-bottom: 50px;
 }
 
-
 input#message {
     border-radius: 20px;
 }
 
-.presentation{
+.presentation {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -142,7 +132,6 @@ input#message {
     height: 52px;
     margin-bottom: 28px;
     border-radius: 10px;
-
 }
 
 .presentationTexte {
@@ -160,7 +149,6 @@ input#message {
     float: right;
 }
 
-p.genres{
+p.genres {
     background-color: transparent;
 }
-
