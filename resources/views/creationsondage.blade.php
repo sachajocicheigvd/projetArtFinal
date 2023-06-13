@@ -6,6 +6,7 @@
 @section('title')
 <title>Création sondage</title>
 @vite('resources/js/sondage.js')
+@vite('resources/css/sondage.css')
 @endsection
 
 @section('header')
