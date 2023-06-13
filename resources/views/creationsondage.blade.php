@@ -17,12 +17,14 @@
 <!-- Création d'un formulaire texte-->
 
 <!-- Type de sondage, bouton radio -->
+<div class="containerSondage">
     <input type="radio" name="type" id="type-text" class="radioButton" value="text" {{ old('type') == 'text' ? 'checked' : '' }}/><label for="type-text" class="choixType typeText">Texte</label>
     <input type="radio" name="type" id="type-music" class="radioButton" value="music" {{ old('type') == 'music' ? 'checked' : '' }}/><label for="type-music" class="choixType">Musique</label><br/>
     <svg width="400" height="25">
     <rect width="120" height="3" fill="#767676" id="barreTexte" x="90"/>
     <rect width="120" height="3" fill="#767676" id="barreMusique" x="210"/>
     </svg>
+</div>
 
 <form id="formulaire-texte" style="display:none;" method="post" action="{{ route('creationsondage') }}" accept-charset="UTF-8">
 

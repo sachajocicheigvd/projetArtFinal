@@ -59,17 +59,17 @@
     font-size: 22px;
     font-weight: 600;
     color: #767676;
-    display: inline-flex;
+    cursor: pointer;
 }
 
 .radioButton {
     display: none;
 }
 
-/* .radioButton:checked ~ .choixType {
-    color: #27eb42;
-} */
-
 .typeText {
     margin-right: 60px;
+}
+
+.containerSondage {
+    display: block;
 }
