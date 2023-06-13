@@ -4,6 +4,7 @@
 @section('title')
 <title>Mon compte</title>
 @vite('resources/css/monProfil.css')
+@vite('resources/js/monProfil.js')
 @endsection
 
 @section('header')
@@ -15,6 +16,7 @@
 @endsection
 
 @section('contenu')
+<input type="hidden" id="user-email" value="<?= $users->email ?>">
 <form method="post" action="{{ url('/mon-compte') }}">
         @csrf
         <br/>
@@ -57,35 +59,5 @@
         </div>
         <input class="primaire enregistrer" type="submit" value="Enregistrer">
         </form>
-        <script>
-
-var coll = document.getElementsByClassName("collapsible");
-var i;
-var svgElement = document.getElementById('boutonPlus');
-
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-      svgElement.style.stroke = '#767676';
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-      svgElement.style.stroke = '#27eb42';
-    }
-  });
-}
-
-var inputElement = document.getElementById('email');
-
-inputElement.addEventListener('focus', function() {
-  inputElement.removeAttribute('placeholder');
-});
-
-inputElement.addEventListener('blur', function() {
-  inputElement.setAttribute('placeholder', '{{$users->email}}');
-});
-</script>
 @endsection
 
