@@ -106,3 +106,34 @@ const refreshSelection = () => {
         });
     }
 };
+
+const boutonsRadio = document.querySelectorAll('input[type="radio"]');
+const barreTexte = document.getElementById("barreTexte");
+const barreMusique = document.getElementById("barreMusique");
+
+// Ajoutez un écouteur d'événements "click" à chaque bouton radio
+boutonsRadio.forEach((bouton) => {
+    bouton.addEventListener("click", () => {
+        if (bouton.id == "type-text") {
+            document.querySelector(`[for="type-text"]`).style.color = "#27eb42";
+            document.querySelector(`[for="type-music"]`).style.color =
+                "#767676";
+            barreTexte.style.fill = "#27eb42";
+            barreMusique.style.fill = "#767676";
+        } else if (bouton.id == "type-music") {
+            document.querySelector(`[for="type-text"]`).style.color = "#767676";
+            document.querySelector(`[for="type-music"]`).style.color =
+                "#27eb42";
+            barreTexte.style.fill = "#767676";
+            barreMusique.style.fill = "#27eb42";
+        }
+
+        //const idBoutonCliqué = bouton.id;
+
+        // // Utilisez l'ID de l'élément pour effectuer les opérations nécessaires
+        //console.log("Bouton radio cliqué:", idBoutonCliqué);
+        // // const labelRadio = document.querySelector(`[for="${idBoutonCliqué}"]`);
+
+        // labelRadio.style.color = "#27eb42";
+    });
+});
