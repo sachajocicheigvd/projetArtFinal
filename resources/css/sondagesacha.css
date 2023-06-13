@@ -1,5 +1,5 @@
 #countdown {
-    background-color: #f2f2f2;
+    background-color: black;
     padding: 10px;
     border-radius: 4px;
 }
@@ -61,5 +61,12 @@ color: var(--accent-color);
 
 justify-content: center;
 align-items: center;
+
+}
+
+
+.imgAuth{
+border-radius: 10%;
+border: 2px solid var(--accent-color);
 
 }

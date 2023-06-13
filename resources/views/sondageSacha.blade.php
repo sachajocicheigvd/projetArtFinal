@@ -33,29 +33,34 @@ use App\Models\Answer;
 
 
 ?>
-
-
-  
 <div class="span6">
-    <p>Vous avez voté pouur la musique ci-dessous</p>
+<script>
+
+if(duration>0){
+document.querySelector("body > div.container > div.span6").innerHTML = `    <p>Vous avez voté pour la musique ci-dessous</p>
     @foreach($answers as $answer)
     @if($answer->survey_id == $surveys[count($surveys)-1]->id)
     @foreach($answer->users as $user)
     @if($user->id == Auth::user()->id)
-    <p>{{$answer->artist}}</p>
-    <p>{{$answer->answer}}</p>
-    <img src="{{$answer->picture}}" alt="{{$answer->artist}}" width="200px">
+    <p><strong>{{$answer->artist}}</strong></p>
+    <p><strong>{{$answer->answer}}</strong></p>
+    <img class="imgAuth" src="{{$answer->picture}}" alt="{{$answer->artist}}" width="200px">
     @endif
     @endforeach
     @endif
-    @endforeach
+    @endforeach`;}
+</script>
+
+
+
 </div>
+
 
     
 
     <br><br>
 
- <h5>{{$surveys[count($surveys)-1]->title}}</h5>
+
 
       
   <!-- Chronomètre -->
@@ -71,8 +76,8 @@ use App\Models\Answer;
     </div>
 
     <div id="contentContainer" id="dataSondage">
-
- @foreach($answers as $answer)
+{{--         <h5>{{$surveys[count($surveys)-1]->title}}</h5>
+ --}} @foreach($answers as $answer)
  @if($answer->survey_id == $surveys[count($surveys)-1]->id)
     
  @endif
@@ -141,7 +146,12 @@ $durations = $duree2;
 //echo "Durée en timestamp : " . $createdTimestamp;
 
 
+
 ?>
+
+const duration = <?php echo $durations; ?>;
+//console.log(duration);
+     
 
 let estTermine = false;
 
@@ -168,30 +178,38 @@ let estTermine = false;
                 display.querySelector('#minutes-label').textContent = minutes > 1 ? "minutes" : "minute";
                 display.querySelector('#seconds-label').textContent = seconds > 1 ? "secondes" : "seconde";
     
-                if (--timer < 0) {
+                if (--timer > 0) {
                     clearInterval(interval);
                     display.innerHTML = '<span style="color: red;">Résultat final du sondage</span>';
                     estTermine = true;
+                    console.log("je passe par true");
                 }
             }, 1000);
+
+            
         }
     
+
         // Démarrer le chronomètre au chargement de la page
         window.onload = function () {
+
+            
             var createdTimestamp = <?php echo strtotime($surveys[count($surveys)-1]->created_at); ?>;
             //var tenDaysTimestamp = createdTimestamp + <?php echo ($surveys[count($surveys)-1]->duration); ?>; // Timestamp de 10 jours après la création du sondage (en secondes
             var currentTime = Math.floor(Date.now() / 1000); // Timestamp actuel en secondes
             //var duration = tenDaysTimestamp - currentTime;
             var display = document.querySelector('#countdown');
     
-            const duration = <?php echo $durations; ?>;
+            duration = <?php echo $durations; ?>;
             startTimer(duration, display);
         };
 
-
+      console.log(duration);
+if (duration <= 0) {
         setInterval(function () {
             fetchSurveyResults();
         }, 1000);
+    }
 
         function fetchSurveyResults() {
     // Effectuer une requête AJAX pour récupérer les résultats du sondage
