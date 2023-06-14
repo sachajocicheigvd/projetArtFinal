@@ -15,11 +15,6 @@
 
 
 
-@if(Auth::user()->id != $surveys[count($surveys)-1]->answer_user_id)
-    <script>
-        window.location.href = "{{ route('vote') }}";
-    </script>
-@endif
 
 
 
@@ -219,6 +214,10 @@ let estTermine = false;
         };
 
       console.log(duration);
+
+//there
+
+
 if (duration <= 0) {
         setInterval(function () {
             fetchSurveyResults();
