@@ -25,9 +25,7 @@
         @else
         <div class="row">
     
-            <div class="col-sm-10 offset-sm-3 my-4 d-none">
-                <input type="text" class="form-control" name="username" id="username" value="{{ Auth::user()->first_name }}">
-            </div>
+          
     
   <div class="presentation">
                  <img src="{{ asset('storage/images/saucisse9.png') }}" alt="Image de présentation">
@@ -52,12 +50,12 @@
                         <div class="direct-chat-messages" id="messages" >
                        
                           @foreach($messages as $message)
-    <div class="encadree">
+    <div class="encadree {{ $message->user->id === Auth::user()->id ? 'monEncadree' : ''}}">
        
     <p  class="message {{ $message->user->id === Auth::user()->id ? 'moi' : '' }}">
        
         
-            <strong class="user">{{$message->user->first_name}}</strong> {{ $message->content }}
+            <strong class="user">{{$message->user->username}}</strong> {{ $message->content }}
                  @foreach($message->user->genres as $index => $genre)
             @if($index < 3)
             <div id="genresUtilisateurs">

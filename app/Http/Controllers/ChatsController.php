@@ -20,6 +20,7 @@ class ChatsController extends Controller
         $message = new MessageModel();
         $message->content = $request->input('message');
         $message->user_id = Auth::user()->id;
+       // $message->username = Auth::user()->username;
 
         $message->save();
 

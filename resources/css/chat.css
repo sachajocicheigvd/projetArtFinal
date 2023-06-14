@@ -160,3 +160,6 @@ div#messageAEnvoyer {
     margin-bottom: 150px;
 }
 
+.encadree.monEncadree {
+    background-color: #2A3D31;
+}
