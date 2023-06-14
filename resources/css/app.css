@@ -148,3 +148,23 @@ img.logoCouleur3 {
   display: flex;
   justify-content: center;
   }
+
+
+    #pageMilieuForgotPassword {
+      margin-bottom: 20px;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      height: 800px;
+    }
+  
+    #textForgotPassword {
+      text-align: justify;
+      margin: 20px;
+    }
+
+        button.secondaire.buttonSecondairePageLoginChoice {
+          color: var(--accent-color);
+        }

@@ -19,17 +19,17 @@
     height: 147px" alt="logoCouleur3" class="logoCouleur3">
 
 <!--boutons--> 
-<button class="secondaire">
-    <a href="{{ url('login') }}">
+<a href="{{ url('login') }}">
+<button class="secondaire buttonSecondairePageLoginChoice">
         Se connecter 
-    </a>
 </button>
+</a>
 
-<button class="secondaire">
-    <a href="{{ route('register') }}">
+<a href="{{ route('register') }}">
+<button class="secondaire buttonSecondairePageLoginChoice">
     Créer un compte 
-    </a>
 </button>
+</a>
 </div>
     
 @endsection

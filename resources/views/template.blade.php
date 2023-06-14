@@ -90,20 +90,32 @@
  <!-- <audio id="audioPlayer" src="resources\views\saucisse9.mp3"></audio> -->
 
   <button id = "boutonPlayPause" onclick="toggleAudio()" >
-   <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+   <svg id="boutonPlayPauseChange" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
     <path fill-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clip-rule="evenodd" />
   </svg>
     </button>
    <script>
     
       function toggleAudio() {
-        console.log("toggleAudio")
+      
         let audio = document.querySelector("#audioPlayer");
         if (audio.paused) {
           audio.play();
+          document.querySelector("#boutonPlayPauseChange").innerHTML = `<svg id="boutonPlayPauseChange" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+        <path fill-rule="evenodd" d="M6.75 5.25a.75.75 0 01.75-.75H9a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H7.5a.75.75 0 01-.75-.75V5.25zm7.5 0A.75.75 0 0115 4.5h1.5a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H15a.75.75 0 01-.75-.75V5.25z" clip-rule="evenodd" />
+</svg>`
+;
+document.querySelector("#boutonPlayPausePageAccueilIcon").innerHTML = `<svg id="boutonPlayPausePageAccueilIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+        <path fill-rule="evenodd" d="M6.75 5.25a.75.75 0 01.75-.75H9a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H7.5a.75.75 0 01-.75-.75V5.25zm7.5 0A.75.75 0 0115 4.5h1.5a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H15a.75.75 0 01-.75-.75V5.25z" clip-rule="evenodd" />
+</svg>`;
            localStorage.setItem("audioState", "playing");
         } else {
           audio.pause();
+          document.querySelector("#boutonPlayPauseChange").innerHTML = ` <svg id="boutonPlayPauseChange" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+    <path fill-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clip-rule="evenodd" <svg/>`
+          localStorage.setItem("audioState", "paused");
+          document.querySelector("#boutonPlayPausePageAccueilIcon").innerHTML = ` <svg id="boutonPlayPausePageAccueilIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+    <path fill-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clip-rule="evenodd" <svg/>`
           localStorage.setItem("audioState", "paused");
         }
       }
@@ -122,8 +134,8 @@
                 </svg>
                 <span class="textNav">Emissions</span>
             </a>
-            <a href="{{ route('vote') }}" class="{{ Request::is('vote') ? 'active' : '' }}">
-                <svg class="iconenav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-17 h-17">
+            <a href="{{ route('vote') }}" class="{{ Request::is('sondagesacha') ? 'active' : '' }}">
+                <svg class="iconenav musika" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-17 h-17">
                     <path fill-rule="evenodd" d="M19.952 1.651a.75.75 0 01.298.599V16.303a3 3 0 01-2.176 2.884l-1.32.377a2.553 2.553 0 11-1.403-4.909l2.311-.66a1.5 1.5 0 001.088-1.442V6.994l-9 2.572v9.737a3 3 0 01-2.176 2.884l-1.32.377a2.553 2.553 0 11-1.402-4.909l2.31-.66a1.5 1.5 0 001.088-1.442V9.017 5.25a.75.75 0 01.544-.721l10.5-3a.75.75 0 01.658.122z" clip-rule="evenodd" />
                 </svg>
                 <span class="textVote">Vote musique</span>

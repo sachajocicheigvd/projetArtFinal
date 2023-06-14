@@ -14,17 +14,6 @@
 
 
 
-
-@if(Auth::user()->id != $surveys[count($surveys)-1]->answer_user_id)
-    <script>
-        window.location.href = "{{ route('vote') }}";
-    </script>
-@endif
-
-
-
-
-
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -219,6 +208,10 @@ let estTermine = false;
         };
 
       console.log(duration);
+
+//there
+
+
 if (duration <= 0) {
         setInterval(function () {
             fetchSurveyResults();
@@ -300,3 +293,6 @@ if (duration <= 0) {
 
 }
     </script>
+
+
+
