@@ -21,7 +21,7 @@ class sondageSachaController extends Controller
         $answerUserCount = $latestSurvey->answers()->sum('id');
 
         // Redirection vers la page des stats si l'utilisateur a déjà répondu au sondage
-        return redirect()->route('stats')->with(compact('surveys', 'answers','answerUserCount'));
+        return view('sondagesacha', compact('surveys', 'answers','answerUserCount'));
     
     }
 

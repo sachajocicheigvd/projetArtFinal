@@ -6,7 +6,7 @@ use App\Http\Controllers\GenreUserController;
 use App\Http\Controllers\AnswerUserController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\CreateAdminController;
-
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +27,14 @@ Route::get('/', function () {
     return view('welcome')->with('messageValidation', '');
 })->name('accueil');
 
-// Chat
+// Cette route est utile lorsque l'on est authentifié et que l'on tape /login dans l'url parce qu'il redirige automatiquement vers /dashboard
+// donc cette route contourne le problème
+Route::get('/dashboard', function () {
+    return redirect()->route('accueil');
+});
+
+
+// Authentifiés
 Route::middleware('auth')->group(function () {
 
     Route::get('registerbis', [GenreUserController::class, 'showForm'])->name('registerbis');
@@ -51,6 +58,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/chat', [App\Http\Controllers\ChatsController::class, 'afficheMessage'])->name('chat');
     Route::post('/send-message', [App\Http\Controllers\ChatsController::class, 'enregistrement']);
 
+    // Admin (dans authentifiés)
     Route::middleware('admin')->group(function () {
         Route::get('creation-sondage', [SurveyController::class, 'showForm'])->name('creationsondage');
         Route::post('creation-sondage', [SurveyController::class, 'saveSurvey']);

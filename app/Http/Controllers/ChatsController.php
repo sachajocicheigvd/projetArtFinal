@@ -41,6 +41,6 @@ class ChatsController extends Controller
         $messages = MessageModel::with('user')->get();
 
         // Affichage de la vue
-        return redirect()->route('chat', compact('messages'),compact('users'))->with('genres', Genre::all())->with('user', Auth::user());
+        return view('chat', compact('messages'),compact('users'))->with('genres', Genre::all())->with('user', Auth::user());
     }
     }

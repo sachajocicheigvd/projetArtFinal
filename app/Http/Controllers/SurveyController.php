@@ -19,7 +19,7 @@ class SurveyController extends Controller
 
     public function showForm()
     {
-        return redirect()->route('creationsondage')->with('user', Auth::user());
+        return view('creationsondage')->with('user', Auth::user());
     }
 
 
