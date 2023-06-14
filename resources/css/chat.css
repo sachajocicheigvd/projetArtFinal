@@ -49,8 +49,7 @@ input:focus.ecritMessage {
 }
 
 #boutonEnvoi {
-    background-color: transparent;
-    display: center;
+margin-top: -100px;
 }
 
 .sectionChat {
@@ -60,13 +59,7 @@ input:focus.ecritMessage {
     height: 100vh;
 }
 
-.encadreeBoutonEnvoie {
-    background-color: transparent !important;
-    display: center;
-    width: 45px;
-    height: 42px;
-    padding-right: 15px;
-}
+
 
 #send_message {
     background-color: transparent;
@@ -85,19 +78,11 @@ input:focus.ecritMessage {
 }
 
 #messageAEnvoyer {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
+ 
 }
 
 .boutonPourEnvoyer {
-    margin-left: 20px;
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    align-items: right;
+  
 }
 
 #messages {
@@ -142,12 +127,41 @@ input#message {
 
 .textePres {
     margin: 0px;
+    
 }
 
-.genreMusiqueMessage {
-    float: right;
+#titreEmissionEnDirect {
+color: var(--accent-color);
+}
+
+.genreMusiqueMessage span{
+  
+    background-color: transparent !important;
+    font-size: 11px;
 }
 
 p.genres {
     background-color: transparent;
 }
+#send_message svg{
+ 
+    transform: translateX(330px) translateY(-97px);
+  
+}
+
+#genresUtilisateurs {
+    margin-left : 70px;
+}
+
+#heureDuMessage {
+    font-size: 11px !important;
+    color : var(--secondaire-color); 
+}
+
+#minutesEnvoie  {
+    font-size: 11px !important;
+    color : var(--secondaire-color);
+    background-color: transparent !important;
+    /* Styles spécifiques pour le premier élément .user dans .encadree */
+}
+

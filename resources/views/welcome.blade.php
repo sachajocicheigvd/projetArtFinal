@@ -31,20 +31,95 @@
     <button id="boutonPlayPausePageAccueil" onclick="toggleAudio()">
       
     <div id="progressionPlayer">
-    <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+    <svg  id = "boutonPlayPausePageAccueilIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
     <path fill-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clip-rule="evenodd" />
   </svg>
 </div>
     </button>
 
        <div id="barreProgression">
-        <div id="tempsEcoulé"></div>
+        <div id="tempsEcoulé">--:--</div>
         <div id="barre">
             <div id="progression"></div>
         </div>
         <div id="tempsTotal">--:--</div>
     </div>
 </div>
+    <script>
+        
+        let audio = document.querySelector("#lecteurAudioFinal");
+        let tempsEcoulé = document.querySelector("#tempsEcoulé");
+        let tempsTotal = document.querySelector("#tempsTotal");
+
+        // Mettre à jour la durée totale de l'audio
+        audio.addEventListener("loadedmetadata", function() {
+            let duration = formatTime(audio.duration);
+            tempsTotal.textContent = duration;
+        });
+
+       
+      
+
+        // Fonction pour formater le temps au format MM:SS
+      function formatTime(time) {
+    let hours = Math.floor(time / 3600);
+    let minutes = Math.floor((time % 3600) / 60);
+    let seconds = Math.floor(time % 60);
+    return `${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}`;
+}
+
+        // Fonction pour ajouter un zéro devant les chiffres inférieurs à 10
+        function padZero(number) {
+            return number < 10 ? `0${number}` : number;
+        }
+
+        function toggleAudio() {
+             
+            console.log("toggleAudio")
+            if (audio.paused) {
+                audio.play();
+            
+                localStorage.setItem("audioState", "playing");
+            } else {
+                audio.pause();
+                
+          localStorage.setItem("audioState", "paused");
+                localStorage.setItem("audioState", "paused");
+            }
+        }
+
+    audio.addEventListener("timeupdate", function() {
+                console.log(formatTime(audio.currentTime));
+            let currentTime = formatTime(audio.currentTime);
+            tempsEcoulé.textContent = currentTime;
+        }); 
+
+     
+
+// Mettre à jour le temps écoulé pendant la lecture
+        
+    </script>
+</div>
+</div>
+
+
+<!--<div id="lecteurAudioPageAccueil">
+    <audio id="lecteurAudioFinal" controls>
+        <source src="{{ asset('storage/images/saucisse9Audio.mp3') }}" type="audio/mp3">
+    </audio>
+
+    <button id="boutonPlayPausePageAccueil" onclick="toggleAudio()">
+  
+    </button>
+
+    <div id="barreProgression">
+        <div id="tempsEcoulé">--:--</div>
+        <div id="barre">
+            <div id="progression"></div>
+        </div>
+        <div id="tempsTotal">--:--</div>
+    </div>
+
     <script>
         let audio = document.querySelector("#lecteurAudioFinal");
         let tempsEcoulé = document.querySelector("#tempsEcoulé");
@@ -58,18 +133,16 @@
 
         // Mettre à jour le temps écoulé pendant la lecture
         audio.addEventListener("timeupdate", function() {
-        let currentTime = formatTime(audio.currentTime);
-         tempsEcoulé.textContent = currentTime;
- 
-});
+            let currentTime = formatTime(audio.currentTime);
+            tempsEcoulé.textContent = currentTime;
+        });
 
         // Fonction pour formater le temps au format MM:SS
-      function formatTime(time) {
-    let hours = Math.floor(time / 3600);
-    let minutes = Math.floor((time % 3600) / 60);
-    let seconds = Math.floor(time % 60);
-    return `${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}`;
-}
+        function formatTime(time) {
+            let minutes = Math.floor(time / 60);
+            let seconds = Math.floor(time % 60);
+            return `${padZero(minutes)}:${padZero(seconds)}`;
+        }
 
         // Fonction pour ajouter un zéro devant les chiffres inférieurs à 10
         function padZero(number) {
@@ -86,11 +159,11 @@
                 localStorage.setItem("audioState", "paused");
             }
         }
-// Mettre à jour le temps écoulé pendant la lecture
-        
     </script>
-</div>
-</div>
+</div> -->
+
+
+
 
 <div class="descriptionRediffusionEtEmission">
         <h1 id="rediffusions">Rediffusions</h1>
