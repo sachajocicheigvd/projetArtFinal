@@ -5,7 +5,7 @@
 @endsection
 
 @section('header')
-<h1 class="page-header"><a href="">Crée Admin</a></h1>
+<h1 class="page-header">Crée Admin</h1>
 @endsection
 
 @section('contenu')

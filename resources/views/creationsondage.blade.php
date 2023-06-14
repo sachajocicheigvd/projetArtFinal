@@ -11,7 +11,7 @@
 @endsection
 
 @section('header')
-<h1 class="page-header"><a href="">Création sondage</a></h1>
+<h1 class="page-header">Création sondage</h1>
 @endsection
 
 @section('contenu')

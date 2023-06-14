@@ -3,7 +3,6 @@
 
 @section('title')
 <title>Mon Compte</title>
-@vite('resources/css/buttons.css')
 @endsection
 
 @section('header')

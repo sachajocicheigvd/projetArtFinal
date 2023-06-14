@@ -10,7 +10,8 @@
 @endsection
 
 @section('header')
-<h1 class="page-header"><a href="">Vote</a></h1>
+<h1 class="page-header">Vote musique</h1>
+<h2 id="carousel-heading">{{$question}}</h2>
 @endsection
 
 @section('contenu')
@@ -30,14 +31,12 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
 <!-- Question sur une durée type number -->
 <p id="alert" style="display:none;">Pas de sondage disponible</p>
 <div class="sondage">
-<p>Vote musique</p>
 <p id="duree" style="display:none;">{{$duree}}</p>
 
 
 <div class="mkt-3dSlider py-6">
 <section id="slider">
         <section class="splide" aria-labelledby="carousel-heading">
-                <h2 id="carousel-heading">{{$question}}</h2>
               
               
                 <div class="splide__track">
@@ -50,12 +49,13 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
 </div>    
  @foreach($reponses as $reponse)      
 
-<li class="splide__slide" data-slideid="{{$i}}"><div class="txtimage"> {{$reponse->answer}} @if($reponse->artist)- {{$reponse->artist}}</div> <img src="{{$reponse->picture}}" alt="{{$reponse->artist}}" width="200px">  @endif</li>
+<li class="splide__slide" data-slideid="{{$i}}"><div class="txtimage">{{$reponse->answer}} @if($reponse->artist)<br/>{{$reponse->artist}}</div> <img src="{{$reponse->picture}}" alt="{{$reponse->artist}}" width="200px"> @endif</li>
+
+
 
 <div class="zoneradio">
 {{$i = $i + 1}}
 </div>
-
 @endforeach
 
 
@@ -80,12 +80,11 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
 <div class="zoneradio">
 {{$i = $i + 1}}
 </div>
-
 @endforeach
 </div>
 </div>
 
-<input type="submit" class="primaire" value="Valider">
+<input type="submit" class="primaire valide" value="Valider">
 </form> 
 
 

@@ -1,14 +1,11 @@
 .splide__slide {
-    width: 200px;
-    height: 160px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #fff;
-    background-color: grey;
+    background-color: var(--fond-color);
     overflow: hidden;
     position: relative;
-
 }
 
 .splide__slide div {
@@ -18,27 +15,38 @@
 }
 
 .is-next {
-    background-color: black !important;
-    border: 4px solid greenyellow;
-    border-radius: 10px;
+    height: 240px !important;
+    background-color: var(--fond-color);
     /* Ajustez la valeur pour définir le degré d'arrondi souhaité */
     margin: 3px;
+}
 
-
+.is-next img {
+    border: 4px solid greenyellow;
+    border-radius: 10px;
+    width: 110px;
+    height: 110px;
 }
 
 .zoneradio {
     display: none;
 }
 
-
 .splide__slide:not(.is-next) {
-
-    height: 120px !important;
+    height: 240px !important;
     margin: auto;
     border-radius: 10px;
+}
 
+.splide__slide:not(.is-next) .txtimage {
+    transform: translateY(135px);
+    background: none;
+}
 
+.splide__slide:not(.is-next) img {
+    border-radius: 10px;
+    width: 90px;
+    height: 90px;
 }
 
 .splide__slide {
@@ -49,18 +57,42 @@
 }
 
 .is-next .txtimage {
-    color: white;
-    transform: translateY(145px);
-    background-color: black;
+    transform: translateY(160px);
+    background: none;
 }
 
 .splide__pagination {
     counter-reset: pagination-num;
     transform: translateY(25px);
-
 }
 
 .splide_pagination_page {
     display: none;
+}
 
+.page-header {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0px;
+}
+
+#carousel-heading {
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 0px;
+}
+
+#duree {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 0px;
+}
+
+.splide__pagination__page {
+    display: none;
+}
+
+.valide {
+    margin-top: 40px;
+    margin-bottom: 200px;
 }
