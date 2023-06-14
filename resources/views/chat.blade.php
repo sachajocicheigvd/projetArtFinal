@@ -19,7 +19,7 @@
     <div id="chatpopup"></div>
     @endif
    
-    <div class="app">
+    <div class="app" id="chatContainer">
 
         @guest
         <p>Vous devez être connecté.</p>
@@ -98,9 +98,10 @@
                         </div>
                     </div>
 
-             
+             <div id="encadreeMessage">
     
-                    <div class="box-footer" id="encadreeMessage">
+                    <div class="box-footer">
+                        
                         
                     </div>
     

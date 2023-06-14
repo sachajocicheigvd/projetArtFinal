@@ -165,3 +165,6 @@ p.genres {
     /* Styles spécifiques pour le premier élément .user dans .encadree */
 }
 
+#chatContainer {
+    box-sizing: initial !important;
+}
