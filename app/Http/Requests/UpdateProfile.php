@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules;
 
 class UpdateProfile extends FormRequest
 {
@@ -24,7 +23,7 @@ class UpdateProfile extends FormRequest
     {
         return [
             'email' => 'nullable|unique:users',
-            'password' => 'nullable'| Rules\Password::defaults(),
+            'password' => 'nullable|min:8',
         ];
     }
 }
