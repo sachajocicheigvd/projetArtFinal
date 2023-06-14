@@ -12,23 +12,14 @@
 
 @section('contenu')
 
-<script>
-if(Auth::user()->id != $surveys[count($surveys)-1]->answer_user_id){
-    window.location.href = "{{ route('vote') }}";
-
-}
-
-</script>
 
 
-<script>
-    if(Auth::user()->id != $surveys[count($surveys)-1]->answer_user_id){
+
+@if(Auth::user()->id != $surveys[count($surveys)-1]->answer_user_id)
+    <script>
         window.location.href = "{{ route('vote') }}";
-    
-    }
-    
     </script>
-    
+@endif
 
 
 
