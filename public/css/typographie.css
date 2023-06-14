@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+
+* {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color : white;
+  }
+
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 500;
+  }
+
+  largeTextBold {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  largeTextRegular {
+    font-size: 20 px;
+  }
+
+  mediumTextBold {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  mediumTextRegular {
+    font-size: 18px;
+  }

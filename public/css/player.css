@@ -1,0 +1,104 @@
+
+#audioPlayer {
+    width: 100%;
+    border : none;
+    object-fit: cover;
+   
+
+}
+
+#titreEmission {
+    margin-right: 12px;
+    margin-left: 12px;
+    white-space: nowrap;
+    background-color: transparent;
+}
+
+#imgCover {
+    margin-left: 12px;
+    width: 80px;
+    height: 52px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+}
+
+#audioPlayer::-webkit-media-controls-panel {
+    background-color: var(--box-color);
+   
+}
+#audioPlayer::-webkit-media-controls-timeline {
+    display: none;
+    /* Masquer la barre de progression */
+}
+
+#audioPlayer::-webkit-media-controls-time-remaining-display {
+    display: none;
+    /* Masquer l'affichage du temps restant */
+}
+
+.audio-info {
+    display: flex;
+    align-items: flex-end;
+    background-color: transparent;
+}
+
+
+.PlayerFlex-container {
+
+    background-color: var(--box-color);
+    justify-content: space-between;
+    position: fixed;
+    bottom: 100;
+    left: 0;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    height: 70px;
+    position : fixed;
+    bottom : 100px;
+    padding-right: 20px;
+}
+
+
+
+/* Masquer les contrôles par défaut */
+
+
+#playPauseButton {
+    background-color: transparent;
+    display : center;
+    width: 70px;
+    height: 70px;
+    padding-right: 15px;
+   
+    
+}
+
+#boutonenvoie {
+    background-color: var(--box-color);
+}
+
+.espace {
+    background-color: transparent;
+    margin-right: 1px;
+}
+
+#boutonPlayPause {
+    /* Réinitialisation des styles par défaut */
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    width: auto;
+    height: auto;
+    cursor: pointer;
+    align-self: right;
+
+}
+
+button svg {
+    background-color: transparent;
+
+}

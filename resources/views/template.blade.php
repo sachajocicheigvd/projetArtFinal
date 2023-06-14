@@ -10,11 +10,12 @@
 <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-        @vite('resources/css/index.css')
         
         <style> textarea {resize:none} </style>
+        @vite('resources/css/index.css')
 
-        @vite('resources/js/popup.js')
+        <!-- <script src="{{ asset('public/js/popup.js') }}"></script> -->
+        @vite('resources/js/app.js')
 
         @yield('title')
   

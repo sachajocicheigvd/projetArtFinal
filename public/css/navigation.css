@@ -1,0 +1,106 @@
+footer {
+    flex-shrink: 0;
+    /* pas le droit de se réduire */
+
+    background: var(--fond-color);
+}
+
+footer nav {
+    /* nav est de nouvau un container flex */
+    height: 100%;
+    display: flex;
+}
+
+footer nav a {
+    /* chaque lien prend 1 part de l'espace restant, ils font donc tous la même taille */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+
+    text-align: center;
+    text-decoration: none;
+}
+
+svg path {
+    fill: var(--secondaire-color);
+}
+
+footer nav a.active * {
+    fill: var(--accent-color);
+    color: var(--accent-color);
+}
+
+/* footer nav a:hover * {
+    fill: var(--accent-color);
+    color: var(--accent-color);
+} */
+
+.textNav {
+    color: var(--secondaire-color);
+    font-size: 10px;
+}
+
+.textVote {
+    color: var(--secondaire-color);
+    font-size: 10px;
+}
+
+.textChat {
+    color: var(--secondaire-color);
+    font-size: 10px;
+}
+
+.iconenav {
+    width: 40px;
+    /* Divise la taille par 2 */
+    height: 40px;
+    /* Divise la taille par 2 */
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+}
+
+footer {
+    /* nav est de nouveau un container flex */
+    height: 100px;
+    background: var(--fond-color);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+footer nav {
+    /* nav est de nouveau un container flex */
+    height: 100%;
+    display: flex;
+}
+
+.container {
+    margin-bottom: 20px;
+    /* Réglez la valeur en fonction de la hauteur de votre pied de page */
+    text-align: center;
+    justify-content: center;
+}
+
+/* icon compte utilisateur */
+
+.iconUser {
+    width: 40px;
+    /* Divise la taille par 2 */
+    height: 40px;
+    /* Divise la taille par 2 */
+    display: block;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+    margin-bottom: 100px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}

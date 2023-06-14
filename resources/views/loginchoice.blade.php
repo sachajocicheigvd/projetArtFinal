@@ -4,7 +4,8 @@
 </head>
 
 @section('title')
-@vite('resources/js/sondage.js')
+
+<script src="{{ asset('public/js/sondage.js') }}"></script>
 @endsection
 
 @section('header')

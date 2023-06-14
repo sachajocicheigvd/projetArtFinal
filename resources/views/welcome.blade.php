@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title')
-@vite('resources/css/pageAccueil.css')
+<link rel="stylesheet" href="{{ asset('public/css/pageAccueil.css') }}">
 @endsection
 
 @section('header')

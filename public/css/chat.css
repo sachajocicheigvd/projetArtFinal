@@ -1,0 +1,153 @@
+.message {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 12px;
+    white-space: normal;
+    position: absolute;
+    width: 348px;
+    height: 37.33px;
+    padding-left: 10px;
+    line-height: 17px;
+    color: #ffffff;
+    background-color: transparent;
+    text-align: left;
+}
+
+.user {
+    display: block;
+    white-space: normal;
+    background-color: transparent;
+    color: var(--accent-color);
+}
+
+.encadree {
+    padding-left: 10px;
+    margin-bottom: 15px;
+    height: 5rem;
+    background: #2a2a2f;
+    border-radius: 20px;
+}
+
+input:focus.ecritMessage {
+    outline: none;
+}
+
+.ecritMessage::placeholder {
+    color: black;
+}
+
+.ecritMessage {
+    padding-left: 10px;
+    color: black;
+    margin-top: -100px;
+    background: #767676;
+    border: 1px solid #767676;
+    border-radius: 20px;
+    width: 299px;
+    height: 31px;
+}
+
+#boutonEnvoi {
+    background-color: transparent;
+    display: center;
+}
+
+.sectionChat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.encadreeBoutonEnvoie {
+    background-color: transparent !important;
+    display: center;
+    width: 45px;
+    height: 42px;
+    padding-right: 15px;
+}
+
+#send_message {
+    background-color: transparent;
+    /* Pour rendre le fond du bouton transparent */
+    border: none;
+    /* Pour supprimer la bordure du bouton */
+    padding: 0;
+    /* Pour supprimer le padding du bouton */
+    cursor: pointer;
+    /* Pour afficher le curseur en tant que pointeur */
+}
+
+#send_message svg {
+    height: 70px;
+    width: 70px;
+}
+
+#messageAEnvoyer {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.boutonPourEnvoyer {
+    margin-left: 20px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    align-items: right;
+}
+
+#messages {
+    padding-bottom: 120px;
+}
+
+#encadreeMessage {
+    padding-bottom: 50px;
+}
+
+input#message {
+    border-radius: 20px;
+}
+
+.presentation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.presentation {
+    display: flex;
+    text-align: left;
+    align-items: flex-start;
+    margin: 0px;
+}
+
+.presentation img {
+    width: 80px;
+    height: 52px;
+    margin-bottom: 28px;
+    border-radius: 10px;
+}
+
+.presentationTexte {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-top: 0px;
+}
+
+.textePres {
+    margin: 0px;
+}
+
+.genreMusiqueMessage {
+    float: right;
+}
+
+p.genres {
+    background-color: transparent;
+}

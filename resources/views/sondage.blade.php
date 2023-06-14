@@ -1,6 +1,5 @@
 @extends('template')
 <head>
-        {{-- @vite('resources/js/popup.js') --}}
 
 </head>
 @section('title')
