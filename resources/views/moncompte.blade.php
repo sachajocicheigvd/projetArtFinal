@@ -13,6 +13,13 @@
                       @csrf
 <input type="submit" class="svgSubmit" value="">
 </form>
+<!-- a enlever -->
+<form method="post" action="{{ url('/logout') }}">
+                      @csrf
+<input type="submit" class="" value="Déconnexion">
+</form>
+
+
 @endsection
 
 @section('contenu')
@@ -59,5 +66,10 @@
         </div>
         <input class="primaire enregistrer" type="submit" value="Enregistrer">
         </form>
+ 
+
+
+
+
 @endsection
 
