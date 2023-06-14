@@ -6,7 +6,7 @@
 @endsection
 
 @section('header')
-<h1 class="page-header"><a href="">Sondage</a></h1>
+<h1 class="page-header">Sondage</h1>
 
 @endsection
 
