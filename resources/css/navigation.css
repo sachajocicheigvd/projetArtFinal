@@ -43,6 +43,11 @@ footer nav a.active * {
     font-size: 10px !important;
 }
 
+.textSondage {
+    color: var(--secondaire-color) !important;
+    font-size: 10px !important;
+}
+
 .iconenav {
     width: 40px !important;
     height: 40px !important;
@@ -85,6 +90,3 @@ footer nav {
     right: 0 !important;
     top: 0 !important;
 }
-
-
-

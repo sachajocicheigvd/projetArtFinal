@@ -2,7 +2,7 @@
 
 @section('title')
 <title>Sondage</title>
-@vite('resources/css/sondagesacha.css')
+<link rel="stylesheet" href="{{ asset('resources/css/sondagesacha.css') }}">
 @endsection
 
 @section('header')
