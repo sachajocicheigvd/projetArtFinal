@@ -5,9 +5,10 @@
 @import "chat.css";
 @import "player.css";
 @import "buttons.css";
-@import "app.css";
 @import "sondage.css";
-
+@import "pageAccueil.css";
+@import "app.css";
+@import "sondagesacha.css";
 
 body {
     background-color: var(--fond-color);
