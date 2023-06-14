@@ -49,7 +49,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
 </div>    
  @foreach($reponses as $reponse)      
 
-<li class="splide__slide" data-slideid="{{$i}}"><div class="txtimage">{{$reponse->answer}} @if($reponse->artist)<br/>{{$reponse->artist}}</div> <img src="{{$reponse->picture}}" alt="{{$reponse->artist}}" width="200px"> @endif</li>
+<li class="splide__slide" data-slideid="{{$i}}"><div class="txtimage"><p><strong>{{$reponse->answer}}</strong> @if($reponse->artist){{$reponse->artist}}</p></div> <img src="{{$reponse->picture}}" alt="{{$reponse->artist}}" width="200px"> @endif</li>
 
 
 

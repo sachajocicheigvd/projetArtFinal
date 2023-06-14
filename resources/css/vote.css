@@ -15,7 +15,7 @@
 }
 
 .is-next {
-    height: 240px !important;
+    height: 270px !important;
     background-color: var(--fond-color);
     /* Ajustez la valeur pour définir le degré d'arrondi souhaité */
     margin: 3px;
@@ -26,6 +26,7 @@
     border-radius: 10px;
     width: 110px;
     height: 110px;
+    transform: translateY(-25px);
 }
 
 .zoneradio {
@@ -33,20 +34,29 @@
 }
 
 .splide__slide:not(.is-next) {
-    height: 240px !important;
+    height: 270px !important;
     margin: auto;
     border-radius: 10px;
 }
 
 .splide__slide:not(.is-next) .txtimage {
-    transform: translateY(135px);
+    transform: translateY(115px);
     background: none;
+}
+
+.splide__slide:not(.is-next) .txtimage p {
+    font-size: 10px;
+}
+
+.splide__slide:not(.is-next) .txtimage strong {
+    font-size: 10px;
 }
 
 .splide__slide:not(.is-next) img {
     border-radius: 10px;
     width: 90px;
     height: 90px;
+    transform: translateY(-20px);
 }
 
 .splide__slide {
@@ -57,8 +67,16 @@
 }
 
 .is-next .txtimage {
-    transform: translateY(160px);
+    transform: translateY(140px);
     background: none;
+}
+
+.is-next .txtimage p {
+    font-size: 12px;
+}
+
+.is-next .txtimage strong {
+    font-size: 12px;
 }
 
 .splide__pagination {
@@ -83,15 +101,16 @@
 }
 
 #duree {
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 700;
-    margin-bottom: 0px;
 }
 
 .splide__pagination__page {
     display: none;
 }
-
+Strong {
+    display: block;
+}
 .valide {
     margin-top: 40px;
     margin-bottom: 200px;
