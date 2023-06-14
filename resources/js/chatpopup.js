@@ -27,10 +27,8 @@ window.Echo.channel("chat-popup").listen("ChatPopup", () => {
     // console.log("chat-popup");
 
     if (app) {
-        console.log("a présnentntnrefndasjfdjf");
         app.unmount("#chatpopup"); // Démonter l'application si elle est déjà montée
     }
-    console.log("chat-popup");
     // app = createApp(ChatApp);
     app.mount("#chatpopup"); // Monter l'application
 });

@@ -2,7 +2,7 @@
     <div class="popup">
         <div class="infos" v-if="lastSurvey && showSurveyInfo">
             <div class="text">
-                <h2>{{ lastSurvey.title }}</h2>
+                <h1>{{ lastSurvey.title }}</h1>
                 <p>{{ formattedDuration }}</p>
             </div>
             <div v-for="(answer, index) in lastSurvey.answers" :key="index">
@@ -19,16 +19,16 @@
                 </div>
             </div>
             <div class="vote-button" v-if="selectedAnswer !== null">
-                <button class="primaire" @click="vote(selectedAnswer)">
+                <button class="primaire reduced" @click="vote(selectedAnswer)">
                     Vote
                 </button>
             </div>
         </div>
         <div class="popup-inner">
-            <p v-show="showPopupMessage">
+            <h1 class="text" v-show="showPopupMessage">
                 Merci pour votre vote, retrouvez les résultats du sondage dans
                 le chat!
-            </p>
+            </h1>
             <button class="popup-close" @click="togglePopup()"></button>
         </div>
     </div>
@@ -176,8 +176,19 @@ export default {
 .text {
     text-align: center;
     margin-top: 10;
+    line-height: 1.25;
+    margin-left: 8%;
+    margin-right: 8%;
 }
 .popup-close::after {
     transform: translate(-50%, -50%) rotate(-45deg);
+}
+.vote-button {
+    position: absolute;
+    bottom: 20px; /* Pour positionner à 20px du bas */
+}
+
+.reduced {
+    transform: scale(0.7); /* Pour réduire la taille du bouton de 2/3 */
 }
 </style>
