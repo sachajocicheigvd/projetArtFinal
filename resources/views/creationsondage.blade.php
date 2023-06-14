@@ -1,6 +1,7 @@
 @extends('template')
 <head>
   <meta name="csrf-token" content="{{ csrf_token() }}"> 
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js'></script>
 </head>
 
 @section('title')
@@ -135,3 +136,161 @@
 
 </form>
 @endsection
+
+<style>
+
+.active_label{
+	visibility: visible;
+}
+.dev_info{
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 13pt;
+	color: #FFF;
+}
+#float_body{
+	background: #217163;
+}
+
+.float_container{
+	border: 1px solid #FFF;
+	background: #FFF;
+	margin: 0 auto;
+	position: relative;
+	width: 350px;
+	padding: 10px 10px 15px 10px;
+	border-radius: 6px;
+	-webkit-box-shadow: 2px 2px 2px #3E3B3B;
+	-moz-box-shadow: 2px 2px 2px #3E3B3B;
+	box-shadow: 2px 2px 2px #3E3B3B;
+}
+.float {
+  position: relative;
+  margin-top: 10px;
+}
+
+.float input {
+  font-size: 15pt;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  background: transparent;
+  z-index: 2;
+  border: 1px solid #ccc;
+  text-indent: 20px;
+}
+
+.float label {
+  color: #ccc;
+  display: block;
+  font-size: 13pt;
+  left: 20px;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  -moz-transform-origin: 0 0em;
+  -ms-transform-origin: 0 0em;
+  -webkit-transform-origin: 0 0em;
+  transform-origin: 0 0em;
+  -moz-transition: -moz-transform 160ms, color 200ms;
+  -o-transition: -o-transform 160ms, color 200ms;
+  -webkit-transition: -webkit-transform 160ms, color 200ms;
+  transition: transform 160ms, color 200ms;
+  -moz-transform: scale(1, 1) rotateY(0);
+  -ms-transform: scale(1, 1) rotateY(0);
+  -webkit-transform: scale(1, 1) rotateY(0);
+  transform: scale(1, 1) rotateY(0);
+  
+}
+
+.float-active label {
+	color: #165DCC;
+	-moz-transform: scale(0.65, 0.65) rotateY(0);
+	-ms-transform: scale(0.65, 0.65) rotateY(0);
+	-webkit-transform: scale(0.65, 0.65) rotateY(0);
+	transform: scale(0.65, 0.65) rotateY(0);
+}
+
+.float-active input {
+  line-height: 2.8em;
+  width: 100%;
+}
+
+.inactive_label{
+	visibility: hidden;
+}
+
+input, .float {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 15pt;
+  line-height: 2em;
+  height: 2em;
+  padding: 0;		  
+  width:100%;
+}
+
+</style>
+
+
+
+<script>
+/*!
+ * Float.js v1
+ * https://sangramjagtap.github.io/Float.js/
+ * https://codepen.io/sangramjagtap/pen/pyPdPb
+ * Licensed MIT © Sangram Jagtap
+ */
+
+ $(document).ready(function(){
+  function floatLabel(event){
+    var input=$(this);
+      var val=$.trim(input.val());
+        input.parent().addClass("float-active");
+		$(this).siblings().each(function() {
+		 if(val!="")
+		 {
+			 if($(this).hasClass('first_label'))
+			  {
+				$(this).addClass("inactive_label");
+				$(this).removeClass("active_label");    		  
+			  }  
+			  else if($(this).hasClass('inactive_label'))
+			  {
+				$(this).addClass("active_label");
+				$(this).removeClass("inactive_label");    		  
+			  }
+		 }
+		 else
+		 {
+			if($(this).hasClass('first_label'))
+			  {
+				$(this).addClass("active_label");
+				$(this).removeClass("inactive_label");    		  
+			  }  
+			  else
+			  {
+				$(this).addClass("inactive_label");
+				$(this).removeClass("active_label");    		  
+			  } 
+		 }
+		 });
+  }
+  function floatBack(event){
+    var input=$(this);
+      var val=input.val();
+      if(val!="")
+        input.parent().addClass("float-active");
+	  else
+        input.parent().removeClass("float-active");   
+  } 
+  $(".float input").keyup(floatLabel);
+  $(".float input").focus(floatLabel);
+  $(".float input").blur(floatBack);
+  $(".float input").change(floatLabel);
+});
+    
+
+
+</script>

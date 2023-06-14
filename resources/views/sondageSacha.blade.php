@@ -11,6 +11,29 @@
 @endsection
 
 @section('contenu')
+
+<script>
+if(Auth::user()->id != $surveys[count($surveys)-1]->answer_user_id){
+    window.location.href = "{{ route('vote') }}";
+
+}
+
+</script>
+
+
+<script>
+    if(Auth::user()->id != $surveys[count($surveys)-1]->answer_user_id){
+        window.location.href = "{{ route('vote') }}";
+    
+    }
+    
+    </script>
+    
+
+
+
+
+
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
