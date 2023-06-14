@@ -1,5 +1,9 @@
-<x-guest-layout>
+@extends('template')
+<head>
+  <meta name="csrf-token" content="{{ csrf_token() }}"> 
+</head>
 
+@section('contenu')
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -60,4 +64,5 @@
         <br>
                 </div>   
              </div>
-    </x-guest-layout>
+
+@endsection
