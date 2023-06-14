@@ -85,9 +85,7 @@ margin-top: -100px;
   
 }
 
-#messages {
-    padding-bottom: 120px;
-}
+
 
 #encadreeMessage {
     padding-bottom: 50px;
@@ -95,6 +93,7 @@ margin-top: -100px;
 
 input#message {
     border-radius: 20px;
+    margin-bottom: 130px;
 }
 
 .presentation {
@@ -145,7 +144,7 @@ p.genres {
 }
 #send_message svg{
  
-    transform: translateX(330px) translateY(-97px);
+transform: translate(25px, 50px);
   
 }
 
