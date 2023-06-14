@@ -14,8 +14,8 @@ class sondageController extends Controller
     public function afficheSondage()
     {
         // Récupération des sondages et des réponses
-        // $surveys = Survey::all();
-        // $answers = Answer::all();
+        $surveys = Survey::all();
+        $answers = Answer::all();
 
         // Récupération du dernier sondage
         $latestSurvey = Survey::latest()->first();
