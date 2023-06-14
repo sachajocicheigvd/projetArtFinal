@@ -40,8 +40,9 @@ const popupChat = async () => {
     let app = createApp(ChatApp);
     let duration = new Date(sondage.duration);
     let now = new Date();
+    let type = sondage.type;
 
-    if (duration > now) {
+    if (duration > now && type == "text") {
         // app = createApp(ChatApp);
         app.mount("#chatpopup");
     }
