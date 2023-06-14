@@ -1,6 +1,6 @@
-var coll = document.getElementsByClassName("collapsible");
-var i;
-var svgElement = document.getElementById("boutonPlus");
+let coll = document.getElementsByClassName("collapsible");
+let i;
+let svgElement = document.getElementById("boutonPlus");
 
 for (i = 0; i < coll.length; i++) {
     coll[i].addEventListener("click", function () {
@@ -16,8 +16,8 @@ for (i = 0; i < coll.length; i++) {
     });
 }
 
-var emailUser = document.getElementById("user-email").value;
-var emailElement = document.getElementById("email");
+let emailUser = document.getElementById("user-email").value;
+let emailElement = document.getElementById("email");
 
 emailElement.addEventListener("focus", function () {
     emailElement.removeAttribute("placeholder");
@@ -27,7 +27,7 @@ emailElement.addEventListener("blur", function () {
     emailElement.setAttribute("placeholder", emailUser);
 });
 
-var passwordElement = document.getElementById("password");
+let passwordElement = document.getElementById("password");
 
 passwordElement.addEventListener("focus", function () {
     passwordElement.removeAttribute("placeholder");

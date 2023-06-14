@@ -1,5 +1,5 @@
 import { createApp } from "vue";
-import ChatApp from "./ChatApp.vue";
+// import ChatApp from "./ChatApp.vue";
 // import "./bootstrap";
 
 (async () => {
