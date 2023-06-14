@@ -1,13 +1,4 @@
 import "./bootstrap";
-// i want to import the others js files here
-import "./appsondage.js";
-// import "./bootstrap.js";
-import "./chatpopup.js";
-import "./monProfil";
-import "./player.js";
-import "./popup.js";
-import "./sondage.js";
-import "./vote.js";
 
 $(document).ready(function () {
     $(document).on("click", "#send_message", function (e) {
@@ -41,31 +32,25 @@ function getCurrentTime() {
 }
 const lastMessage = document.querySelector(".message:last-child");
 
+
 window.Echo.channel("chat").listen(".message", (e) => {
     let username = $("#username").val();
     let currentTime = getCurrentTime();
     let lastChild = document.querySelector("#zonemess > div:last-child");
 
     let message = e.message;
-    let formattedMessage = "";
+    let formattedMessage = '';
     for (let i = 0; i < message.length; i += 23) {
         formattedMessage += message.substring(i, i + 20) + "<br>";
     }
 
     let messageHTML =
         '<div class="encadree">' +
-        '<p class="message ' +
-        (e.username === username ? "moi" : "") +
-        '">' +
-        currentTime +
-        '<strong class="user">' +
-        e.username +
-        "</strong> " +
-        formattedMessage +
-        "</p>" +
-        '<p class="text-muted">' +
-        "</p>" +
-        "</div>";
+        '<p class="message ' + (e.username === username ? 'moi' : '') + '">' +
+        currentTime + '<strong class="user">' + e.username + '</strong> ' + formattedMessage +
+        '</p>' +
+        '<p class="text-muted">' + '</p>' +
+        '</div>';
 
     $("#zonemess > div:last-child").append(messageHTML);
     $("#message").val("");

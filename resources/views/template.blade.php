@@ -14,7 +14,8 @@
         <style> textarea {resize:none} </style>
         @vite('resources/css/index.css')
 
-        <script src="{{ asset('public/js/popup.js') }}"></script>
+        <!-- <script src="{{ asset('public/js/popup.js') }}"></script> -->
+        @vite('resources/js/app.js')
 
         @yield('title')
   

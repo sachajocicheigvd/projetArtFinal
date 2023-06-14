@@ -1,0 +1,75 @@
+.reponseTexte {
+    width: 320px;
+    text-align: left;
+    padding: 0 16px;
+}
+
+.reponseMusique {
+    width: 158px;
+    text-align: left;
+    padding: 0 16px;
+    margin-bottom: 2px;
+}
+
+.add {
+    width: 61px;
+    text-align: center;
+    transform: translateX(129px);
+    margin-bottom: 50px;
+}
+
+#ajoute {
+    background: none;
+}
+
+.nombre {
+    width: 110;
+    padding: 0 16px;
+    text-align: left;
+    transform: translateX(-105px);
+}
+
+.marge-fictive {
+    margin-bottom: 170px;
+}
+
+.upload {
+    display: none;
+}
+
+.custom-file {
+    text-align: left;
+    justify-content: left;
+    padding: 0 16px;
+    color: #767676;
+    cursor: pointer;
+    display: inline-flex;
+    width: 286px;
+    margin-bottom: 20px;
+    background-image: url("../../public/storage/images/upload.svg"); /* Chemin vers votre fichier SVG */
+    background-repeat: no-repeat;
+    background-position: right 7% center;
+}
+
+.titreAdd {
+    margin-right: 5px;
+}
+
+.choixType {
+    font-size: 22px;
+    font-weight: 600;
+    color: #767676;
+    cursor: pointer;
+}
+
+.radioButton {
+    display: none;
+}
+
+.typeText {
+    margin-right: 60px;
+}
+
+.containerSondage {
+    display: block;
+}
