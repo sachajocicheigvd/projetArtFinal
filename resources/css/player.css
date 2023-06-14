@@ -102,3 +102,7 @@ button svg {
     background-color: transparent;
 
 }
+
+svg#boutonPlayPauseChange {
+    margin-right: 20px;
+}
