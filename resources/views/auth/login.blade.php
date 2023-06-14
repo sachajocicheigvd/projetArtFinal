@@ -11,11 +11,6 @@
             @csrf
             <div>
 
-                <!-- Si la variable textChat est initialisée, fait quelque chose -->
-                @if (session('lienExterne'))
-                <p>{{session('lienExterne')}}</p>
-                @endif
-
                 <!--icon retour-->
                 <a href="{{ route('loginChoice')}}">
                 <svg class="iconRetour" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
