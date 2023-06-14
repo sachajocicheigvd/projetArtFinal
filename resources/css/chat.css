@@ -49,7 +49,7 @@ input:focus.ecritMessage {
 }
 
 #boutonEnvoi {
-margin-top: -100px;
+    margin-top: -100px;
 }
 
 .sectionChat {
@@ -77,9 +77,17 @@ margin-top: -100px;
     width: 70px;
 }
 
+#messageAEnvoyer {
  
+}
 
+.boutonPourEnvoyer {
+  
+}
 
+#messages {
+    padding-bottom: 120px;
+}
 
 #encadreeMessage {
     padding-bottom: 50px;
@@ -120,15 +128,15 @@ input#message {
 
 .textePres {
     margin: 0px;
-    
+
 }
 
 #titreEmissionEnDirect {
-color: var(--accent-color);
+    color: var(--accent-color);
 }
 
-.genreMusiqueMessage span{
-  
+.genreMusiqueMessage span {
+
     background-color: transparent !important;
     font-size: 11px;
 }
@@ -136,28 +144,29 @@ color: var(--accent-color);
 p.genres {
     background-color: transparent;
 }
-#send_message svg{
- 
-transform: translate(25px, 50px);
-  
+
+#send_message svg {
+
+transform: translateX(20px) translateY(50px);
+
 }
 
 #genresUtilisateurs {
-    margin-left : 70px;
+    margin-left: 70px;
 }
 
 #heureDuMessage {
     font-size: 11px !important;
-    color : var(--secondaire-color); 
+    color: var(--secondaire-color);
 }
 
-#minutesEnvoie  {
+#minutesEnvoie {
     font-size: 11px !important;
-    color : var(--secondaire-color);
+    color: var(--secondaire-color);
     background-color: transparent !important;
     /* Styles spécifiques pour le premier élément .user dans .encadree */
 }
 
-#chatContainer {
-    box-sizing: initial !important;
+div#messageAEnvoyer {
+    margin-bottom: 150px;
 }
