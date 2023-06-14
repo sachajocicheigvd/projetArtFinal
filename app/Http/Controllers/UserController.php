@@ -26,7 +26,8 @@ class UserController extends Controller
     // }
     public function index()
     {
-        $users = Auth::user();   // permet de voir quatre utilisateurs à la fois
+        // Récupération de l'utilisateur connecté
+        $users = Auth::user();
 
         return view('moncompte', compact('users'))->with('genres', Genre::all())->with('user', Auth::user())->with('messageModification', null);
     }
@@ -68,14 +69,18 @@ class UserController extends Controller
      */
     public function update(UpdateProfile $request)
     {
+        // Récupération de l'utilisateur connecté
         $user = User::find(Auth::user()->id);
+
+        // Récupération des données du formulaire
         $email = $request->input('email');
         $password = $request->input('password');
         $genres = $request->input('genres');
 
+        // Si l'email a été modifié avec le même email, on rafraichit la page avec un message sinon on continue
         if($email != null){
             if($email == Auth::user()->email) {
-                return "email inchangé";
+                return view('moncompte')->with('messageModification', "Email inchangé")->with('users', Auth::user())->with('genres', Genre::all())->with('user', Auth::user());
             } else {
                 $user = User::find(Auth::user()->id);
                 $user->email = $email;
@@ -83,12 +88,14 @@ class UserController extends Controller
             }
         }
         
+        // On vérifie que le mot de passe n'est pas vide et on le modifie
         if($password != null){
             $user = User::find(Auth::user()->id);
             $user->password = $password;
             $user->save();
         }
 
+        // On supprime les genres de l'utilisateur et on les ajoute
         $user->genres()->detach();
 
         foreach ($genres as $genreId) {

@@ -27,7 +27,7 @@ class CreateAdminController extends Controller
         $user = $request->username;
         $messageValidation = "L'administrateur $user a été créé";
 
-        return view('welcome')->with('messageValidation', $messageValidation);
+        return redirect()->route('accueil')->with('messageValidation', $messageValidation);
     }
 
     /**

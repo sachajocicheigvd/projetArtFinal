@@ -11,8 +11,13 @@ class controlleurApi extends Controller
 {
     public function getSurveyResults(Request $request)
     {
+        // Récupèration du dernier sondage
         $latestSurvey = Survey::latest()->first();
+
+        // Récupèration des réponses du dernier sondage
         $answers = $latestSurvey->answers()->with('users')->get();
+
+        // Calcul du nombre total de votes
         $totalVotes = $answers->sum('users_count');
 
         $data = [

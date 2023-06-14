@@ -27,12 +27,6 @@ Route::get('/', function () {
     return view('welcome')->with('messageValidation', '');
 })->name('accueil');
 
-Route::get('createadmin', function () {
-    return view('createadmin');
-})->name('createadmin');
-
-Route::post('createadmin', [CreateAdminController::class, 'store']);
-
 // Chat
 Route::middleware('auth')->group(function () {
 
@@ -43,7 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::post("mon-compte", [UserController::class, 'update']);
 
     // Route::get('/sondage', [App\Http\Controllers\sondageController::class, 'afficheSondage']);
-    Route::get('/sondagesacha', [App\Http\Controllers\sondageSachaController::class, 'afficheSondage'])->name('stats');
+    Route::get('/stats', [App\Http\Controllers\sondageSachaController::class, 'afficheSondage'])->name('stats');
     Route::get('/api/survey-results', [App\Http\Controllers\SurveyControllerSacha::class, 'getSurveyResults']);
 
     Route::get("vote", [AnswerUserController::class, 'showForm'])->name('vote');
@@ -54,12 +48,18 @@ Route::middleware('auth')->group(function () {
 
     // Route::get('/refreshhondage', [App\Http\Controllers\sondageController::class, 'refreshSondage']);
 
-    Route::get('/chat', [App\Http\Controllers\ChatsController::class, 'afficheMessage']);
+    Route::get('/chat', [App\Http\Controllers\ChatsController::class, 'afficheMessage'])->name('chat');
     Route::post('/send-message', [App\Http\Controllers\ChatsController::class, 'enregistrement']);
 
     Route::middleware('admin')->group(function () {
-        Route::get('creationsondage', [SurveyController::class, 'showForm'])->name('creationsondage');
-        Route::post('creationsondage', [SurveyController::class, 'saveSurvey']);
+        Route::get('creation-sondage', [SurveyController::class, 'showForm'])->name('creationsondage');
+        Route::post('creation-sondage', [SurveyController::class, 'saveSurvey']);
+
+        Route::get('createadmin', function () {
+            return view('createadmin');
+        })->name('createadmin');
+
+Route::post('createadmin', [CreateAdminController::class, 'store']);
     });
 });
 

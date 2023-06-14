@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules;
 
 class CreateAdminRequest extends FormRequest
 {
@@ -22,11 +23,14 @@ class CreateAdminRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'last_name' => 'required|string|max:255',
-            'first_name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'username' => 'required|string|max:255|unique:users',
-            'password' => 'required|string|min:8|max:255|unique:users',
-        ];
+            // Validation des données du formulaire
+           'last_name' => ['required', 'string', 'min:2', 'max:255'],
+           'first_name' => ['required', 'string', 'min:2', 'max:255'],
+           // Le champ email et username doivent être unique dans la table users
+           'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+           'username' => ['required', 'string', 'min:2', 'max:255', 'unique:users'],
+           // Rules\Password::defaults() permet de valider le mot de passe avec les règles par défaut de Laravel (min 8 caractères)
+           'password' => ['required', 'confirmed', Rules\Password::defaults()],
+       ];
     }
 }
