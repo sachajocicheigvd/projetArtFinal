@@ -23,7 +23,7 @@ class sondageController extends Controller
         // Récupération des réponses du dernier sondage
         $answerUserCount = $latestSurvey->answers()->sum('id');
 
-        return view('sondage', compact('surveys', 'answers','answerUserCount'));    }
+        return redirect()->route('stats', compact('surveys', 'answers','answerUserCount'));    }
 
         public function refreshSondage()
         {
