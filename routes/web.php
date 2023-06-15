@@ -6,7 +6,7 @@ use App\Http\Controllers\GenreUserController;
 use App\Http\Controllers\AnswerUserController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\CreateAdminController;
-
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,13 +27,14 @@ Route::get('/', function () {
     return view('welcome')->with('messageValidation', '');
 })->name('accueil');
 
-Route::get('createadmin', function () {
-    return view('createadmin');
-})->name('createadmin');
+// Cette route est utile lorsque l'on est authentifié et que l'on tape /login dans l'url parce qu'il redirige automatiquement vers /dashboard
+// donc cette route contourne le problème
+Route::get('/dashboard', function () {
+    return redirect()->route('accueil');
+});
 
-Route::post('createadmin', [CreateAdminController::class, 'store']);
 
-// Chat
+// Authentifiés
 Route::middleware('auth')->group(function () {
 
     Route::get('registerbis', [GenreUserController::class, 'showForm'])->name('registerbis');
@@ -43,7 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::post("mon-compte", [UserController::class, 'update']);
 
     // Route::get('/sondage', [App\Http\Controllers\sondageController::class, 'afficheSondage']);
-    Route::get('/sondagesacha', [App\Http\Controllers\sondageSachaController::class, 'afficheSondage'])->name('stats');
+    Route::get('/stats', [App\Http\Controllers\sondageSachaController::class, 'afficheSondage'])->name('stats');
     Route::get('/api/survey-results', [App\Http\Controllers\SurveyControllerSacha::class, 'getSurveyResults']);
 
     Route::get("vote", [AnswerUserController::class, 'showForm'])->name('vote');
@@ -54,12 +55,19 @@ Route::middleware('auth')->group(function () {
 
     // Route::get('/refreshhondage', [App\Http\Controllers\sondageController::class, 'refreshSondage']);
 
-    Route::get('/chat', [App\Http\Controllers\ChatsController::class, 'afficheMessage']);
+    Route::get('/chat', [App\Http\Controllers\ChatsController::class, 'afficheMessage'])->name('chat');
     Route::post('/send-message', [App\Http\Controllers\ChatsController::class, 'enregistrement']);
 
+    // Admin (dans authentifiés)
     Route::middleware('admin')->group(function () {
-        Route::get('creationsondage', [SurveyController::class, 'showForm'])->name('creationsondage');
-        Route::post('creationsondage', [SurveyController::class, 'saveSurvey']);
+        Route::get('creation-sondage', [SurveyController::class, 'showForm'])->name('creationsondage');
+        Route::post('creation-sondage', [SurveyController::class, 'saveSurvey']);
+
+        Route::get('createadmin', function () {
+            return view('createadmin');
+        })->name('createadmin');
+
+Route::post('createadmin', [CreateAdminController::class, 'store']);
     });
 });
 

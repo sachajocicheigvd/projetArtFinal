@@ -13,22 +13,30 @@ class sondageController extends Controller
 {
     public function afficheSondage()
     {
+        // Récupération des sondages et des réponses
         $surveys = Survey::all();
         $answers = Answer::all();
 
+        // Récupération du dernier sondage
         $latestSurvey = Survey::latest()->first();
+
+        // Récupération des réponses du dernier sondage
         $answerUserCount = $latestSurvey->answers()->sum('id');
 
-        
-        //$answer_users = Answer_User::all();
-        return view('sondage', compact('surveys', 'answers','answerUserCount'));    }
+        return redirect()->route('stats', compact('surveys', 'answers','answerUserCount'));    }
 
         public function refreshSondage()
         {
+            // Récupération du dernier sondage
             $latestSurvey = Survey::latest()->first();
+
+            // Récupération des réponses du dernier sondage
             $answers = $latestSurvey->answers()->with('users')->get();
+
+            // Calcul du nombre total de votes
             $totalResponses = $answers->sum('users_count');
     
+            // Enregistrement pour le calcul du pourcentage de chaque réponse dans la vue correspondante
             $results = $answers->map(function ($answer) use ($totalResponses) {
                 return [
                     'users_count' => $answer->users_count,

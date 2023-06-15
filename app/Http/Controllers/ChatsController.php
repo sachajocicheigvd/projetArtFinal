@@ -17,15 +17,15 @@ class ChatsController extends Controller
 
     public function enregistrement(Request $request)
     {
+        // Creation d'un message et attribution des valeurs
         $message = new MessageModel();
         $message->content = $request->input('message');
         $message->user_id = Auth::user()->id;
+       // $message->username = Auth::user()->username;
 
         $message->save();
 
         event(new Message($request->username, $request->message));
-
-
 
         return ['success' => true];
     }
@@ -34,23 +34,13 @@ class ChatsController extends Controller
     public function afficheMessage()
     {
 
-        // // $messages = MessageModel::with('user')->get();
-        // // return view('chat', compact('messages'));
-        // if (Auth::check() == false) {
-        //     // return view('vote');
-        //     $lienExterne = "Vous devez être connecté pour accéder au chat";
-        //     return redirect()->route('login')->with('lienExterne', $lienExterne);
-        // } else {
-        // avec les genres lié à l'utilisateur
-
-
+        // User connecté
         $users = Auth::user();
+
+        // Récupération des messages
         $messages = MessageModel::with('user')->get();
 
-
+        // Affichage de la vue
         return view('chat', compact('messages'),compact('users'))->with('genres', Genre::all())->with('user', Auth::user());
     }
     }
-
-
-// }

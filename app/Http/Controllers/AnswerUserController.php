@@ -13,25 +13,22 @@ class AnswerUserController extends Controller
 {
     public function showForm()
     {
-        // if(Auth::check()==false){
-        //     // return view('vote');
-        //     $lienExterne = "Vous devez être connecté pour accéder au vote";
-        //     return redirect()->route('login')->with('lienExterne', $lienExterne);
-        // }
-        // else{
 
         // Récupère le dernier id de la table survey pour l'insérer dans la table answer pour survey_id
         $dernierSondage = DB::table('surveys')->orderBy('id', 'desc')->first();
         $sondageId = $dernierSondage->id;
 
+        // Récupère les réponses du dernier sondage
         $reponses = DB::table('answers')->where('survey_id', $sondageId)->get();
 
         $reponseTab = [];
 
+        // Met les réponses dans un tableau
         foreach ($reponses as $reponse) {
             $reponseTab[] = $reponse;
         }
 
+        // Récupère le délai du dernier sondage
         $delai = $dernierSondage->duration;
 
         // Convertir la date actuelle en timestamp
@@ -45,8 +42,7 @@ class AnswerUserController extends Controller
             $delai = 0;
         }
 
-        // Si l'utilisateur a déjà répondu au dernier sondage, la variable délai sera a 0
-        // et le sondage ne s'affichera plus
+        // Si l'utilisateur a déjà répondu au dernier sondage, on le redirige vers la page des stats
         $user = Auth::user();
 
         $userAnswers = $user->answers()->where('survey_id', $sondageId)->get();
@@ -57,6 +53,7 @@ class AnswerUserController extends Controller
             $dejaRepondu = true;
         }
 
+        // Si le délai est inférieur ou égal à 0 ou si l'utilisateur a déjà répondu au sondage ou si le sondage est de type text, on le redirige vers la page des stats
         if($delai <= 0 || $dejaRepondu || $dernierSondage->type == "text"){
             return redirect()->route('stats');
         }
@@ -74,7 +71,7 @@ class AnswerUserController extends Controller
 
         $user = Auth::user();
 
-        //store answerid and user id to answer_user table
+        // Enregistrer les données dans la table answer_user
         DB::table('answer_user')->insert([
             'answer_id' => $answerid,
             'user_id' => $user->id,
@@ -83,27 +80,20 @@ class AnswerUserController extends Controller
         ]);
 
 
-        // Répondez avec la confirmation du vote ou toute autre donnée nécessaire
+        // Répondez avec la confirmation du vote ou toute autre donnée nécessaire (plus utilisé)
         return response()->json(['message' => 'Vote enregistré avec succès']);
     }
     
     public function saveAnswer(Request $request)
     {
 
-        /*
-         * Récupérer les données du formulaire 
-         * Enregistrer dans la table answers
-         * Enregistrer dans la table answer_user
-         * Enregistrer dans la table survey
-         * */
-
         $user = Auth::user();
 
+        // Récupère les données du formulaire
         $answers = $request->input('answers');
 
-
-        $var = 0;
-        // intvval sert à convertir en int
+        // Enregistrer dans la table answer_user
+        // intvval sert à convertir en int (afin de régler un bug)
         foreach ($answers as $answerId) {
             $user->answers()->attach(intval($answerId), [
                 'created_at' => now(),

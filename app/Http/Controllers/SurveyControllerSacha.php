@@ -26,7 +26,7 @@ class SurveyControllerSacha extends Controller
             ];
         }
 
-        // Retourner les résultats du sondage en tant que réponse JSON
+        // Retourner les résultats du sondage en tant que réponse JSON pour traiter les données plus loin
         return response()->json($responseData);
     }
 }

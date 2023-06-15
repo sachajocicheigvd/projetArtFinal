@@ -139,7 +139,7 @@ setInterval(function () {
 
     if (minutes < 0) {
         // Changement de lien et va sur sondagesacha
-        window.location.replace("/sondagesacha");
+        window.location.replace("/stats");
         // sondageElement.style.display = "none";
         // alert.style.display = "block";
     }

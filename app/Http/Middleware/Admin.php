@@ -17,12 +17,12 @@ class Admin
     public function handle(Request $request, Closure $next): Response
     {
 
-        // if not logged in, redirect to login page
+        // S'il n'est pas connecté, redirigez vers la page de connexion ou création de compte
         if (!$request->user()) {
-            return new RedirectResponse(url('/login'));
+            return new RedirectResponse(url('/loginchoice'));
         }
 
-        // if user's role is admin, let him pass
+        // S'il a le rôle admin, on le laisse passer
         if ($request->user()->role->short_description === 'admin') {
             return $next($request);
         }

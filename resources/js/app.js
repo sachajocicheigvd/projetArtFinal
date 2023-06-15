@@ -40,8 +40,9 @@ const popupChat = async () => {
     let app = createApp(ChatApp);
     let duration = new Date(sondage.duration);
     let now = new Date();
+    let type = sondage.type;
 
-    if (duration > now) {
+    if (duration > now && type == "text") {
         // app = createApp(ChatApp);
         app.mount("#chatpopup");
     }
@@ -58,7 +59,6 @@ const popupChat = async () => {
         // console.log("chat-popup");
 
         if (app) {
-            console.log("a présnentntnrefndasjfdjf");
             app.unmount("#chatpopup"); // Démonter l'application si elle est déjà montée
         }
         console.log("chat-popup");
@@ -80,6 +80,7 @@ $(document).ready(function () {
         e.preventDefault();
 
         let username = $("#username").val();
+        console.log(username);
         let message = $("#message").val();
 
         if (username == "" || message == "") {
@@ -110,6 +111,7 @@ const lastMessage = document.querySelector(".message:last-child");
 window.Echo.channel("chat").listen(".message", (e) => {
     let username = $("#username").val();
     let currentTime = getCurrentTime();
+
     let lastChild = document.querySelector("#zonemess > div:last-child");
 
     let message = e.message;

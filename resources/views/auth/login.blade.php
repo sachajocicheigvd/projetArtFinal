@@ -1,16 +1,15 @@
-<x-guest-layout>
+@extends('template')
+<head>
+  <meta name="csrf-token" content="{{ csrf_token() }}"> 
+</head>
 
+@section('contenu')
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div>
-
-                <!-- Si la variable textChat est initialisée, fait quelque chose -->
-                @if (session('lienExterne'))
-                <p>{{session('lienExterne')}}</p>
-                @endif
 
                 <!--icon retour-->
                 <a href="{{ route('loginChoice')}}">
@@ -60,4 +59,5 @@
         <br>
                 </div>   
              </div>
-    </x-guest-layout>
+
+@endsection

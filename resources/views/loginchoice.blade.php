@@ -8,10 +8,6 @@
 <script src="{{ asset('public/js/sondage.js') }}"></script>
 @endsection
 
-@section('header')
-
-@endsection
-
 @section('contenu')
 <!--logo--> 
 <div class="containerCreerConnecter">

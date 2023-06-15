@@ -12,13 +12,16 @@ class GenreUserController extends Controller
 
     public function showForm()
     {
-        return view('registerbis')->with('genres', Genre::all())->with('user', Auth::user());
+        return redirect()->route('registerbis')->with('genres', Genre::all())->with('user', Auth::user());
     }
 
  public function saveGenre(Request $request)
     {
 
+        // Réccupère l'utilisateur connecté
         $user = $request->user();
+
+        // Réccupère les genres choisis
         $genres = $request->input('genres');
 
         // efface toute les lignes avant de les recréer
@@ -26,6 +29,7 @@ class GenreUserController extends Controller
 
         if ($genres == null) {
             return "Compte créé avec succès sans genres";
+            return redirect()->route('accueil')->with('messageValidation', "Compte créé avec succès sans genres");
         }
 
         foreach ($genres as $genreId) {
@@ -34,6 +38,6 @@ class GenreUserController extends Controller
                 'updated_at' => now(),
             ]);
         }
-        return redirect()->route('accueil');
+        return redirect()->route('accueil')->with('messageValidation', "Compte créé avec succès");
     }   
 }

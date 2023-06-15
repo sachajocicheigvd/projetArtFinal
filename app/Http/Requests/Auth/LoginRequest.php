@@ -26,6 +26,7 @@ class LoginRequest extends FormRequest
      */
     public function rules(): array
     {
+        // Vérification des données du formulaire
         return [
             'username' => ['required', 'string'],
             'password' => ['required', 'string'],

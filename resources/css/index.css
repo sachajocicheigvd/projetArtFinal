@@ -12,6 +12,7 @@
 @import "monProfil.css";
 @import "vote.css";
 
+
 body {
     background-color: var(--fond-color);
 }

@@ -106,3 +106,11 @@ footer nav {
 header.jumbotron {
     padding-top: 10px;
 }
+
+.iconenavAdmin {
+    width: 40px !important;
+    height: 40px !important;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+    padding-top: 20px !important;
+}
