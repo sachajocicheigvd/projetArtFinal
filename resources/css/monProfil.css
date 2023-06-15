@@ -87,7 +87,7 @@
 
 .svgSubmit {
     float: right;
-    padding: 0;
+    margin-top: 20px;
     width: 35px; /* Ajustez la taille du bouton */
     height: 35px;
     border: none;
@@ -119,4 +119,13 @@
 .alert-modification {
     color: #27eb42;
     font-size: 15px;
+}
+
+form h2 {
+    margin-bottom: 0px;
+}
+
+form p {
+    margin-top: 0px;
+    margin-bottom: 0px;
 }

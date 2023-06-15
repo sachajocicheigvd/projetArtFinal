@@ -13,64 +13,54 @@
     color: #666;
 }
 .afficheSondage {
-display: flex;
-flex-wrap: no-wrap;
-justify-content: center;
+    display: flex;
+    flex-wrap: no-wrap;
+    justify-content: center;
 }
 
 .afficheSondage > div {
-flex: 0 0 33.33%;
-box-sizing: border-box;
-padding: 10px;
+    flex: 0 0 33.33%;
+    box-sizing: border-box;
+    padding: 10px;
 }
 
 .afficheSondage > div[data-position="1"] {
-order: -1;
-border-radius: 10%;
+    order: -1;
+    border-radius: 10%;
 }
 
 .afficheSondage > div[data-position="3"] {
-order: 3;
-
+    order: 3;
 }
-
 
 .afficheSondage > div[data-position="0"] > img {
-height: 150px;
-width: auto;
-object-fit: cover;
-min-width: 100px;
-border: 2px solid var(--accent-color);
-
+    height: 150px;
+    width: auto;
+    object-fit: cover;
+    min-width: 100px;
+    border: 2px solid var(--accent-color);
 }
 
-.afficheSondage > div > img{
-border-radius: 10%;
-
+.afficheSondage > div > img {
+    border-radius: 10%;
 }
 
 .afficheSondage > div[data-position="0"] {
-padding: 40px;
-
-
+    padding: 40px;
 }
 
+.pourcentage {
+    color: var(--accent-color);
 
-.pourcentage{
-color: var(--accent-color);
-
-justify-content: center;
-align-items: center;
-
+    justify-content: center;
+    align-items: center;
 }
 
-
-.imgAuth{
-border-radius: 10%;
-border: 2px solid var(--accent-color);
-
+.imgAuth {
+    border-radius: 10%;
+    border: 2px solid var(--accent-color);
 }
 
-body{
-    background-color: rgb(20, 19, 19) !important;
+body {
+    background-color: var(--fond-color) !important;
 }
