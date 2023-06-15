@@ -42,9 +42,10 @@
 
                     <div class="flex items-center justify-end mt-4">
                         @if (Route::has('password.request'))
-                        <a class="lien" href="{{ route('password.request') }}">
+                        <!-- suppression du lien mot de passe oublié étant donné que nous avons pas mis en place un service d'emailing-->
+                     <!--   <a class="lien" href="{{ route('password.request') }}">
                             {{ __('Forgot your password?') }}
-                        </a>
+                        </a> -->
                         @endif
                         <br>
                         <br>
