@@ -25,10 +25,14 @@
         @else
         <div class="row">
     
+            <div class="col-sm-10 offset-sm-3 my-4 d-none" style="display:none">
+                <input type="text" class="form-control" name="username" id="username" value="{{ Auth::user()->first_name }}">
+            </div>
+    
           
     
   <div class="presentation">
-                 <img src="{{ asset('storage/images/saucisse9.png') }}" alt="Image de présentation">
+                 <img src="{{ asset('/images/saucisse9.png') }}" alt="Image de présentation">
                  <span class="espace">&nbsp;</span>
                  <div class ="presentationTexte">
                  <p class ="textePres">En live</p>
@@ -55,7 +59,7 @@
     <p  class="message {{ $message->user->id === Auth::user()->id ? 'moi' : '' }}">
        
         
-            <strong class="user">{{$message->user->username}}</strong> {{ $message->content }}
+            <strong class="user">{{$message->user->first_name}}</strong> {{ $message->content }}
                  @foreach($message->user->genres as $index => $genre)
             @if($index < 3)
             <div id="genresUtilisateurs">

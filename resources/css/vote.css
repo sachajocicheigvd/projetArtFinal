@@ -108,9 +108,11 @@
 .splide__pagination__page {
     display: none;
 }
-Strong {
+
+strong {
     display: block;
 }
+
 .valide {
     margin-top: 40px;
     margin-bottom: 200px;

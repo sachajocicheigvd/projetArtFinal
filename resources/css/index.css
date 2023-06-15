@@ -6,11 +6,11 @@
 @import "player.css";
 @import "buttons.css";
 @import "sondage.css";
+@import "vote.css";
 @import "pageAccueil.css";
 @import "app.css";
 @import "sondagesacha.css";
 @import "monProfil.css";
-
 
 body {
     background-color: var(--fond-color);

@@ -3,10 +3,6 @@
 
 @section('title')
 <title>Vote</title>
-
-<script src="{{ asset('public/js/vote.js') }}"></script>
-<link rel="stylesheet" href="{{ asset('public/css/vote.css') }}">
-
 @endsection
 
 @section('header')
@@ -35,7 +31,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
 
 
 <div class="mkt-3dSlider py-6">
-<section id="slider">
+<section id="glisseur">
         <section class="splide" aria-labelledby="carousel-heading">
               
               

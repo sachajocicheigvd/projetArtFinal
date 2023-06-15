@@ -5,7 +5,7 @@
 
 @section('contenu')
 
-<x-guest-layout>
+
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -38,7 +38,7 @@
 <div id="creationCompte">
 
 
-        <img src="{{ asset('storage/images/logoCouleur3.svg') }}" style="width: 95px; 
+        <img src="{{ asset('/images/logoCouleur3.svg') }}" style="width: 95px; 
         height: 147px" alt="logoCouleur3" class="logoCouleur3">
          </div>
 
@@ -96,5 +96,4 @@
     </form>
 
 </div>
-
-</x-guest-layout>
+@endsection
