@@ -5,14 +5,12 @@
 @endsection
 
 @section('header')
-<h1 class="page-header">Vote musique</h1>
+<h1 class="page-header"><a href="">Sondage</a></h1>
 
 @endsection
 
 @section('contenu')
-
-
-<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
@@ -20,7 +18,6 @@
 
 use App\Models\Survey;
 use App\Models\Answer;
-
 
     $createdTimestamp = strtotime($surveys[count($surveys)-1]->created_at);
     $tenDaysTimestamp = $createdTimestamp + (60 * 60 * 24 * 10);
@@ -30,50 +27,31 @@ use App\Models\Answer;
     $totalVotes = $answers->sum('users_count');
     $nbVote = 0;
     $totalResponses = 0;
-    // récupère les images des réponses
-    $images = [];
 
 ?>
-@if(Auth::user()->admin == 0 && $surveys[count($surveys)-1]->type == "text")
-<p>Page indisponible lors de sondage texte</p>
-@else
 
 <div class="span6">
-<script>
 
-if(duration>0){
-document.querySelector("body > div.container > div.span6").innerHTML = `
-    <h2>Vous avez voté pour</h2>
-    @foreach($answers as $answer)
-    @if($answer->survey_id == $surveys[count($surveys)-1]->id)
-    @foreach($answer->users as $user)
-    @if($user->id == Auth::user()->id)
-    <img class="imgAuth" src="{{$answer->picture}}" alt="{{$answer->artist}}" width="200px">
-    <p><strong>{{$answer->answer}}</strong></p>
-    <p>{{$answer->artist}}</p>
-    @endif
-    @endforeach
-    @endif
-    @endforeach`;}
-</script>
+    <br><br><br><br><br><br><br><br><br>
 
-</div>
-    <br><br>
+ <h5>{{$surveys[count($surveys)-1]->title}}</h5>
+
+      
   <!-- Chronomètre -->
   <div id="countdown" class="text-center">
         <span id="days" class="display-4"></span>
-        <span id="days-label" class="text-muted">jours</span>
+        <span class="text-muted">jours</span>
         <span id="hours" class="display-4"></span>
-        <span id="hours-label" class="text-muted">heures</span>
+        <span class="text-muted">heures</span>
         <span id="minutes" class="display-4"></span>
-        <span id="minutes-label" class="text-muted">minutes</span>
+        <span class="text-muted">minutes</span>
         <span id="seconds" class="display-4"></span>
-        <span id="seconds-label" class="text-muted">secondes</span>
+        <span class="text-muted">secondes</span>
     </div>
 
     <div id="contentContainer" id="dataSondage">
-{{--         <h5>{{$surveys[count($surveys)-1]->title}}</h5>
- --}} @foreach($answers as $answer)
+
+ @foreach($answers as $answer)
  @if($answer->survey_id == $surveys[count($surveys)-1]->id)
     
  @endif
@@ -115,7 +93,8 @@ document.querySelector("body > div.container > div.span6").innerHTML = `
        </script>
     </ul>
 @endforeach
-@endif
+
+
 @endsection
 
 
@@ -141,14 +120,11 @@ $durations = $duree2;
 //echo "Durée en timestamp : " . $createdTimestamp;
 
 
-
 ?>
 
-const duration = <?php echo $durations; ?>;
-//console.log(duration);
-     
 
-let estTermine = false;
+
+
 
         function startTimer(duration, display) {
             var timer = duration, days, hours, minutes, seconds;
@@ -167,46 +143,30 @@ let estTermine = false;
                 display.querySelector('#hours').textContent = hours;
                 display.querySelector('#minutes').textContent = minutes;
                 display.querySelector('#seconds').textContent = seconds;
-
-                display.querySelector('#days-label').textContent = days > 1 ? "jours" : "jour";
-                display.querySelector('#hours-label').textContent = hours > 1 ? "heures" : "heure";
-                display.querySelector('#minutes-label').textContent = minutes > 1 ? "minutes" : "minute";
-                display.querySelector('#seconds-label').textContent = seconds > 1 ? "secondes" : "seconde";
     
-                if (--timer > 0) {
+                if (--timer < 0) {
                     clearInterval(interval);
                     display.innerHTML = '<span style="color: red;">Résultat final du sondage</span>';
-                    estTermine = true;
-                    console.log("je passe par true");
                 }
             }, 1000);
-
-            
         }
     
-
         // Démarrer le chronomètre au chargement de la page
         window.onload = function () {
-
-            
             var createdTimestamp = <?php echo strtotime($surveys[count($surveys)-1]->created_at); ?>;
             //var tenDaysTimestamp = createdTimestamp + <?php echo ($surveys[count($surveys)-1]->duration); ?>; // Timestamp de 10 jours après la création du sondage (en secondes
             var currentTime = Math.floor(Date.now() / 1000); // Timestamp actuel en secondes
             //var duration = tenDaysTimestamp - currentTime;
             var display = document.querySelector('#countdown');
     
-            duration = <?php echo $durations; ?>;
+            const duration = <?php echo $durations; ?>;
             startTimer(duration, display);
         };
 
-//there
 
-
-if (duration <= 0) {
         setInterval(function () {
             fetchSurveyResults();
         }, 1000);
-    }
 
         function fetchSurveyResults() {
     // Effectuer une requête AJAX pour récupérer les résultats du sondage
@@ -221,57 +181,32 @@ if (duration <= 0) {
 
             var arr = Object.values(response);
 
-            // Tri de l'array par ordre du nombre de votes
-            arr.sort(function(a, b) {
-                return b.totalVotes - a.totalVotes;
-            });
-
-            var estTermine = true; // Mettez la valeur correcte ici
-
-            // Raccourci le tableau au 3 premiers résultats si status = true seulement si le sondage est de type music (donc contient un artiste)
-            if (estTermine == true && arr[0].artist != null) {
-                arr = arr.slice(0, 3);
-            }
-
 
             document.querySelector(".afficheSondage").innerHTML="";
 
             //calcul le total du nombre de answer
             var total = 0;
-            let i = 0;
             arr.forEach(a => {
                 total += a.totalVotes;
             });
             
             arr.forEach(a => {
 
-                if (a.artist != null){
-                
                 document.querySelector(".afficheSondage").insertAdjacentHTML("beforeend", `
-   <div class='uneElement' data-position=${i}>
-    <img src="${a.image}" alt="image" width="130px" height="130px">
-    <p class="answer rep${i}">${a.answer}</p>
-    <p class="artist artiste${i}">${a.artist}</p>
-    <p class=" percent pourcentage${i}">${isNaN(Math.round(a.totalVotes / total * 100)) ? 0 : Math.round(a.totalVotes / total * 100)}%</p>
-
-    </div>
-    `)
-    i++
-
-/*     <div class="progress progress active labar">
-        <div class="bar" style="width: ${isNaN(Math.round(a.totalVotes / total * 100)) ? 0 : Math.round(a.totalVotes / total * 100)}%;"></div>
-    </div> */
-                }
-                else {
-                    document.querySelector(".afficheSondage").insertAdjacentHTML("beforeend", `
     <strong><p>${a.answer}</p></strong>
     <span class="pull-right pourcentage">${isNaN(Math.round(a.totalVotes / total * 100)) ? 0 : Math.round(a.totalVotes / total * 100)}%</span>
     <div class="progress progress active labar">
         <div class="bar" style="width: ${isNaN(Math.round(a.totalVotes / total * 100)) ? 0 : Math.round(a.totalVotes / total * 100)}%;"></div>
-    </div>`)
-        }                
-    }
-);
+    </div>`);
+
+
+                
+            });
+
+            
+
+
+
 
         },
         error: function(error) {
@@ -286,3 +221,21 @@ if (duration <= 0) {
 
 
 
+    
+
+    <style>
+    #countdown {
+        background-color: #f2f2f2;
+        padding: 10px;
+        border-radius: 4px;
+    }
+
+    #countdown .display-4 {
+        color: #333;
+        font-weight: bold;
+    }
+
+    #countdown .text-muted {
+        color: #666;
+    }
+</style>
