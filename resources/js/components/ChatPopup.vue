@@ -162,7 +162,10 @@ export default {
     background-color: transparent;
     height: 100%;
 }
-
+// reduce the space beteween 2 progress bar
+.survey-item {
+    margin-bottom: 5%;
+}
 .left-text {
     text-align: left;
     margin-left: 5%;

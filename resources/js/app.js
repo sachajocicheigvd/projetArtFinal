@@ -1,14 +1,4 @@
 import "./bootstrap";
-// // i want to import the others js files here
-// import "./appsondage.js";
-// // import "./bootstrap.js";
-// import "./chatpopup.js";
-// import "./monProfil";
-// import "./player.js";
-// import "./popup.js";
-// import "./sondage.js";
-// import "./vote.js";
-
 import { createApp } from "vue";
 import App from "./App.vue";
 import ChatApp from "./ChatApp.vue";
@@ -19,7 +9,6 @@ window.Echo.channel("popup-channel").listen("PopupEvent", () => {
     if (appup) {
         appup.unmount("#app"); // Démonter l'application si elle est déjà montée
     }
-
     appup = createApp(App);
     appup.mount("#app"); // Monter l'application
 });
@@ -27,12 +16,6 @@ window.Echo.channel("popup-channel").listen("PopupEvent", () => {
 /*
 PARTIE POPUP DANS LE CHAT
 */
-
-// import ChatApp from "./ChatApp.vue";
-// import "./bootstrap";
-
-let app = null;
-
 const popupChat = async () => {
     const response = await fetch("/lastsondage");
     const sondage = await response.json();
@@ -43,7 +26,6 @@ const popupChat = async () => {
     let type = sondage.type;
 
     if (duration > now && type == "text") {
-        // app = createApp(ChatApp);
         app.mount("#chatpopup");
     }
     setInterval(function () {
@@ -62,7 +44,7 @@ const popupChat = async () => {
             app.unmount("#chatpopup"); // Démonter l'application si elle est déjà montée
         }
         console.log("chat-popup");
-        // app = createApp(ChatApp);
+
         app.mount("#chatpopup"); // Monter l'application
     });
 };
@@ -76,7 +58,6 @@ FIN PARTIE POPUP DANS LE CHAT
 */
 
 $(document).ready(function () {
-
     $(document).on("click", "#send_message", function (e) {
         e.preventDefault();
 
@@ -111,26 +92,25 @@ const lastMessage = document.querySelector(".message:last-child");
 
 //récupere depuis la databbase les genres de musique de la personnes connecté
 
-
-
-
 window.Echo.channel("chat").listen(".message", (e) => {
     let username = $("#username").val();
     let currentTime = getCurrentTime();
-
-    
 
     let lastChild = document.querySelector("#zonemess > div:last-child");
 
     let message = e.message;
     let genres = e.genres;
 
-    let txtGenres = '';
+    let txtGenres = "";
 
     for (let i = 0; i < genres.length && i < 3; i++) {
-        txtGenres += '<p class="musique ' + genres[i].name + ' genreMusiqueMessage"> <span>' + genres[i].name + '</span></p>';
+        txtGenres +=
+            '<p class="musique ' +
+            genres[i].name +
+            ' genreMusiqueMessage"> <span>' +
+            genres[i].name +
+            "</span></p>";
     }
-
 
     let formattedMessage = "";
 
@@ -143,17 +123,19 @@ window.Echo.channel("chat").listen(".message", (e) => {
         '<p class="message ' +
         (e.username === username ? "moi" : "") +
         '">' +
-        
         '<strong class="user">' +
         e.username +
         "</strong> " +
         formattedMessage +
-    "</p>" + '<div id="genresUtilisateurs">' +
-txtGenres    
-    +'</div>'+
+        "</p>" +
+        '<div id="genresUtilisateurs">' +
+        txtGenres +
+        "</div>" +
         '<p class="text-muted">' +
         "</p>" +
-         '<strong id="minutesEnvoie">'+currentTime +'</strong>'+
+        '<strong id="minutesEnvoie">' +
+        currentTime +
+        "</strong>" +
         "</div>";
 
     $("#zonemess > div:last-child").append(messageHTML);
