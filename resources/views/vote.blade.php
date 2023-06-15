@@ -31,7 +31,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
 
 
 <div class="mkt-3dSlider py-6">
-<section id="slider">
+<section id="glisseur">
         <section class="splide" aria-labelledby="carousel-heading">
               
               
