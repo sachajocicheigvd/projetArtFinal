@@ -171,7 +171,7 @@ function startTimer(duration, display) {
     
                 if (--timer < 0) {
                     clearInterval(interval);
-                    display.innerHTML = '<span style="color: red;">Résultat final du sondage</span>';
+                    display.innerHTML = '<span style="color: green;">Résultat final du sondage</span>';
                 }
             }, 1000);
         }
