@@ -46,7 +46,7 @@
     display: inline-flex;
     width: 286px;
     margin-bottom: 20px;
-    background-image: url("../../public/storage/images/upload.svg"); /* Chemin vers votre fichier SVG */
+    background-image: url("../../public/images/upload.svg"); /* Chemin vers votre fichier SVG */
     background-repeat: no-repeat;
     background-position: right 7% center;
 }
