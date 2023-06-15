@@ -22,7 +22,7 @@ class AnswersTableSeeder extends Seeder
             'survey_id' => 1,
             'artist' => 'Maître Gims',
             'picture' => '',
-            'created_at' => now(),
+            'created_at' => now()->addMinutes(1),
                 'updated_at' => now(),
         ]);
 
@@ -31,21 +31,21 @@ class AnswersTableSeeder extends Seeder
             'survey_id' => 1,
             'artist' => 'Shakira',
             'picture' => '',
-            'created_at' => now(),
+            'created_at' => now()->addMinutes(1),
                 'updated_at' => now(),
         ]);
 
         DB::table('answers')->insert([
             'answer' => 'Bof',
             'survey_id' => 2,
-            'created_at' => now(),
+            'created_at' => now()->addMinutes(2),
                 'updated_at' => now(),
         ]);
 
         DB::table('answers')->insert([
             'answer' => 'Moui',
             'survey_id' => 2,
-            'created_at' => now(),
+            'created_at' => now()->addMinutes(2),
                 'updated_at' => now(),
         ]);
     }

@@ -23,7 +23,7 @@ class SurveysTableSeeder extends Seeder
             'title' => 'Quelle musique voulez-vous écouter ensuite ?',
             'duration' => now()->addMinutes(2000),
             'type' => 'music',
-            'created_at' => now(),
+            'created_at' => now()->addMinutes(1),
                 'updated_at' => now(),
         ]);
 
@@ -32,7 +32,7 @@ class SurveysTableSeeder extends Seeder
             'title' => 'Aimez-vous Couleur 3 ?',
             'duration' => now()->addMinutes(2000),
             'type' => 'text',
-            'created_at' => now(),
+            'created_at' => now()->addMinutes(2),
                 'updated_at' => now(),
         ]);
     }
