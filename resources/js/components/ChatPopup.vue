@@ -4,18 +4,25 @@
             <h2 v-if="dataT">{{ dataT.title }}</h2>
         </div>
 
-        <div v-for="item in lastSurvey" :key="item.answer" class="survey-item">
-            <div class="progress-bar">
-                <span class="progress-bar-text">
-                    <span class="left-text">{{ item.answer }}</span>
-                    <span class="right-text">{{
-                        getPercentage(item.totalVotes)
-                    }}</span>
-                </span>
-                <div
-                    class="progress-bar-inner"
-                    :style="{ width: getPercentage(item.totalVotes) }"
-                ></div>
+        <div class="survey-container">
+            <div
+                v-for="(item, index) in lastSurvey"
+                :key="item.answer"
+                class="survey-item"
+                :class="{ 'no-margin-top': index === 1 }"
+            >
+                <div class="progress-bar">
+                    <span class="progress-bar-text">
+                        <span class="left-text">{{ item.answer }}</span>
+                        <span class="right-text">{{
+                            getPercentage(item.totalVotes)
+                        }}</span>
+                    </span>
+                    <div
+                        class="progress-bar-inner"
+                        :style="{ width: getPercentage(item.totalVotes) }"
+                    ></div>
+                </div>
             </div>
         </div>
         <div class="popup-inner">
@@ -177,5 +184,8 @@ export default {
     text-align: right;
     margin-right: 5%;
     background-color: transparent;
+}
+.survey-item.no-margin-top {
+    margin-top: -20px;
 }
 </style>
