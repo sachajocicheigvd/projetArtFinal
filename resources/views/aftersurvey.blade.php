@@ -36,7 +36,7 @@ use App\Models\Answer;
 
  <h5>{{$surveys[count($surveys)-1]->title}}</h5>
 
-      
+
   <!-- Chronomètre -->
   <div id="countdown" class="text-center" >
         <span id="days" class="display-4" style="display: none"></span>
@@ -194,11 +194,16 @@ $durations = $duree2;
             arr.forEach(a => {
 
                 document.querySelector(".afficheSondage").insertAdjacentHTML("beforeend", `
+
+           
     <strong><p>${a.answer}</p></strong>
-    <span class="pull-right pourcentage">${isNaN(Math.round(a.totalVotes / total * 100)) ? 0 : Math.round(a.totalVotes / total * 100)}%</span>
-    <div class="progress progress active labar">
-        <div class="bar" style="width: ${isNaN(Math.round(a.totalVotes / total * 100)) ? 0 : Math.round(a.totalVotes / total * 100)}%;"></div>
-    </div>`);
+
+    <div class="progress" style="height: 40px;">
+    <div class="progress-bar" "role="progressbar" style="width: ${isNaN(Math.round(a.totalVotes / total * 100)) ? 0 : Math.round(a.totalVotes / total * 100)}%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">${isNaN(Math.round(a.totalVotes / total * 100)) ? 0 : Math.round(a.totalVotes / total * 100)}%</div>
+  </div>
+  
+    
+    `);
 
 
                 
@@ -239,4 +244,11 @@ $durations = $duree2;
     #countdown .text-muted {
         color: #666;
     }
+
+    .progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: green;
+    color: white;
+  }
 </style>
