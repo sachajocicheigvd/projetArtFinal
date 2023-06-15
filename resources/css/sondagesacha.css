@@ -64,3 +64,20 @@
 body {
     background-color: var(--fond-color) !important;
 }
+
+.span6 p strong {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.span6 p {
+    font-size: 18px;
+}
+
+.span6 h2 {
+    font-size: 24px;
+}
+
+.page-header {
+    border-bottom: none;
+}

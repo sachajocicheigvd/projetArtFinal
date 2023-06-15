@@ -40,14 +40,14 @@ use App\Models\Answer;
 <script>
 
 if(duration>0){
-document.querySelector("body > div.container > div.span6").innerHTML = `    <p>Vous avez voté pour la musique ci-dessous</p>
+document.querySelector("body > div.container > div.span6").innerHTML = `    <h2>Vous avez voté pour</h2>
     @foreach($answers as $answer)
     @if($answer->survey_id == $surveys[count($surveys)-1]->id)
     @foreach($answer->users as $user)
     @if($user->id == Auth::user()->id)
-    <p><strong>{{$answer->artist}}</strong></p>
-    <p><strong>{{$answer->answer}}</strong></p>
     <img class="imgAuth" src="{{$answer->picture}}" alt="{{$answer->artist}}" width="200px">
+    <p><strong>{{$answer->answer}}</strong></p>
+    <p>{{$answer->artist}}</p>
     @endif
     @endforeach
     @endif
