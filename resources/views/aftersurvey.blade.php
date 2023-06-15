@@ -5,7 +5,7 @@
 @endsection
 
 @section('header')
-<h1 class="page-header"><a href="">Sondage</a></h1>
+<h1 class="page-header"><a href="">après sondage</a></h1>
 
 @endsection
 
@@ -38,15 +38,16 @@ use App\Models\Answer;
 
       
   <!-- Chronomètre -->
-  <div id="countdown" class="text-center">
-        <span id="days" class="display-4"></span>
-        <span class="text-muted">jours</span>
-        <span id="hours" class="display-4"></span>
-        <span class="text-muted">heures</span>
-        <span id="minutes" class="display-4"></span>
-        <span class="text-muted">minutes</span>
-        <span id="seconds" class="display-4"></span>
-        <span class="text-muted">secondes</span>
+  <div id="countdown" class="text-center" >
+        <span id="days" class="display-4" style="display: none"></span>
+        <span class="text-muted"  style="display: none"></span>
+        <span class="text-muted " style="display: none">jours</span>
+        <span id="hours" class="display-4" style="display: none"></span>
+        <span class="text-muted" style="display: none">heures</span>
+        <span id="minutes" class="display-4" style="color: white"></span>
+        <span class="text-muted" style="color: white" style="color: white">:</span>
+        <span id="seconds" class="display-4" style="color: white"></span>
+        <span class="text-muted" style="display: none">secondes</span>
     </div>
 
     <div id="contentContainer" id="dataSondage">
