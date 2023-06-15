@@ -348,8 +348,9 @@ $durations = $duree2;
     
 
     <style>
+   
     #countdown {
-        background-color: #f2f2f2;
+        background-color: #18181B !important;
         padding: 10px;
         border-radius: 4px;
     }
