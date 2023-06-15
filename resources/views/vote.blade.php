@@ -3,10 +3,6 @@
 
 @section('title')
 <title>Vote</title>
-
-<script src="{{ asset('public/js/vote.js') }}"></script>
-<link rel="stylesheet" href="{{ asset('public/css/vote.css') }}">
-
 @endsection
 
 @section('header')
