@@ -1,7 +1,5 @@
 <template>
     <main>
-        <!-- <h1>Vue popups</h1>
-        <button @click="togglePopup('buttonTrigger')">Open Popup</button> -->
         <Popup
             v-if="popupTriggers.buttonTrigger"
             :togglePopup="() => togglePopup('buttonTrigger')"
@@ -13,6 +11,7 @@
 <script>
 import { ref } from "vue";
 import Popup from "./components/Popup.vue";
+//permet de trigger le popup
 export default {
     setup() {
         const popupTriggers = ref({

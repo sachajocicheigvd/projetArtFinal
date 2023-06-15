@@ -14,8 +14,6 @@
 
 @section('contenu')
 
-<!-- Création d'un formulaire texte-->
-
 <!-- Type de sondage, bouton radio -->
 <div class="containerSondage">
     <input type="radio" name="type" id="type-text" class="radioButton" value="text" {{ old('type') == 'text' ? 'checked' : '' }}/><label for="type-text" class="choixType typeText">Texte</label>
@@ -134,14 +132,14 @@
 
 </form>
 <script>
-    "use strict";
+"use strict";
 
 // Rajout de question dans le formulaire texte
 
 let dynamicFieldsTextContainer = document.getElementById("dynamicFieldsText");
 let addAnswerButtonText = document.getElementById("addAnswerText");
 let answerCounterText = 3;
-
+// crée dynamiquement des éléments <input> de type "text" 
 addAnswerButtonText.addEventListener("click", function () {
     let newAnswerInput = document.createElement("input");
     newAnswerInput.setAttribute("type", "text");
@@ -158,11 +156,9 @@ addAnswerButtonText.addEventListener("click", function () {
 });
 
 // Rajout de question dans le formulaire musique
-
 let dynamicFieldsMusicContainer = document.getElementById("dynamicFieldsMusic");
 let addAnswerButtonMusic = document.getElementById("addAnswerMusic");
 let answerCounterMusic = 3;
-
 addAnswerButtonMusic.addEventListener("click", function () {
     let newAnswerInput = document.createElement("input");
     newAnswerInput.setAttribute("type", "text");
@@ -263,21 +259,12 @@ boutonsRadio.forEach((bouton) => {
             barreTexte.style.fill = "#767676";
             barreMusique.style.fill = "#27eb42";
         }
-
-        //const idBoutonCliqué = bouton.id;
-
-        // // Utilisez l'ID de l'élément pour effectuer les opérations nécessaires
-        //console.log("Bouton radio cliqué:", idBoutonCliqué);
-        // // const labelRadio = document.querySelector(`[for="${idBoutonCliqué}"]`);
-
-        // labelRadio.style.color = "#27eb42";
     });
 });
 </script>
 @endsection
 
 <style>
-
 .active_label{
 	visibility: visible;
 }
@@ -372,15 +359,7 @@ input, .float {
 
 </style>
 
-
-
 <script>
-/*!
- * Float.js v1
- * https://sangramjagtap.github.io/Float.js/
- * https://codepen.io/sangramjagtap/pen/pyPdPb
- * Licensed MIT © Sangram Jagtap
- */
 
  $(document).ready(function(){
   function floatLabel(event){
@@ -416,6 +395,7 @@ input, .float {
 		 }
 		 });
   }
+  //function to check if input is empty or not
   function floatBack(event){
     var input=$(this);
       var val=input.val();
@@ -429,7 +409,4 @@ input, .float {
   $(".float input").blur(floatBack);
   $(".float input").change(floatLabel);
 });
-    
-
-
 </script>
