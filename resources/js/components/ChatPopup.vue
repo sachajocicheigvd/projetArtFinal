@@ -46,6 +46,7 @@ export default {
     },
     methods: {
         getPercentage(totalVotes) {
+            if (totalVotes === 0) return "0%";
             const percentage = (totalVotes / this.total) * 100;
             return `${percentage}%`;
         },

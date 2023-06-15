@@ -226,7 +226,7 @@ for (let i = 0; i < inputs.length; i++) {
         inputsLabel[i].style.color = "#FFFFFF";
     });
 }
-
+//
 const refreshSelection = () => {
     const inputs = document.querySelectorAll(".upload");
     const inputsLabel = document.querySelectorAll(".custom-file");
@@ -330,7 +330,6 @@ boutonsRadio.forEach((bouton) => {
   transform: scale(1, 1) rotateY(0);
   
 }
-
 .float-active label {
 	color: #165DCC;
 	-moz-transform: scale(0.65, 0.65) rotateY(0);
