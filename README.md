@@ -631,7 +631,7 @@ php artisan view:cache
 
 ## Autre commandes
 
-Il n'est pas impossible que vous deviez faire d'autres commandes comme par exemple `php artisan storage:link` ou `npm install`.
+Il n'est pas impossible que vous deviez faire d'autres commandes comme par exemple `php artisan storage:link` ou `npm install`, en fonction des besoins de votre site.
 
 ## Génération des fichiers optimisés et vérification du bon fonctionnement
 
@@ -646,6 +646,14 @@ Vérifiez que tout fonctionne correctement en accédant à `nomDuGroupe-pingouin
 Si tout est opérationnel, félicitations !
 
 Votre site web est maintenant déployé sur le serveur Pingouin.
+
+## Mises à jour
+
+À chaque fois que vous modifiez votre répertoire original et que vos modifications sont enregistrées sur GitHub, pensez à faire 3 choses, même si c'est redondant.
+
+Faite au minimum, `git pull` et puis `npm run build`.
+
+Pensez également s'il y a un problème de cache ou de route suite à vos modifications à faire un `php artisan cache:clear` et `php artisan route:cache`;
 
 # Problèmes ?
 
