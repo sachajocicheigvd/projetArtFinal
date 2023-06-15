@@ -95,6 +95,7 @@ body {
 }
 
 .percent {
+    color: var(--accent-color);
     font-size: 14px;
 }
 
@@ -109,7 +110,6 @@ body {
 }
 
 .pourcentage0 {
-    color: var(--accent-color);
     justify-content: center;
     align-items: center;
     font-weight: bold;

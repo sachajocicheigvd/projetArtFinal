@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\CreateAdminRequest;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Genre;
 
 class CreateAdminController extends Controller
 {
@@ -24,10 +26,12 @@ class CreateAdminController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $user = $request->username;
-        $messageValidation = "L'administrateur $user a été créé";
+        $users = Auth::user();
+        $newuser = $request->username;
+        $messageValidation = "L'administrateur $newuser a été créé";
+        $user = Auth::user();
 
-        return redirect()->route('accueil')->with('messageValidation', $messageValidation);
+        return view('moncompte')->with('messageModification', $messageValidation)->with('users', $users)->with('genres', Genre::all())->with('user', $user);
     }
 
     /**

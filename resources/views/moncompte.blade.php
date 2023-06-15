@@ -58,6 +58,9 @@
         </div>
         <input class="primaire enregistrer" type="submit" value="Enregistrer">
         </form>
+        @if (Auth::check() && Auth::user()->role_id == 2)
+        <a href="/createadmin"><button class="addAdmin secondaire"> Crée Admin</button></a>
+        @endif
 <script>
 
         // Selectionne des éléments du DOM

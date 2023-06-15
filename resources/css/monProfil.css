@@ -81,8 +81,10 @@
     text-align: left;
 }
 
-.enregistrer {
+.addAdmin {
     margin-bottom: 200px;
+    color: var(--accent-color);
+    cursor: pointer;
 }
 
 .svgSubmit {
@@ -128,4 +130,13 @@ form h2 {
 form p {
     margin-top: 0px;
     margin-bottom: 0px;
+}
+
+.creeadmin {
+    padding: 0px 16px;
+    text-align: left;
+}
+
+.premierInput {
+    margin-top: 50px;
 }

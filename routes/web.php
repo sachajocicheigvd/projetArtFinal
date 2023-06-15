@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::get('registerbis', [GenreUserController::class, 'showForm'])->name('registerbis');
     Route::post('registerbis', [GenreUserController::class, 'saveGenre']);
 
-    Route::resource("mon-compte", UserController::class);
+    Route::get("mon-compte", [UserController::class, 'index'])->name('moncompte');
     Route::post("mon-compte", [UserController::class, 'update']);
 
     // Route::get('/sondage', [App\Http\Controllers\sondageController::class, 'afficheSondage']);
