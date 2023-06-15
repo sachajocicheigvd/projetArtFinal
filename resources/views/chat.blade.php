@@ -21,12 +21,14 @@
 
         @guest
         <p>Vous devez être connecté.</p>
+    
         @else
         <div class="row">
     
             <div class="col-sm-10 offset-sm-3 my-4 d-none" style="display:none">
                 <input type="text" class="form-control" name="username" id="username" value="{{ Auth::user()->first_name }}">
             </div>
+    
   <div class="presentation">
                  <img src="{{ asset('/images/saucisse9.png') }}" alt="Image de présentation">
                  <span class="espace">&nbsp;</span>
@@ -35,6 +37,7 @@
                  <p class = "textePres" id="titreEmissionEnDirect">Saucisse 9</p>
                  </div>
             </div>
+
             <div class="col-sm-6 offset-sm-3">
                 <div class="box box-primary direct-chat direct-chat-primary">
             
@@ -47,8 +50,7 @@
     <div class="encadree {{ $message->user->id === Auth::user()->id ? 'monEncadree' : ''}}">
        
     <p  class="message {{ $message->user->id === Auth::user()->id ? 'moi' : '' }}">
-       
-        
+           
             <strong class="user">{{$message->user->first_name}}</strong> {{ $message->content }}
                  @foreach($message->user->genres as $index => $genre)
             @if($index < 3)
@@ -76,16 +78,20 @@
                                         <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
                                         </svg>
                                     </button>
-                                </span>          
+                                </span>
+                          
+                        
                             </div>
                             </form>
-                            
+          
                         </div>
                     </div>
 
              <div id="encadreeMessage">
     
-                    <div class="box-footer">                           
+                    <div class="box-footer">
+                        
+                        
                     </div>
     
                 </div>
@@ -93,15 +99,17 @@
     
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        // ajoute automatiquement le jeton CSRF aux requêtes Ajax 
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+
+
         jQuery(document).ready(function() {
         // Scroll to the bottom of the direct chat messages container
         jQuery('#messages').scrollTop(jQuery('#messages')[0].scrollHeight);
@@ -109,7 +117,14 @@
         // Attach event handler to the messages container
         jQuery('#messages').on('DOMNodeInserted', function() {
             jQuery('#messages').scrollTop(jQuery('#messages')[0].scrollHeight);
+
+            // Your code here
+            // This code will be executed when a new element is inserted into the messages container
+            // You can add your logic or function calls here
+        });
     });
     </script>
+
     @endsection
+ 
 @endguest
