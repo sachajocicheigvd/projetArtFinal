@@ -64,7 +64,7 @@
 
 
 
-    <div class="container-navigation"  >
+    <div class="container"  >
 
         @yield('contenu')
 
