@@ -151,7 +151,7 @@ MDP : Admin
 
 Faite au minimum, `git pull` et puis `npm run build`.
 
-Pensez également s'il y a un problème de cache ou de route suite à vos modifications à faire un `php artisan cache:clear` et `php artisan route:cache`;
+Pensez également s'il y a un problème de cache ou de route suite à vos modifications à faire un `php artisan route:clear` et `php artisan route:cache`;
 
 # Problèmes ?
 
