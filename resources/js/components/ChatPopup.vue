@@ -1,6 +1,9 @@
 <template>
     <div class="popup">
-        <h1 v-if="dataT">{{ dataT.title }}</h1>
+        <div id="title">
+            <h2 v-if="dataT">{{ dataT.title }}</h2>
+        </div>
+
         <div v-for="item in lastSurvey" :key="item.answer" class="survey-item">
             <div class="progress-bar">
                 <span class="progress-bar-text">
@@ -96,6 +99,12 @@ export default {
     background-color: rgb(42, 42, 47);
 }
 
+#title {
+    position: absolute;
+    top: 0;
+    margin-top: 0%;
+    height: 27.2px;
+}
 .popup-close {
     position: absolute;
     top: 10px;
@@ -129,12 +138,13 @@ export default {
     background: #18181b;
     border-radius: 40px;
     position: relative;
+    margin-top: 20%;
 }
 
 .progress-bar-inner {
     height: 100%;
     background: var(--secondaire-color);
-    border-radius: 40px 0 0 40px;
+    border-radius: 40px;
     position: absolute;
     top: 0;
     left: 0;
@@ -150,6 +160,7 @@ export default {
     align-items: center;
     z-index: 2;
     background-color: transparent;
+    height: 100%;
 }
 
 .left-text {
