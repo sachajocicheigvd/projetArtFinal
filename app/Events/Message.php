@@ -21,16 +21,15 @@ class Message implements ShouldBroadcast
 
     public $username;
     public $message;
-
+    public $pseudo;
     public $genres;
 
-    public function __construct($username,$message)
+    public function __construct($username, $message, $pseudo)
     {
         $this->username = $username;
         $this->message = $message;
         $this->genres = Auth::user()->genres;
-
-
+        $this->pseudo = Auth::user()->username;
     }
 
     public function broadcastOn()
@@ -41,6 +40,5 @@ class Message implements ShouldBroadcast
     public function broadcastAs()
     {
         return 'message';
-        
     }
 }

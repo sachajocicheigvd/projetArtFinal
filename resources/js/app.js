@@ -85,6 +85,7 @@ function getCurrentTime() {
 //en écoutant l'événement "message" sur la chaîne "chat"
 window.Echo.channel("chat").listen(".message", (e) => {
     let username = $("#username").val();
+    console.log(e);
     let currentTime = getCurrentTime();
     let message = e.message;
     let genres = e.genres;
@@ -111,7 +112,7 @@ window.Echo.channel("chat").listen(".message", (e) => {
         (e.username === username ? "moi" : "") +
         '">' +
         '<strong class="user">' +
-        e.username +
+        e.pseudo +
         "</strong> " +
         formattedMessage +
         "</p>" +

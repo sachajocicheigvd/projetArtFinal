@@ -51,7 +51,7 @@
        
     <p  class="message {{ $message->user->id === Auth::user()->id ? 'moi' : '' }}">
            
-            <strong class="user">{{$message->user->first_name}}</strong> {{ $message->content }}
+            <strong class="user">{{$message->user->username}}</strong> {{ $message->content }}
                  @foreach($message->user->genres as $index => $genre)
             @if($index < 3)
             <div id="genresUtilisateurs">
