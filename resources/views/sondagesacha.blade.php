@@ -40,7 +40,8 @@ use App\Models\Answer;
 <script>
 
 if(duration>0){
-document.querySelector("body > div.container > div.span6").innerHTML = `    <h2>Vous avez voté pour</h2>
+document.querySelector("body > div.container > div.span6").innerHTML = `
+    <h2>Vous avez voté pour</h2>
     @foreach($answers as $answer)
     @if($answer->survey_id == $surveys[count($surveys)-1]->id)
     @foreach($answer->users as $user)
@@ -258,11 +259,11 @@ if (duration <= 0) {
                 if (a.artist != null){
                 
                 document.querySelector(".afficheSondage").insertAdjacentHTML("beforeend", `
-   <div class='uneElement' data-position=${i}>             
-    <strong><p>${a.answer}</p></strong>
-    <strong><p>${a.artist}</p></strong>
-    <img src="${a.image}" alt="image" width="100px" height="100px">
-    <span class="pull-right pourcentage">${isNaN(Math.round(a.totalVotes / total * 100)) ? 0 : Math.round(a.totalVotes / total * 100)}%</span>
+   <div class='uneElement' data-position=${i}>
+    <img src="${a.image}" alt="image" width="130px" height="130px">
+    <p class="answer rep${i}">${a.answer}</p>
+    <p class="artist artiste${i}">${a.artist}</p>
+    <p class=" percent pourcentage${i}">${isNaN(Math.round(a.totalVotes / total * 100)) ? 0 : Math.round(a.totalVotes / total * 100)}%</p>
 
     </div>
     `)
