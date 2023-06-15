@@ -18,7 +18,7 @@
 
 <div id="lecteurAudioPageAccueil">
     <audio id="lecteurAudioFinal" >
-        <source src="{{ asset('/images/saucisse9Audio.mp3') }}" type="audio/mp3">
+        <source src="{{ asset('/audio/saucisse9Audio.mp3') }}" type="audio/mp3">
     </audio>
     
 
@@ -32,7 +32,7 @@
     </button>
 
        <div id="barreProgression">
-        <div id="tempsEcoulé">--:--</div>
+        <div id="tempsEcoule"></div>
         <div id="barre">
             <div id="progression"></div>
         </div>
@@ -42,7 +42,7 @@
     <script>
         
         let audio = document.querySelector("#lecteurAudioFinal");
-        let tempsEcoulé = document.querySelector("#tempsEcoulé");
+        let tempsEcoulé = document.querySelector("#tempsEcoule");
         let tempsTotal = document.querySelector("#tempsTotal");
 
         // Mettre à jour la durée totale de l'audio
@@ -50,9 +50,6 @@
             let duration = formatTime(audio.duration);
             tempsTotal.textContent = duration;
         });
-
-       
-      
 
         // Fonction pour formater le temps au format MM:SS
       function formatTime(time) {
@@ -85,7 +82,7 @@
     audio.addEventListener("timeupdate", function() {
                 console.log(formatTime(audio.currentTime));
             let currentTime = formatTime(audio.currentTime);
-            tempsEcoulé.textContent = currentTime;
+            tempsEcoule.textContent = currentTime;
         }); 
 
      
