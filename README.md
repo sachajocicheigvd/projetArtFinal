@@ -536,9 +536,9 @@ Saisissez le nom d'utilisateur ainsi que le mot de passe correspondant qui vous 
 
 Créez une nouvelle table que vous nommerez ou accédez directement à la table puis aller sur l'onglet _"SQL"_ puis collez le code copié précédemment et éxecutez ce dernier, ce que vous voyez à l'écran peut être différent de cette image en raison du thème par défaut _"pmahomme"_ sur phpmyadmin et ici nous avons le thème _"Metro"_.
 
-Félicitations, vous avez peuplé la base de données!
-
 ![Menu phpmyadmin](phpmyadmin-menu.png)
+
+Félicitations, vous avez peuplé la base de données!
 
 ## Télécharger le repo Git depuis github directement sur le serveur
 
@@ -585,7 +585,7 @@ Copiez le fichier d'exemple `.example.env` pour créer le fichier `.env` (à moi
 cp .example.env .env
 ```
 
-Modifiez le fichier `.env` (en ligne de commande avec `nano` ou `vim` par exemple, ou depuis un éditeur de texte)selon les paramètres spécifiques à votre configuration, tels que la base de données, les identifiants, la APP_KEY (que vous pouvez générer via `php artisan key:generate`), pusher si vous avez pusher, votre service mail.
+Modifiez le fichier `.env` (en ligne de commande avec `nano` ou `vim` par exemple, ou depuis un éditeur de texte) selon les paramètres spécifiques à votre configuration, tels que la base de données, les identifiants, la APP_KEY (que vous pouvez générer via `php artisan key:generate`), pusher si vous avez pusher, votre service mail.
 
 Si vous avez pris le fichier `.env` depuis votre projet, partez du principe que vous devez modifier uniquement le nom de la base de donnée si vous n'avez pas pu la choisir, le port, l'utilisateur, le mot de passe.
 
