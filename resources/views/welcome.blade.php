@@ -39,122 +39,8 @@
         <div id="tempsTotal">--:--</div>
     </div>
 </div>
-    <script>
-        
-        let audio = document.querySelector("#lecteurAudioFinal");
-        let tempsEcoulé = document.querySelector("#tempsEcoule");
-        let tempsTotal = document.querySelector("#tempsTotal");
-
-        // Mettre à jour la durée totale de l'audio
-        audio.addEventListener("loadedmetadata", function() {
-            let duration = formatTime(audio.duration);
-            tempsTotal.textContent = duration;
-        });
-
-        // Fonction pour formater le temps au format MM:SS
-      function formatTime(time) {
-    let hours = Math.floor(time / 3600);
-    let minutes = Math.floor((time % 3600) / 60);
-    let seconds = Math.floor(time % 60);
-    return `${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}`;
-}
-
-        // Fonction pour ajouter un zéro devant les chiffres inférieurs à 10
-        function padZero(number) {
-            return number < 10 ? `0${number}` : number;
-        }
-
-        function toggleAudio() {
-             
-            console.log("toggleAudio")
-            if (audio.paused) {
-                audio.play();
-            
-                localStorage.setItem("audioState", "playing");
-            } else {
-                audio.pause();
-                
-          localStorage.setItem("audioState", "paused");
-                localStorage.setItem("audioState", "paused");
-            }
-        }
-
-    audio.addEventListener("timeupdate", function() {
-                console.log(formatTime(audio.currentTime));
-            let currentTime = formatTime(audio.currentTime);
-            tempsEcoule.textContent = currentTime;
-        }); 
-
-     
-
-// Mettre à jour le temps écoulé pendant la lecture
-        
-    </script>
 </div>
 </div>
-
-
-<!--<div id="lecteurAudioPageAccueil">
-    <audio id="lecteurAudioFinal" controls>
-        <source src="{{ asset('storage/images/saucisse9Audio.mp3') }}" type="audio/mp3">
-    </audio>
-
-    <button id="boutonPlayPausePageAccueil" onclick="toggleAudio()">
-  
-    </button>
-
-    <div id="barreProgression">
-        <div id="tempsEcoulé">--:--</div>
-        <div id="barre">
-            <div id="progression"></div>
-        </div>
-        <div id="tempsTotal">--:--</div>
-    </div>
-
-    <script>
-        let audio = document.querySelector("#lecteurAudioFinal");
-        let tempsEcoulé = document.querySelector("#tempsEcoulé");
-        let tempsTotal = document.querySelector("#tempsTotal");
-
-        // Mettre à jour la durée totale de l'audio
-        audio.addEventListener("loadedmetadata", function() {
-            let duration = formatTime(audio.duration);
-            tempsTotal.textContent = duration;
-        });
-
-        // Mettre à jour le temps écoulé pendant la lecture
-        audio.addEventListener("timeupdate", function() {
-            let currentTime = formatTime(audio.currentTime);
-            tempsEcoulé.textContent = currentTime;
-        });
-
-        // Fonction pour formater le temps au format MM:SS
-        function formatTime(time) {
-            let minutes = Math.floor(time / 60);
-            let seconds = Math.floor(time % 60);
-            return `${padZero(minutes)}:${padZero(seconds)}`;
-        }
-
-        // Fonction pour ajouter un zéro devant les chiffres inférieurs à 10
-        function padZero(number) {
-            return number < 10 ? `0${number}` : number;
-        }
-
-        function toggleAudio() {
-            console.log("toggleAudio")
-            if (audio.paused) {
-                audio.play();
-                localStorage.setItem("audioState", "playing");
-            } else {
-                audio.pause();
-                localStorage.setItem("audioState", "paused");
-            }
-        }
-    </script>
-</div> -->
-
-
-
 
 <div class="descriptionRediffusionEtEmission">
         <h1 id="rediffusions">Rediffusions</h1>
@@ -195,20 +81,54 @@
 </section>  
 
 <div id="ajoutEspace"> </div>
-<!-- 
 
-  <div class="rectangleEmissionPetit">
-        <img class="imageEmissionPetit" src="{{ asset('storage/images/logoBrasCasse.svg') }}">
-        <span class="dateEmi<ssionPetit">14 mai 2023</span> -->
+<script>
+        
+        // Récupérer les éléments du DOM
+        let audio = document.querySelector("#lecteurAudioFinal");
+        let tempsEcoule = document.querySelector("#tempsEcoule");
+        let tempsTotal = document.querySelector("#tempsTotal");
 
+        // Mettre à jour la durée totale de l'audio
+        audio.addEventListener("loadedmetadata", function() {
+            let duration = formatTime(audio.duration);
+            tempsTotal.textContent = duration;
+        });
 
-   
+        // Fonction pour formater le temps au format MM:SS
+      function formatTime(time) {
+    let hours = Math.floor(time / 3600);
+    let minutes = Math.floor((time % 3600) / 60);
+    let seconds = Math.floor(time % 60);
+    return `${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}`;
+}
 
+        // Fonction pour ajouter un zéro devant les chiffres inférieurs à 10
+        function padZero(number) {
+            return number < 10 ? `0${number}` : number;
+        }
 
+        // Fonction pour mettre à jour le bouton play/pause
+        function toggleAudio() {
+             
+            console.log("toggleAudio")
+            if (audio.paused) {
+                audio.play();   
+                localStorage.setItem("audioState", "playing");
+            } else {
+                audio.pause();
+          localStorage.setItem("audioState", "paused");
+                localStorage.setItem("audioState", "paused");
+            }
+        }
 
-
-
-
-
+        // Mettre à jour la barre de progression
+    audio.addEventListener("timeupdate", function() {
+                console.log(formatTime(audio.currentTime));
+            let currentTime = formatTime(audio.currentTime);
+            tempsEcoule.textContent = currentTime;
+        }); 
+  
+    </script>
 
 @endsection

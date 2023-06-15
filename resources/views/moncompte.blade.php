@@ -1,6 +1,5 @@
 @extends('template')
 
-
 @section('title')
 <title>Mon compte</title>
 <link rel="stylesheet" href="{{ asset('public/css/monProfil.css') }}">
@@ -12,9 +11,6 @@
                       @csrf
 <input type="submit" class="svgSubmit" value="">
 </form>
-
-
-
 
 @endsection
 
@@ -62,45 +58,59 @@
         </div>
         <input class="primaire enregistrer" type="submit" value="Enregistrer">
         </form>
-        <script>
-                let coll = document.getElementsByClassName("collapsible");
-let i;
-let svgElement = document.getElementById("boutonPlus");
+<script>
 
-for (i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function () {
-        this.classList.toggle("active");
-        var content = this.nextElementSibling;
-        if (content.style.maxHeight) {
-            content.style.maxHeight = null;
-            svgElement.style.stroke = "#767676";
-        } else {
-            content.style.maxHeight = content.scrollHeight + "px";
-            svgElement.style.stroke = "#27eb42";
+        // Selectionne des éléments du DOM
+        let coll = document.getElementsByClassName("collapsible");
+        let svgElement = document.getElementById("boutonPlus");
+
+        // Boucle sur les éléments du DOM
+        for (let i = 0; i < coll.length; i++) {
+                // Ajoute un événement au clic sur le bouton
+                coll[i].addEventListener("click", function () {
+
+                // Ajoute la classe "active" au bouton qui a été cliqué
+                this.classList.toggle("active");
+
+                // Récupère le contenu du bouton
+                let content = this.nextElementSibling;
+
+                if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        svgElement.style.stroke = "#767676";
+                } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        svgElement.style.stroke = "#27eb42";
+                }
+                });
         }
-    });
-}
 
-let emailUser = document.getElementById("user-email").value;
-let emailElement = document.getElementById("email");
+        // Selectionne des éléments du DOM
+        let emailUser = document.getElementById("user-email").value;
+        let emailElement = document.getElementById("email");
 
-emailElement.addEventListener("focus", function () {
-    emailElement.removeAttribute("placeholder");
-});
+        // Ajoute un événement au focus sur l'input
+        emailElement.addEventListener("focus", function () {
+        emailElement.removeAttribute("placeholder");
+        });
 
-emailElement.addEventListener("blur", function () {
-    emailElement.setAttribute("placeholder", emailUser);
-});
+        // Ajoute un événement au blur sur l'input
+        emailElement.addEventListener("blur", function () {
+        emailElement.setAttribute("placeholder", emailUser);
+        });
 
-let passwordElement = document.getElementById("password");
+        // Selectionne des éléments du DOM
+        let passwordElement = document.getElementById("password");
 
-passwordElement.addEventListener("focus", function () {
-    passwordElement.removeAttribute("placeholder");
-});
+        // Ajoute un événement au focus sur l'input
+        passwordElement.addEventListener("focus", function () {
+        passwordElement.removeAttribute("placeholder");
+        });
 
-passwordElement.addEventListener("blur", function () {
-    passwordElement.setAttribute("placeholder", `●●●●●●●●`);
-});
-        </script>
+        // Ajoute un événement au blur sur l'input
+        passwordElement.addEventListener("blur", function () {
+        passwordElement.setAttribute("placeholder", `●●●●●●●●`);
+        });
+</script>
 @endsection
 
