@@ -63,7 +63,6 @@ footer {
     bottom: 0 !important;
     left: 0 !important;
     width: 100% !important;
-    display: flex !important;
     justify-content: space-around !important;
 }
 
