@@ -82,7 +82,6 @@
 }
 
 .addAdmin {
-    margin-bottom: 200px;
     color: var(--accent-color);
     cursor: pointer;
 }
@@ -139,4 +138,8 @@ form p {
 
 .premierInput {
     margin-top: 50px;
+}
+
+.margeForm {
+    margin-bottom: 200px;
 }

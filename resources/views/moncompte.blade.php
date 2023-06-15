@@ -16,7 +16,7 @@
 
 @section('contenu')
 <input type="hidden" id="user-email" value="<?= $users->email ?>">
-<form method="post" action="{{ url('/mon-compte') }}">
+<form method="post" class="margeForm" action="{{ url('/mon-compte') }}">
         @csrf
         <br/>
         <br/>
@@ -56,11 +56,11 @@
                         </div>
                 </div>
         </div>
-        <input class="primaire enregistrer" type="submit" value="Enregistrer">
-        </form>
+        <input class="primaire enregistrer" type="submit" value="Enregistrer"><br/>
         @if (Auth::check() && Auth::user()->role_id == 2)
         <a href="/createadmin"><button class="addAdmin secondaire"> Crée Admin</button></a>
         @endif
+        </form>
 <script>
 
         // Selectionne des éléments du DOM

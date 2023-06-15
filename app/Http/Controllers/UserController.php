@@ -97,14 +97,14 @@ class UserController extends Controller
 
         // On supprime les genres de l'utilisateur et on les ajoute
         $user->genres()->detach();
-
-        foreach ($genres as $genreId) {
-            $user->genres()->attach($genreId, [
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
+        if($genres != null){
+            foreach ($genres as $genreId) {
+                $user->genres()->attach($genreId, [
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
         }
-
         $messageModification = "Vos modifications ont bien été prises en compte.";
 
         return view('moncompte')->with('messageModification', $messageModification)->with('users', Auth::user())->with('genres', Genre::all())->with('user', Auth::user());
