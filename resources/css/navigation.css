@@ -5,7 +5,7 @@ footer {
 
 footer nav {
     height: 100% !important;
-    display: flex !important;
+  
 }
 
 footer nav a {
@@ -72,7 +72,7 @@ footer nav {
     display: flex !important;
 }
 
-.container {
+.container-navigation {
     margin-bottom: 20px !important;
     text-align: center !important;
     justify-content: center !important;
@@ -113,4 +113,9 @@ header.jumbotron {
     padding-left: 30px !important;
     padding-right: 30px !important;
     padding-top: 20px !important;
+}
+
+#navSansRien {
+    width: 0px !important;
+    height: 0px !important;
 }

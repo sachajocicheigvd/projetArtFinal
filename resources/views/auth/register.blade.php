@@ -5,7 +5,7 @@
 
 @section('contenu')
 
-<x-guest-layout>
+
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -96,5 +96,4 @@
     </form>
 
 </div>
-
-</x-guest-layout>
+@endsection
