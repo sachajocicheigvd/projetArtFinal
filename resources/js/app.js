@@ -76,6 +76,7 @@ FIN PARTIE POPUP DANS LE CHAT
 */
 
 $(document).ready(function () {
+
     $(document).on("click", "#send_message", function (e) {
         e.preventDefault();
 
@@ -108,31 +109,51 @@ function getCurrentTime() {
 }
 const lastMessage = document.querySelector(".message:last-child");
 
+//récupere depuis la databbase les genres de musique de la personnes connecté
+
+
+
+
 window.Echo.channel("chat").listen(".message", (e) => {
     let username = $("#username").val();
     let currentTime = getCurrentTime();
 
+    
+
     let lastChild = document.querySelector("#zonemess > div:last-child");
 
     let message = e.message;
+    let genres = e.genres;
+
+    let txtGenres = '';
+
+    for (let i = 0; i < genres.length && i < 3; i++) {
+        txtGenres += '<p class="musique ' + genres[i].name + ' genreMusiqueMessage"> <span>' + genres[i].name + '</span></p>';
+    }
+
+
     let formattedMessage = "";
+
     for (let i = 0; i < message.length; i += 23) {
         formattedMessage += message.substring(i, i + 20) + "<br>";
     }
 
     let messageHTML =
-        '<div class="encadree">' +
+        '<div class="encadree monEncadree">' +
         '<p class="message ' +
         (e.username === username ? "moi" : "") +
         '">' +
-        currentTime +
+        
         '<strong class="user">' +
         e.username +
         "</strong> " +
         formattedMessage +
-        "</p>" +
+    "</p>" + '<div id="genresUtilisateurs">' +
+txtGenres    
+    +'</div>'+
         '<p class="text-muted">' +
         "</p>" +
+         '<strong id="minutesEnvoie">'+currentTime +'</strong>'+
         "</div>";
 
     $("#zonemess > div:last-child").append(messageHTML);

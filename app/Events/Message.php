@@ -22,10 +22,13 @@ class Message implements ShouldBroadcast
     public $username;
     public $message;
 
+    public $genres;
+
     public function __construct($username,$message)
     {
         $this->username = $username;
         $this->message = $message;
+        $this->genres = Auth::user()->genres;
 
 
     }
