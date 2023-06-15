@@ -75,7 +75,7 @@
  @else
 <div id="player" class="PlayerFlex-container">
   <div class="audio-info">
-    <img id= "imgCover" src="{{ asset('storage/images/saucisse9.png') }}" >
+    <img id= "imgCover" src="{{ asset('/images/saucisse9.png') }}" >
     <p id = "titreEmission" >Saucisse 9</p>
   </div>
 
@@ -83,7 +83,7 @@
    <!--  <img src="{{ asset('storage/images/logoCouleur3.svg') }}" style="width: 95px; 
         height: 147px" alt="logoCouleur3" class="logoCouleur3"> -->
  
-      <audio id="audioPlayer" src="{{ asset('storage/images/saucisse9Audio.mp3')}} "></audio>
+      <audio id="audioPlayer" src="{{ asset('/audio/saucisse9Audio.mp3')}} "></audio>
    
     <script>
       function playAudio() {

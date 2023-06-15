@@ -10,7 +10,7 @@
 
 <div id = "pageAccueilAffichageEnLive">
 <div class="rectangleEmission">
-        <img class="imageEmission" src="{{ asset('storage/images/logoSaucisse9.svg') }}">
+        <img class="imageEmission" src="{{ asset('/images/logoSaucisse9.svg') }}">
         <span class="nomEmission">Saucisse 9</span>
 </div>
 
@@ -18,7 +18,7 @@
 
 <div id="lecteurAudioPageAccueil">
     <audio id="lecteurAudioFinal" >
-        <source src="{{ asset('storage/images/saucisse9Audio.mp3') }}" type="audio/mp3">
+        <source src="{{ asset('/images/saucisse9Audio.mp3') }}" type="audio/mp3">
     </audio>
     
 
@@ -175,23 +175,23 @@
         <input class="rectangleEmissionPetit" type="radio" name="slider" id="s5">
 
         <label for="s1" id="slide1" class="rectangleEmissionPetit">
-                <img class="imageEmissionPetit" src="{{ asset('storage/images/logo3MiTemps.svg') }}">
+                <img class="imageEmissionPetit" src="{{ asset('/images/logo3MiTemps.svg') }}">
                 <span class="dateEmissionPetit">14 mai 2023</span>
         </label>
         <label for="s2" id="slide2" class="rectangleEmissionPetit">
-                <img class="imageEmissionPetit" src="{{ asset('storage/images/logo3MiTemps.svg') }}">
+                <img class="imageEmissionPetit" src="{{ asset('/images/logo3MiTemps.svg') }}">
                 <span class="dateEmissionPetit">12 mai 2023</span>
         </label>
         <label for="s3" id="slide3" class="rectangleEmissionPetit">
-                <img class="imageEmissionPetit" src="{{ asset('storage/images/logo3MiTemps.svg') }}">
+                <img class="imageEmissionPetit" src="{{ asset('/images/logo3MiTemps.svg') }}">
                 <span class="dateEmissionPetit">9 mai 2023</span>
         </label>
         <label for="s4" id="slide4" class="rectangleEmissionPetit">
-                <img class="imageEmissionPetit" src="{{ asset('storage/images/logo3MiTemps.svg') }}">
+                <img class="imageEmissionPetit" src="{{ asset('/images/logo3MiTemps.svg') }}">
                 <span class="dateEmissionPetit">6 mai 2023</span>
         </label>
         <label for="s5" id="slide5" class="rectangleEmissionPetit">
-                <img class="imageEmissionPetit" src="{{ asset('storage/images/logo3MiTemps.svg') }}">
+                <img class="imageEmissionPetit" src="{{ asset('/images/logo3MiTemps.svg') }}">
                 <span class="dateEmissionPetit">2 mai 2023</span>
         </label>
        

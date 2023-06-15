@@ -38,7 +38,7 @@
 <div id="creationCompte">
 
 
-        <img src="{{ asset('storage/images/logoCouleur3.svg') }}" style="width: 95px; 
+        <img src="{{ asset('/images/logoCouleur3.svg') }}" style="width: 95px; 
         height: 147px" alt="logoCouleur3" class="logoCouleur3">
          </div>
 

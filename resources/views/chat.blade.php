@@ -32,7 +32,7 @@
           
     
   <div class="presentation">
-                 <img src="{{ asset('storage/images/saucisse9.png') }}" alt="Image de présentation">
+                 <img src="{{ asset('/images/saucisse9.png') }}" alt="Image de présentation">
                  <span class="espace">&nbsp;</span>
                  <div class ="presentationTexte">
                  <p class ="textePres">En live</p>
