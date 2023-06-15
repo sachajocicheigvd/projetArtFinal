@@ -43,6 +43,21 @@ class SurveyController extends Controller
         // Réponse JSON (plus utilisé actuellement)
         return response()->json(['message' => 'Vote enregistré avec succès']);
     }
+    public function getSurvey()
+    {
+
+        $surveys = Survey::all();
+        $answers = Answer::all();
+
+        // Récupération du dernier sondage
+        $latestSurvey = Survey::latest()->first();
+
+        // Récupération des réponses du dernier sondage
+        $answerUserCount = $latestSurvey->answers()->sum('id');
+
+        // Redirection vers la page des stats vu que l'animateur n'a pas besoin de voter
+        return view('aftersurvey', compact('surveys', 'answers', 'answerUserCount'));
+    }
     public function saveSurvey(SurveyRequest $request)
     {
 
@@ -117,8 +132,17 @@ class SurveyController extends Controller
             event(new ChatPopup("CHATPOPUP"));
         }
 
+        $surveys = Survey::all();
+        $answers = Answer::all();
+
+        // Récupération du dernier sondage
+        $latestSurvey = Survey::latest()->first();
+
+        // Récupération des réponses du dernier sondage
+        $answerUserCount = $latestSurvey->answers()->sum('id');
+
         // Redirection vers la page des stats vu que l'animateur n'a pas besoin de voter
-        return redirect()->route('stats');
+        return view('aftersurvey', compact('surveys', 'answers', 'answerUserCount'));
     }
     // create function to return the last survey
     public function lastSurvey()

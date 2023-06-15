@@ -8,6 +8,7 @@ use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\CreateAdminController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,7 +58,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/chat', [App\Http\Controllers\ChatsController::class, 'afficheMessage'])->name('chat');
     Route::post('/send-message', [App\Http\Controllers\ChatsController::class, 'enregistrement']);
-
+    //route pour nous rediriger sur la blade aftersurvey
+    Route::get('/aftersurvey', [SurveyController::class, 'getSurvey'])->name('aftersurvey');
     // Admin (dans authentifiés)
     Route::middleware('admin')->group(function () {
         Route::get('creation-sondage', [SurveyController::class, 'showForm'])->name('creationsondage');
@@ -67,7 +69,7 @@ Route::middleware('auth')->group(function () {
             return view('createadmin');
         })->name('createadmin');
 
-Route::post('createadmin', [CreateAdminController::class, 'store']);
+        Route::post('createadmin', [CreateAdminController::class, 'store']);
     });
 });
 
