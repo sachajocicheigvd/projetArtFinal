@@ -11,13 +11,15 @@ Notre base de donnée de développement est déjà une bonne base pour utiliser 
 
 Afin d'être plus efficace pour la mise en place, vous pouvez déjà copier dans le presse papier de votre ordinateur les lignes suivantes.
 
+Si vous avez des seeders, vous n'avez pas l'oligation de copier le code ci-dessous.
+
 ```SQL
 -- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : lun. 12 juin 2023 à 11:36
+-- Généré le : jeu. 15 juin 2023 à 13:25
 -- Version du serveur : 5.7.39
 -- Version de PHP : 8.2.0
 
@@ -56,10 +58,10 @@ CREATE TABLE `answers` (
 --
 
 INSERT INTO `answers` (`id`, `survey_id`, `answer`, `artist`, `picture`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Bella', 'Maître Gims', '', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(2, 1, 'Waka Waka', 'Shakira', '', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(3, 2, 'Bof', NULL, NULL, '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(4, 2, 'Moui', NULL, NULL, '2023-06-12 11:36:38', '2023-06-12 11:36:38');
+(1, 1, 'Bella', 'Maître Gims', '', '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(2, 1, 'Waka Waka', 'Shakira', '', '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(3, 2, 'Bof', NULL, NULL, '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(4, 2, 'Moui', NULL, NULL, '2023-06-15 13:24:26', '2023-06-15 13:24:26');
 
 -- --------------------------------------------------------
 
@@ -80,9 +82,9 @@ CREATE TABLE `answer_user` (
 --
 
 INSERT INTO `answer_user` (`id`, `answer_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(2, 2, 2, '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(3, 3, 3, '2023-06-12 11:36:38', '2023-06-12 11:36:38');
+(1, 1, 1, '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(2, 2, 2, '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(3, 3, 3, '2023-06-15 13:24:26', '2023-06-15 13:24:26');
 
 -- --------------------------------------------------------
 
@@ -118,18 +120,18 @@ CREATE TABLE `genres` (
 --
 
 INSERT INTO `genres` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Afro', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(2, 'Reggaeton', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(3, 'Jazz', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(4, 'Electro', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(5, 'Country', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(6, 'Metal', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(7, 'Hip-hop', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(8, 'Punk', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(9, 'Rock', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(10, 'Variété française', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(11, 'Pop', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(12, 'Rap', '2023-06-12 11:36:38', '2023-06-12 11:36:38');
+(1, 'Afro', '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(2, 'Reggaeton', '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(3, 'Jazz', '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(4, 'Electro', '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(5, 'Country', '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(6, 'Metal', '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(7, 'Hip-hop', '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(8, 'Punk', '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(9, 'Rock', '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(10, 'Variété française', '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(11, 'Pop', '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(12, 'Rap', '2023-06-15 13:24:26', '2023-06-15 13:24:26');
 
 -- --------------------------------------------------------
 
@@ -150,9 +152,9 @@ CREATE TABLE `genre_user` (
 --
 
 INSERT INTO `genre_user` (`id`, `genre_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 3, 3, '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(2, 1, 3, '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(3, 3, 2, '2023-06-12 11:36:38', '2023-06-12 11:36:38');
+(1, 5, 1, '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(2, 2, 2, '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(3, 2, 3, '2023-06-15 13:24:26', '2023-06-15 13:24:26');
 
 -- --------------------------------------------------------
 
@@ -174,12 +176,12 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `message_id`, `user_id`, `content`, `created_at`, `updated_at`) VALUES
-(1, NULL, 2, 'Bonjour, je suis un message', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(2, 1, 2, 'Bonjour, 0 message', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(3, 1, 1, 'Bonjour, 1 message', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(4, 1, 2, 'Bonjour, 2 message', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(5, 1, 1, 'Bonjour, 3 message', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(6, 1, 1, 'Bonjour, 4 message', '2023-06-12 11:36:38', '2023-06-12 11:36:38');
+(1, NULL, 1, 'Bonjour, je suis un message', '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(2, 1, 2, 'Bonjour, je suis le 0 message', '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(3, 1, 3, 'Bonjour, je suis le 1 message', '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(4, 1, 3, 'Bonjour, je suis le 2 message', '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(5, 1, 3, 'Bonjour, je suis le 3 message', '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(6, 1, 3, 'Bonjour, je suis le 4 message', '2023-06-15 13:24:26', '2023-06-15 13:24:26');
 
 -- --------------------------------------------------------
 
@@ -198,17 +200,17 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(289, '2013_05_26_073511_create_roles_table', 1),
-(290, '2014_10_12_000000_create_users_table', 1),
-(291, '2014_10_12_100000_create_password_reset_tokens_table', 1),
-(292, '2019_08_19_000000_create_failed_jobs_table', 1),
-(293, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(294, '2023_05_30_080004_create_genres_table', 1),
-(295, '2023_05_30_080053_create_messages_table', 1),
-(296, '2023_05_30_080102_create_surveys_table', 1),
-(297, '2023_05_30_080103_create_answers_table', 1),
-(298, '2023_05_31_080035_create_genre_user_table', 1),
-(299, '2023_05_31_080116_create_answer_user_table', 1);
+(344, '2013_05_26_073511_create_roles_table', 1),
+(345, '2014_10_12_000000_create_users_table', 1),
+(346, '2014_10_12_100000_create_password_reset_tokens_table', 1),
+(347, '2019_08_19_000000_create_failed_jobs_table', 1),
+(348, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(349, '2023_05_30_080004_create_genres_table', 1),
+(350, '2023_05_30_080053_create_messages_table', 1),
+(351, '2023_05_30_080102_create_surveys_table', 1),
+(352, '2023_05_30_080103_create_answers_table', 1),
+(353, '2023_05_31_080035_create_genre_user_table', 1),
+(354, '2023_05_31_080116_create_answer_user_table', 1);
 
 -- --------------------------------------------------------
 
@@ -260,8 +262,8 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `short_description`, `long_description`, `created_at`, `updated_at`) VALUES
-(1, 'user', 'users who have registered', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(2, 'admin', 'admins have all rights to create surveys and questions', '2023-06-12 11:36:38', '2023-06-12 11:36:38');
+(1, 'user', 'users who have registered', '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(2, 'admin', 'admins have all rights to create surveys and questions', '2023-06-15 13:24:26', '2023-06-15 13:24:26');
 
 -- --------------------------------------------------------
 
@@ -284,8 +286,8 @@ CREATE TABLE `surveys` (
 --
 
 INSERT INTO `surveys` (`id`, `user_id`, `title`, `type`, `duration`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Quelle musique voulez-vous écouter ensuite ?', 'music', '2023-06-13 20:56:38', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
-(2, 2, 'Aimez-vous Couleur 3 ?', 'text', '2023-06-13 20:56:38', '2023-06-12 11:36:38', '2023-06-12 11:36:38');
+(1, 1, 'Quelle musique voulez-vous écouter ensuite ?', 'music', '2023-06-16 22:44:26', '2023-06-15 13:24:26', '2023-06-15 13:24:26'),
+(2, 2, 'Aimez-vous Couleur 3 ?', 'text', '2023-06-16 22:44:26', '2023-06-15 13:24:26', '2023-06-15 13:24:26');
 
 -- --------------------------------------------------------
 
@@ -312,10 +314,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `last_name`, `first_name`, `email`, `username`, `password`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`, `role_id`) VALUES
-(1, 'Marques', 'Patrick', 'patrickmarques@couleur3.ch', 'Patoch', '$2y$10$xhT8TJwEi2AFIJkfjRMg7OENKYTbYwGFeLe1X5qFGi26SE0x4n1Ba', NULL, NULL, '2023-06-12 11:36:38', '2023-06-12 11:36:38', 1),
-(2, 'Graber', 'Olivier', 'oliviergraber@couleur3.ch', 'Olive', '$2y$10$A6VWcqb/cs2rQyInJ3AOIeaHzQogPiPzRuUS9WFby3V807sGu5l3i', NULL, NULL, '2023-06-12 11:36:38', '2023-06-12 11:36:38', 2),
-(3, 'Dorasamy', 'Ryan', 'ryandorasamy@couleur3.ch', 'Tupidix', '$2y$10$vDyqP75ZxwSoXeMDxzgsK.K3JUULkI3KR7hWfKFhTtyfH/vP6ec0O', NULL, NULL, '2023-06-12 11:36:38', '2023-06-12 11:36:38', 2),
-(4, 'Jocic', 'Sacha', 'sachajocic@couleur3.ch', 'Sacha', '$2y$10$wlVzoAJcRcpKAJLxZ6qzJ.RA6.NH8P8EufWNKJTAQohYTSDlsfcZK', NULL, NULL, '2023-06-12 11:36:38', '2023-06-12 11:36:38', 2);
+(1, 'Marques', 'Patrick', 'patrickmarques@couleur3.ch', 'Patoch', '$2y$10$GhguI013icYExSjcF3rHjOvvk3HedJErqhlkImST.jlIoyAiBBqNO', NULL, NULL, '2023-06-15 13:24:26', '2023-06-15 13:24:26', 1),
+(2, 'Graber', 'Olivier', 'oliviergraber@couleur3.ch', 'Olive', '$2y$10$Bq9eF1YDwxlReO1ZMN2hdeBGatC7jcCjQ9uBkjLVJ5iKcS6wZMx82', NULL, NULL, '2023-06-15 13:24:26', '2023-06-15 13:24:26', 2),
+(3, 'Dorasamy', 'Ryan', 'ryandorasamy@couleur3.ch', 'Tupidix', '$2y$10$fxH8a9ZAoloszpNn5zhVDeM3otWs4wEtvL/wBBgO/2Uc3gXzuHU3a', NULL, NULL, '2023-06-15 13:24:26', '2023-06-15 13:24:26', 2),
+(4, 'Jocic', 'Sacha', 'sachajocic@couleur3.ch', 'Sacha', '$2y$10$gsDPqnknZIRmSV8HHLj9E.VmNtqTp73De7KIEgyXPp5l4aWQVpOZG', NULL, NULL, '2023-06-15 13:24:26', '2023-06-15 13:24:26', 2),
+(5, 'Heig', 'Admin', 'adminheig@couleur3.ch', 'Admin', '$2y$10$ZUUPZ/UyANdkXcc8c9yGhePrg5gtej5bB3gIwyyGSZKNcxFY9syoS', NULL, NULL, '2023-06-15 13:24:26', '2023-06-15 13:24:26', 2);
 
 --
 -- Index pour les tables déchargées
@@ -453,7 +456,7 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT pour la table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=300;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=355;
 
 --
 -- AUTO_INCREMENT pour la table `personal_access_tokens`
@@ -477,7 +480,7 @@ ALTER TABLE `surveys`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Contraintes pour les tables déchargées
@@ -530,6 +533,8 @@ COMMIT;
 
 ## Insertion de la DB
 
+### En copiant collant le SQL
+
 Connectez-vous sur `nomDuGroupe-pingouin.heig-vd.ch/phpmyadmin` dans le cadre d'une base de donnée MySQL (ce qui a été notre choix).
 
 Saisissez le nom d'utilisateur ainsi que le mot de passe correspondant qui vous est fourni par votre administrateur.
@@ -539,6 +544,10 @@ Créez une nouvelle table que vous nommerez ou accédez directement à la table 
 ![Menu phpmyadmin](phpmyadmin-menu.png)
 
 Félicitations, vous avez peuplé la base de données!
+
+### Avec des commandes PHP artisan
+
+Continuer votre lecture, nous mettrons en temps voulu le bon moment pour faire ceci.
 
 ## Télécharger le repo Git depuis github directement sur le serveur
 
@@ -633,6 +642,8 @@ php artisan view:cache
 
 Il n'est pas impossible que vous deviez faire d'autres commandes comme par exemple `php artisan storage:link` ou `npm install`, en fonction des besoins de votre site.
 
+C'est à cet instant que les personnes qui voulaient installer leur base de donnése remplie avec des seeders en ligne de commande qu'ils peuvent le faire, vous avez normalement à faire uniquement `php artisan migrate` (si vous avez une erreur, faite `php artisan migrate:install` juste avant), puis `php artisan db:seed`.
+
 ## Génération des fichiers optimisés et vérification du bon fonctionnement
 
 Exécutez la commande suivante pour générer les fichiers optimisés du site web.
@@ -646,6 +657,11 @@ Vérifiez que tout fonctionne correctement en accédant à `nomDuGroupe-pingouin
 Si tout est opérationnel, félicitations !
 
 Votre site web est maintenant déployé sur le serveur Pingouin.
+
+Si vous voulez tester notre site web en tant qu'administrateur, utilisez l'accès suivant.
+
+Username : Admin
+MDP : Admin
 
 ## Mises à jour
 

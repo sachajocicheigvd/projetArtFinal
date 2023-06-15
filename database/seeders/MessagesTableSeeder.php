@@ -28,7 +28,7 @@ class MessagesTableSeeder extends Seeder
         DB::table('messages')->insert([
             'message_id' => 1,
             'user_id' => rand(1,3),
-            'content' => "Bonjour, $i\e message",
+            'content' => "Bonjour, je suis le $i\e message",
             'created_at' => now(),
             'updated_at' => now(),
         ]);
