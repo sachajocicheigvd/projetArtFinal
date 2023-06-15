@@ -1,66 +1,654 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Mise en place de notre site web sur le serveur Pingouin
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Voici la marche à suivre pour faire en sorte que notre site web ait fonctionné sur \
+[creativepulse-pingouin.heig-vd.ch](creativepulse-pingouin.heig-vd.ch), nous avons écris cette marche à suivre de manière neutre, comme si c'était un tutoriel.
 
-## About Laravel
+Nous limitons les détails et les grands paragraphes après le chapitre "Insertion de la BD" car nous sommes conscients que si vous lisez ceci, vous comprenez généralement ce qu'il faut faire.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Export de notre BD de développement
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Notre base de donnée de développement est déjà une bonne base pour utiliser notre site web. Si vous souhaitez posséder "rapidement" une base de donnée pour essayer, voici le script SQL, pour que vous essayez.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Afin d'être plus efficace pour la mise en place, vous pouvez déjà copier dans le presse papier de votre ordinateur les lignes suivantes.
 
-## Learning Laravel
+```SQL
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : localhost:8889
+-- Généré le : lun. 12 juin 2023 à 11:36
+-- Version du serveur : 5.7.39
+-- Version de PHP : 8.2.0
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
-## Laravel Sponsors
+--
+-- Base de données : `interact`
+--
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+-- --------------------------------------------------------
 
-### Premium Partners
+--
+-- Structure de la table `answers`
+--
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+CREATE TABLE `answers` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `survey_id` int(10) UNSIGNED NOT NULL,
+  `answer` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `artist` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `picture` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-## Contributing
+--
+-- Déchargement des données de la table `answers`
+--
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+INSERT INTO `answers` (`id`, `survey_id`, `answer`, `artist`, `picture`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Bella', 'Maître Gims', '', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(2, 1, 'Waka Waka', 'Shakira', '', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(3, 2, 'Bof', NULL, NULL, '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(4, 2, 'Moui', NULL, NULL, '2023-06-12 11:36:38', '2023-06-12 11:36:38');
 
-## Code of Conduct
+-- --------------------------------------------------------
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+--
+-- Structure de la table `answer_user`
+--
 
-## Security Vulnerabilities
+CREATE TABLE `answer_user` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `answer_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+--
+-- Déchargement des données de la table `answer_user`
+--
 
-## License
+INSERT INTO `answer_user` (`id`, `answer_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(2, 2, 2, '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(3, 3, 3, '2023-06-12 11:36:38', '2023-06-12 11:36:38');
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `genres`
+--
+
+CREATE TABLE `genres` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `genres`
+--
+
+INSERT INTO `genres` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'Afro', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(2, 'Reggaeton', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(3, 'Jazz', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(4, 'Electro', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(5, 'Country', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(6, 'Metal', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(7, 'Hip-hop', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(8, 'Punk', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(9, 'Rock', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(10, 'Variété française', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(11, 'Pop', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(12, 'Rap', '2023-06-12 11:36:38', '2023-06-12 11:36:38');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `genre_user`
+--
+
+CREATE TABLE `genre_user` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `genre_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `genre_user`
+--
+
+INSERT INTO `genre_user` (`id`, `genre_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 3, 3, '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(2, 1, 3, '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(3, 3, 2, '2023-06-12 11:36:38', '2023-06-12 11:36:38');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `messages`
+--
+
+CREATE TABLE `messages` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `message_id` int(10) UNSIGNED DEFAULT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `messages`
+--
+
+INSERT INTO `messages` (`id`, `message_id`, `user_id`, `content`, `created_at`, `updated_at`) VALUES
+(1, NULL, 2, 'Bonjour, je suis un message', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(2, 1, 2, 'Bonjour, 0 message', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(3, 1, 1, 'Bonjour, 1 message', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(4, 1, 2, 'Bonjour, 2 message', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(5, 1, 1, 'Bonjour, 3 message', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(6, 1, 1, 'Bonjour, 4 message', '2023-06-12 11:36:38', '2023-06-12 11:36:38');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(289, '2013_05_26_073511_create_roles_table', 1),
+(290, '2014_10_12_000000_create_users_table', 1),
+(291, '2014_10_12_100000_create_password_reset_tokens_table', 1),
+(292, '2019_08_19_000000_create_failed_jobs_table', 1),
+(293, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(294, '2023_05_30_080004_create_genres_table', 1),
+(295, '2023_05_30_080053_create_messages_table', 1),
+(296, '2023_05_30_080102_create_surveys_table', 1),
+(297, '2023_05_30_080103_create_answers_table', 1),
+(298, '2023_05_31_080035_create_genre_user_table', 1),
+(299, '2023_05_31_080116_create_answer_user_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `password_reset_tokens`
+--
+
+CREATE TABLE `password_reset_tokens` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `personal_access_tokens`
+--
+
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `expires_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `short_description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `long_description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `roles`
+--
+
+INSERT INTO `roles` (`id`, `short_description`, `long_description`, `created_at`, `updated_at`) VALUES
+(1, 'user', 'users who have registered', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(2, 'admin', 'admins have all rights to create surveys and questions', '2023-06-12 11:36:38', '2023-06-12 11:36:38');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `surveys`
+--
+
+CREATE TABLE `surveys` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `duration` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `surveys`
+--
+
+INSERT INTO `surveys` (`id`, `user_id`, `title`, `type`, `duration`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Quelle musique voulez-vous écouter ensuite ?', 'music', '2023-06-13 20:56:38', '2023-06-12 11:36:38', '2023-06-12 11:36:38'),
+(2, 2, 'Aimez-vous Couleur 3 ?', 'text', '2023-06-13 20:56:38', '2023-06-12 11:36:38', '2023-06-12 11:36:38');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `last_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `first_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `role_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `last_name`, `first_name`, `email`, `username`, `password`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`, `role_id`) VALUES
+(1, 'Marques', 'Patrick', 'patrickmarques@couleur3.ch', 'Patoch', '$2y$10$xhT8TJwEi2AFIJkfjRMg7OENKYTbYwGFeLe1X5qFGi26SE0x4n1Ba', NULL, NULL, '2023-06-12 11:36:38', '2023-06-12 11:36:38', 1),
+(2, 'Graber', 'Olivier', 'oliviergraber@couleur3.ch', 'Olive', '$2y$10$A6VWcqb/cs2rQyInJ3AOIeaHzQogPiPzRuUS9WFby3V807sGu5l3i', NULL, NULL, '2023-06-12 11:36:38', '2023-06-12 11:36:38', 2),
+(3, 'Dorasamy', 'Ryan', 'ryandorasamy@couleur3.ch', 'Tupidix', '$2y$10$vDyqP75ZxwSoXeMDxzgsK.K3JUULkI3KR7hWfKFhTtyfH/vP6ec0O', NULL, NULL, '2023-06-12 11:36:38', '2023-06-12 11:36:38', 2),
+(4, 'Jocic', 'Sacha', 'sachajocic@couleur3.ch', 'Sacha', '$2y$10$wlVzoAJcRcpKAJLxZ6qzJ.RA6.NH8P8EufWNKJTAQohYTSDlsfcZK', NULL, NULL, '2023-06-12 11:36:38', '2023-06-12 11:36:38', 2);
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `answers`
+--
+ALTER TABLE `answers`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `answers_survey_id_foreign` (`survey_id`);
+
+--
+-- Index pour la table `answer_user`
+--
+ALTER TABLE `answer_user`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `answer_user_answer_id_user_id_unique` (`answer_id`,`user_id`),
+  ADD KEY `answer_user_user_id_foreign` (`user_id`);
+
+--
+-- Index pour la table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Index pour la table `genres`
+--
+ALTER TABLE `genres`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `genres_name_unique` (`name`);
+
+--
+-- Index pour la table `genre_user`
+--
+ALTER TABLE `genre_user`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `genre_user_genre_id_user_id_unique` (`genre_id`,`user_id`),
+  ADD KEY `genre_user_user_id_foreign` (`user_id`);
+
+--
+-- Index pour la table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `messages_message_id_foreign` (`message_id`),
+  ADD KEY `messages_user_id_foreign` (`user_id`);
+
+--
+-- Index pour la table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `password_reset_tokens`
+--
+ALTER TABLE `password_reset_tokens`
+  ADD PRIMARY KEY (`email`);
+
+--
+-- Index pour la table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Index pour la table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `roles_short_description_unique` (`short_description`);
+
+--
+-- Index pour la table `surveys`
+--
+ALTER TABLE `surveys`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `surveys_user_id_foreign` (`user_id`);
+
+--
+-- Index pour la table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD UNIQUE KEY `users_username_unique` (`username`),
+  ADD KEY `users_role_id_foreign` (`role_id`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `answers`
+--
+ALTER TABLE `answers`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT pour la table `answer_user`
+--
+ALTER TABLE `answer_user`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT pour la table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `genres`
+--
+ALTER TABLE `genres`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT pour la table `genre_user`
+--
+ALTER TABLE `genre_user`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT pour la table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT pour la table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=300;
+
+--
+-- AUTO_INCREMENT pour la table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `surveys`
+--
+ALTER TABLE `surveys`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `answers`
+--
+ALTER TABLE `answers`
+  ADD CONSTRAINT `answers_survey_id_foreign` FOREIGN KEY (`survey_id`) REFERENCES `surveys` (`id`);
+
+--
+-- Contraintes pour la table `answer_user`
+--
+ALTER TABLE `answer_user`
+  ADD CONSTRAINT `answer_user_answer_id_foreign` FOREIGN KEY (`answer_id`) REFERENCES `answers` (`id`),
+  ADD CONSTRAINT `answer_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Contraintes pour la table `genre_user`
+--
+ALTER TABLE `genre_user`
+  ADD CONSTRAINT `genre_user_genre_id_foreign` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`),
+  ADD CONSTRAINT `genre_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Contraintes pour la table `messages`
+--
+ALTER TABLE `messages`
+  ADD CONSTRAINT `messages_message_id_foreign` FOREIGN KEY (`message_id`) REFERENCES `messages` (`id`),
+  ADD CONSTRAINT `messages_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Contraintes pour la table `surveys`
+--
+ALTER TABLE `surveys`
+  ADD CONSTRAINT `surveys_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Contraintes pour la table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+```
+
+## Insertion de la DB
+
+Connectez-vous sur `nomDuGroupe-pingouin.heig-vd.ch/phpmyadmin` dans le cadre d'une base de donnée MySQL (ce qui a été notre choix).
+
+Saisissez le nom d'utilisateur ainsi que le mot de passe correspondant qui vous est fourni par votre administrateur.
+
+Créez une nouvelle table que vous nommerez ou accédez directement à la table puis aller sur l'onglet _"SQL"_ puis collez le code copié précédemment et éxecutez ce dernier, ce que vous voyez à l'écran peut être différent de cette image en raison du thème par défaut _"pmahomme"_ sur phpmyadmin et ici nous avons le thème _"Metro"_.
+
+Félicitations, vous avez peuplé la base de données!
+
+![Menu phpmyadmin](phpmyadmin-menu.png)
+
+## Télécharger le repo Git depuis github directement sur le serveur
+
+Connectez-vous sur pingouin.heig-vd.ch avec le terminal puis avec le mot de passe de l'école. N'oubliez pas que cela fonctionne uniquement si vous êtes connecté au réseau de l'école ou depuis le dernier VPN recommandé par le helpdesk.
+
+```
+ssh login.aai@pingouin.heig-vd.ch
+```
+
+`exemple : ssh patrick.marquesm@pingouin.heig-vd.ch`
+
+Allez sur votre répértoire projart (en changeant les 20XX pour l'année et les Y pour votre volée et les Z pour le nom de votre groupe)
+(dans notre cas)
+
+```
+cd ../projart/20XX/YY/ZZZ
+```
+
+`exemple : cd ../projart/2023/50/creativepulse`
+
+Pour notre part, nous avons effacé le dossier `nomDuGroupe-laravel`.
+
+Ensuite on fait un `git clone` du dépôt Git pour récupérer les fichiers du site web
+
+```
+git clone <URL_du_repo>
+```
+
+Une fois le clonage terminé, renommez-le (cela va effacer le dossier de base et vous évites donc de faire une suppression avant).
+
+```
+mv nomDuDossierCloné <nomDuGroupe>-laravel
+```
+
+Puis allez dans le dossier
+
+```
+cd <nomDuGroupe>-laravel
+```
+
+Copiez le fichier d'exemple `.example.env` pour créer le fichier `.env` (à moins que vous ayez laissé le .env sur le repo Git ou que vous voulez faire un _Drag & Drop_ sur l'application FileZilla par exemple)
+
+```
+cp .example.env .env
+```
+
+Modifiez le fichier `.env` (en ligne de commande avec `nano` ou `vim` par exemple, ou depuis un éditeur de texte)selon les paramètres spécifiques à votre configuration, tels que la base de données, les identifiants, la APP_KEY (que vous pouvez générer via `php artisan key:generate`), pusher si vous avez pusher, votre service mail.
+
+Si vous avez pris le fichier `.env` depuis votre projet, partez du principe que vous devez modifier uniquement le nom de la base de donnée si vous n'avez pas pu la choisir, le port, l'utilisateur, le mot de passe.
+
+De ce que nous avons observé, le site est tout autant fonctionnel si vous ne modifiez pas la ligne `APP_URL`.
+
+Une fois en production, vérifiez que la ligne `APP_DEBUG` soit égal à `false`, ceci permettra d'éviter d'afficher les potentielles erreurs aux visiteurs de votre site web, pour faire simple, ils ne verront pas la page au lieu d'atterrir sur la page qui explique l'erreur précise sur le site web et ainsi dévoiler des potentielles informations confidentielles.
+
+De plus, si vous en avez la possibilité (pas à notre connaissance sur pingouin), améliorez encore plus votre sécurité en mettant des variables d'environnement dans le serveur et dans le fichier `.env`.
+
+## Exécution des commandes présentes dans le fichier word fourni par le professeur
+
+Executez depuis votre répértoire toutes les commandes ci-dessous (toujours en changeant le 20XX pour l'année et les Y pour votre volée et les Z pour le nom de votre groupe). Ils permettront de changer les droits de lecture et d'écriture.
+
+```
+sudo chgrp -R ZZZ /home/projart/20XX/YY/ZZZ/
+
+sudo chown -R www-data /home/projart/20XX/YY/ZZZ/ZZZ-laravel/storage/
+
+sudo chown -R www-data /home/projart/20XX/YY/ZZZ/ZZZ-laravel/bootstrap/cache/
+
+sudo chmod -R g+wrX /home/projart/20XX/YY/ZZZ/ZZZ-laravel/
+
+sudo chmod -R g+wrX /home/projart/20XX/YY/ZZZ/ZZZ-apache.conf
+```
+
+## Exécution des commandes recommandées par le site Laravel
+
+Executez toutes ces commandes qui sont recommandées sur le site de Laravel, (nous les avons toutes utilisées, même la commande qui concerne les Event car nous avons des Event).
+
+Dernière consultation le 15.06.23 sur le site de [laravel](https://laravel.com/docs/10.x/deployment#main-content).
+
+```
+composer install --optimize-autoloader --no-dev
+
+php artisan config:cache
+
+php artisan event:cache
+
+php artisan route:cache
+
+php artisan view:cache
+```
+
+## Autre commandes
+
+Il n'est pas impossible que vous deviez faire d'autres commandes comme par exemple `php artisan storage:link` ou `npm install`.
+
+## Génération des fichiers optimisés et vérification du bon fonctionnement
+
+Exécutez la commande suivante pour générer les fichiers optimisés du site web.
+
+```
+npm run build
+```
+
+Vérifiez que tout fonctionne correctement en accédant à `nomDuGroupe-pingouin.heig-vd.ch` dans votre navigateur.
+
+Si tout est opérationnel, félicitations !
+
+Votre site web est maintenant déployé sur le serveur Pingouin.
+
+# Problèmes ?
+
+Votre site web ne fonctionne ou est comme vous voulez que si vous faite un npm run dev en parallèle ? Il n'est donc pas prêt au déploiement.
+Cela peut être dû à une utilisation multiple de l'instruction @vite par exemple (si vous utilisez `vite`).
+Faites les diverses modifications et retentez de faire `npm run build` et de voir le résultat.
