@@ -72,5 +72,5 @@ border: 2px solid var(--accent-color);
 }
 
 body{
-    background-color: rgb(20, 19, 19) !important;
+    background-color: var(--fond-color) !important;
 }

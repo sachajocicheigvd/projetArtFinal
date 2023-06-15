@@ -37,7 +37,7 @@
                 </svg> 
                 </a>
               @endif
-               @else 
+               @elseif (Request::is('/'))
                 <a href="{{ url('loginchoice') }}">
                 <svg class="iconUser" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
                 <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clip-rule="evenodd" />
@@ -60,10 +60,19 @@
              
         </div>
     </header>
-    <div class="container"  >
+
+
+
+
+    <div class="container-navigation"  >
 
         @yield('contenu')
 
+
+ @if (Request::is('loginchoice') || Request::is('login') || Request::is('forgot-password') || Request::is('register') || Request::is('password/reset'))   
+
+ <div> </div>
+ @else
 <div id="player" class="PlayerFlex-container">
   <div class="audio-info">
     <img id= "imgCover" src="{{ asset('storage/images/saucisse9.png') }}" >
@@ -117,6 +126,8 @@ document.querySelector("#boutonPlayPausePageAccueilIcon").innerHTML = `<svg id="
       }
     </script>
 </div>
+@endif
+
 
     </div>
         @if (Auth::check())
@@ -150,10 +161,13 @@ document.querySelector("#boutonPlayPausePageAccueilIcon").innerHTML = `<svg id="
                 </svg>
                 <span class="textSondage">Sondage</span>
         </nav>
+       
+@elseif (Request::is('loginchoice') || Request::is('login') || Request::is('forgot-password') || Request::is('register') || Request::is('password/reset'))
+<nav id="navSansRien"> </nav>
+
+
+   
 @else 
-
-
-
         <nav>
             <a href="{{ url('/') }}" class="{{ Request::is('/') ? 'active' : '' }}" >
                 <svg class="iconenav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="w-17 h-17">
@@ -174,6 +188,7 @@ document.querySelector("#boutonPlayPausePageAccueilIcon").innerHTML = `<svg id="
                 <span class="textChat">Chat</span>
             </a>
         </nav>
+
 
         @endif
         @yield('footer')

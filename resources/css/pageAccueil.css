@@ -125,8 +125,6 @@
 }
 
 
-
-
 [type=radio] {
     display: none;
 }
@@ -137,7 +135,6 @@
     justify-content: center;
     border-radius: 40px;
     margin-top: 30px;
-    
     display: flex;
     perspective: 7000px;
     transform-style: preserve-3d;
@@ -208,8 +205,6 @@
     padding-top: 20px;
     background-color: transparent;
     border:none;
-    
-
 
 }
 
@@ -218,12 +213,11 @@ display:flex;
 align-items: center;
 background: transparent;
 border: none;
-
-        margin: 0;
-        width: auto;
-        height: auto;
-        cursor: pointer;
-        align-self: right;
+margin: 0;
+width: auto;
+height: auto;
+cursor: pointer;
+align-self: right;
 }
 
 #lecteurAudioFinal {
