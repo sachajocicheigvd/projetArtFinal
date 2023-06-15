@@ -163,6 +163,7 @@ document.querySelector("#boutonPlayPausePageAccueilIcon").innerHTML = `<svg id="
         </nav>
        
 @elseif (Request::is('loginchoice') || Request::is('login') || Request::is('forgot-password') || Request::is('register') || Request::is('password/reset'))
+
 <nav id="navSansRien"> </nav>
 
 
