@@ -147,7 +147,7 @@ $durations = $duree2;
     
                 if (--timer < 0) {
                     clearInterval(interval);
-                    display.innerHTML = '<span style="color: green;">Résultat final du sondage</span>';
+                    display.innerHTML = '<span style="color: #27EB42;">Résultat final du sondage</span>';
                 }
             }, 1000);
         }
@@ -248,7 +248,7 @@ $durations = $duree2;
     .progress-bar {
     width: 100%;
     height: 20px;
-    background-color: green;
+    background-color: #27EB42;
     color: white;
   }
 </style>
